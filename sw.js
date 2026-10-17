@@ -1,5 +1,5 @@
 // GVPS Fee Office: keeps the app opening without internet.
-const CACHE = 'gvps-v3';
+const CACHE = 'gvps-v7';
 const FILES = ['./', './index.html', './manifest.json', './logo.png', './icon-192.png', './icon-512.png', './apple-touch-icon.png'];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(FILES)).then(() => self.skipWaiting()));

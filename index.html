@@ -92,7 +92,7 @@ main{max-width:760px;margin:0 auto;padding:14px 14px calc(env(safe-area-inset-bo
 .btn.green{background:#178a4e}
 .btn.red{background:var(--duebg);color:var(--due)}
 .btn.sm{height:34px;padding:0 12px;font-size:13px;border-radius:9px}
-.toprow{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:10px}
+.toprow{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px;margin-bottom:10px}
 .toprow b{font-size:16px}
 .toprow .gap{display:flex;gap:6px}
 
@@ -395,7 +395,7 @@ function opFor(col,rows){return col==='staff'?{t:'up',table:'profiles',rows:rows
 function commit(ops){C={};saveLocal();render();if(ONLINE&&ops.length){Q.push(...ops);saveQueue();flush();}}
 function add(col,o){o.id=o.id||uid();apply(col,o);commit([opFor(col,[o])]);}
 function put(col,id,o){o.id=id;apply(col,o);commit([opFor(col,[o])]);}
-function addMany(col,list){list.forEach(o=>{o.id=uid();apply(col,o);});commit(list.length?[opFor(col,list)]:[]);}
+function addMany(col,list){list.forEach(o=>{o.id=uid();apply(col,o);});const ops=[];for(let i=0;i<list.length;i+=200)ops.push(opFor(col,list.slice(i,i+200)));commit(ops);}
 function upd(col,id,o){const cur=S[col].find(x=>x.id===id);if(!cur)return;Object.assign(cur,o);commit([opFor(col,[cur])]);}
 function updMany(col,list){const rows=list.map(([id,o])=>{const c=S[col].find(x=>x.id===id);if(c)Object.assign(c,o);return c;}).filter(Boolean);commit(rows.length?[opFor(col,rows)]:[]);}
 function del(col,id){S[col]=S[col].filter(x=>x.id!==id);commit([{t:'del',table:col==='staff'?'profiles':'records',ids:[id]}]);}
@@ -937,7 +937,7 @@ function duesBody(){
 function viewStudents(){
   const m=thisMonth();
   $('#main').innerHTML=`<div class="toprow"><b>${S.students.filter(s=>isActive(s)&&inScope(s)).length} students</b>
-    <div class="gap"><button class="btn sm ghost" onclick="openBulk()">Add many</button><button class="btn sm" onclick="openStudentForm()">+ Add student</button></div></div>
+    <div class="gap">${isOwner()?'<button class="btn sm ghost" onclick="openImport()">Import Excel</button>':''}<button class="btn sm ghost" onclick="openBulk()">Add many</button><button class="btn sm" onclick="openStudentForm()">+ Add</button></div></div>
   ${bar({q:true,cls:true})}<div class="list" id="list"></div>`;
   filler=()=>{
     const l=S.students.filter(matches).sort(sortStudents);
@@ -946,7 +946,7 @@ function viewStudents(){
         <div class="av">${esc(initials(s.name))}</div>
         <div class="t"><div class="n">${esc(s.name)}</div><div class="s">${sline(s)}</div></div>
         <div class="r">${isActive(s)?balChip(ledger(s).bal):'<span class="chip left">Left</span>'}<span class="s ${a.pct!==null&&a.pct<75?'c-due':''}">${a.pct===null?'No attendance yet':a.pct+'% present'}</span></div>
-      </button>`;}).join(''):`<div class="empty card">${S.students.some(inScope)?'No student matches this search.':'No students yet.<br><button class="btn" onclick="openStudentForm()">Add first student</button>'}</div>`;
+      </button>`;}).join(''):`<div class="empty card">${S.students.some(inScope)?'No student matches this search.':'No students yet.<br>'+(isOwner()?'<button class="btn" onclick="openImport()">Import from Excel</button> ':'')+'<button class="btn ghost" onclick="openStudentForm()">Add first student</button>'}</div>`;
   };
   fillList();
 }
@@ -1214,6 +1214,10 @@ function openSettings(){
     <div class="actions"><button class="btn ghost" onclick="promote()">Promote all students</button></div>
   </div></details>
   ${appBlock}
+  <details><summary>Import from Excel</summary><div class="inner">
+    <p class="note">Add all your students at once from an Excel sheet. Classes in the sheet are added automatically.</p>
+    <div class="actions"><button class="btn" onclick="openImport()">Import students</button><button class="btn ghost" onclick="downloadTemplate()">Sample sheet</button></div>
+  </div></details>
   <details><summary>Records and backup</summary><div class="inner">
     <div class="actions"><button class="btn ghost" onclick="exportStudents()">Students list (Excel)</button><button class="btn ghost" onclick="exportReceipts(true)">All receipts (Excel)</button><button class="btn ghost" onclick="backup()">Full backup</button>
     ${ONLINE?'':`<label class="btn ghost" style="margin:0;color:var(--ink)">Restore backup<input type="file" accept=".json" hidden onchange="restore(this.files[0])"></label>`}</div>
@@ -1279,6 +1283,154 @@ function restore(f){
     ['students','payments','charges','staff','attendance'].forEach(k=>S[k]=d[k]||[]);S.settings={...DEFAULTS,...(d.settings||{})};saveLocal();render();closeSheet();toast('Backup restored');}
     catch(e){toast('This file is not a valid backup');}};
   r.readAsText(f);
+}
+
+/* ================= Import students from Excel ================= */
+let IMP=null;
+function loadXLSX(){
+  if(window.XLSX)return Promise.resolve(window.XLSX);
+  return new Promise((res,rej)=>{const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js';
+    s.onload=()=>res(window.XLSX);s.onerror=()=>rej(new Error('Could not load the Excel reader. Check internet and try again.'));document.head.appendChild(s);});
+}
+const IMP_FIELDS=[
+  ['name','Student name',['studentname','name','nameofstudent','student','fullname','studentsname']],
+  ['father','Father name',['fathername','father','fname','fathersname','parentname','guardianname','guardian','parent','so','sonof']],
+  ['cls','Class',['class','classname','grade','std','standard','section']],
+  ['roll','Roll no',['rollno','roll','rollnumber','admissionno','admno','regno','registrationno']],
+  ['phone','Phone',['phone','mobile','contact','whatsapp','cell','phoneno','mobileno','contactno','cellno','fatherphone','parentphone','fathermobile','fathercontact']],
+  ['fee','Monthly fee',['monthlyfee','fee','fees','tuitionfee','tuition','feepermonth']],
+  ['disc','Discount',['discount','concession','scholarship']],
+  ['opening','Old dues',['olddues','arrears','previousdues','dues','balance','pending','remaining','due','previousbalance']],
+  ['admit','Admission date',['admissiondate','dateofadmission','doa','admitted','admission','joiningdate']]
+];
+const hnorm = v => String(v??'').toLowerCase().replace(/[^a-z0-9]/g,'');
+function guessMap(headers){
+  const map={}, used=new Set(), H=headers.map(hnorm);
+  IMP_FIELDS.forEach(([f,,keys])=>{const i=H.findIndex((h,j)=>!used.has(j)&&keys.includes(h));if(i>=0){map[f]=i;used.add(i);}});
+  // looser match; father/phone before name so "Father Name" is not taken as the student name
+  ['father','phone','fee','disc','opening','admit','roll','cls','name'].forEach(f=>{
+    if(map[f]!==undefined)return;const keys=IMP_FIELDS.find(x=>x[0]===f)[2];
+    const i=H.findIndex((h,j)=>!used.has(j)&&h&&keys.some(k=>k.length>3&&h.includes(k)));
+    if(i>=0){map[f]=i;used.add(i);}
+  });
+  return map;
+}
+function findHeaderRow(rows){
+  let best=0,score=-1;
+  rows.slice(0,15).forEach((r,i)=>{const m=Object.keys(guessMap(r||[])).length;if(m>score){score=m;best=i;}});
+  return best;
+}
+function cellStr(v){if(v==null)return '';if(v instanceof Date)return todayStr(v);return String(v).trim();}
+function cellNum(v){if(typeof v==='number')return Math.round(v);const n=String(v??'').replace(/[^0-9.]/g,'');return n?Math.round(Number(n)):0;}
+function cellPhone(v){let s=typeof v==='number'?String(Math.round(v)):String(v??'').trim();if(/^3\d{9}$/.test(s))s='0'+s;if(/^923\d{9}$/.test(s))s='0'+s.slice(2);return s;}
+function cellDate(v){
+  if(v instanceof Date&&!isNaN(v))return todayStr(v);
+  const s=String(v??'').trim();if(!s)return '';
+  let m=s.match(/^(\d{4})[-/.](\d{1,2})[-/.](\d{1,2})/);if(m)return m[1]+'-'+m[2].padStart(2,'0')+'-'+m[3].padStart(2,'0');
+  m=s.match(/^(\d{1,2})[-/.](\d{1,2})[-/.](\d{2,4})/);if(m){const y=m[3].length===2?'20'+m[3]:m[3];return y+'-'+m[2].padStart(2,'0')+'-'+m[1].padStart(2,'0');}
+  const d=new Date(s);return isNaN(d)?'':todayStr(d);
+}
+function normCls(v,extra){
+  v=String(v??'').trim();if(!v)return '';
+  const all=classes().concat(extra||[]);
+  const same=x=>all.find(c=>hnorm(c)===hnorm(x));
+  if(same(v))return same(v);
+  const m=v.match(/^(?:class|grade|std|cls)?\s*[-.:]?\s*(\d{1,2})\s*(?:st|nd|rd|th)?(?:\s*[-(]?\s*[a-z]\)?)?$/i);
+  if(m){const c='Class '+Number(m[1]);return same(c)||c;}
+  const alias={pg:'Playgroup',playgroup:'Playgroup',play:'Playgroup',nursery:'Nursery',nur:'Nursery',prep:'Prep',kg:'Prep',kindergarten:'Prep',ece:'Playgroup'};
+  if(alias[hnorm(v)])return same(alias[hnorm(v)])||alias[hnorm(v)];
+  return v.replace(/\s+/g,' ').replace(/\b\w/g,ch=>ch.toUpperCase());
+}
+function openImport(){
+  sheet(`<h3>Import students from Excel</h3>
+  <p class="muted">Pick your Excel file (.xlsx, .xls or .csv). Each row should be one student.</p>
+  <ol class="steps">
+    <li>The first row should have column names like <b>Name, Father Name, Class, Roll No, Phone, Fee</b>.</li>
+    <li>Only the student name is required. Other columns are optional.</li>
+    <li>You will see a preview before anything is saved.</li>
+  </ol>
+  <label class="btn wide" style="margin-top:16px;color:#fff">Choose Excel file<input type="file" accept=".xlsx,.xls,.csv,.ods" hidden onchange="readImport(this.files[0])"></label>
+  <p id="i_err" class="err"></p>
+  <div class="actions"><button class="btn ghost" onclick="downloadTemplate()">Download sample sheet</button><button class="btn ghost" onclick="closeSheet()">Cancel</button></div>`);
+}
+async function readImport(file){
+  if(!file)return;$('#i_err').textContent='Reading file...';$('#i_err').className='err ok';
+  try{
+    const X=await loadXLSX();
+    const wb=X.read(await file.arrayBuffer(),{type:'array',cellDates:true});
+    IMP={wb,file:file.name,sheetName:wb.SheetNames[0],defCls:UI.cls||classes()[0]};
+    // pick the sheet with most rows if the first one is empty
+    const sizes=wb.SheetNames.map(n=>X.utils.sheet_to_json(wb.Sheets[n],{header:1,blankrows:false}).length);
+    IMP.sheetName=wb.SheetNames[sizes.indexOf(Math.max(...sizes))];
+    loadImportSheet();showImport();
+  }catch(e){$('#i_err').className='err';$('#i_err').textContent='Could not read this file: '+(e.message||e);}
+}
+function loadImportSheet(){
+  const rows=XLSX.utils.sheet_to_json(IMP.wb.Sheets[IMP.sheetName],{header:1,blankrows:false,defval:''});
+  IMP.rows=rows;IMP.hi=findHeaderRow(rows);
+  IMP.headers=(rows[IMP.hi]||[]).map((h,i)=>cellStr(h)||'Column '+(i+1));
+  IMP.map=guessMap(rows[IMP.hi]||[]);
+}
+function buildImport(){
+  const {rows,hi,map}=IMP, out=[], skipped=[], newCls=[], seen=new Set();
+  S.students.forEach(s=>seen.add(hnorm(s.name)+'|'+hnorm(s.father)+'|'+hnorm(s.cls)));
+  const rollNext={};
+  const g=(r,f)=>map[f]!==undefined&&map[f]>=0?r[map[f]]:'';
+  for(let i=hi+1;i<rows.length;i++){
+    const r=rows[i]||[], name=cellStr(g(r,'name')).replace(/\s+/g,' ');
+    if(!name||/^(total|grand total)$/i.test(name))continue;
+    const cls=normCls(cellStr(g(r,'cls')),newCls)||IMP.defCls;
+    if(!classes().includes(cls)&&!newCls.includes(cls))newCls.push(cls);
+    const father=cellStr(g(r,'father')).replace(/\s+/g,' ');
+    const key=hnorm(name)+'|'+hnorm(father)+'|'+hnorm(cls);
+    if(seen.has(key)){skipped.push(name);continue;}seen.add(key);
+    const feeCell=g(r,'fee'), fee=String(feeCell).trim()!==''?cellNum(feeCell):classFee(cls);
+    let roll=cellStr(g(r,'roll'));
+    if(!roll){if(rollNext[cls]===undefined)rollNext[cls]=Number(nextRoll(cls));roll=String(rollNext[cls]++);}
+    out.push({name,father,cls,roll,phone:cellPhone(g(r,'phone')),fee,disc:cellNum(g(r,'disc')),opening:cellNum(g(r,'opening')),
+      admit:cellDate(g(r,'admit'))||todayStr(),active:true,created:Date.now(),addedBy:ME.name});
+  }
+  out.forEach(o=>{o.fees=[{from:'0000-00',fee:o.fee,disc:o.disc}];});
+  return {out,skipped,newCls};
+}
+function showImport(){
+  const X=XLSX, {out,skipped,newCls}=buildImport();
+  const colOpts=sel=>`<option value="-1">Not in file</option>`+IMP.headers.map((h,i)=>`<option value="${i}" ${sel===i?'selected':''}>${esc(h)}</option>`).join('');
+  const byCls={};out.forEach(o=>byCls[o.cls]=(byCls[o.cls]||0)+1);
+  sheet(`<h3>Check before importing</h3><p class="muted">${esc(IMP.file)}</p>
+  ${IMP.wb.SheetNames.length>1?`<label>Sheet<select onchange="IMP.sheetName=this.value;loadImportSheet();showImport()">${IMP.wb.SheetNames.map(n=>`<option ${n===IMP.sheetName?'selected':''}>${esc(n)}</option>`).join('')}</select></label>`:''}
+  <details ${out.length?'':'open'}><summary>Columns (matched automatically)</summary><div class="inner">
+    <p class="note">Change a column if it was matched wrongly.</p>
+    ${IMP_FIELDS.map(([f,l])=>`<label>${l}<select onchange="IMP.map['${f}']=Number(this.value);showImport()">${colOpts(IMP.map[f]??-1)}</select></label>`).join('')}
+    <label>Class for students with no class in the file<select onchange="IMP.defCls=this.value;showImport()">${classes().map(c=>`<option ${c===IMP.defCls?'selected':''}>${esc(c)}</option>`).join('')}</select></label>
+  </div></details>
+  ${out.length?`<div class="balbox good" style="margin-top:12px"><span>Ready to import</span><b>${out.length} students</b>
+    <div class="brk">${Object.keys(byCls).sort((a,b)=>classes().indexOf(a)-classes().indexOf(b)).map(c=>`<div><span>${esc(c)}</span><span>${byCls[c]}</span></div>`).join('')}</div></div>`
+  :`<div class="total" style="margin-top:12px"><span>No students found. Check that "Student name" points to the right column.</span><span></span></div>`}
+  ${newCls.length?`<p class="note" style="margin-top:8px">New classes will be added: ${esc(newCls.join(', '))}. Set their fee later in Settings.</p>`:''}
+  ${skipped.length?`<p class="note">${pl(skipped.length,'row')} skipped because the student is repeated or already in the app.</p>`:''}
+  ${out.length?`<h3 class="sec">First rows</h3><div class="card tblwrap" style="padding:0 6px"><table class="tbl">
+    <tr><th>Name</th><th>Father</th><th>Class</th><th>Roll</th><th>Phone</th><th class="n">Fee</th></tr>
+    ${out.slice(0,6).map(o=>`<tr><td>${esc(o.name)}</td><td>${esc(o.father)}</td><td>${esc(o.cls)}</td><td>${esc(o.roll)}</td><td>${esc(o.phone)}</td><td class="n">${o.fee?rs(o.fee):'<span class="c-due">0</span>'}</td></tr>`).join('')}
+  </table></div>`:''}
+  ${out.some(o=>!o.fee)?'<p class="note c-part">Some students have no fee. Set the class fee in Settings before importing, or add a fee column.</p>':''}
+  <div class="actions"><button class="btn ghost" onclick="openImport()">Other file</button><button class="btn green" ${out.length?'':'disabled'} onclick="doImport()">Import ${pl(out.length,'student')}</button></div>`);
+}
+function doImport(){
+  const {out,newCls}=buildImport();if(!out.length)return;
+  if(newCls.length)saveSettingsData({classes:classes().concat(newCls)});
+  addMany('students',out);IMP=null;closeSheet();UI.cls='';go('students');
+  toast(pl(out.length,'student')+' imported');
+}
+async function downloadTemplate(){
+  try{
+    const X=await loadXLSX();
+    const ws=X.utils.aoa_to_sheet([['Student Name','Father Name','Class','Roll No','Phone','Monthly Fee','Discount','Old Dues','Admission Date'],
+      ['Ali Khan','Gul Rahman','Class 5',1,'03001234567',2000,0,0,todayStr()],
+      ['Ayesha Bibi','Sher Muhammad','Class 5',2,'03111234567',2000,500,1500,todayStr()]]);
+    ws['!cols']=[{wch:20},{wch:20},{wch:10},{wch:8},{wch:14},{wch:12},{wch:10},{wch:10},{wch:14}];
+    const wb=X.utils.book_new();X.utils.book_append_sheet(wb,ws,'Students');X.writeFile(wb,'gvps-students-sample.xlsx');
+  }catch(e){toast(e.message||'Could not make the file');}
 }
 
 /* ================= Install as app ================= */
