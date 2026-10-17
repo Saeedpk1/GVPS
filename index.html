@@ -331,7 +331,7 @@ const CHARGE_NAMES = ['Admission fee','Exam fee','Annual charges','Sports fee','
 const MARK = {P:'Present',A:'Absent',L:'Leave'};
 let S = {students:[], payments:[], charges:[], staff:[], attendance:[], settings:{...DEFAULTS}};
 let ME = null;
-let UI = {tab:'', month:thisMonth(), cls:'', attCls:'', date:todayStr(), q:'', from:todayStr(), to:todayStr(), dueMin:0, feeMode:'collect', by:'', hideInst:false};
+let UI = {stu:'active',tab:'', month:thisMonth(), cls:'', attCls:'', date:todayStr(), q:'', from:todayStr(), to:todayStr(), dueMin:0, feeMode:'collect', by:'', hideInst:false};
 let sb=null, chan=null, Q=[], flushing=false, lastFetch=0, filler=null, C={};
 
 const $ = s => document.querySelector(s);
@@ -376,6 +376,26 @@ function inWords(n){
   if(cr)o.push(three(cr)+' Crore');if(lk)o.push(two(lk)+' Lakh');if(th)o.push(two(th)+' Thousand');if(n)o.push(three(n));
   return o.join(' ')+' Rupees Only';
 }
+
+/* ================= Admission register =================
+   Same columns as the school's Admission & Withdrawal Register */
+const REG_COLS=[['admit','Date of Admission'],['admNo','Adm No.'],['name','Name'],['dob','Date of Birth in words and Figures'],['father',"Father's Name"],
+  ['caste','Caste or Tribe'],['occupation','Occupation'],['residence','Residence'],['admClass','Class to which Admitted'],['arrears','Arrears due'],
+  ['wdClass','Class From which withdrawn'],['wdDate','Date of withdrawl'],['fileNo','File No.'],['remarks','Remarks']];
+function ordinal(n){const s=['th','st','nd','rd'],v=n%100;return n+(s[(v-20)%10]||s[v]||s[0]);}
+function wordsTwo(x,hy){const a=['','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Eleven','Twelve','Thirteen','Fourteen','Fifteen','Sixteen','Seventeen','Eighteen','Nineteen'];
+  const b=['','','Twenty','Thirty','Forty','Fifty','Sixty','Seventy','Eighty','Ninety'];return x<20?a[x]:b[Math.floor(x/10)]+(x%10?(hy?'-':' ')+a[x%10]:'');}
+function yearWords(y){
+  if(y>=2000){const r=y%100,c=Math.floor((y-2000)/100);return (c?'':'Two Thousand')+(r?' and '+wordsTwo(r,true):'');}
+  const hd=Math.floor((y%1000)/100), r=y%100;return 'One Thousand, '+wordsTwo(hd)+' Hundred'+(r?' and '+wordsTwo(r,true):'');
+}
+function dobWords(d){
+  if(!d)return '';const [y,m,dd]=d.split('-').map(Number);if(!y||!m||!dd)return d;
+  const mn=new Date(2000,m-1,1).toLocaleString('en',{month:'long'});
+  return `${ordinal(dd)} ${mn} ${yearWords(y)} ${String(dd).padStart(2,'0')}-${String(m).padStart(2,'0')}-${y}`;
+}
+function regCls(c){const m=String(c||'').match(/^Class (\d+)$/);return m?ordinal(Number(m[1])):(c||'');}
+function nextAdmNo(){return S.students.reduce((m,s)=>Math.max(m,parseInt(s.admNo)||0),0)+1;}
 
 /* ================= Data layer =================
    Every change shows on screen at once and is saved on this phone.
@@ -542,7 +562,7 @@ function matches(s){
   if(!inScope(s))return false;
   if(UI.cls&&s.cls!==UI.cls)return false;
   const q=UI.q.trim().toLowerCase();if(!q)return true;
-  return [s.name,s.father,s.roll,s.phone].some(v=>String(v||'').toLowerCase().includes(q));
+  return [s.name,s.father,s.roll,s.phone,s.admNo,s.fileNo].some(v=>String(v||'').toLowerCase().includes(q));
 }
 function nextReceipt(){return S.payments.reduce((m,p)=>Math.max(m,Number(p.receiptNo)||0),0)+1;}
 function newFeeHist(s,fee,disc,fixPast){
@@ -938,14 +958,16 @@ function viewStudents(){
   const m=thisMonth();
   $('#main').innerHTML=`<div class="toprow"><b>${S.students.filter(s=>isActive(s)&&inScope(s)).length} students</b>
     <div class="gap">${isOwner()?'<button class="btn sm ghost" onclick="openImport()">Import Excel</button>':''}<button class="btn sm ghost" onclick="openBulk()">Add many</button><button class="btn sm" onclick="openStudentForm()">+ Add</button></div></div>
-  ${bar({q:true,cls:true})}<div class="list" id="list"></div>`;
+  ${bar({q:true,cls:true})}
+  <div class="chips">${[['active','Studying'],['left','Left school'],['all','All']].map(([k,t])=>`<button class="chipbtn ${UI.stu===k?'on':''}" onclick="UI.stu='${k}';render()">${t} (${S.students.filter(s=>inScope(s)&&(k==='all'||(k==='left')!==isActive(s))).length})</button>`).join('')}</div>
+  <div class="list" id="list"></div>`;
   filler=()=>{
-    const l=S.students.filter(matches).sort(sortStudents);
+    const l=S.students.filter(s=>matches(s)&&(UI.stu==='all'||(UI.stu==='left')!==isActive(s))).sort(sortStudents);
     $('#list').innerHTML=l.length?l.map(s=>{const a=attStats(s,m);return `
       <button class="item" onclick="openStudent('${s.id}')">
         <div class="av">${esc(initials(s.name))}</div>
-        <div class="t"><div class="n">${esc(s.name)}</div><div class="s">${sline(s)}</div></div>
-        <div class="r">${isActive(s)?balChip(ledger(s).bal):'<span class="chip left">Left</span>'}<span class="s ${a.pct!==null&&a.pct<75?'c-due':''}">${a.pct===null?'No attendance yet':a.pct+'% present'}</span></div>
+        <div class="t"><div class="n">${esc(s.name)}</div><div class="s">${s.admNo?'Adm '+esc(s.admNo)+', ':''}${sline(s)}</div></div>
+        <div class="r">${isActive(s)?balChip(ledger(s).bal):'<span class="chip left">Left'+(s.wdDate?' '+esc(s.wdDate.slice(0,4)):'')+'</span>'}<span class="s ${a.pct!==null&&a.pct<75?'c-due':''}">${isActive(s)?(a.pct===null?'No attendance yet':a.pct+'% present'):(s.admit?'Admitted '+esc(s.admit.slice(0,4)):'')}</span></div>
       </button>`;}).join(''):`<div class="empty card">${S.students.some(inScope)?'No student matches this search.':'No students yet.<br>'+(isOwner()?'<button class="btn" onclick="openImport()">Import from Excel</button> ':'')+'<button class="btn ghost" onclick="openStudentForm()">Add first student</button>'}</div>`;
   };
   fillList();
@@ -954,10 +976,12 @@ function nextRoll(c){return (S.students.filter(s=>s.cls===c).reduce((m,s)=>Math.
 function openStudentForm(id){
   const own=isOwner(), cl0=myClasses();
   if(!cl0.length){toast('No class is given to you yet');return;}
-  const s=id?getS(id):{name:'',father:'',cls:(UI.cls&&cl0.includes(UI.cls))?UI.cls:cl0[0],roll:'',phone:'',admit:todayStr(),opening:'',active:true};
+  const s=id?getS(id):{name:'',father:'',cls:(UI.cls&&cl0.includes(UI.cls))?UI.cls:cl0[0],roll:'',phone:'',admit:todayStr(),opening:'',active:true,admNo:String(nextAdmNo())};
   const fe=id?feeEntry(s,thisMonth()):{fee:classFee(s.cls)||'',disc:''};
   const cl=cl0.includes(s.cls)?cl0:[...cl0,s.cls];
   sheet(`<h3>${id?'Edit student':'Add student'}</h3>
+  <div class="two"><label>Adm No.<input id="f_admNo" inputmode="numeric" value="${esc(s.admNo||'')}"></label>
+  <label>Date of admission<input id="f_admit" type="date" value="${esc(s.admit)}"></label></div>
   <label>Student name<input id="f_name" value="${esc(s.name)}"></label>
   <label>Father name<input id="f_father" value="${esc(s.father)}"></label>
   <div class="two">
@@ -971,12 +995,21 @@ function openStudentForm(id){
   </div>
   <p class="note">${own?'Discount is for siblings, staff children and similar. Put the full discount for students who study free.':'Only the owner can change fee and discount.'}</p>
   ${id&&own?`<label class="check"><input type="checkbox" id="f_fix"> Use this fee for past months too (to correct a mistake)</label>`:''}
-  <div class="two">
-    <label>Admission date<input id="f_admit" type="date" value="${esc(s.admit)}"></label>
-    ${own?`<label>Old dues (Rs)<input id="f_open" type="number" inputmode="numeric" min="0" value="${esc(s.opening||'')}" placeholder="0"></label>`:'<span></span>'}
-  </div>
-  ${own?'<p class="note">Old dues means fee still owed from before you started using this app.</p>':''}
-  ${id?`<label class="check"><input type="checkbox" id="f_active" ${isActive(s)?'checked':''}> Still studying here</label>`:''}
+  ${own?`<label>Old dues / arrears (Rs)<input id="f_open" type="number" inputmode="numeric" min="0" value="${esc(s.opening||'')}" placeholder="0"></label>
+  <p class="note">Fee still owed from before you started using this app.</p>`:''}
+  <details ${id?'':'open'}><summary>Admission register details</summary><div class="inner">
+    <label>Date of birth<input id="f_dob" type="date" value="${esc(s.dob||'')}" oninput="$('#f_dobw').textContent=dobWords(this.value)"></label>
+    <p class="note" id="f_dobw">${esc(dobWords(s.dob))}</p>
+    <div class="two"><label>Caste or tribe<input id="f_caste" value="${esc(s.caste||'')}"></label>
+    <label>Father's occupation<input id="f_occ" value="${esc(s.occupation||'')}"></label></div>
+    <label>Residence<input id="f_res" value="${esc(s.residence||'')}" placeholder="e.g. Hamid Abad Parrai Swat"></label>
+    <div class="two"><label>Class admitted to<select id="f_admCls"><option value="">Same as class</option>${classes().map(c=>`<option ${c===s.admClass?'selected':''}>${esc(c)}</option>`).join('')}</select></label>
+    <label>File No.<input id="f_file" value="${esc(s.fileNo||'')}"></label></div>
+    <label>Remarks<input id="f_rem" value="${esc(s.remarks||'')}"></label>
+  </div></details>
+  ${id?`<label class="check"><input type="checkbox" id="f_active" ${isActive(s)?'checked':''} onchange="$('#f_wd').hidden=this.checked"> Still studying here</label>
+  <div id="f_wd" ${isActive(s)?'hidden':''}><div class="two"><label>Withdrawn from class<select id="f_wdCls">${classes().map(c=>`<option ${c===(s.wdClass||s.cls)?'selected':''}>${esc(c)}</option>`).join('')}</select></label>
+    <label>Date of withdrawal<input id="f_wdDate" type="date" value="${esc(s.wdDate||todayStr())}"></label></div></div>`:''}
   <p id="f_err" class="err"></p>
   <div class="actions"><button class="btn ghost" onclick="${id?`openStudent('${id}')`:'closeSheet()'}">Cancel</button><button class="btn" onclick="saveStudent('${id||''}')">Save student</button></div>`);
 }
@@ -984,21 +1017,25 @@ function saveStudent(id){
   const own=isOwner(), old=id?getS(id):null;
   const fee=Math.round(Number($('#f_fee').value||0)), disc=Math.round(Number($('#f_disc').value||0));
   const o={name:$('#f_name').value.trim(),father:$('#f_father').value.trim(),cls:$('#f_cls').value,roll:$('#f_roll').value.trim(),
-    phone:$('#f_phone').value.trim(),admit:$('#f_admit').value};
+    phone:$('#f_phone').value.trim(),admit:$('#f_admit').value,admNo:$('#f_admNo').value.trim(),dob:$('#f_dob').value,caste:$('#f_caste').value.trim(),
+    occupation:$('#f_occ').value.trim(),residence:$('#f_res').value.trim(),admClass:$('#f_admCls').value,fileNo:$('#f_file').value.trim(),remarks:$('#f_rem').value.trim()};
+  if(o.admNo&&S.students.some(x=>x.id!==id&&String(x.admNo)===o.admNo)){$('#f_err').textContent='Adm No. '+o.admNo+' is already given to another student.';return;}
   if(!o.name){$('#f_err').textContent='Enter the student name.';return;}
   if(fee<0||disc<0){$('#f_err').textContent='Fee and discount cannot be less than 0.';return;}
   if(own){o.fee=fee;o.disc=disc;o.opening=Math.round(Number($('#f_open').value||0));}
   if(id){
     if(own)o.fees=newFeeHist(old,fee,disc,$('#f_fix').checked);
     const act=$('#f_active').checked;o.active=act;
-    if(!act&&isActive(old))o.leftMonth=thisMonth();if(act)o.leftMonth=null;
+    if(!act){o.wdClass=$('#f_wdCls').value;o.wdDate=$('#f_wdDate').value||todayStr();if(isActive(old)||!old.leftMonth)o.leftMonth=monthOf(o.wdDate);}
+    else{o.leftMonth=null;o.wdClass='';o.wdDate='';}
     upd('students',id,o);toast('Student saved');closeSheet();
   }else{
     if(!own){o.fee=fee;o.disc=0;o.opening=0;}
     if(!o.roll)o.roll=nextRoll(o.cls);
     o.fees=[{from:'0000-00',fee:o.fee,disc:o.disc}];o.active=true;o.created=Date.now();o.addedBy=ME.name;
     add('students',o);toast(o.name+' added');openStudentForm();
-    $('#f_cls').value=o.cls;$('#f_fee').value=o.fee;$('#f_roll').placeholder=String(Number(o.roll)+1||'');
+    $('#f_cls').value=o.cls;$('#f_fee').value=o.fee;$('#f_roll').placeholder=String(Number(o.roll)+1||'');$('#f_admNo').value=nextAdmNo();
+    $('#f_admit').value=o.admit;$('#f_res').value=o.residence;
     $('#f_err').textContent='Saved. Add the next student or tap Cancel.';$('#f_err').className='err ok';
   }
 }
@@ -1019,9 +1056,9 @@ function saveBulk(){
   const cls=$('#b_cls').value, fee=Math.round(Number($('#b_fee').value||0));
   const lines=$('#b_text').value.split('\n').map(l=>l.trim()).filter(Boolean);
   if(!lines.length){$('#b_err').textContent='Type at least one student.';return;}
-  let r=Number(nextRoll(cls));
+  let r=Number(nextRoll(cls)), an=nextAdmNo();
   const list=lines.map(l=>{const [name,father,phone]=l.split(/\s*[,|]\s*/);
-    return {name:(name||'').trim(),father:(father||'').trim(),phone:(phone||'').trim(),cls,roll:String(r++),admit:todayStr(),opening:0,fee,disc:0,fees:[{from:'0000-00',fee,disc:0}],active:true,created:Date.now(),addedBy:ME.name};}).filter(x=>x.name);
+    return {name:(name||'').trim(),father:(father||'').trim(),phone:(phone||'').trim(),cls,roll:String(r++),admNo:String(an++),admit:todayStr(),opening:0,fee,disc:0,fees:[{from:'0000-00',fee,disc:0}],active:true,created:Date.now(),addedBy:ME.name};}).filter(x=>x.name);
   addMany('students',list);closeSheet();toast(list.length+' students added to '+cls);
 }
 function openStudent(id){
@@ -1031,16 +1068,25 @@ function openStudent(id){
   const months={};L.items.forEach(i=>{const g=months[i.m]||(months[i.m]={amt:0,paid:0,t:[]});g.amt+=i.amt;g.paid+=i.paid;g.t.push(i.title+' '+rs(i.amt));});
   const mk=Object.keys(months).sort().reverse();
   sheet(`<div style="display:flex;gap:12px;align-items:center"><div class="av">${esc(initials(s.name))}</div><div><h3>${esc(s.name)}</h3><p class="muted">${esc(s.cls)}${isActive(s)?'':', left school'}</p></div></div>
-  <div class="balbox ${L.bal>0?'':'good'}"><span>${L.bal>0?'Total due':L.bal<0?'Advance paid':'All fee paid'}</span><b>${rs(Math.abs(L.bal))}</b>${L.bal>0?`<span>${monthsText(unpaidMonths(L))}</span>`:''}</div>
+  ${!isActive(s)&&!L.bal&&!pays.length?'':`<div class="balbox ${L.bal>0?'':'good'}"><span>${L.bal>0?'Total due':L.bal<0?'Advance paid':'All fee paid'}</span><b>${rs(Math.abs(L.bal))}</b>${L.bal>0?`<span>${monthsText(unpaidMonths(L))}</span>`:''}</div>`}
   <dl class="info">
     <dt>Father</dt><dd>${esc(s.father)||'–'}</dd>
     <dt>Roll no</dt><dd>${esc(s.roll)||'–'}</dd>
     <dt>Phone</dt><dd>${s.phone?`<a href="tel:${esc(s.phone)}">${esc(s.phone)}</a>`:'–'}</dd>
-    <dt>Monthly fee</dt><dd>${rs(fe.fee)}${Number(fe.disc)?`, discount ${rs(fe.disc)}, pays ${rs(feeAt(s,thisMonth()))}`:''}</dd>
-    <dt>Attendance</dt><dd>${at.n?`${at.pct}% in ${mShort(thisMonth())}: ${at.P} present, ${at.A} absent, ${at.L} leave`:'Not taken this month'}</dd>
+    ${isActive(s)?`<dt>Monthly fee</dt><dd>${rs(fe.fee)}${Number(fe.disc)?`, discount ${rs(fe.disc)}, pays ${rs(feeAt(s,thisMonth()))}`:''}</dd>`:''}
+    ${isActive(s)||at.n?`<dt>Attendance</dt><dd>${at.n?`${at.pct}% in ${mShort(thisMonth())}: ${at.P} present, ${at.A} absent, ${at.L} leave`:'Not taken this month'}</dd>`:''}
     ${at.absDates.length?`<dt>Absent on</dt><dd>${at.absDates.slice(-6).map(d=>niceDate(d).replace(/ \d{4}$/,'')).join(', ')}</dd>`:''}
-    <dt>Admitted</dt><dd>${niceDate(s.admit)||'–'}</dd>
+    <dt>Admitted</dt><dd>${niceDate(s.admit)||'–'}${s.admClass&&s.admClass!==s.cls?' to '+esc(s.admClass):''}</dd>
+    ${!isActive(s)&&s.wdDate?`<dt>Withdrawn</dt><dd>${niceDate(s.wdDate)}${s.wdClass?' from '+esc(s.wdClass):''}</dd>`:''}
   </dl>
+  ${s.admNo||s.dob||s.residence||s.caste||s.occupation||s.fileNo||s.remarks?`<details><summary>Admission register${s.admNo?', Adm No. '+esc(s.admNo):''}</summary><div class="inner"><dl class="info" style="margin:0">
+    ${s.dob?`<dt>Date of birth</dt><dd>${esc(dobWords(s.dob))}</dd>`:''}
+    ${s.caste?`<dt>Caste or tribe</dt><dd>${esc(s.caste)}</dd>`:''}
+    ${s.occupation?`<dt>Occupation</dt><dd>${esc(s.occupation)}</dd>`:''}
+    ${s.residence?`<dt>Residence</dt><dd>${esc(s.residence)}</dd>`:''}
+    ${s.fileNo?`<dt>File No.</dt><dd>${esc(s.fileNo)}</dd>`:''}
+    ${s.remarks?`<dt>Remarks</dt><dd>${esc(s.remarks)}</dd>`:''}
+  </dl></div></details>`:''}
   <div class="actions">
     ${isActive(s)||L.bal>0?`<button class="btn green" onclick="openCollect('${id}')">Collect fee</button>`:''}
     ${L.bal>0&&s.phone?`<a class="btn ghost" target="_blank" rel="noopener" href="${remindLink(s)}">Remind</a>`:''}
@@ -1216,10 +1262,10 @@ function openSettings(){
   ${appBlock}
   <details><summary>Import from Excel</summary><div class="inner">
     <p class="note">Add all your students at once from an Excel sheet. Classes in the sheet are added automatically.</p>
-    <div class="actions"><button class="btn" onclick="openImport()">Import students</button><button class="btn ghost" onclick="downloadTemplate()">Sample sheet</button></div>
+    <div class="actions"><button class="btn" onclick="openImport()">Import students</button><button class="btn ghost" onclick="downloadTemplate()">Blank register sheet</button></div>
   </div></details>
   <details><summary>Records and backup</summary><div class="inner">
-    <div class="actions"><button class="btn ghost" onclick="exportStudents()">Students list (Excel)</button><button class="btn ghost" onclick="exportReceipts(true)">All receipts (Excel)</button><button class="btn ghost" onclick="backup()">Full backup</button>
+    <div class="actions"><button class="btn ghost" onclick="openRegisterExport()">Admission register (Excel)</button><button class="btn ghost" onclick="exportStudents()">Students list (Excel)</button><button class="btn ghost" onclick="exportReceipts(true)">All receipts (Excel)</button><button class="btn ghost" onclick="backup()">Full backup</button>
     ${ONLINE?'':`<label class="btn ghost" style="margin:0;color:var(--ink)">Restore backup<input type="file" accept=".json" hidden onchange="restore(this.files[0])"></label>`}</div>
   </div></details>
   ${acct}
@@ -1293,22 +1339,31 @@ function loadXLSX(){
     s.onload=()=>res(window.XLSX);s.onerror=()=>rej(new Error('Could not load the Excel reader. Check internet and try again.'));document.head.appendChild(s);});
 }
 const IMP_FIELDS=[
-  ['name','Student name',['studentname','name','nameofstudent','student','fullname','studentsname']],
-  ['father','Father name',['fathername','father','fname','fathersname','parentname','guardianname','guardian','parent','so','sonof']],
-  ['cls','Class',['class','classname','grade','std','standard','section']],
-  ['roll','Roll no',['rollno','roll','rollnumber','admissionno','admno','regno','registrationno']],
+  ['admit','Date of admission',['dateofadmission','admissiondate','doa','admitted','joiningdate','admission']],
+  ['admNo','Adm No.',['admno','admissionno','admissionnumber','admnumber','grno','regno','registrationno','admn','admnno']],
+  ['name','Student name',['name','studentname','nameofstudent','student','fullname','studentsname']],
+  ['dob','Date of birth',['dateofbirthinwordsandfigures','dateofbirth','dob','birthdate','dateofbirthinfigures']],
+  ['father','Father name',['fathersname','fathername','father','fname','parentname','guardianname','guardian','parent','so','sonof']],
+  ['caste','Caste or tribe',['casteortribe','caste','tribe','casttribe','caste/tribe']],
+  ['occupation','Occupation',['occupation','fathersoccupation','fatheroccupation','profession']],
+  ['residence','Residence',['residence','address','village','homeaddress']],
+  ['cls','Class',['classtowhichadmitted','class','classname','grade','std','standard','classadmitted','admittedclass','presentclass','currentclass']],
+  ['opening','Arrears / old dues',['arrearsdue','arrears','olddues','previousdues','dues','balance','pending','remaining','due','previousbalance']],
+  ['wdClass','Class withdrawn from',['classfromwhichwithdrawn','withdrawnclass','classwithdrawn','classleft']],
+  ['wdDate','Date of withdrawal',['dateofwithdrawl','dateofwithdrawal','withdrawaldate','withdrawldate','leavingdate','dateofleaving','sldate']],
+  ['fileNo','File No.',['fileno','filenumber','file']],
+  ['remarks','Remarks',['remarks','remark','notes','note']],
+  ['roll','Roll no',['rollno','roll','rollnumber']],
   ['phone','Phone',['phone','mobile','contact','whatsapp','cell','phoneno','mobileno','contactno','cellno','fatherphone','parentphone','fathermobile','fathercontact']],
   ['fee','Monthly fee',['monthlyfee','fee','fees','tuitionfee','tuition','feepermonth']],
-  ['disc','Discount',['discount','concession','scholarship']],
-  ['opening','Old dues',['olddues','arrears','previousdues','dues','balance','pending','remaining','due','previousbalance']],
-  ['admit','Admission date',['admissiondate','dateofadmission','doa','admitted','admission','joiningdate']]
+  ['disc','Discount',['discount','concession','scholarship']]
 ];
 const hnorm = v => String(v??'').toLowerCase().replace(/[^a-z0-9]/g,'');
 function guessMap(headers){
   const map={}, used=new Set(), H=headers.map(hnorm);
   IMP_FIELDS.forEach(([f,,keys])=>{const i=H.findIndex((h,j)=>!used.has(j)&&keys.includes(h));if(i>=0){map[f]=i;used.add(i);}});
   // looser match; father/phone before name so "Father Name" is not taken as the student name
-  ['father','phone','fee','disc','opening','admit','roll','cls','name'].forEach(f=>{
+  ['father','phone','fee','disc','wdClass','wdDate','dob','occupation','caste','residence','fileNo','remarks','admNo','opening','admit','roll','cls','name'].forEach(f=>{
     if(map[f]!==undefined)return;const keys=IMP_FIELDS.find(x=>x[0]===f)[2];
     const i=H.findIndex((h,j)=>!used.has(j)&&h&&keys.some(k=>k.length>3&&h.includes(k)));
     if(i>=0){map[f]=i;used.add(i);}
@@ -1321,9 +1376,11 @@ function findHeaderRow(rows){
   return best;
 }
 function cellStr(v){if(v==null)return '';if(v instanceof Date)return todayStr(v);return String(v).trim();}
+function cellDob(v){const s=String(v??'');const m=s.match(/(\d{1,2})[-/.](\d{1,2})[-/.](\d{4})\s*$/);if(m)return m[3]+'-'+m[2].padStart(2,'0')+'-'+m[1].padStart(2,'0');return cellDate(v);}
 function cellNum(v){if(typeof v==='number')return Math.round(v);const n=String(v??'').replace(/[^0-9.]/g,'');return n?Math.round(Number(n)):0;}
 function cellPhone(v){let s=typeof v==='number'?String(Math.round(v)):String(v??'').trim();if(/^3\d{9}$/.test(s))s='0'+s;if(/^923\d{9}$/.test(s))s='0'+s.slice(2);return s;}
 function cellDate(v){
+  if(typeof v==='number'&&v>1&&v<100000){const d=new Date(Date.UTC(1899,11,30)+Math.round(v)*86400000);return d.toISOString().slice(0,10);}
   if(v instanceof Date&&!isNaN(v))return todayStr(v);
   const s=String(v??'').trim();if(!s)return '';
   let m=s.match(/^(\d{4})[-/.](\d{1,2})[-/.](\d{1,2})/);if(m)return m[1]+'-'+m[2].padStart(2,'0')+'-'+m[3].padStart(2,'0');
@@ -1337,7 +1394,7 @@ function normCls(v,extra){
   if(same(v))return same(v);
   const m=v.match(/^(?:class|grade|std|cls)?\s*[-.:]?\s*(\d{1,2})\s*(?:st|nd|rd|th)?(?:\s*[-(]?\s*[a-z]\)?)?$/i);
   if(m){const c='Class '+Number(m[1]);return same(c)||c;}
-  const alias={pg:'Playgroup',playgroup:'Playgroup',play:'Playgroup',nursery:'Nursery',nur:'Nursery',prep:'Prep',kg:'Prep',kindergarten:'Prep',ece:'Playgroup'};
+  const alias={pg:'Playgroup',playgroup:'Playgroup',play:'Playgroup',nursery:'Nursery',nur:'Nursery',prep:'Prep',kg:'KG',kindergarten:'KG',ece:'Playgroup'};
   if(alias[hnorm(v)])return same(alias[hnorm(v)])||alias[hnorm(v)];
   return v.replace(/\s+/g,' ').replace(/\b\w/g,ch=>ch.toUpperCase());
 }
@@ -1345,19 +1402,19 @@ function openImport(){
   sheet(`<h3>Import students from Excel</h3>
   <p class="muted">Pick your Excel file (.xlsx, .xls or .csv). Each row should be one student.</p>
   <ol class="steps">
-    <li>The first row should have column names like <b>Name, Father Name, Class, Roll No, Phone, Fee</b>.</li>
-    <li>Only the student name is required. Other columns are optional.</li>
+    <li>Your Admission Register works as it is: <b>Date of Admission, Adm No., Name, Date of Birth, Father's Name, Caste or Tribe, Occupation, Residence, Class to which Admitted, Arrears due</b> and the withdrawal columns.</li><li>Extra columns like <b>Phone</b> and <b>Monthly Fee</b> can be added at the end.</li>
+    <li>Only the student name is required.</li>
     <li>You will see a preview before anything is saved.</li>
   </ol>
   <label class="btn wide" style="margin-top:16px;color:#fff">Choose Excel file<input type="file" accept=".xlsx,.xls,.csv,.ods" hidden onchange="readImport(this.files[0])"></label>
   <p id="i_err" class="err"></p>
-  <div class="actions"><button class="btn ghost" onclick="downloadTemplate()">Download sample sheet</button><button class="btn ghost" onclick="closeSheet()">Cancel</button></div>`);
+  <div class="actions"><button class="btn ghost" onclick="downloadTemplate()">Blank register sheet</button><button class="btn ghost" onclick="closeSheet()">Cancel</button></div>`);
 }
 async function readImport(file){
   if(!file)return;$('#i_err').textContent='Reading file...';$('#i_err').className='err ok';
   try{
     const X=await loadXLSX();
-    const wb=X.read(await file.arrayBuffer(),{type:'array',cellDates:true});
+    const wb=X.read(await file.arrayBuffer(),{type:'array'});
     IMP={wb,file:file.name,sheetName:wb.SheetNames[0],defCls:UI.cls||classes()[0]};
     // pick the sheet with most rows if the first one is empty
     const sizes=wb.SheetNames.map(n=>X.utils.sheet_to_json(wb.Sheets[n],{header:1,blankrows:false}).length);
@@ -1370,28 +1427,45 @@ function loadImportSheet(){
   IMP.rows=rows;IMP.hi=findHeaderRow(rows);
   IMP.headers=(rows[IMP.hi]||[]).map((h,i)=>cellStr(h)||'Column '+(i+1));
   IMP.map=guessMap(rows[IMP.hi]||[]);
+  IMP.status=guessStatus();
 }
 function buildImport(){
-  const {rows,hi,map}=IMP, out=[], skipped=[], newCls=[], seen=new Set();
-  S.students.forEach(s=>seen.add(hnorm(s.name)+'|'+hnorm(s.father)+'|'+hnorm(s.cls)));
-  const rollNext={};
+  const {rows,hi,map}=IMP, out=[], skipped=[], newCls=[], seen=new Set(), seenAdm=new Set();
+  S.students.forEach(s=>{seen.add(hnorm(s.name)+'|'+hnorm(s.father)+'|'+hnorm(s.cls));if(s.admNo)seenAdm.add(String(s.admNo).trim());});
+  const rollNext={};let anNext=nextAdmNo();
   const g=(r,f)=>map[f]!==undefined&&map[f]>=0?r[map[f]]:'';
+  const old=IMP.status==='left';
   for(let i=hi+1;i<rows.length;i++){
     const r=rows[i]||[], name=cellStr(g(r,'name')).replace(/\s+/g,' ');
     if(!name||/^(total|grand total)$/i.test(name))continue;
     const cls=normCls(cellStr(g(r,'cls')),newCls)||IMP.defCls;
-    if(!classes().includes(cls)&&!newCls.includes(cls))newCls.push(cls);
     const father=cellStr(g(r,'father')).replace(/\s+/g,' ');
+    let admNo=cellStr(g(r,'admNo'));
     const key=hnorm(name)+'|'+hnorm(father)+'|'+hnorm(cls);
-    if(seen.has(key)){skipped.push(name);continue;}seen.add(key);
+    if((admNo&&seenAdm.has(admNo))||(!admNo&&seen.has(key))){skipped.push(name);continue;}
+    if(!classes().includes(cls)&&!newCls.includes(cls))newCls.push(cls);
+    seen.add(key);if(admNo)seenAdm.add(admNo);else admNo=String(anNext++);
     const feeCell=g(r,'fee'), fee=String(feeCell).trim()!==''?cellNum(feeCell):classFee(cls);
     let roll=cellStr(g(r,'roll'));
-    if(!roll){if(rollNext[cls]===undefined)rollNext[cls]=Number(nextRoll(cls));roll=String(rollNext[cls]++);}
-    out.push({name,father,cls,roll,phone:cellPhone(g(r,'phone')),fee,disc:cellNum(g(r,'disc')),opening:cellNum(g(r,'opening')),
-      admit:cellDate(g(r,'admit'))||todayStr(),active:true,created:Date.now(),addedBy:ME.name});
+    if(!roll&&!old){if(rollNext[cls]===undefined)rollNext[cls]=Number(nextRoll(cls));roll=String(rollNext[cls]++);}
+    const wdDate=cellDate(g(r,'wdDate')), wdClass=normCls(cellStr(g(r,'wdClass')),newCls);
+    const arrears=cellNum(g(r,'opening')), left=old||!!wdDate;
+    const o={name,father,cls,roll,admNo,phone:cellPhone(g(r,'phone')),fee,disc:cellNum(g(r,'disc')),
+      admit:cellDate(g(r,'admit'))||todayStr(),dob:cellDob(g(r,'dob')),caste:cellStr(g(r,'caste')),occupation:cellStr(g(r,'occupation')),
+      residence:cellStr(g(r,'residence')),admClass:cls,arrears:arrears||'',fileNo:cellStr(g(r,'fileNo')),remarks:cellStr(g(r,'remarks')),
+      opening:left?0:arrears,active:!left,created:Date.now(),addedBy:ME.name};
+    if(left){o.wdDate=wdDate;o.wdClass=wdClass||(wdDate?cls:'');o.leftMonth=wdDate?monthOf(wdDate):prevM(S.settings.startMonth||thisMonth());}
+    if(wdClass&&wdClass!==cls&&!classes().includes(wdClass)&&!newCls.includes(wdClass))newCls.push(wdClass);
+    o.fees=[{from:'0000-00',fee:o.fee,disc:o.disc}];
+    out.push(o);
   }
-  out.forEach(o=>{o.fees=[{from:'0000-00',fee:o.fee,disc:o.disc}];});
   return {out,skipped,newCls};
+}
+function guessStatus(){
+  const {rows,hi,map}=IMP;if(map.admit===undefined)return 'active';
+  const ys=[];for(let i=hi+1;i<rows.length;i++){const d=cellDate((rows[i]||[])[map.admit]);if(d)ys.push(+d.slice(0,4));}
+  if(!ys.length)return 'active';ys.sort((a,b)=>a-b);
+  return ys[Math.floor(ys.length/2)]<new Date().getFullYear()-12?'left':'active';
 }
 function showImport(){
   const X=XLSX, {out,skipped,newCls}=buildImport();
@@ -1404,32 +1478,70 @@ function showImport(){
     ${IMP_FIELDS.map(([f,l])=>`<label>${l}<select onchange="IMP.map['${f}']=Number(this.value);showImport()">${colOpts(IMP.map[f]??-1)}</select></label>`).join('')}
     <label>Class for students with no class in the file<select onchange="IMP.defCls=this.value;showImport()">${classes().map(c=>`<option ${c===IMP.defCls?'selected':''}>${esc(c)}</option>`).join('')}</select></label>
   </div></details>
+  <label>These students are</label><div class="seg">${[['active','Studying now'],['left','Old record, already left']].map(([k,t])=>`<button class="${IMP.status===k?'on':''}" onclick="IMP.status='${k}';showImport()">${t}</button>`).join('')}</div>
+  <p class="note">${IMP.status==='left'?'They are saved in the admission register only. No monthly fee is charged and they do not appear in attendance.':'Monthly fee is charged and they appear in their class attendance. Rows with a withdrawal date are saved as left.'}</p>
   ${out.length?`<div class="balbox good" style="margin-top:12px"><span>Ready to import</span><b>${out.length} students</b>
     <div class="brk">${Object.keys(byCls).sort((a,b)=>classes().indexOf(a)-classes().indexOf(b)).map(c=>`<div><span>${esc(c)}</span><span>${byCls[c]}</span></div>`).join('')}</div></div>`
   :`<div class="total" style="margin-top:12px"><span>No students found. Check that "Student name" points to the right column.</span><span></span></div>`}
   ${newCls.length?`<p class="note" style="margin-top:8px">New classes will be added: ${esc(newCls.join(', '))}. Set their fee later in Settings.</p>`:''}
   ${skipped.length?`<p class="note">${pl(skipped.length,'row')} skipped because the student is repeated or already in the app.</p>`:''}
   ${out.length?`<h3 class="sec">First rows</h3><div class="card tblwrap" style="padding:0 6px"><table class="tbl">
-    <tr><th>Name</th><th>Father</th><th>Class</th><th>Roll</th><th>Phone</th><th class="n">Fee</th></tr>
-    ${out.slice(0,6).map(o=>`<tr><td>${esc(o.name)}</td><td>${esc(o.father)}</td><td>${esc(o.cls)}</td><td>${esc(o.roll)}</td><td>${esc(o.phone)}</td><td class="n">${o.fee?rs(o.fee):'<span class="c-due">0</span>'}</td></tr>`).join('')}
+    <tr><th>Adm</th><th>Name</th><th>Father</th><th>Class</th><th>Admitted</th><th>Born</th>${IMP.status==='left'?'':'<th class="n">Fee</th>'}</tr>
+    ${out.slice(0,6).map(o=>`<tr><td>${esc(o.admNo)}</td><td>${esc(o.name)}</td><td>${esc(o.father)}</td><td>${esc(o.cls)}</td><td>${esc(o.admit)}</td><td>${esc(o.dob)}</td>${IMP.status==='left'?'':`<td class="n">${o.fee?rs(o.fee):'<span class="c-due">0</span>'}</td>`}</tr>`).join('')}
   </table></div>`:''}
-  ${out.some(o=>!o.fee)?'<p class="note c-part">Some students have no fee. Set the class fee in Settings before importing, or add a fee column.</p>':''}
+  ${IMP.status!=='left'&&out.some(o=>o.active&&!o.fee)?'<p class="note c-part">Some students have no fee. Set the class fee in Settings before importing, or add a fee column.</p>':''}
   <div class="actions"><button class="btn ghost" onclick="openImport()">Other file</button><button class="btn green" ${out.length?'':'disabled'} onclick="doImport()">Import ${pl(out.length,'student')}</button></div>`);
 }
 function doImport(){
   const {out,newCls}=buildImport();if(!out.length)return;
   if(newCls.length)saveSettingsData({classes:classes().concat(newCls)});
-  addMany('students',out);IMP=null;closeSheet();UI.cls='';go('students');
+  addMany('students',out);UI.stu=IMP.status==='left'?'left':'active';IMP=null;closeSheet();UI.cls='';go('students');
   toast(pl(out.length,'student')+' imported');
+}
+function regRows(list){
+  return list.map(s=>REG_COLS.map(([k])=>{
+    if(k==='dob')return s.dob?dobWords(s.dob):'';
+    if(k==='admClass')return regCls(s.admClass||s.cls);
+    if(k==='wdClass')return isActive(s)?'':regCls(s.wdClass||'');
+    if(k==='arrears'){if(s.arrears)return Number(s.arrears)||s.arrears;if(!isActive(s)){const b=ledger(s).bal;return b>0?b:'';}return '';}
+    if(k==='admNo'){const n=Number(s.admNo);return s.admNo&&String(n)===String(s.admNo).trim()?n:(s.admNo||'');}
+    if(k==='wdDate')return isActive(s)?'':(s.wdDate||'');
+    return s[k]||'';
+  }));
+}
+function regSheet(X,list){
+  const ws=X.utils.aoa_to_sheet([REG_COLS.map(c=>c[1])].concat(regRows(list)));
+  const toSerial=d=>{const [y,m,dd]=d.split('-').map(Number);return (Date.UTC(y,m-1,dd)-Date.UTC(1899,11,30))/86400000;};
+  [0,11].forEach(ci=>{for(let r=1;r<=list.length;r++){const a=X.utils.encode_cell({r,c:ci}),c=ws[a];
+    if(c&&typeof c.v==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(c.v))ws[a]={t:'n',v:toSerial(c.v),z:'mmmm d, yyyy'};}});
+  ws['!cols']=[17,9,21,62,21,13,18,27,20,11,22,17,9,14].map(w=>({wch:w}));
+  return ws;
 }
 async function downloadTemplate(){
   try{
     const X=await loadXLSX();
-    const ws=X.utils.aoa_to_sheet([['Student Name','Father Name','Class','Roll No','Phone','Monthly Fee','Discount','Old Dues','Admission Date'],
-      ['Ali Khan','Gul Rahman','Class 5',1,'03001234567',2000,0,0,todayStr()],
-      ['Ayesha Bibi','Sher Muhammad','Class 5',2,'03111234567',2000,500,1500,todayStr()]]);
-    ws['!cols']=[{wch:20},{wch:20},{wch:10},{wch:8},{wch:14},{wch:12},{wch:10},{wch:10},{wch:14}];
-    const wb=X.utils.book_new();X.utils.book_append_sheet(wb,ws,'Students');X.writeFile(wb,'gvps-students-sample.xlsx');
+    const ex=[{admit:todayStr(),admNo:String(nextAdmNo()),name:'ALI KHAN',dob:'2019-07-27',father:'GUL RAHMAN',caste:'',occupation:'FARMING',residence:'HAMID ABAD PARRAI SWAT',admClass:'KG',cls:'KG',fileNo:String(nextAdmNo()),remarks:'',active:true}];
+    const wb=X.utils.book_new();X.utils.book_append_sheet(wb,regSheet(X,ex),'Admission Register');
+    X.writeFile(wb,'GVPS admission register (blank).xlsx');
+  }catch(e){toast(e.message||'Could not make the file');}
+}
+function openRegisterExport(){
+  const ys=[...new Set(S.students.map(s=>(s.admit||'').slice(0,4)).filter(Boolean))].sort().reverse();
+  sheet(`<h3>Admission register</h3><p class="muted">Download in the school register format (Excel), the same columns as your register.</p>
+  <label>Which students<select id="r_y"><option value="all">All years (${S.students.length})</option>${ys.map(y=>`<option value="${y}">Admitted in ${y} (${S.students.filter(s=>(s.admit||'').startsWith(y)).length})</option>`).join('')}</select></label>
+  <label class="check"><input type="checkbox" id="r_split"> One sheet per year</label>
+  <div class="actions"><button class="btn ghost" onclick="openSettings()">Back</button><button class="btn" onclick="exportRegister()">Download Excel</button></div>`);
+}
+async function exportRegister(){
+  try{
+    const X=await loadXLSX(), y=$('#r_y').value, split=$('#r_split').checked;
+    const sorted=l=>l.slice().sort((a,b)=>(a.admit||'').localeCompare(b.admit||'')||(parseInt(a.admNo)||0)-(parseInt(b.admNo)||0));
+    let list=sorted(S.students.filter(s=>y==='all'||(s.admit||'').startsWith(y)));
+    if(!list.length){toast('No students for this choice');return;}
+    const wb=X.utils.book_new();
+    if(split){const ys=[...new Set(list.map(s=>(s.admit||'').slice(0,4)||'No date'))].sort();ys.forEach(yy=>X.utils.book_append_sheet(wb,regSheet(X,list.filter(s=>((s.admit||'').slice(0,4)||'No date')===yy)),yy));}
+    else X.utils.book_append_sheet(wb,regSheet(X,list),y==='all'?'Admission Register':y);
+    X.writeFile(wb,`GVPS admission register ${y==='all'?todayStr():y}.xlsx`);
   }catch(e){toast(e.message||'Could not make the file');}
 }
 
