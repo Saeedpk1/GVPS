@@ -262,6 +262,38 @@ hr{border:0;border-top:1px solid var(--line);margin:16px 0}
 @media print{.rep-head.print-only{display:flex!important}}
 .sheet label.item{display:flex;margin-top:0;color:var(--ink);font-size:15px;font-weight:400}
 .sheet label.item input[type=checkbox]{display:block;margin:0;width:22px;height:22px;flex:none;accent-color:var(--pri2)}
+body.no-nav main{padding-bottom:calc(env(safe-area-inset-bottom,0px) + 30px)}
+body.no-nav nav{display:none}
+body.no-nav .sticky-act{bottom:calc(env(safe-area-inset-bottom,0px) + 10px)}
+:root{--g1:#e3f4e8;--g2:#157a3c;--b1:#e4eefc;--b2:#1f5fc4;--p1:#efe8fc;--p2:#6d3fd6;--o1:#fdeedd;--o2:#b85a07;--t1:#ddf3f0;--t2:#0b7a6e;--r1:#fbe6ec;--r2:#b42a55}
+@media (prefers-color-scheme:dark){:root{--g1:#14321f;--g2:#6fdc96;--b1:#152a4a;--b2:#8ab4ff;--p1:#2a1f48;--p2:#c4a8ff;--o1:#3a2810;--o2:#ffb76b;--t1:#10332f;--t2:#6fe0d2;--r1:#3a1622;--r2:#ff8fb0}}
+.tiles6{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.tile6{border:0;border-radius:20px;padding:16px;text-align:left;cursor:pointer;background:var(--tb);color:var(--tf);min-height:124px;display:flex;flex-direction:column;justify-content:space-between;font:inherit}
+.tile6:focus-visible{outline:3px solid var(--tf);outline-offset:2px}
+.tile6 .ic{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:var(--tf);color:var(--card)}
+.tile6 .ic svg{width:24px;height:24px}
+.tile6 b{display:block;font-size:17.5px;font-weight:800;margin-top:12px;color:var(--tf)}
+.tile6 span{display:block;font-size:12.5px;font-weight:600;color:var(--ink);opacity:.75;margin-top:2px}
+.tile6.wide{grid-column:1/-1;min-height:0;flex-direction:row;align-items:center;gap:14px;justify-content:flex-start}
+.tile6.wide b{margin-top:0}
+.today{display:flex;gap:10px;margin-top:4px}
+.today div{flex:1;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px 14px}
+.today span{display:block;font-size:12.5px;color:var(--muted);font-weight:600}
+.today b{display:block;font-size:22px;font-weight:800;line-height:1.2}
+.today small{font-size:12px;color:var(--muted)}
+.phead{display:flex;align-items:center;gap:12px;margin:-2px 0 14px;padding:12px 14px;border-radius:16px;background:var(--tb);color:var(--tf)}
+.phead .back{width:40px;height:40px;border-radius:12px;border:0;background:var(--tf);color:var(--card);font-size:24px;line-height:1;cursor:pointer;flex:none}
+.phead b{display:block;font-size:18px;font-weight:800}
+.phead span{display:block;font-size:12.5px;color:var(--ink);opacity:.75}
+.campsel{margin-bottom:10px}
+.campsel select{width:100%;height:44px;border:1px solid var(--line);border-radius:11px;background:var(--card);padding:0 12px;font-weight:700}
+.att-view .mrow .chip{min-width:62px;text-align:center}
+.thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px}
+.thumbs button{border:1px solid var(--line);background:var(--card);border-radius:12px;padding:10px;text-align:left;cursor:pointer;font:inherit}
+.thumbs b{display:block;font-size:13.5px}.thumbs small{color:var(--muted);font-size:12px}
+.photo-full{width:100%;border-radius:12px;margin-top:10px;display:block}
+.sheet label.btn{display:inline-flex;margin-top:0;font-size:15px;font-weight:700}
+.sheet label.btn:not(.ghost){color:#fff}
 .mycash{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
 </style>
 </head>
@@ -320,7 +352,7 @@ const SUPABASE_KEY = "sb_publishable_JiH4kZdQ9IlnOiCejy8tKQ_fArOg88j";
 
 <script>
 /* ================= Basics ================= */
-const APP_VERSION = '2026-10-17 v12';
+const APP_VERSION = '2026-10-17 v13';
 const ONLINE = !!(SUPABASE_URL && SUPABASE_KEY);
 const LKEY = 'gvps-fee-data', SKEY = 'gvps-session', STAFF_DOMAIN = 'staff.gvps.app';
 const LOGO = 'data:image/webp;base64,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';
@@ -332,9 +364,9 @@ const DEFAULTS = {
 const METHODS = ['Cash','Bank','JazzCash','Easypaisa'];
 const CHARGE_NAMES = ['Admission fee','Exam fee','Annual charges','Sports fee','Books','Uniform','Transport','Fine'];
 const MARK = {P:'Present',A:'Absent',L:'Leave'};
-let S = {students:[], payments:[], charges:[], staff:[], attendance:[], settings:{...DEFAULTS}};
+let S = {students:[], payments:[], charges:[], staff:[], attendance:[], photos:[], settings:{...DEFAULTS}};
 let ME = null;
-let UI = {stu:'active',tab:'', month:thisMonth(), cls:'', attCls:'', date:todayStr(), q:'', from:todayStr(), to:todayStr(), dueMin:0, feeMode:'collect', by:'', hideInst:false};
+let UI = {camp:null,curMode:'students',attMode:'daily',recStu:'all',recYear:'',stu:'active',tab:'', month:thisMonth(), cls:'', attCls:'', date:todayStr(), q:'', from:todayStr(), to:todayStr(), dueMin:0, feeMode:'collect', by:'', hideInst:false};
 let sb=null, chan=null, Q=[], flushing=false, lastFetch=0, filler=null, C={};
 
 const $ = s => document.querySelector(s);
@@ -366,17 +398,26 @@ const recNo = n => String(n||0).padStart(5,'0');
 const slug = s => String(s).replace(/[^a-zA-Z0-9]+/g,'-');
 const isOwner = () => !!ME && ME.role==='owner';
 /* A "group" is a class, or a class with a section: "Class 5" or "Class 5|A" */
-const gKey=(cls,sec)=>sec?cls+'|'+sec:cls;
-const gOf=s=>gKey(s.cls,s.sec);
-const gCls=g=>String(g||'').split('|')[0];
-const gSec=g=>String(g||'').split('|')[1]||'';
-const gLabel=g=>gSec(g)?gCls(g)+' ('+gSec(g)+')':gCls(g);
-function sectionsOf(c){const set=new Set(((S.settings.sections||{})[c]||[]));S.students.forEach(s=>{if(s.sec&&sameCls(s.cls,c))set.add(s.sec);});return [...set].sort();}
-function allGroups(){const out=[];classes().forEach(c=>{out.push(c);sectionsOf(c).forEach(x=>out.push(gKey(c,x)));});return out;}
-const gOrder=g=>{const i=classes().findIndex(c=>sameCls(c,gCls(g)));return (i<0?999:i)*100+(gSec(g)?1:0);};
+const gKey=(cls,sec,camp)=>(camp?camp+'::':'')+(sec?cls+'|'+sec:cls);
+const gOf=s=>gKey(s.cls,s.sec,s.campus);
+const gRest=g=>{g=String(g||'');const i=g.indexOf('::');return i>=0?g.slice(i+2):g;};
+const gCamp=g=>{g=String(g||'');const i=g.indexOf('::');return i>=0?g.slice(0,i):'';};
+const gCls=g=>gRest(g).split('|')[0];
+const gSec=g=>gRest(g).split('|')[1]||'';
+const hasCampus=()=>(S.settings.campuses||[]).length>0;
+const campName=k=>k||S.settings.mainCampus||'Main campus';
+const campusKeys=()=>['',...(S.settings.campuses||[])];
+const gLabel=g=>(gSec(g)?gCls(g)+' ('+gSec(g)+')':gCls(g))+(hasCampus()?', '+campName(gCamp(g)):'');
+function sectionsOf(c,camp){camp=camp||'';const key=(camp?camp+'::':'')+c;const set=new Set(((S.settings.sections||{})[key]||[]));
+  S.students.forEach(s=>{if(s.sec&&sameCls(s.cls,c)&&(s.campus||'')===camp)set.add(s.sec);});return [...set].sort();}
+function allGroups(camp){const cs=(camp===undefined||camp===null)?campusKeys():[camp];const out=[];
+  cs.forEach(k=>classes().forEach(c=>{out.push(gKey(c,'',k));sectionsOf(c,k).forEach(x=>out.push(gKey(c,x,k)));}));return out;}
+const gOrder=g=>{const i=classes().findIndex(c=>sameCls(c,gCls(g)));return campusKeys().indexOf(gCamp(g))*100000+(i<0?999:i)*100+(gSec(g)?1:0);};
 function myClasses(){if(!ME)return [];if(isOwner())return allGroups();return (ME.classes||[]).slice().sort((a,b)=>gOrder(a)-gOrder(b)||a.localeCompare(b));}
 const sameCls = (a,b) => String(a||'').toLowerCase().replace(/[^a-z0-9]/g,'')===String(b||'').toLowerCase().replace(/[^a-z0-9]/g,'');
-const sameG=(a,b)=>sameCls(gCls(a),gCls(b))&&gSec(a).toLowerCase().trim()===gSec(b).toLowerCase().trim();
+const sameG=(a,b)=>sameCls(gCls(a),gCls(b))&&gSec(a).toLowerCase().trim()===gSec(b).toLowerCase().trim()&&gCamp(a).toLowerCase()===gCamp(b).toLowerCase();
+const inFilter=(s,f)=>!f||(gSec(f)?inGroup(s,f):(sameCls(s.cls,gCls(f))&&(s.campus||'')===gCamp(f)));
+const inCamp=s=>!isOwner()||UI.camp===null||(s.campus||'')===UI.camp;
 const inGroup=(s,g)=>sameG(gOf(s),g);
 const inScope = s => isOwner()||myClasses().some(g=>inGroup(s,g));
 function teacherOf(g){return S.staff.filter(t=>t.active!==false&&(t.classes||[]).some(x=>sameG(x,g))).map(t=>t.name).join(', ');}
@@ -418,7 +459,7 @@ function nextAdmNo(){return S.students.reduce((m,s)=>Math.max(m,parseInt(s.admNo
 const COLS = ['students','payments','charges','attendance'];
 const cacheKey = () => ONLINE ? 'gvps-cache-'+(ME?ME.uid:'') : LKEY;
 const queueKey = () => 'gvps-queue-'+(ME?ME.uid:'');
-function loadLocal(){try{const d=JSON.parse(localStorage.getItem(cacheKey())||'null');if(d){['students','payments','charges','staff','attendance'].forEach(k=>S[k]=d[k]||[]);S.settings={...DEFAULTS,...(d.settings||{})};}}catch(e){}}
+function loadLocal(){try{const d=JSON.parse(localStorage.getItem(cacheKey())||'null');if(d){['students','payments','charges','staff','attendance','photos'].forEach(k=>S[k]=d[k]||[]);S.settings={...DEFAULTS,...(d.settings||{})};}}catch(e){}}
 function saveLocal(){try{localStorage.setItem(cacheKey(),JSON.stringify(S));}catch(e){if(!ONLINE)toast('Could not save on this phone');}}
 function fail(e){console.error(e);toast('Not saved: '+(e&&e.message?e.message:'check internet'));}
 function clean(o){const c={...o};delete c.id;Object.keys(c).forEach(k=>c[k]===undefined&&delete c[k]);return c;}
@@ -487,7 +528,7 @@ async function doFetch(){
   try{
     const out=[];
     for(let from=0;;from+=1000){
-      const {data,error}=await sb.from('records').select('id,col,data').order('id').range(from,from+999);
+      const {data,error}=await sb.from('records').select('id,col,data').neq('col','photo').order('id').range(from,from+999);
       if(error)throw error;out.push(...data);if(data.length<1000)break;
     }
     const N={students:[],payments:[],charges:[],attendance:[]};let set=null;
@@ -575,7 +616,8 @@ function sortStudents(a,b){
 }
 function matches(s){
   if(!inScope(s))return false;
-  if(UI.cls&&(gSec(UI.cls)?!inGroup(s,UI.cls):!sameCls(s.cls,UI.cls)))return false;
+  if(!inCamp(s))return false;
+  if(UI.cls&&!inFilter(s,UI.cls))return false;
   const q=UI.q.trim().toLowerCase();if(!q)return true;
   return [s.name,s.father,s.roll,s.phone,s.admNo,s.fileNo].some(v=>String(v||'').toLowerCase().includes(q));
 }
@@ -590,7 +632,7 @@ function newFeeHist(s,fee,disc,fixPast){
 
 /* ================= Attendance logic ================= */
 const attId = (d,c) => d+'_'+slug(c);
-const gNorm=g=>hnorm(gCls(g))+'#'+gSec(g).toLowerCase().trim();
+const gNorm=g=>gCamp(g).toLowerCase()+'@'+hnorm(gCls(g))+'#'+gSec(g).toLowerCase().trim();
 function attMap(){if(!C.att){C.att={};S.attendance.forEach(a=>{C.att[a.date+'|'+gNorm(a.cls)]=a;});}return C.att;}
 const attOf = (d,c) => attMap()[d+'|'+gNorm(c)];
 function classAtt(c){C.ca=C.ca||{};if(!C.ca[c])C.ca[c]=S.attendance.filter(a=>sameG(a.cls,c)).sort((a,b)=>a.date.localeCompare(b.date));return C.ca[c];}
@@ -619,9 +661,15 @@ function clsSelect(val,onchange,withAll){
   const cl=myClasses();
   if(!withAll&&cl.length<=1)return '';
   if(withAll&&cl.length<=1&&!isOwner())return '';
-  const opts=withAll&&isOwner()
-    ?classes().map(c=>`<option value="${esc(c)}" ${c===val?'selected':''}>${esc(c)}${sectionsOf(c).length?' (all)':''}</option>`+sectionsOf(c).map(x=>{const g=gKey(c,x);return `<option value="${esc(g)}" ${g===val?'selected':''}>&nbsp;&nbsp;${esc(gLabel(g))}</option>`;}).join('')).join('')
-    :cl.map(c=>`<option value="${esc(c)}" ${c===val?'selected':''}>${esc(gLabel(c))}</option>`).join('');
+  let opts;
+  if(withAll&&isOwner()){
+    const cs=UI.camp===null?campusKeys():[UI.camp];
+    opts=cs.map(k=>(cs.length>1?`<optgroup label="${esc(campName(k))}">`:'')+classes().map(c=>{const w=gKey(c,'',k), secs=sectionsOf(c,k);
+      return `<option value="${esc(w)}" ${w===val?'selected':''}>${esc(c)}${secs.length?' (all)':''}</option>`+secs.map(x=>{const g=gKey(c,x,k);return `<option value="${esc(g)}" ${g===val?'selected':''}>&nbsp;&nbsp;${esc(c)} (${esc(x)})</option>`;}).join('');}).join('')+(cs.length>1?'</optgroup>':'')).join('');
+  }else{
+    const list=isOwner()?cl.filter(g=>UI.camp===null||gCamp(g)===UI.camp):cl;
+    opts=list.map(c=>`<option value="${esc(c)}" ${c===val?'selected':''}>${esc(gLabel(c))}</option>`).join('');
+  }
   return `<select aria-label="Class" onchange="${onchange}">${withAll?'<option value="">All classes</option>':''}${opts}</select>`;
 }
 function bar(o){
@@ -668,10 +716,272 @@ function render(){
   $('#h_sub').innerHTML=isOwner()?esc(set.place)+'<span class="role">Owner</span>':esc(ME.name)+', '+esc(myClasses().map(gLabel).join(', ')||'no class yet')+'<span class="role">Teacher</span>';
   document.title=set.school+(isOwner()?' – Owner':' – '+ME.name);
   if(!ONLINE)$('#testBar').textContent=`Test mode: records stay on this phone. Using as ${ME.name}.`;else syncBar();
-  const valid=navItems().map(x=>x[0]).concat(isOwner()?['take','register','reports']:[]);
+  if(isOwner()){
+    if(UI.tab==='students')UI.tab='current';
+    if(UI.tab==='teachers'){UI.tab='current';UI.curMode='teachers';}
+    if(UI.tab==='register'){UI.tab='att';UI.attMode='register';}
+    const ok=['home','att','take','fees','reports','current','record','campus'];if(!ok.includes(UI.tab))UI.tab='home';
+    document.body.classList.add('no-nav');filler=null;
+    ({home:viewOwnerHome,att:viewAttPage,take:viewTake,fees:viewFeePage,reports:viewReports,current:viewCurrent,record:viewRecord,campus:viewCampus})[UI.tab]();
+    return;
+  }
+  document.body.classList.remove('no-nav');
+  const valid=navItems().map(x=>x[0]);
   if(!valid.includes(UI.tab))UI.tab=navItems()[0][0];
   buildNav();filler=null;
-  ({home:viewOwnerHome,att:viewAttOwner,take:viewTake,today:viewTake,fees:viewFees,students:viewStudents,reports:viewReports,register:viewRegister,teachers:viewTeachers})[UI.tab]();
+  ({take:viewTake,today:viewTake,fees:viewFees,students:viewStudents,register:viewRegister})[UI.tab]();
+}
+
+
+/* ================= Owner pages ================= */
+const OI={
+  att:'<rect x="3" y="4.5" width="18" height="16.5" rx="2"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4M8.5 15l2.5 2.5 4.5-5"/>',
+  fee:'<rect x="2.5" y="6" width="19" height="13" rx="2"/><circle cx="12" cy="12.5" r="2.5"/><path d="M6 9.5v6M18 9.5v6"/>',
+  cur:'<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.5 3.4-5.5 6.5-5.5s5.7 2 6.5 5.5"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14.8c1.8.8 3 2.6 3.5 5.2"/>',
+  rec:'<path d="M5 3h10l4 4v14H5z"/><path d="M15 3v4h4M8 12h8M8 16h8M8 8h4"/>',
+  camp:'<path d="M3 21h18M5 21V9l7-5 7 5v12"/><path d="M9 21v-6h6v6M10 11h4"/>'
+};
+const ic=k=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${OI[k]}</svg>`;
+const TONE={g:'--tb:var(--g1);--tf:var(--g2)',b:'--tb:var(--b1);--tf:var(--b2)',p:'--tb:var(--p1);--tf:var(--p2)',o:'--tb:var(--o1);--tf:var(--o2)',t:'--tb:var(--t1);--tf:var(--t2)'};
+function pageHead(title,sub,tone,back){return `<div class="phead no-print" style="${TONE[tone]||TONE.g}"><button class="back" onclick="go('${back||'home'}')" aria-label="Back">‹</button><div><b>${title}</b>${sub?`<span>${sub}</span>`:''}</div></div>`;}
+function campSelect(){
+  if(!hasCampus())return '';
+  return `<div class="campsel no-print"><select aria-label="Campus" onchange="UI.camp=this.value==='*'?null:this.value;UI.cls='';UI.attCls='';render()"><option value="*">All campuses</option>${campusKeys().map(k=>`<option value="${esc(k)}" ${UI.camp===k?'selected':''}>${esc(campName(k))}</option>`).join('')}</select></div>`;
+}
+function viewOwnerHome(){
+  const d=todayStr(), gs=allGroups(UI.camp).filter(g=>classStudents(g).length);
+  let tot=0,pres=0,sub=0;gs.forEach(g=>{const a=attOf(d,g);if(a&&a.counts){sub++;tot+=a.counts.total;pres+=a.counts.P;}});
+  const tp=S.payments.filter(p=>p.date===d&&(UI.camp===null||((getS(p.studentId)||{}).campus||'')===UI.camp));
+  const act=S.students.filter(s=>isActive(s)&&inCamp(s)), all=S.students.filter(inCamp);
+  const cash=sum(S.payments.filter(p=>p.settled===false),'amount');
+  const tile=(tab,tone,icon,title,sub,wide)=>`<button class="tile6 ${wide?'wide':''}" style="${TONE[tone]}" onclick="${tab}"><span class="ic">${ic(icon)}</span><div><b>${title}</b><span>${sub}</span></div></button>`;
+  $('#main').innerHTML=`
+  ${moveBanner()}${installBanner()}
+  ${campSelect()}
+  <div class="today">
+    <div><span>Attendance today</span><b>${tot?Math.round(pres/tot*100)+'%':'–'}</b><small>${sub} of ${pl(gs.length,'class')} done</small></div>
+    <div><span>Fee today</span><b>${rs(sum(tp,'amount'))}</b><small>${cash?rs(cash)+' with teachers':pl(tp.length,'receipt')}</small></div>
+  </div>
+  <div class="tiles6">
+    ${tile("UI.attMode='daily';UI.attCls='';go('att')",'g','att','Attendance','Daily and register')}
+    ${tile("UI.feeMode='collect';go('fees')",'b','fee','Fee','Class fee and receive')}
+    ${tile("UI.curMode='students';go('current')",'p','cur','Current Students',pl(act.length,'student')+' studying')}
+    ${tile("go('record')",'o','rec','Student Record','Admission register, '+all.length)}
+    ${tile("go('campus')",'t','camp','Campus',hasCampus()?pl(campusKeys().length,'campus'):campName(''),true)}
+  </div>`;
+}
+
+/* ---- Attendance page ---- */
+function viewAttPage(){
+  const gs=allGroups(UI.camp).filter(g=>classStudents(g).length);
+  if(UI.attCls&&!gs.includes(UI.attCls))UI.attCls='';
+  const g=UI.attCls, reg=UI.attMode==='register';
+  const sel=`<select aria-label="Class" onchange="UI.attCls=this.value;render()"><option value="">${reg?'Choose class':'All classes'}</option>${gs.map(x=>`<option value="${esc(x)}" ${x===g?'selected':''}>${esc(gLabel(x))}</option>`).join('')}</select>`;
+  let body='';
+  if(reg){
+    body=g?registerHtml(g,UI.month):'<div class="empty card">Choose a class to see its monthly register.</div>';
+  }else if(!g){
+    const d=UI.date;let tot=0,pres=0,sub=0;gs.forEach(x=>{const a=attOf(d,x);if(a&&a.counts){sub++;tot+=a.counts.total;pres+=a.counts.P;}});
+    body=`<section class="card attHead"><div><b>${niceDay(d)}</b><span class="d">${sub} of ${pl(gs.length,'class')} submitted</span></div><span class="big2 ${tot?'c-paid':''}" style="font-size:22px">${tot?Math.round(pres/tot*100)+'%':'–'}</span></section>
+    <div class="list" style="margin-top:10px">${gs.map(x=>{const a=attOf(d,x);return `<button class="item" onclick="UI.attCls='${esc(x)}';render()">
+      <div class="t"><div class="n">${esc(gLabel(x))}</div><div class="s">${esc(teacherOf(x))||'No teacher'}${a?', at '+timeOf(a.updatedAt||a.at):''}</div></div>
+      <div class="r">${a?`<span class="chip paid">${a.counts.P}/${a.counts.total} present</span>${a.counts.A?`<span class="s c-due">${a.counts.A} absent</span>`:''}`:'<span class="chip due">Not submitted</span>'}</div></button>`;}).join('')||'<div class="empty card">No students yet. Add them in Current Students.</div>'}</div>`;
+  }else{
+    const d=UI.date, a=attOf(d,g), list=classStudents(g);
+    const mk=s=>a&&a.marks?a.marks[s.id]:'';
+    body=`<section class="card attHead"><div><b>${esc(gLabel(g))}</b><span class="d">${niceDay(d)}${a?', by '+esc(a.byName||'')+' at '+timeOf(a.updatedAt||a.at):''}</span></div>
+      <span class="chip ${a?'paid':'due'}">${a?'Submitted':'Not submitted'}</span></section>
+    ${a?`<div class="counts"><div><b>${a.counts.total}</b><span>Total</span></div><div><b class="c-paid">${a.counts.P}</b><span>Present</span></div><div><b class="c-due">${a.counts.A}</b><span>Absent</span></div><div><b class="c-part">${a.counts.L}</b><span>Leave</span></div></div>`:''}
+    <div class="card att-view" style="padding:4px 14px;margin-top:10px">${list.map(s=>{const x=mk(s);return `<div class="mrow"><div><span class="roll">${esc(s.roll)}</span>${esc(s.name)}</div>
+      <span style="display:flex;gap:6px;align-items:center">${x==='A'&&s.phone?`<a class="btn sm ghost" target="_blank" rel="noopener" href="${absentLink(s,d)}">Message</a>`:''}<span class="chip ${x==='P'?'paid':x==='A'?'due':x==='L'?'part':'na'}">${x?MARK[x]:'–'}</span></span></div>`;}).join('')||'<p class="muted" style="padding:10px 0">No students.</p>'}</div>
+    <div class="actions no-print"><button class="btn" onclick="go('take')">${a?'Edit attendance':'Take attendance'}</button><button class="btn ghost" onclick="UI.attMode='register';render()">Register</button></div>`;
+  }
+  $('#main').innerHTML=`${pageHead('Attendance',reg?'Monthly register':'Daily attendance','g')}
+  ${campSelect()}
+  <div class="chips no-print">${[['daily','Daily'],['register','Register']].map(([k,l])=>`<button class="chipbtn ${UI.attMode===k?'on':''}" onclick="UI.attMode='${k}';render()">${l}</button>`).join('')}</div>
+  <div class="filters no-print">${sel}${reg?`<input type="month" aria-label="Month" value="${UI.month}" onchange="UI.month=this.value||thisMonth();render()">`:`<input type="date" aria-label="Date" value="${UI.date}" max="${todayStr()}" onchange="UI.date=this.value||todayStr();render()">`}</div>
+  ${body}`;
+  if(reg&&g)scrollRegister(UI.month);
+}
+
+/* ---- Fee page ---- */
+function viewFeePage(){
+  const m=UI.month, f=UI.cls;
+  const studs=S.students.filter(s=>inCamp(s)&&inFilter(s,f));
+  const ids=new Set(studs.map(s=>s.id));
+  let exp=0,rec=0,pend=0;studs.forEach(s=>{const i=monthInfo(s,m);if(i.k==='na')return;exp+=i.amt;rec+=i.paid;pend+=i.due;});
+  const mp=S.payments.filter(p=>ids.has(p.studentId)&&monthOf(p.date)===m);
+  const by={};mp.forEach(p=>{const k=p.byUid===ME.uid||p.byUid==='owner'?'Owner':(p.by||'Teacher');by[k]=(by[k]||0)+Number(p.amount||0);});
+  const cash={};S.payments.filter(p=>p.settled===false&&ids.has(p.studentId)).forEach(p=>{const g=cash[p.byUid]||(cash[p.byUid]={name:p.by||'Teacher',amt:0,n:0});g.amt+=Number(p.amount||0);g.n++;});
+  const pct=exp?Math.round(rec/exp*100):0;
+  $('#main').innerHTML=`${pageHead('Fee',f?esc(gLabel(f)):'All classes','b')}
+  ${campSelect()}
+  <div class="filters no-print">${clsSelect(f,'UI.cls=this.value;render()',true)}<input type="month" aria-label="Month" value="${m}" onchange="UI.month=this.value||thisMonth();render()"></div>
+  <section class="card hero">
+    <div class="lbl">${monthName(m)} fee received</div>
+    <div class="big">${rs(rec)}</div>
+    <div class="lbl">out of ${rs(exp)}, ${rs(pend)} still to collect</div>
+    <div class="bar"><i style="width:${pct}%"></i></div>
+    ${Object.keys(by).length?`<div class="brk">${Object.keys(by).map(k=>`<div><span>Received by ${esc(k)}</span><b>${rs(by[k])}</b></div>`).join('')}</div>`:'<p class="note">No fee received this month yet.</p>'}
+  </section>
+  ${Object.keys(cash).length?`<h3 class="sec">Cash still with teachers</h3><div class="list">${Object.keys(cash).map(k=>`<div class="item"><div class="av">${esc(initials(cash[k].name))}</div><div class="t"><div class="n">${esc(cash[k].name)}</div><div class="s">${pl(cash[k].n,'receipt')}</div></div>
+    <div class="r"><span class="amt">${rs(cash[k].amt)}</span><button class="btn sm" onclick="settleCash('${k}')">Received</button></div></div>`).join('')}</div>`:''}
+  <div class="chips no-print" style="margin-top:14px">${[['collect','Students'],['receipts','Receipts'],['dues','Dues']].map(([k,l])=>`<button class="chipbtn ${UI.feeMode===k?'on':''}" onclick="UI.feeMode='${k}';render()">${l}</button>`).join('')}<button class="chipbtn" onclick="go('reports')">Reports</button></div>
+  <div id="feeBody"></div>`;
+  if(UI.feeMode==='receipts'){
+    const l=mp.slice().sort((a,b)=>(b.created||0)-(a.created||0));
+    $('#feeBody').innerHTML=l.length?`<div class="list">${l.map(p=>{const own=p.byUid===ME.uid||p.byUid==='owner';return `<button class="item" onclick="showReceipt('${p.id}',true)">
+      <div class="t"><div class="n">${esc(p.name)}</div><div class="s">#${recNo(p.receiptNo)}, ${niceDate(p.date)}, ${esc(p.covers||'')}</div></div>
+      <div class="r"><span class="amt">${rs(p.amount)}</span><span class="chip ${own?'paid':'na'}">${own?'Owner':esc(p.by||'Teacher')}</span></div></button>`;}).join('')}</div>`
+      :'<div class="empty card">No receipts this month.</div>';
+  }else if(UI.feeMode==='dues')duesBody();
+  else{
+    $('#feeBody').innerHTML=`<div class="filters"><input type="search" placeholder="Search name, father or Adm No." value="${esc(UI.q)}" oninput="UI.q=this.value;fillList()"></div><p class="note" style="margin:-4px 2px 8px">Tap a student to receive fee yourself. It is marked as received by owner.</p><div class="list" id="list"></div>`;
+    filler=()=>{const q=UI.q.trim().toLowerCase();
+      const l=studs.filter(s=>isActive(s)&&(!q||[s.name,s.father,s.admNo,s.roll].some(v=>String(v||'').toLowerCase().includes(q)))).sort(sortStudents);
+      $('#list').innerHTML=l.map(s=>{const i=monthInfo(s,m), b=ledger(s).bal;return `<button class="item" onclick="openCollect('${s.id}')"><div class="av">${esc(initials(s.name))}</div>
+        <div class="t"><div class="n">${esc(s.name)}</div><div class="s">${sline(s)}</div></div>
+        <div class="r"><span class="chip ${i.k}">${i.t}</span>${b>0?`<span class="s c-due">${rs(b)} due</span>`:''}</div></button>`;}).join('')||'<div class="empty card">No students.</div>';};
+    fillList();
+  }
+}
+
+/* ---- Current students ---- */
+function viewCurrent(){
+  const head=pageHead('Current Students','Classes, sections and teachers','p');
+  const chips=`<div class="chips">${[['students','Students'],['teachers','Teachers and classes']].map(([k,l])=>`<button class="chipbtn ${UI.curMode===k?'on':''}" onclick="UI.curMode='${k}';render()">${l}</button>`).join('')}</div>`;
+  if(UI.curMode==='teachers'){$('#main').innerHTML=head+campSelect()+chips+teachersHtml();return;}
+  const act=S.students.filter(s=>isActive(s)&&inCamp(s));
+  const counts=allGroups(UI.camp).map(g=>[g,classStudents(g).length]).filter(x=>x[1]);
+  $('#main').innerHTML=`${head}${campSelect()}${chips}
+  <section class="card" style="padding:12px 14px"><b>${pl(act.length,'student')} studying</b>
+    <div class="brk">${counts.map(([g,n])=>`<div><span>${esc(gLabel(g))}</span><span>${n}${teacherOf(g)?', '+esc(teacherOf(g)):''}</span></div>`).join('')||'<p class="muted">No students yet.</p>'}</div></section>
+  <div class="actions"><button class="btn" onclick="openStudentForm()">+ Add student</button><button class="btn ghost" onclick="openBulk()">Add many</button><button class="btn ghost" onclick="openImport()">Import Excel</button></div>
+  <div class="filters" style="margin-top:12px"><input type="search" placeholder="Search name, father, Adm No." value="${esc(UI.q)}" oninput="UI.q=this.value;fillList()">${clsSelect(UI.cls,'UI.cls=this.value;render()',true)}</div>
+  <div class="list" id="list"></div>`;
+  filler=()=>{
+    const l=S.students.filter(s=>isActive(s)&&matches(s)).sort(sortStudents);
+    $('#list').innerHTML=l.map(s=>`<button class="item" onclick="openStudent('${s.id}')"><div class="av">${esc(initials(s.name))}</div>
+      <div class="t"><div class="n">${esc(s.name)}</div><div class="s">${s.admNo?'Adm '+esc(s.admNo)+', ':''}${sline(s)}</div></div>
+      <div class="r"><span class="chip na">${esc(gLabel(gOf(s)))}</span><span class="s">${esc(teacherOf(gOf(s)))||'No teacher'}</span></div></button>`).join('')||'<div class="empty card">No students here.</div>';
+  };
+  fillList();
+}
+
+/* ---- Student record (admission & withdrawal register) ---- */
+function viewRecord(){
+  const all=S.students.filter(inCamp), studying=all.filter(isActive).length;
+  const ys=[...new Set(all.map(s=>(s.admit||'').slice(0,4)).filter(Boolean))].sort().reverse();
+  $('#main').innerHTML=`${pageHead('Student Record','Admission and withdrawal register','o')}
+  ${campSelect()}
+  <div class="today"><div><span>In register</span><b>${all.length}</b></div><div><span>Studying</span><b class="c-paid">${studying}</b></div><div><span>Left</span><b>${all.length-studying}</b></div></div>
+  <div class="tiles6" style="margin-top:12px">
+    <button class="tile6" style="${TONE.o}" onclick="openImport()"><span class="ic">${ic('rec')}</span><div><b>Import Excel</b><span>Register sheet</span></div></button>
+    <label class="tile6" style="${TONE.o}"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></span><div><b>Take photo</b><span>Register page</span></div><input type="file" accept="image/*" capture="environment" hidden onchange="savePhoto(this.files[0],'')"></label>
+  </div>
+  <div class="actions"><button class="btn ghost" onclick="openStudentForm()">+ New admission</button><button class="btn ghost" onclick="openRegisterExport()">Download register</button><button class="btn ghost" onclick="openPhotos('')">Saved photos</button></div>
+  <div class="chips" style="margin-top:12px">${[['all','All'],['active','Studying'],['left','Left']].map(([k,l])=>`<button class="chipbtn ${UI.recStu===k?'on':''}" onclick="UI.recStu='${k}';render()">${l}</button>`).join('')}</div>
+  <div class="filters"><input type="search" placeholder="Search name, father, Adm No., file no." value="${esc(UI.q)}" oninput="UI.q=this.value;fillList()">
+  <select aria-label="Year" onchange="UI.recYear=this.value;render()"><option value="">All years</option>${ys.map(y=>`<option ${y===UI.recYear?'selected':''}>${y}</option>`).join('')}</select></div>
+  <div class="list" id="list"></div>`;
+  filler=()=>{
+    const q=UI.q.trim().toLowerCase();
+    const l=all.filter(s=>(UI.recStu==='all'||(UI.recStu==='left')!==isActive(s))&&(!UI.recYear||(s.admit||'').startsWith(UI.recYear))&&(!q||[s.name,s.father,s.admNo,s.fileNo,s.residence].some(v=>String(v||'').toLowerCase().includes(q))))
+      .sort((a,b)=>(parseInt(b.admNo)||0)-(parseInt(a.admNo)||0)||(b.admit||'').localeCompare(a.admit||''));
+    const shown=l.slice(0,300);
+    $('#list').innerHTML=shown.map(s=>`<button class="item" onclick="openStudent('${s.id}')"><div class="av" style="font-size:12px">${esc(s.admNo||'–')}</div>
+      <div class="t"><div class="n">${esc(s.name)}</div><div class="s">${esc(s.father||'')}${s.admit?', admitted '+niceDate(s.admit):''}</div></div>
+      <div class="r">${isActive(s)?`<span class="chip paid">${esc(gLabel(gOf(s)))}</span>`:`<span class="chip left">Left${s.wdDate?' '+esc(s.wdDate.slice(0,4)):''}</span>`}</div></button>`).join('')
+      +(l.length>shown.length?`<p class="note">Showing 300 of ${l.length}. Search or pick a year to see others.</p>`:'')||'<div class="empty card">No students in the register yet. Import your Excel register.</div>';
+  };
+  fillList();
+}
+
+/* ---- Photos of register pages and admission forms ---- */
+function shrinkImage(file){return new Promise((res,rej)=>{const img=new Image(),u=URL.createObjectURL(file);
+  img.onload=()=>{const max=1600,k=Math.min(1,max/Math.max(img.width,img.height)),c=document.createElement('canvas');c.width=Math.round(img.width*k);c.height=Math.round(img.height*k);
+    c.getContext('2d').drawImage(img,0,0,c.width,c.height);URL.revokeObjectURL(u);res(c.toDataURL('image/jpeg',0.72));};
+  img.onerror=()=>rej(new Error('This file is not a picture'));img.src=u;});}
+async function savePhoto(file,studentId){
+  if(!file)return;
+  const s=studentId?getS(studentId):null;
+  const title=prompt('Name for this photo',s?'Admission form, '+s.name:'Register page, '+niceDate(todayStr()));if(title===null)return;
+  try{
+    toast('Saving photo...');
+    const img=await shrinkImage(file);
+    const o={id:'ph-'+uid(),title:title||'Photo',date:todayStr(),studentId:studentId||'',by:ME.name,img};
+    if(ONLINE){
+      if(!navigator.onLine){toast('Internet is needed to save a photo');return;}
+      const {error}=await sb.from('records').insert({id:o.id,col:'photo',cls:null,data:clean(o),updated_at:new Date().toISOString()});
+      if(error)throw error;
+    }else{S.photos.push(o);try{localStorage.setItem(cacheKey(),JSON.stringify(S));}catch(e){S.photos.pop();throw new Error('Phone storage is full. Use the online version for photos.');}}
+    toast('Photo saved');openPhotos(studentId||'');
+  }catch(e){toast('Photo not saved: '+(e.message||e));}
+}
+async function openPhotos(studentId){
+  sheet(`<h3>${studentId?'Photos of '+esc((getS(studentId)||{}).name||''):'Saved photos'}</h3><p class="muted">Loading...</p>`);
+  let list=[];
+  try{
+    if(ONLINE){let q=sb.from('records').select('id,t:data->>title,d:data->>date,s:data->>studentId').eq('col','photo');const {data,error}=await q;if(error)throw error;list=(data||[]).map(x=>({id:x.id,title:x.t,date:x.d,studentId:x.s}));}
+    else list=S.photos.map(p=>({id:p.id,title:p.title,date:p.date,studentId:p.studentId}));
+  }catch(e){sheet(`<h3>Saved photos</h3><p class="err">Could not load: ${esc(e.message||e)}</p><div class="actions"><button class="btn ghost" onclick="closeSheet()">Close</button></div>`);return;}
+  if(studentId)list=list.filter(p=>p.studentId===studentId);
+  list.sort((a,b)=>(b.date||'').localeCompare(a.date||''));
+  sheet(`<h3>${studentId?'Photos of '+esc((getS(studentId)||{}).name||''):'Saved photos'}</h3><p class="muted">${pl(list.length,'photo')}</p>
+  <div class="thumbs" style="margin-top:10px">${list.map(p=>`<button onclick="showPhoto('${p.id}','${esc(studentId)}')"><b>${esc(p.title||'Photo')}</b><small>${niceDate(p.date)}${p.studentId&&!studentId?', '+esc((getS(p.studentId)||{}).name||''):''}</small></button>`).join('')||'<p class="muted">No photos yet.</p>'}</div>
+  <div class="actions"><label class="btn" style="margin:0;color:#fff">Take photo<input type="file" accept="image/*" capture="environment" hidden onchange="savePhoto(this.files[0],'${esc(studentId)}')"></label><button class="btn ghost" onclick="closeSheet()">Close</button></div>`);
+}
+async function showPhoto(id,back){
+  let p=null;
+  try{if(ONLINE){const {data,error}=await sb.from('records').select('data').eq('id',id).maybeSingle();if(error)throw error;p=data&&data.data;}else p=S.photos.find(x=>x.id===id);}catch(e){toast('Could not open: '+(e.message||e));return;}
+  if(!p)return;
+  sheet(`<h3>${esc(p.title||'Photo')}</h3><p class="muted">${niceDate(p.date)}${p.by?', by '+esc(p.by):''}</p>
+  <img class="photo-full" src="${p.img}" alt="${esc(p.title||'Photo')}">
+  <div class="actions"><a class="btn ghost" href="${p.img}" download="${esc((p.title||'photo').replace(/[^a-z0-9 ]/gi,''))}.jpg">Save to phone</a>${isOwner()?`<button class="btn red" onclick="deletePhoto('${id}','${esc(back)}')">Delete</button>`:''}<button class="btn ghost" onclick="openPhotos('${esc(back)}')">Back</button></div>`);
+}
+async function deletePhoto(id,back){
+  if(!confirm('Delete this photo?'))return;
+  if(ONLINE){const {error}=await sb.from('records').delete().eq('id',id);if(error){toast('Not deleted: '+error.message);return;}}
+  else{S.photos=S.photos.filter(x=>x.id!==id);saveLocal();}
+  toast('Photo deleted');openPhotos(back);
+}
+
+/* ---- Campus ---- */
+function viewCampus(){
+  const ks=campusKeys();
+  $('#main').innerHTML=`${pageHead('Campus','Branches of the school','t')}
+  <div class="list">${ks.map(k=>{const st=S.students.filter(s=>isActive(s)&&(s.campus||'')===k), gs=allGroups(k).filter(g=>classStudents(g).length), tn=new Set();gs.forEach(g=>{const t=teacherOf(g);if(t)t.split(', ').forEach(x=>tn.add(x));});
+    return `<div class="item" style="cursor:default"><span class="tile6" style="${TONE.t};min-height:0;padding:0;background:none"><span class="ic">${ic('camp')}</span></span>
+      <div class="t"><div class="n">${esc(campName(k))}</div><div class="s">${pl(st.length,'student')}, ${pl(gs.length,'class')}, ${pl(tn.size,'teacher')}</div></div>
+      <div class="r"><button class="btn sm ghost" onclick="UI.camp='${esc(k)}';go('home')">Open</button>${k?'':`<button class="btn sm ghost" onclick="renameCampus('')">Rename</button>`}</div></div>`;}).join('')}</div>
+  <div class="actions"><button class="btn" onclick="addCampus()">+ Add campus</button>${hasCampus()?'<button class="btn ghost" onclick="moveClassCampus()">Move a class to a campus</button>':''}</div>
+  <p class="note">${hasCampus()?'Pick a campus at the top of any page to see only that campus.':'One campus now. Add a campus if the school has another branch, for example a girls campus.'}</p>`;
+}
+function addCampus(){
+  const n=(prompt('Name of the new campus','Girls Campus')||'').trim();if(!n)return;
+  if(n.includes('::')||n.includes('|')){toast('Do not use : or | in the name');return;}
+  if(campusKeys().some(k=>campName(k).toLowerCase()===n.toLowerCase())){toast('This campus already exists');return;}
+  saveSettingsData({campuses:(S.settings.campuses||[]).concat(n)});toast(n+' added');
+}
+function renameCampus(k){
+  if(k){toast('To keep records linked, only the main campus name can be changed. Add a new campus instead.');return;}
+  const n=(prompt('Name of the main campus',campName(''))||'').trim();if(!n)return;saveSettingsData({mainCampus:n});
+}
+function moveClassCampus(){
+  sheet(`<h3>Move a class to a campus</h3><p class="muted">All studying students of the class move together.</p>
+  <label>From campus<select id="mc_from">${campusKeys().map(k=>`<option value="${esc(k)}">${esc(campName(k))}</option>`).join('')}</select></label>
+  <label>Class<select id="mc_cls">${classes().map(c=>`<option>${esc(c)}</option>`).join('')}</select></label>
+  <label>To campus<select id="mc_to">${campusKeys().map((k,i)=>`<option value="${esc(k)}" ${i===1?'selected':''}>${esc(campName(k))}</option>`).join('')}</select></label>
+  <p id="mc_err" class="err"></p>
+  <div class="actions"><button class="btn ghost" onclick="closeSheet()">Cancel</button><button class="btn" onclick="doMoveClass()">Move students</button></div>`);
+}
+function doMoveClass(){
+  const from=$('#mc_from').value, to=$('#mc_to').value, c=$('#mc_cls').value;
+  if(from===to){$('#mc_err').textContent='Pick two different campuses.';return;}
+  const l=S.students.filter(s=>isActive(s)&&(s.campus||'')===from&&sameCls(s.cls,c));
+  if(!l.length){$('#mc_err').textContent='No students in this class at that campus.';return;}
+  if(!confirm(`Move ${pl(l.length,'student')} of ${c} to ${campName(to)}? Teachers of this class must be given the class again at the new campus.`))return;
+  updMany('students',l.map(s=>[s.id,{campus:to}]));closeSheet();toast(pl(l.length,'student')+' moved to '+campName(to));
 }
 
 /* ================= Check that data reaches the database ================= */
@@ -748,60 +1058,7 @@ function moveTestData(){
   const tn=(d.staff||[]).length;if(tn)setTimeout(()=>toast(`Teachers from Test mode need a real login: add them again in Settings, Teachers.`),3000);
 }
 
-/* ================= Owner home: daily summary ================= */
-function viewOwnerHome(){
-  const d=todayStr(), m=UI.month;
-  const cl=allGroups().filter(g=>classStudents(g).length);
-  let tot=0,pres=0,abs=0,sub=0;
-  const rows=cl.map(c=>{
-    const a=attOf(d,c);if(a&&a.counts){sub++;tot+=a.counts.total;pres+=a.counts.P;abs+=a.counts.A;}
-    const fp=S.payments.filter(p=>p.date===d&&(p.grp?sameG(p.grp,c):(sameCls(p.cls,c)&&!gSec(c))));
-    return {c,n:classStudents(c).length,a,fee:sum(fp,'amount'),fn:fp.length,t:teacherOf(c)};
-  });
-  const tp=S.payments.filter(p=>p.date===d);
-  const cash={};S.payments.filter(p=>p.settled===false).forEach(p=>{const g=cash[p.byUid]||(cash[p.byUid]={name:p.by||'Teacher',amt:0,n:0});g.amt+=Number(p.amount||0);g.n++;});
-  let exp=0,rec=0,pend=0,pN=0,dN=0;
-  S.students.forEach(s=>{const i=monthInfo(s,m);if(i.k==='na')return;exp+=i.amt;rec+=i.paid;pend+=i.due;(i.due>0?dN++:pN++);});
-  const outstanding=sum(S.students,s=>Math.max(0,ledger(s).bal));
-  const pct=exp?Math.round(rec/exp*100):0;
-  const feed=[...tp.map(p=>({t:p.created||0,dot:'',txt:`<b>${esc(p.by||'Owner')}</b> collected ${rs(p.amount)} from ${esc(p.name)}`,s:`${esc(p.cls)}, receipt #${recNo(p.receiptNo)}`,on:`showReceipt('${p.id}',true)`})),
-    ...S.attendance.filter(a=>a.date===d).map(a=>({t:a.updatedAt||a.at||0,dot:'att',txt:`<b>${esc(a.byName||'')}</b> submitted ${esc(gLabel(a.cls))} attendance`,s:`${a.counts.P} present, ${a.counts.A} absent, ${a.counts.L} leave`,on:`openClassDay('${esc(a.cls)}')`}))]
-    .sort((a,b)=>b.t-a.t).slice(0,12);
-  $('#main').innerHTML=`
-  ${moveBanner()}
-  ${installBanner()}
-  ${repHead('Daily summary, '+niceDay(d))}
-  <section class="card hero"><div class="grid2">
-    <div><span class="lbl">Attendance today</span><b class="big2">${tot?Math.round(pres/tot*100)+'%':'–'}</b><small>${pres} of ${tot} present, ${abs} absent<br>${sub} of ${cl.length} classes submitted</small></div>
-    <div><span class="lbl">Fee collected today</span><b class="big2">${rs(sum(tp,'amount'))}</b><small>${pl(tp.length,'receipt')}</small></div>
-  </div></section>
-  <h3 class="sec">Classes today</h3>
-  ${rows.length?`<div class="card tblwrap" style="padding:0 6px"><table class="tbl">
-    <tr><th>Class</th><th>Attendance</th><th class="n">Fee today</th></tr>
-    ${rows.map(r=>`<tr class="click" onclick="openClassDay('${esc(r.c)}')"><td><b>${esc(gLabel(r.c))}</b><small>${esc(r.t)||'No teacher'}</small></td>
-      <td>${r.a?`<span class="c-paid"><b>${r.a.counts.P}</b>/${r.a.counts.total} present</span><small>${r.a.counts.A} absent, at ${timeOf(r.a.updatedAt||r.a.at)}</small>`:`<span class="chip due">Not submitted</span>`}</td>
-      <td class="n">${r.fee?`<b>${rs(r.fee)}</b><small>${pl(r.fn,'receipt')}</small>`:'–'}</td></tr>`).join('')}
-  </table></div>`:`<div class="empty card">No students yet.<br><button class="btn" onclick="go('students')">Add students</button></div>`}
-  ${Object.keys(cash).length?`<h3 class="sec">Cash with teachers</h3><div class="list">${Object.keys(cash).map(k=>`
-    <div class="item"><div class="av">${esc(initials(cash[k].name))}</div><div class="t"><div class="n">${esc(cash[k].name)}</div><div class="s">${pl(cash[k].n,'receipt')} not handed over yet</div></div>
-    <div class="r"><span class="amt">${rs(cash[k].amt)}</span><button class="btn sm no-print" onclick="settleCash('${k}')">Received</button></div></div>`).join('')}</div>`:''}
-  <h3 class="sec">Monthly fee</h3>
-  <div class="no-print">${bar({month:true})}</div>
-  <section class="card hero">
-    <div class="lbl">${monthName(m)} fee received</div>
-    <div class="big">${rs(rec)}</div>
-    <div class="lbl">out of ${rs(exp)}, ${pct}% collected</div>
-    <div class="bar"><i style="width:${pct}%"></i></div>
-    <div class="grid3">
-      <div><b class="c-paid">${pN}</b><span>Students paid</span></div>
-      <div><b class="c-due">${dN}</b><span>Not paid</span></div>
-      <div><b class="c-due">${rs(outstanding)}</b><span>Total dues</span></div>
-    </div>
-  </section>
-  <div class="actions no-print"><button class="btn" style="flex:2 1 160px" onclick="UI.feeMode='collect';go('fees')">Collect fee</button><button class="btn ghost" onclick="printAs('pr-report')">Print summary</button></div>
-  <h3 class="sec no-print">Today's activity</h3>
-  <div class="list no-print">${feed.length?feed.map(f=>`<button class="item" onclick="${f.on}"><span class="dot ${f.dot}"></span><div class="t"><div class="n" style="font-weight:500;white-space:normal">${f.txt}</div><div class="s">${f.s}</div></div><span class="s">${timeOf(f.t)}</span></button>`).join(''):'<div class="empty card">Nothing yet today. Teachers\' attendance and fee will show here as soon as they submit.</div>'}</div>`;
-}
+/* ================= Owner: cash from teachers ================= */
 function settleCash(byUid){
   const list=S.payments.filter(p=>p.settled===false&&p.byUid===byUid);if(!list.length)return;
   if(!confirm(`Have you received ${rs(sum(list,'amount'))} from ${list[0].by} (${list.length} receipts)?`))return;
@@ -861,7 +1118,7 @@ function viewTake(){
   const d=UI.date, doc=attOf(d,cls), list=classStudents(cls), D=draftFor(d,cls);
   $('#main').innerHTML=`
   ${isOwner()?'':installBanner()}
-  ${isOwner()?`<div class="actions" style="margin:0 0 10px"><button class="btn sm ghost" onclick="go('att')">All classes</button></div>`:''}
+  ${isOwner()?pageHead('Take attendance',esc(gLabel(UI.attCls||'')),'g','att'):''}
   <div class="filters">${clsSelect(cls,'UI.attCls=this.value;render()',false)}<input type="date" aria-label="Date" value="${d}" max="${todayStr()}" onchange="UI.date=this.value||todayStr();render()"></div>
   <section class="card attHead"><div><b>${esc(gLabel(cls))}</b><span class="d">${niceDay(d)}</span></div>
     <span class="chip ${doc?'paid':'due'}">${doc?'Submitted '+timeOf(doc.updatedAt||doc.at):'Not submitted'}</span></section>
@@ -907,11 +1164,7 @@ function absentLink(s,d){
 }
 
 /* ================= Attendance register ================= */
-function viewRegister(){
-  const cl=myClasses();
-  if(!UI.attCls||!cl.includes(UI.attCls))UI.attCls=cl[0]||'';
-  const cls=UI.attCls, m=UI.month;
-  if(!cls){$('#main').innerHTML='<div class="empty card">No class is given to you yet.</div>';return;}
+function registerHtml(cls,m){
   const [y,mo]=m.split('-').map(Number), days=new Date(y,mo,0).getDate();
   const docs={};classAtt(cls).forEach(a=>{if(monthOf(a.date)===m)docs[+a.date.slice(8)]=a;});
   const list=classStudents(cls), dl=[];for(let i=1;i<=days;i++)dl.push(i);
@@ -920,15 +1173,20 @@ function viewRegister(){
   const rows=list.map(s=>{let P=0,A=0,L=0;const cells=dl.map(i=>{const a=docs[i], x=a&&a.marks?a.marks[s.id]||'':'';if(x==='P')P++;else if(x==='A')A++;else if(x==='L')L++;
     const wd=new Date(y,mo-1,i).getDay();return `<td class="${x} ${wd===0?'sun':''}">${x==='P'?'•':x}</td>`;}).join('');
     const n=P+A+L;return `<tr><td>${esc(s.roll)} ${esc(s.name)}</td>${cells}<td class="tt P">${P}</td><td class="tt A">${A}</td><td class="tt L">${L}</td><td class="tt">${n?Math.round(P/n*100)+'%':''}</td></tr>`;}).join('');
-  $('#main').innerHTML=`
-  ${isOwner()?`<div class="actions no-print" style="margin:0 0 10px"><button class="btn sm ghost" onclick="go('att')">All classes</button></div>`:''}
-  <div class="filters no-print">${clsSelect(cls,'UI.attCls=this.value;render()',false)}<input type="month" aria-label="Month" value="${m}" onchange="UI.month=this.value||thisMonth();render()"></div>
-  ${printHead('Attendance register, '+esc(gLabel(cls))+', '+monthName(m))}
+  return `${printHead('Attendance register, '+esc(gLabel(cls))+', '+monthName(m))}
   <section class="card attHead no-print"><div><b>${esc(gLabel(cls))}</b><span class="d">${monthName(m)}, attendance taken on ${pl(nDays,'day')}</span></div></section>
   <p class="note no-print" style="margin:8px 2px">• present, A absent, L leave. Scroll sideways to see all days.</p>
   ${list.length?`<div class="card tblwrap" style="padding:6px"><table class="reg"><tr><th>Student</th>${head}<th>P</th><th>A</th><th>L</th><th>%</th></tr>${rows}</table></div>`:'<div class="empty card">No students in this class.</div>'}
   <div class="actions no-print"><button class="btn ghost" onclick="printAs('pr-report')">Print register</button></div>`;
-  if(m===thisMonth()){const w=document.querySelector('#main .tblwrap');if(w)w.scrollLeft=Math.max(0,(new Date().getDate()-6)*26);}
+}
+function scrollRegister(m){if(m===thisMonth()){const w=document.querySelector('#main .tblwrap');if(w)w.scrollLeft=Math.max(0,(new Date().getDate()-6)*26);}}
+function viewRegister(){
+  const cl=myClasses();
+  if(!UI.attCls||!cl.includes(UI.attCls))UI.attCls=cl[0]||'';
+  const cls=UI.attCls, m=UI.month;
+  if(!cls){$('#main').innerHTML='<div class="empty card">No class is given to you yet.</div>';return;}
+  $('#main').innerHTML=`<div class="filters no-print">${clsSelect(cls,'UI.attCls=this.value;render()',false)}<input type="month" aria-label="Month" value="${m}" onchange="UI.month=this.value||thisMonth();render()"></div>${registerHtml(cls,m)}`;
+  scrollRegister(m);
 }
 
 /* ================= Fees (collect + dues) ================= */
@@ -1110,6 +1368,7 @@ function openStudentForm(id){
     <label>Class / section<select id="f_cls" ${id?'':`onchange="const f=classFee(gCls(this.value));if(f)$('#f_fee').value=f"`}>${cl.map(c=>`<option value="${esc(c)}" ${sameG(c,gOf(s))?'selected':''}>${esc(gLabel(c))}</option>`).join('')}</select></label>
     <label>Roll no<input id="f_roll" inputmode="numeric" value="${esc(s.roll)}" placeholder="${id?'':nextRoll(s.cls)}"></label>
   </div>
+  ${hasCampus()&&isOwner()?`<label>Campus<select id="f_camp">${campusKeys().map(k=>`<option value="${esc(k)}" ${k===(s.campus||'')?'selected':''}>${esc(campName(k))}</option>`).join('')}</select></label>`:''}
   <label>Parent phone (WhatsApp)<input id="f_phone" type="tel" placeholder="03xx xxxxxxx" value="${esc(s.phone)}"></label>
   <div class="two">
     <label>Monthly fee (Rs)<input id="f_fee" type="number" inputmode="numeric" min="0" value="${esc(fe.fee)}" ${own?'':'readonly'}></label>
@@ -1138,7 +1397,7 @@ function openStudentForm(id){
 function saveStudent(id){
   const own=isOwner(), old=id?getS(id):null;
   const fee=Math.round(Number($('#f_fee').value||0)), disc=Math.round(Number($('#f_disc').value||0));
-  const o={name:$('#f_name').value.trim(),father:$('#f_father').value.trim(),cls:gCls($('#f_cls').value),sec:gSec($('#f_cls').value),roll:$('#f_roll').value.trim(),
+  const o={name:$('#f_name').value.trim(),father:$('#f_father').value.trim(),cls:gCls($('#f_cls').value),sec:gSec($('#f_cls').value),campus:$('#f_camp')?$('#f_camp').value:gCamp($('#f_cls').value),roll:$('#f_roll').value.trim(),
     phone:$('#f_phone').value.trim(),admit:$('#f_admit').value,admNo:$('#f_admNo').value.trim(),dob:$('#f_dob').value,caste:$('#f_caste').value.trim(),
     occupation:$('#f_occ').value.trim(),residence:$('#f_res').value.trim(),admClass:$('#f_admCls').value,fileNo:$('#f_file').value.trim(),remarks:$('#f_rem').value.trim()};
   if(o.admNo&&S.students.some(x=>x.id!==id&&String(x.admNo)===o.admNo)){$('#f_err').textContent='Adm No. '+o.admNo+' is already given to another student.';return;}
@@ -1175,12 +1434,12 @@ function openBulk(){
   <div class="actions"><button class="btn ghost" onclick="closeSheet()">Cancel</button><button class="btn" onclick="saveBulk()">Add students</button></div>`);
 }
 function saveBulk(){
-  const grp=$('#b_cls').value, cls=gCls(grp), sec=gSec(grp), fee=Math.round(Number($('#b_fee').value||0));
+  const grp=$('#b_cls').value, cls=gCls(grp), sec=gSec(grp), campus=gCamp(grp), fee=Math.round(Number($('#b_fee').value||0));
   const lines=$('#b_text').value.split('\n').map(l=>l.trim()).filter(Boolean);
   if(!lines.length){$('#b_err').textContent='Type at least one student.';return;}
   let r=Number(nextRoll(cls)), an=nextAdmNo();
   const list=lines.map(l=>{const [name,father,phone]=l.split(/\s*[,|]\s*/);
-    return {name:(name||'').trim(),father:(father||'').trim(),phone:(phone||'').trim(),cls,sec,roll:String(r++),admNo:String(an++),admit:todayStr(),opening:0,fee,disc:0,fees:[{from:'0000-00',fee,disc:0}],active:true,created:Date.now(),addedBy:ME.name};}).filter(x=>x.name);
+    return {name:(name||'').trim(),father:(father||'').trim(),phone:(phone||'').trim(),cls,sec,campus,roll:String(r++),admNo:String(an++),admit:todayStr(),opening:0,fee,disc:0,fees:[{from:'0000-00',fee,disc:0}],active:true,created:Date.now(),addedBy:ME.name};}).filter(x=>x.name);
   addMany('students',list);closeSheet();toast(list.length+' students added to '+gLabel(grp));
 }
 function openStudent(id){
@@ -1215,6 +1474,7 @@ function openStudent(id){
     <button class="btn ghost" onclick="openStudentForm('${id}')">Edit</button>
     ${isOwner()?`<button class="btn ghost" onclick="openChargeForm('${id}')">Add charge</button>`:''}
   </div>
+  ${isOwner()?`<div class="actions"><label class="btn ghost" style="margin:0;color:var(--ink)">Add photo of form<input type="file" accept="image/*" capture="environment" hidden onchange="savePhoto(this.files[0],'${id}')"></label><button class="btn ghost" onclick="openPhotos('${id}')">Photos</button></div>`:''}
   <details><summary>Fee statement (${mk.length} entries)</summary><div class="inner">${mk.map(m=>{const g=months[m];const k=g.paid>=g.amt?'paid':g.paid>0?'part':'due';
     return `<div class="mrow"><div>${mShort(m)}<small>${esc(g.t.join(', '))}</small></div><span class="chip ${k}">${k==='paid'?'Paid':k==='part'?rs(g.amt-g.paid)+' left':rs(g.amt)+' due'}</span></div>`;}).join('')||'<p class="muted">Nothing charged yet.</p>'}</div></details>
   <details ${pays.length?'open':''}><summary>Receipts (${pays.length}), total ${rs(L.paid)}</summary><div class="inner list">${pays.map(rcptRow).join('')||'<p class="muted">No payments yet.</p>'}</div></details>
@@ -1266,7 +1526,7 @@ function viewReports(){
   const title=(UI.from===UI.to?niceDate(UI.from):niceDate(UI.from)+' to '+niceDate(UI.to))+(UI.by?', by '+UI.by:'');
   const on=k=>{const save=[UI.from,UI.to];setRange(k);const r=UI.from===save[0]&&UI.to===save[1];[UI.from,UI.to]=save;return r?'on':'';};
   $('#main').innerHTML=`
-  <div class="chips no-print"><button class="chipbtn" onclick="go('fees')">Back to fees</button></div>
+  ${pageHead('Fee reports','Money received by date','b','fees')}
   <div class="chips no-print">${[['today','Today'],['yesterday','Yesterday'],['month','This month'],['last','Last month']].map(([k,l])=>`<button class="chipbtn ${on(k)}" onclick="setRange('${k}');render()">${l}</button>`).join('')}</div>
   <div class="filters no-print"><input type="date" aria-label="From" value="${UI.from}" onchange="UI.from=this.value||'${t}';render()"><input type="date" aria-label="To" value="${UI.to}" onchange="UI.to=this.value||'${t}';render()">
   ${people.length>1?`<select aria-label="Collected by" onchange="UI.by=this.value;render()"><option value="">Everyone</option>${people.map(n=>`<option ${n===UI.by?'selected':''}>${esc(n)}</option>`).join('')}</select>`:''}</div>
@@ -1284,13 +1544,14 @@ function viewReports(){
 }
 
 /* ================= Teachers (owner) ================= */
-function openTeachers(){closeSheet();go('teachers');}
-function viewTeachers(){
-  const act=S.students.filter(isActive), groups=allGroups().filter(g=>classStudents(g).length);
+function openTeachers(){closeSheet();UI.curMode='teachers';go('current');}
+function viewTeachers(){$('#main').innerHTML=teachersHtml();}
+function teachersHtml(){
+  const act=S.students.filter(s=>isActive(s)&&inCamp(s)), groups=allGroups(UI.camp).filter(g=>classStudents(g).length);
   const free=groups.filter(g=>!teacherOf(g));
   const freeN=sum(free,g=>classStudents(g).length);
   const l=[...S.staff].sort((a,b)=>(a.active===false)-(b.active===false)||String(a.name).localeCompare(b.name));
-  $('#main').innerHTML=`
+  return `
   <section class="card hero"><div class="grid2">
     <div><span class="lbl">Students studying</span><b class="big2">${act.length}</b><small>in ${pl(groups.length,'class')}</small></div>
     <div><span class="lbl">Without a teacher</span><b class="big2 ${freeN?'c-due':'c-paid'}">${freeN}</b><small>${free.length?esc(free.map(gLabel).join(', ')):'All classes have a teacher'}</small></div>
@@ -1311,6 +1572,7 @@ function openAddGroup(tid){
   const t=S.staff.find(x=>x.id===tid);if(!t)return;
   const c0=classes()[0];
   sheet(`<h3>Give a class to ${esc(t.name)}</h3><p class="muted">Pick the class, then the section if the class is split.</p>
+  ${hasCampus()?`<label>Campus<select id="ag_camp" onchange="agSecs()">${campusKeys().map(k=>`<option value="${esc(k)}" ${k===(UI.camp||'')?'selected':''}>${esc(campName(k))}</option>`).join('')}</select></label>`:''}
   <label>Class<select id="ag_cls" onchange="agSecs()">${classes().map(c=>`<option>${esc(c)}</option>`).join('')}</select></label>
   <label>Section<select id="ag_sec" onchange="$('#ag_newwrap').hidden=this.value!=='__new'"></select></label>
   <div id="ag_newwrap" hidden><label>New section name<input id="ag_new" placeholder="e.g. A, B, Blue" maxlength="12"></label></div>
@@ -1319,17 +1581,17 @@ function openAddGroup(tid){
   agSecs();
 }
 function agSecs(){
-  const c=$('#ag_cls').value, secs=sectionsOf(c);
-  $('#ag_sec').innerHTML=`<option value="">${secs.length?'No section (whole class)':'No section, whole class'}</option>`+secs.map(x=>`<option value="${esc(x)}">Section ${esc(x)}${teacherOf(gKey(c,x))?' ('+esc(teacherOf(gKey(c,x)))+')':''}</option>`).join('')+'<option value="__new">+ New section</option>';
+  const c=$('#ag_cls').value, k=$('#ag_camp')?$('#ag_camp').value:'', secs=sectionsOf(c,k);
+  $('#ag_sec').innerHTML=`<option value="">${secs.length?'No section (whole class)':'No section, whole class'}</option>`+secs.map(x=>`<option value="${esc(x)}">Section ${esc(x)}${teacherOf(gKey(c,x,k))?' ('+esc(teacherOf(gKey(c,x,k)))+')':''}</option>`).join('')+'<option value="__new">+ New section</option>';
   $('#ag_newwrap').hidden=true;
-  const n=S.students.filter(s=>isActive(s)&&sameCls(s.cls,c)).length;
+  const n=S.students.filter(s=>isActive(s)&&sameCls(s.cls,c)&&(s.campus||'')===k).length;
   $('#ag_info').textContent=`${c} has ${pl(n,'student')}${secs.length?' in '+pl(secs.length,'section'):''}.`;
 }
 function saveAddGroup(tid){
-  const t=S.staff.find(x=>x.id===tid), c=$('#ag_cls').value;let sec=$('#ag_sec').value;
+  const t=S.staff.find(x=>x.id===tid), c=$('#ag_cls').value, k=$('#ag_camp')?$('#ag_camp').value:'';let sec=$('#ag_sec').value;
   if(sec==='__new'){sec=$('#ag_new').value.trim().toUpperCase();if(!sec){$('#ag_err').textContent='Type the section name.';return;}
-    const all={...(S.settings.sections||{})};all[c]=[...new Set((all[c]||[]).concat(sec))].sort();saveSettingsData({sections:all});}
-  const g=gKey(c,sec);
+    const key=(k?k+'::':'')+c, all={...(S.settings.sections||{})};all[key]=[...new Set((all[key]||[]).concat(sec))].sort();saveSettingsData({sections:all});}
+  const g=gKey(c,sec,k);
   if((t.classes||[]).some(x=>sameG(x,g))){openAssign(g,tid);return;}
   upd('staff',tid,{classes:(t.classes||[]).concat(g)});
   openAssign(g,tid);
@@ -1342,16 +1604,17 @@ function removeGroup(tid,g){
 let AS=null;
 function openAssign(g,tid){
   const t=tid?S.staff.find(x=>x.id===tid):null;
-  AS={g,tid,sel:new Set(classStudents(g).map(s=>s.id)),filter:gCls(g),q:''};
+  AS={g,tid,sel:new Set(classStudents(g).map(s=>s.id)),filter:gCls(g),q:'',camp:gCamp(g)};
   sheet(`<h3>Students for ${esc(gLabel(g))}</h3><p class="muted">${t?'Teacher: '+esc(t.name)+'. ':''}Tick the students who sit in this ${gSec(g)?'section':'class'}.</p>
   <div class="filters" style="margin-top:10px"><input type="search" placeholder="Search name or Adm No." oninput="AS.q=this.value;asList()">
+  ${hasCampus()?`<select onchange="AS.camp=this.value==='*'?null:this.value;asList()"><option value="*">All campuses</option>${campusKeys().map(k=>`<option value="${esc(k)}" ${k===gCamp(g)?'selected':''}>${esc(campName(k))}</option>`).join('')}</select>`:''}
   <select onchange="AS.filter=this.value;asList()"><option value="">All classes</option>${classes().map(c=>`<option ${sameCls(c,gCls(g))?'selected':''}>${esc(c)}</option>`).join('')}</select></div>
   <div class="toprow"><b id="as_n"></b><span class="gap"><button class="btn sm ghost" onclick="asAll(true)">Tick all shown</button><button class="btn sm ghost" onclick="asAll(false)">Untick all shown</button></span></div>
   <div class="list" id="as_list"></div>
   <div class="sticky-act" style="bottom:0"><button class="btn wide" id="as_save" onclick="saveAssign()"></button></div>`);
   asList();
 }
-function asShown(){const q=AS.q.trim().toLowerCase();return S.students.filter(s=>isActive(s)&&(!AS.filter||sameCls(s.cls,AS.filter))&&(!q||[s.name,s.father,s.admNo].some(v=>String(v||'').toLowerCase().includes(q)))).sort(sortStudents);}
+function asShown(){const q=AS.q.trim().toLowerCase();return S.students.filter(s=>isActive(s)&&(AS.camp===null||(s.campus||'')===AS.camp)&&(!AS.filter||sameCls(s.cls,AS.filter))&&(!q||[s.name,s.father,s.admNo].some(v=>String(v||'').toLowerCase().includes(q)))).sort(sortStudents);}
 function asList(){
   const l=asShown();
   $('#as_list').innerHTML=l.map(s=>{const on=AS.sel.has(s.id), cur=gOf(s), tn=teacherOf(cur);return `
@@ -1364,17 +1627,17 @@ function asTick(id,on){if(on)AS.sel.add(id);else AS.sel.delete(id);asCount();}
 function asAll(on){asShown().forEach(s=>{if(on)AS.sel.add(s.id);else AS.sel.delete(s.id);});asList();}
 function asCount(){$('#as_n').textContent=pl(AS.sel.size,'student')+' ticked';$('#as_save').textContent=`Save ${gLabel(AS.g)} (${AS.sel.size})`;}
 function saveAssign(){
-  const g=AS.g, c=gCls(g), sec=gSec(g), ups=[];let moved=0,out=0;
+  const g=AS.g, c=gCls(g), sec=gSec(g), camp=gCamp(g), ups=[];let moved=0,out=0;
   S.students.filter(isActive).forEach(s=>{
     const isIn=inGroup(s,g), want=AS.sel.has(s.id);
-    if(want&&!isIn){const o={cls:c,sec};if(!sameCls(s.cls,c)){const nf=classFee(c);if(nf){const cur=feeEntry(s,thisMonth());o.fees=newFeeHist(s,nf,Number(cur.disc||0),false);o.fee=nf;}}ups.push([s.id,o]);moved++;}
+    if(want&&!isIn){const o={cls:c,sec,campus:camp};if(!sameCls(s.cls,c)){const nf=classFee(c);if(nf){const cur=feeEntry(s,thisMonth());o.fees=newFeeHist(s,nf,Number(cur.disc||0),false);o.fee=nf;}}ups.push([s.id,o]);moved++;}
     else if(!want&&isIn&&sec){ups.push([s.id,{sec:''}]);out++;}
   });
   if(ups.length)updMany('students',ups);
   const kept=!sec?classStudents(g).filter(s=>!AS.sel.has(s.id)).length:0;
   closeSheet();toast(`${gLabel(g)}: ${pl(AS.sel.size,'student')}${moved?', '+moved+' moved in':''}${out?', '+out+' taken out':''}`);
   if(kept)setTimeout(()=>toast(`${pl(kept,'student')} stay in ${gLabel(g)}. To move them, tick them in another class or section.`),2900);
-  AS=null;if(UI.tab!=='teachers')go('teachers');else render();
+  AS=null;UI.curMode='teachers';if(UI.tab!=='current')go('current');else render();
 }
 function suggestUser(n){return String(n||'').toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,16);}
 function openTeacherForm(id){
@@ -1428,7 +1691,7 @@ function showCreds(t,pass){
   :'<p class="note" style="margin-top:10px">In test mode, open Settings, tap "Switch user" and pick this teacher to see their page.</p>'}
   <div class="actions">${ONLINE&&t.phone?`<a class="btn green" target="_blank" rel="noopener" href="${waLink(t.phone,msg)}">Send login on WhatsApp</a>`:''}</div>
   <div class="actions"><button class="btn" onclick="openAddGroup('${t.id}')">Next: give a class</button></div>`);
-  if(UI.tab!=='teachers'){UI.tab='teachers';render();}
+  if(UI.tab!=='current'||UI.curMode!=='teachers'){UI.curMode='teachers';UI.tab='current';render();}
 }
 
 /* ================= Settings ================= */
@@ -1623,7 +1886,7 @@ async function readImport(file){
   try{
     const X=await loadXLSX();
     const wb=X.read(await file.arrayBuffer(),{type:'array'});
-    IMP={wb,file:file.name,sheetName:wb.SheetNames[0],defCls:UI.cls||classes()[0]};
+    IMP={wb,file:file.name,sheetName:wb.SheetNames[0],defCls:gCls(UI.cls)||classes()[0],camp:UI.camp||''};
     // pick the sheet with most rows if the first one is empty
     const sizes=wb.SheetNames.map(n=>X.utils.sheet_to_json(wb.Sheets[n],{header:1,blankrows:false}).length);
     IMP.sheetName=wb.SheetNames[sizes.indexOf(Math.max(...sizes))];
@@ -1659,7 +1922,7 @@ function buildImport(){
     const wdDate=cellDate(g(r,'wdDate')), wdClass=normCls(cellStr(g(r,'wdClass')),newCls);
     const arrears=cellNum(g(r,'opening')), left=old||!!wdDate;
     const sec=cellStr(g(r,'sec')).toUpperCase();
-    const o={name,father,cls,sec,roll,admNo,phone:cellPhone(g(r,'phone')),fee,disc:cellNum(g(r,'disc')),
+    const o={name,father,cls,sec,campus:IMP.camp||'',roll,admNo,phone:cellPhone(g(r,'phone')),fee,disc:cellNum(g(r,'disc')),
       admit:cellDate(g(r,'admit'))||todayStr(),dob:cellDob(g(r,'dob')),caste:cellStr(g(r,'caste')),occupation:cellStr(g(r,'occupation')),
       residence:cellStr(g(r,'residence')),admClass:cls,arrears:arrears||'',fileNo:cellStr(g(r,'fileNo')),remarks:cellStr(g(r,'remarks')),
       opening:left?0:arrears,active:!left,created:Date.now(),addedBy:ME.name};
@@ -1687,6 +1950,7 @@ function showImport(){
     ${IMP_FIELDS.map(([f,l])=>`<label>${l}<select onchange="IMP.map['${f}']=Number(this.value);showImport()">${colOpts(IMP.map[f]??-1)}</select></label>`).join('')}
     <label>Class for students with no class in the file<select onchange="IMP.defCls=this.value;showImport()">${classes().map(c=>`<option ${c===IMP.defCls?'selected':''}>${esc(c)}</option>`).join('')}</select></label>
   </div></details>
+  ${hasCampus()?`<label>Campus<select onchange="IMP.camp=this.value;showImport()">${campusKeys().map(k=>`<option value="${esc(k)}" ${k===(IMP.camp||'')?'selected':''}>${esc(campName(k))}</option>`).join('')}</select></label>`:''}
   <label>These students are</label><div class="seg">${[['active','Studying now'],['left','Old record, already left']].map(([k,t])=>`<button class="${IMP.status===k?'on':''}" onclick="IMP.status='${k}';showImport()">${t}</button>`).join('')}</div>
   <p class="note">${IMP.status==='left'?'They are saved in the admission register only. No monthly fee is charged and they do not appear in attendance.':'Monthly fee is charged and they appear in their class attendance. Rows with a withdrawal date are saved as left.'}</p>
   ${out.length?`<div class="balbox good" style="margin-top:12px"><span>Ready to import</span><b>${out.length} students</b>
@@ -1704,7 +1968,7 @@ function showImport(){
 function doImport(){
   const {out,newCls}=buildImport();if(!out.length)return;
   if(newCls.length)saveSettingsData({classes:classes().concat(newCls)});
-  addMany('students',out);UI.stu=IMP.status==='left'?'left':'active';IMP=null;closeSheet();UI.cls='';go('students');
+  addMany('students',out);UI.stu=IMP.status==='left'?'left':'active';const left=IMP.status==='left';IMP=null;closeSheet();UI.cls='';go(left?'record':'current');
   toast(pl(out.length,'student')+' imported');
 }
 function regRows(list){
@@ -1834,7 +2098,7 @@ async function resolveRole(user){
   if(!pr||pr.active===false){noAccess(!pr&&!net?'This account is not added to the school. Ask the owner.':'');return;}
   try{localStorage.setItem(meKey,JSON.stringify(pr));}catch(e){}
   ME=pr.role==='owner'?{uid:user.id,role:'owner',name:pr.name||'Owner',email:user.email}:{uid:user.id,role:'teacher',name:pr.name,classes:pr.classes||[],email:user.email};
-  S={students:[],payments:[],charges:[],staff:[],attendance:[],settings:{...DEFAULTS}};
+  S={students:[],payments:[],charges:[],staff:[],attendance:[],photos:[],settings:{...DEFAULTS}};
   loadLocal();loadQueue();Q.forEach(applyOpLocal);
   if(isOwner())ME.name=S.settings.ownerName||ME.name;
   UI.tab='';UI.cls='';UI.attCls='';UI.date=todayStr();
