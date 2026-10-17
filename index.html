@@ -655,6 +655,43 @@ function render(){
   ({home:viewOwnerHome,att:viewAttOwner,take:viewTake,today:viewTake,fees:viewFees,students:viewStudents,reports:viewReports,register:viewRegister})[UI.tab]();
 }
 
+/* ================= Move Test-mode records online ================= */
+function testData(){
+  if(!ONLINE||!isOwner())return null;
+  try{if(localStorage.getItem('gvps-moved-'+ME.uid))return null;const d=JSON.parse(localStorage.getItem(LKEY)||'null');
+    if(!d)return null;const n=(d.students||[]).length+(d.payments||[]).length;return n?d:null;}catch(e){return null;}
+}
+function moveBanner(){
+  const d=testData();if(!d)return '';
+  const have=new Set(S.students.map(s=>s.id));const ns=(d.students||[]).filter(s=>!have.has(s.id)).length;
+  if(!ns&&!(d.payments||[]).some(p=>!S.payments.some(x=>x.id===p.id)))return '';
+  return `<div class="inst no-print" style="border-color:var(--part);background:var(--partbg)"><div><b>Records found on this phone</b>${pl(ns,'student')}, ${pl((d.payments||[]).length,'receipt')} and ${pl((d.attendance||[]).length,'attendance day')} were added in Test mode and are not online yet.</div>
+  <button class="btn sm" onclick="moveTestData()">Move online</button></div>`;
+}
+function moveTestData(){
+  const d=testData();if(!d)return;
+  const key=s=>String(s.name||'').toLowerCase().trim()+'|'+String(s.father||'').toLowerCase().trim()+'|'+String(s.cls||'').toLowerCase().trim();
+  const ids=new Set(S.students.map(s=>s.id)), keys=new Set(S.students.map(key)), adm=new Set(S.students.map(s=>String(s.admNo||'')).filter(Boolean));
+  const st=(d.students||[]).filter(s=>!ids.has(s.id)&&!keys.has(key(s))&&!(s.admNo&&adm.has(String(s.admNo))));
+  const keep=new Set(S.students.map(s=>s.id).concat(st.map(s=>s.id)));
+  const pay=(d.payments||[]).filter(p=>keep.has(p.studentId)&&!S.payments.some(x=>x.id===p.id)).map(p=>({...p,byUid:p.byUid==='owner'?ME.uid:p.byUid,settled:p.settled===false&&p.byUid!=='owner'?false:true}));
+  const att=(d.attendance||[]).filter(a=>!S.attendance.some(x=>x.id===a.id)).map(a=>({...a,byUid:a.byUid==='owner'?ME.uid:a.byUid}));
+  const chg=(d.charges||[]).filter(c=>!S.charges.some(x=>x.id===c.id));
+  if(!confirm(`Move ${pl(st.length,'student')}, ${pl(pay.length,'receipt')}, ${pl(att.length,'attendance day')} and ${pl(chg.length,'extra charge')} online?`))return;
+  const ops=[];
+  [['students',st],['payments',pay],['attendance',att],['charges',chg]].forEach(([col,list])=>{list.forEach(o=>apply(col,o));for(let i=0;i<list.length;i+=200)ops.push(opFor(col,list.slice(i,i+200)));});
+  const ds=d.settings||{}, cur=S.settings, extra={};
+  const cl=classes().slice();(ds.classes||[]).forEach(c=>{if(!cl.some(x=>sameCls(x,c)))cl.push(c);});
+  if(cl.length!==classes().length)extra.classes=cl;
+  const fees={...(ds.classFees||{}),...(cur.classFees||{})};if(Object.keys(fees).length!==Object.keys(cur.classFees||{}).length)extra.classFees=fees;
+  ['school','place','phone','accountant'].forEach(k=>{if(ds[k]&&(!cur[k]||cur[k]===DEFAULTS[k]))extra[k]=ds[k];});
+  if(ds.startMonth&&ds.startMonth<(cur.startMonth||thisMonth()))extra.startMonth=ds.startMonth;
+  if(Object.keys(extra).length){S.settings={...S.settings,...extra};ops.push({t:'up',table:'records',rows:[{id:'settings',col:'settings',cls:null,data:S.settings,updated_at:new Date().toISOString()}]});}
+  try{localStorage.setItem('gvps-moved-'+ME.uid,'1');}catch(e){}
+  commit(ops);toast(pl(st.length,'student')+' moved online');
+  const tn=(d.staff||[]).length;if(tn)setTimeout(()=>toast(`Teachers from Test mode need a real login: add them again in Settings, Teachers.`),3000);
+}
+
 /* ================= Owner home: daily summary ================= */
 function viewOwnerHome(){
   const d=todayStr(), m=UI.month;
@@ -675,6 +712,7 @@ function viewOwnerHome(){
     ...S.attendance.filter(a=>a.date===d).map(a=>({t:a.updatedAt||a.at||0,dot:'att',txt:`<b>${esc(a.byName||'')}</b> submitted ${esc(a.cls)} attendance`,s:`${a.counts.P} present, ${a.counts.A} absent, ${a.counts.L} leave`,on:`openClassDay('${esc(a.cls)}')`}))]
     .sort((a,b)=>b.t-a.t).slice(0,12);
   $('#main').innerHTML=`
+  ${moveBanner()}
   ${installBanner()}
   ${repHead('Daily summary, '+niceDay(d))}
   <section class="card hero"><div class="grid2">
@@ -977,6 +1015,7 @@ function viewStudents(){
     <div class="gap">${isOwner()?'<button class="btn sm ghost" onclick="openImport()">Import Excel</button>':''}<button class="btn sm ghost" onclick="openBulk()">Add many</button><button class="btn sm" onclick="openStudentForm()">+ Add</button></div></div>
   ${bar({q:true,cls:true})}
   <div class="chips">${[['active','Studying'],['left','Left school'],['all','All']].map(([k,t])=>`<button class="chipbtn ${UI.stu===k?'on':''}" onclick="UI.stu='${k}';render()">${t} (${S.students.filter(s=>inScope(s)&&(k==='all'||(k==='left')!==isActive(s))).length})</button>`).join('')}</div>
+  ${isOwner()?moveBanner():''}
   <div class="list" id="list"></div>
   ${isOwner()&&UI.stu==='left'?'<div class="actions"><button class="btn ghost" onclick="reactivateShown()">Mark all shown as studying</button></div>':''}`;
   filler=()=>{
