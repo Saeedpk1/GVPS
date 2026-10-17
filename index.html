@@ -12,7 +12,7 @@
 <meta name="apple-mobile-web-app-title" content="GVPS">
 <title>Green Valley Public School</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Cinzel:wght@600;800&family=Great+Vibes&family=Playfair+Display:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js"></script>
 <style>
 :root{
@@ -446,7 +446,145 @@ body[data-tone=camp]{--c1:var(--gT1);--c2:var(--gT2)}
 .inst .btn{background:#fff!important;color:var(--c1)!important;box-shadow:none}
 @media print{.phead,.chipbtn,.counts div,.tbl th{box-shadow:none}.tbl th{color:#000;background:#eee!important}}
 
+
+:root{--gC1:#4b2fb0;--gC2:#c9952a}
+body[data-tone=cert]{--c1:var(--gC1);--c2:var(--gC2)}
+.tiles7 .tile7:nth-child(7){grid-column:1/-1;min-height:0;flex-direction:row;align-items:center;gap:14px;justify-content:flex-start}
+.tiles7 .tile7:nth-child(7) b{margin-top:0}
+.ctypes{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ctype{border:0;border-radius:18px;padding:14px;text-align:left;cursor:pointer;font:inherit;color:#fff;background:linear-gradient(140deg,var(--k1),var(--k2));min-height:112px;position:relative;overflow:hidden;box-shadow:0 8px 16px -10px var(--k1)}
+.ctype::after{content:"";position:absolute;right:-22px;bottom:-22px;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.13)}
+.ctype .em{font-size:26px}
+.ctype b{display:block;font-size:15.5px;margin-top:6px}
+.ctype span{display:block;font-size:12px;opacity:.9;margin-top:2px}
+.certwrap{width:100%;overflow:hidden;border-radius:12px;box-shadow:0 10px 30px -12px rgba(0,0,0,.35);margin-top:12px;background:#fff}
+.certscale{transform-origin:top left}
+/* the certificate itself: always A4 at 794 x 1123 px, always light */
+.cert{width:794px;height:1123px;position:relative;background:#fffdf7;color:#1d2433;font-family:"Plus Jakarta Sans",system-ui,sans-serif;overflow:hidden;color-scheme:light}
+.cert .b1{position:absolute;inset:18px;border:3px solid var(--k1);border-radius:6px}
+.cert .b2{position:absolute;inset:28px;border:1.5px solid var(--k2);border-radius:4px}
+.cert .b3{position:absolute;inset:34px;border:1px dashed var(--k1b)}
+.cert .cn{position:absolute;width:70px;height:70px;border:4px solid var(--k2)}
+.cert .cn.tl{left:12px;top:12px;border-right:0;border-bottom:0;border-radius:14px 0 0 0}
+.cert .cn.tr{right:12px;top:12px;border-left:0;border-bottom:0;border-radius:0 14px 0 0}
+.cert .cn.bl{left:12px;bottom:12px;border-right:0;border-top:0;border-radius:0 0 0 14px}
+.cert .cn.br{right:12px;bottom:12px;border-left:0;border-top:0;border-radius:0 0 14px 0}
+.cert .ribbon{position:absolute;left:0;right:0;top:0;height:10px;background:linear-gradient(90deg,var(--k1),var(--k2),var(--k1))}
+.cert .ribbon.bt{top:auto;bottom:0}
+.cert .wm{position:absolute;left:50%;top:54%;width:430px;height:430px;transform:translate(-50%,-50%);opacity:.06}
+.cert .in{position:absolute;inset:56px 64px;display:flex;flex-direction:column}
+.cert .hd{display:flex;align-items:center;gap:18px;justify-content:center;text-align:center}
+.cert .hd img{width:104px;height:104px}
+.cert .sn{font-family:"Cinzel",Georgia,serif;font-weight:800;font-size:31px;letter-spacing:1px;color:var(--k1);line-height:1.1}
+.cert .sp{font-size:14px;color:#556;margin-top:4px;letter-spacing:.5px}
+.cert .meta{display:flex;justify-content:space-between;margin-top:20px;font-size:13.5px;color:#445;font-weight:600}
+.cert .meta b{color:var(--k1)}
+.cert .tt{text-align:center;margin-top:20px}
+.cert .tt .t1{font-family:"Great Vibes","Brush Script MT",cursive;font-size:62px;color:var(--k2);line-height:1}
+.cert .tt .t2{display:inline-block;margin-top:8px;padding:7px 26px;border-radius:30px;color:#fff;background:linear-gradient(90deg,var(--k1),var(--k2));font-family:"Cinzel",serif;font-weight:800;font-size:17px;letter-spacing:3px}
+.cert .bd{margin-top:26px;font-family:"Playfair Display",Georgia,serif;font-size:19.5px;line-height:2.05;text-align:justify;color:#22283a}
+.cert .bd .f{font-family:"Plus Jakarta Sans",sans-serif;font-weight:800;color:var(--k1);border-bottom:1.5px dotted var(--k2);padding:0 4px;font-style:normal}
+.cert table.dt{width:100%;border-collapse:collapse;margin-top:16px;font-size:14px}
+.cert table.dt td{padding:5.5px 12px;border:1px solid var(--k1b)}
+.cert table.dt td:first-child{width:38%;background:var(--k1l);font-weight:700;color:#334}
+.cert table.dt td:last-child{font-weight:700;color:var(--k1)}
+.cert .ft{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;padding-top:20px}
+.cert .sg{text-align:center;width:200px;font-size:14px;color:#334;font-weight:700}
+.cert .sg .ln{border-top:1.5px solid #334;margin-bottom:6px}
+.cert .seal{width:118px;height:118px;border-radius:50%;border:3px double var(--k2);display:grid;place-items:center;text-align:center;font-family:"Cinzel",serif;font-size:11px;font-weight:800;color:var(--k2);line-height:1.3;transform:rotate(-12deg)}
+.cert .note{font-size:11.5px;color:#778;text-align:center;margin-top:12px}
+.cert-actions{position:sticky;bottom:calc(env(safe-area-inset-bottom,0px) + 10px);display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px;z-index:6}
+.cert-actions .btn{height:52px;font-size:15px}
+@media print{
+  body.pr-cert header,body.pr-cert nav,body.pr-cert #testBar,body.pr-cert .no-print,body.pr-cert #sheetWrap,body.pr-cert #toast,body.pr-cert #newVer{display:none!important}
+  body.pr-cert main{padding:0!important;max-width:none}
+  body.pr-cert .certwrap{box-shadow:none;border-radius:0;margin:0;overflow:visible;height:auto!important}
+  body.pr-cert .certscale{transform:none!important}
+  body.pr-cert .cert{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  @page{size:A4;margin:0}
+}
+
 .mycash{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+
+/* ===== v19: compact stylish buttons and bolder inside pages ===== */
+/* home: rectangular tiles */
+.tiles7{grid-template-columns:1fr 1fr;gap:10px}
+.tile7{flex-direction:row!important;align-items:center;gap:10px;min-height:74px!important;padding:12px 12px!important;border-radius:16px;justify-content:flex-start!important}
+.tile7::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.22),rgba(255,255,255,0) 55%);pointer-events:none}
+.tile7::after{right:-18px!important;bottom:-30px!important;width:70px!important;height:70px!important}
+.tile7 .ic{width:40px!important;height:40px!important;border-radius:12px!important;background:#fff!important;color:var(--c1);flex:none;box-shadow:0 4px 10px -4px rgba(0,0,0,.35)}
+.tile7 .ic svg{width:22px!important;height:22px!important}
+.tile7 b{margin-top:0!important;font-size:14.5px!important;line-height:1.2}
+.tile7 span.s{font-size:11.5px!important;margin-top:1px}
+.tile7>div{min-width:0;position:relative;z-index:1}
+.tiles7 .tile7:nth-child(7){grid-column:auto}
+.tiles7 .tile7:last-child:nth-child(odd){grid-column:1/-1}
+/* inside pages: summary cards become full colour */
+.card.hero,.hero.card{background:linear-gradient(135deg,var(--c1),var(--c2))!important;border:0!important;color:#fff;box-shadow:0 10px 22px -12px var(--c1);position:relative;overflow:hidden}
+.card.hero::after{content:"";position:absolute;right:-36px;top:-36px;width:130px;height:130px;border-radius:50%;background:rgba(255,255,255,.12)}
+.card.hero .lbl,.card.hero .big,.card.hero .big2,.card.hero small,.card.hero span,.card.hero b,.card.hero .note,.card.hero .grid3 span,.card.hero .grid3 b{color:#fff!important}
+.card.hero .bar{background:rgba(255,255,255,.28)}
+.card.hero .bar i{background:#fff}
+.card.hero .brk div{border-top-color:rgba(255,255,255,.3)}
+.card.hero .c-due,.card.hero .c-paid{color:#fff!important}
+.attHead{background:linear-gradient(135deg,var(--c1),var(--c2))!important;border:0!important;color:#fff;box-shadow:0 8px 18px -12px var(--c1)}
+.attHead b,.attHead span.d,.attHead .big2{color:#fff!important}
+.attHead .chip{background:#fff!important;color:var(--c1)!important}
+/* tab buttons: compact rectangles, each in its own colour */
+.chips{gap:8px}
+.chipbtn{border-radius:11px!important;padding:8px 14px!important;font-size:13px!important;font-weight:800!important;border:0!important;color:#fff!important;background:var(--k,linear-gradient(135deg,var(--c1),var(--c2)))!important;opacity:.55;box-shadow:none!important;transition:opacity .15s,transform .1s}
+.chipbtn:nth-child(5n+1){--k:linear-gradient(135deg,#0f7a3a,#2fb36b)}
+.chipbtn:nth-child(5n+2){--k:linear-gradient(135deg,#1f5fc4,#4f8ff0)}
+.chipbtn:nth-child(5n+3){--k:linear-gradient(135deg,#c0265a,#f06a95)}
+.chipbtn:nth-child(5n+4){--k:linear-gradient(135deg,#c25a05,#f39a3d)}
+.chipbtn:nth-child(5n){--k:linear-gradient(135deg,#6d3fd6,#a07bf2)}
+.chipbtn.on{opacity:1;box-shadow:0 6px 14px -6px rgba(0,0,0,.45)!important;transform:translateY(-1px)}
+.chipbtn:hover{opacity:.85}
+/* buttons: smaller, rectangular, glossy */
+.btn{border-radius:12px;height:44px;font-size:14.5px;letter-spacing:.2px;position:relative;overflow:hidden}
+.btn:not(.ghost):not(.red)::before{content:"";position:absolute;inset:0 0 50% 0;background:linear-gradient(180deg,rgba(255,255,255,.2),rgba(255,255,255,0));pointer-events:none}
+.btn.ghost{border:1.5px solid color-mix(in srgb,var(--c2) 45%,transparent)!important}
+.actions{gap:8px}
+.actions .btn{min-height:44px}
+.btn.wide{height:50px}
+/* list rows: soft colour wash */
+.item{background:linear-gradient(90deg,color-mix(in srgb,var(--c2) 9%,var(--card)) 0%,var(--card) 55%)!important;border-radius:14px;box-shadow:0 2px 6px -4px rgba(0,0,0,.25)}
+.item:has(.chip.due),.item:has(.c-due){background:linear-gradient(90deg,var(--duebg) 0%,var(--card) 55%)!important}
+.item:has(.chip.paid),.item:has(.chip.clear){background:linear-gradient(90deg,var(--paidbg) 0%,var(--card) 55%)!important}
+.item:has(.chip.part){background:linear-gradient(90deg,var(--partbg) 0%,var(--card) 55%)!important}
+/* page banner: icon-sized back button, tighter */
+.phead{padding:13px 14px!important;border-radius:16px}
+.phead .back{width:38px!important;height:38px!important;border-radius:11px!important}
+/* fields */
+.filters input,.filters select,.campsel select{height:42px;border-radius:12px}
+/* section headings as coloured labels */
+.sec{display:inline-flex!important;align-items:center;padding:5px 12px;border-radius:9px;color:#fff!important;background:linear-gradient(135deg,var(--c1),var(--c2));font-size:13px!important;margin:18px 0 10px!important}
+.sec::before{display:none}
+/* number boxes and tiles a bit tighter */
+.today div,.counts div{border-radius:14px;box-shadow:0 6px 14px -10px rgba(0,0,0,.5)}
+.tile6{min-height:96px!important;border-radius:16px!important;flex-direction:row!important;align-items:center;gap:12px;justify-content:flex-start!important}
+.tile6 b{margin-top:0!important;font-size:15px!important}
+.tile6 .ic{background:#fff!important;color:var(--c1)!important;width:40px!important;height:40px!important}
+/* certificate type cards: rectangles */
+.ctype{min-height:84px!important;display:flex;align-items:center;gap:12px;padding:12px!important;border-radius:16px!important}
+.ctype .em{font-size:24px;width:42px;height:42px;border-radius:12px;background:rgba(255,255,255,.95);display:grid;place-items:center;flex:none;box-shadow:0 4px 10px -4px rgba(0,0,0,.35)}
+.ctype b{margin-top:0!important;font-size:14px!important;line-height:1.2}
+.ctype span:not(.em){font-size:11.5px!important}
+.repcard{display:flex;align-items:center;gap:10px;border:0!important;color:#fff!important;background:linear-gradient(135deg,var(--c1),var(--c2))!important;box-shadow:0 6px 14px -8px var(--c1)}
+.repcard b,.repcard span{color:#fff!important;margin-top:0!important}
+.repcard .dot2{background:#fff!important;color:var(--c1)!important;flex:none}
+.repcards .repcard:nth-child(1),.repcards .repcard:nth-child(2),.repcards .repcard:nth-child(3){--c1:var(--gA1);--c2:var(--gA2)}
+.repcards .repcard:nth-child(4),.repcards .repcard:nth-child(5){--c1:var(--gB1);--c2:var(--gB2)}
+.repcards .repcard:nth-child(6){--c1:var(--gR1);--c2:var(--gR2)}
+.repcards .repcard:nth-child(7){--c1:var(--gP1);--c2:var(--gP2)}
+.repcards .repcard:nth-child(8){--c1:var(--gO1);--c2:var(--gO2)}
+@media print{.card.hero,.attHead,.sec{background:none!important;color:#000!important;box-shadow:none!important}.card.hero *,.attHead *{color:#000!important}}
+
+.repcard,.ctype{display:grid!important;grid-template-columns:auto minmax(0,1fr);column-gap:11px;row-gap:1px;align-items:center;align-content:center}
+.repcard .dot2,.ctype .em{grid-row:1/3}
+.repcard b,.ctype b{grid-column:2;align-self:end}
+.repcard span:not(.dot2),.ctype span:not(.em){grid-column:2;align-self:start;line-height:1.3}
+.repcard{min-height:78px;padding:12px!important}
 </style>
 </head>
 <body>
@@ -505,7 +643,7 @@ const SUPABASE_KEY = "sb_publishable_JiH4kZdQ9IlnOiCejy8tKQ_fArOg88j";
 
 <script>
 /* ================= Basics ================= */
-const APP_VERSION = '2026-10-17 v17';
+const APP_VERSION = '2026-10-17 v19';
 const ONLINE = !!(SUPABASE_URL && SUPABASE_KEY);
 const LKEY = 'gvps-fee-data', SKEY = 'gvps-session', STAFF_DOMAIN = 'staff.gvps.app';
 const LOGO = 'data:image/webp;base64,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';
@@ -517,9 +655,9 @@ const DEFAULTS = {
 const METHODS = ['Cash','Bank','JazzCash','Easypaisa'];
 const CHARGE_NAMES = ['Admission fee','Exam fee','Annual charges','Sports fee','Books','Uniform','Transport','Fine'];
 const MARK = {P:'Present',A:'Absent',L:'Leave'};
-let S = {students:[], payments:[], charges:[], staff:[], attendance:[], photos:[], settings:{...DEFAULTS}};
+let S = {students:[], payments:[], charges:[], staff:[], attendance:[], photos:[], certs:[], settings:{...DEFAULTS}};
 let ME = null;
-let UI = {rep:'',camp:null,curMode:'students',attMode:'daily',recStu:'all',recYear:'',stu:'active',tab:'', month:thisMonth(), cls:'', attCls:'', date:todayStr(), q:'', from:todayStr(), to:todayStr(), dueMin:0, feeMode:'collect', by:'', hideInst:false};
+let UI = {ctype:'',cstu:'',cq:'',rep:'',camp:null,curMode:'students',attMode:'daily',recStu:'all',recYear:'',stu:'active',tab:'', month:thisMonth(), cls:'', attCls:'', date:todayStr(), q:'', from:todayStr(), to:todayStr(), dueMin:0, feeMode:'collect', by:'', hideInst:false};
 let sb=null, chan=null, Q=[], flushing=false, lastFetch=0, filler=null, C={};
 
 const $ = s => document.querySelector(s);
@@ -615,10 +753,10 @@ function nextAdmNo(){return S.students.reduce((m,s)=>Math.max(m,parseInt(s.admNo
 /* ================= Data layer =================
    Every change shows on screen at once and is saved on this phone.
    When online it is sent to Supabase; without internet it waits and is sent later. */
-const COLS = ['students','payments','charges','attendance'];
+const COLS = ['students','payments','charges','attendance','certs'];
 const cacheKey = () => ONLINE ? 'gvps-cache-'+(ME?ME.uid:'') : LKEY;
 const queueKey = () => 'gvps-queue-'+(ME?ME.uid:'');
-function loadLocal(){try{const d=JSON.parse(localStorage.getItem(cacheKey())||'null');if(d){['students','payments','charges','staff','attendance','photos'].forEach(k=>S[k]=d[k]||[]);S.settings={...DEFAULTS,...(d.settings||{})};}}catch(e){}}
+function loadLocal(){try{const d=JSON.parse(localStorage.getItem(cacheKey())||'null');if(d){['students','payments','charges','staff','attendance','photos','certs'].forEach(k=>S[k]=d[k]||[]);S.settings={...DEFAULTS,...(d.settings||{})};}}catch(e){}}
 function saveLocal(){try{localStorage.setItem(cacheKey(),JSON.stringify(S));}catch(e){if(!ONLINE)toast('Could not save on this phone');}}
 function fail(e){console.error(e);toast('Not saved: '+(e&&e.message?e.message:'check internet'));}
 function clean(o){const c={...o};delete c.id;Object.keys(c).forEach(k=>c[k]===undefined&&delete c[k]);return c;}
@@ -691,7 +829,7 @@ async function doFetch(){
       const {data,error}=await sb.from('records').select('id,col,data').neq('col','photo').order('id').range(from,from+999);
       if(error)throw error;out.push(...data);if(data.length<1000)break;
     }
-    const N={students:[],payments:[],charges:[],attendance:[]};let set=null;
+    const N={students:[],payments:[],charges:[],attendance:[],certs:[]};let set=null;
     out.forEach(r=>{if(r.col==='settings')set=r.data;else if(N[r.col])N[r.col].push({...r.data,id:r.id});});
     Object.assign(S,N);S.settings={...DEFAULTS,...(set||{})};
     if(isOwner()){
@@ -848,7 +986,7 @@ function sheet(h){$('#sheetBody').innerHTML=h;$('#sheetWrap').classList.add('ope
 function closeSheet(){$('#sheetWrap').classList.remove('open');}
 function sline(s){return `${esc(gLabel(gOf(s)))}${s.roll?', Roll '+esc(s.roll):''}${s.father?', '+esc(s.father):''}`;}
 function printAs(mode){document.body.classList.add(mode);setTimeout(()=>{window.print();},50);}
-window.addEventListener('afterprint',()=>document.body.classList.remove('pr-receipt','pr-report'));
+window.addEventListener('afterprint',()=>document.body.classList.remove('pr-receipt','pr-report','pr-cert'));
 function repHead(title,cls){const s=S.settings;return `<div class="rep-head ${cls||''}"><img class="logo" src="${LOGO}" alt=""><div><b>${esc(s.school)}</b><span>${esc(s.place)}${s.phone?', '+esc(s.phone):''}</span><em>${title}</em></div></div>`;}
 function printHead(title){return repHead(title,'print-only');}
 
@@ -879,14 +1017,14 @@ function render(){
   $('#h_sub').innerHTML=isOwner()?esc(set.place)+'<span class="role">Owner</span>':esc(ME.name)+', '+esc(myClasses().map(gLabel).join(', ')||'no class yet')+'<span class="role">Teacher</span>';
   document.title=set.school+(isOwner()?' – Owner':' – '+ME.name);
   if(!ONLINE)$('#testBar').textContent=`Test mode: records stay on this phone. Using as ${ME.name}.`;else syncBar();
-  {const tn={att:'att',take:'att',today:'att',register:'att',fees:'fee',reports:'rep',rep:'rep',current:'cur',students:'cur',teachers:'cur',record:'rec',campus:'camp'};document.body.dataset.tone=tn[UI.tab]||'att';}
+  {const tn={att:'att',take:'att',today:'att',register:'att',fees:'fee',reports:'rep',rep:'rep',current:'cur',students:'cur',teachers:'cur',cert:'cert',certview:'cert',record:'rec',campus:'camp'};document.body.dataset.tone=tn[UI.tab]||'att';}
   if(isOwner()){
     if(UI.tab==='students')UI.tab='current';
     if(UI.tab==='teachers'){UI.tab='current';UI.curMode='teachers';}
     if(UI.tab==='register'){UI.tab='att';UI.attMode='register';}
-    const ok=['home','att','take','fees','reports','current','record','campus','rep'];if(!ok.includes(UI.tab))UI.tab='home';
+    const ok=['home','att','take','fees','reports','current','record','campus','rep','cert','certview'];if(!ok.includes(UI.tab))UI.tab='home';
     document.body.classList.add('no-nav');filler=null;
-    ({home:viewOwnerHome,att:viewAttPage,take:viewTake,fees:viewFeePage,reports:viewReports,current:viewCurrent,record:viewRecord,campus:viewCampus,rep:viewRepHub})[UI.tab]();
+    ({home:viewOwnerHome,att:viewAttPage,take:viewTake,fees:viewFeePage,reports:viewReports,current:viewCurrent,record:viewRecord,campus:viewCampus,rep:viewRepHub,cert:viewCertHub,certview:viewCert})[UI.tab]();
     return;
   }
   document.body.classList.remove('no-nav');
@@ -944,6 +1082,7 @@ function viewOwnerHome(){
     ${tile("UI.curMode='students';go('current')",'P',ic('cur'),'Current Students',pl(act.length,'student'))}
     ${tile("go('record')",'O',ic('rec'),'Student Record',pl(all.length,'student')+' in register')}
     ${tile("UI.rep='';go('rep')",'R',`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${OI2.rep}</svg>`,'Reports','View and print')}
+    ${tile("UI.ctype='';go('cert')",'C',`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M7 9h10M7 12.5h6"/><circle cx="17" cy="17" r="3"/><path d="M15.5 19.5 15 22l2-1 2 1-.5-2.5"/></svg>`,'Certificates','Birth, leaving, character...')}
     ${tile("go('campus')",'T',ic('camp'),'Campus',hasCampus()?pl(campusKeys().length,'campus'):esc(campName('')))}
   </div>`;
 }
@@ -1412,6 +1551,175 @@ function mtSave(){
   const ids=[...new Set(MT.rows.filter(r=>r.on&&r.id).map(r=>r.id))];if(!ids.length){toast('Tick at least one student');return;}
   CP={g:MT.g,sel:new Set(ids.concat(MT.moveOut?[]:classStudents(MT.g).map(s=>s.id))),likely:true,wd:false,q:'',year:''};
   MT=null;cpSave();
+}
+
+
+/* ================= Certificates ================= */
+const CERTS=[
+  ['dob','Date of Birth Certificate','From the admission register','🎂','#0f7a3a','#2fb36b'],
+  ['slc','School Leaving Certificate','When a student leaves','🎓','#1f5fc4','#4f8ff0'],
+  ['char','Character Certificate','Conduct while studying','⭐','#6d3fd6','#a07bf2'],
+  ['study','Studying Certificate','Proof the student studies here','📘','#0b7a6e','#2fbfae'],
+  ['adm','Admission Certificate','Proof of admission','📝','#c25a05','#f39a3d'],
+  ['dues','No Dues Certificate','All fee paid','💳','#b42f27','#ef6b5f'],
+  ['merit','Certificate of Appreciation','Position, prize or good work','🏆','#8a5a00','#d9a531']
+];
+const CT=k=>CERTS.find(c=>c[0]===k)||CERTS[0];
+const FEMALE=/\b(bibi|begum|bano|banu|fatima|fatma|ayesha|aisha|zainab|maryam|mariam|khadija|hina|sana|rabia|amna|asma|nadia|saima|sadia|sobia|iqra|kainat|laiba|laila|layya|ajwa|abroo|romaisa|habeeba|habiba|samina|shazia|nazia|uzma|rukhsar|noor|nimra|hafsa|sumaira|mehwish|bushra|farzana|shabana|naila|sidra|anam|zara|zahra|esha|aiza|alishba|areeba|eman|iman|mahnoor|manahil|muskan|parveen|tahira|yasmeen|zoya)\b/i;
+const guessSex=s=>s.gender||(FEMALE.test(String(s.name||''))?'F':'M');
+const sessionTxt=()=>{const y=sessY(todayStr());return y+'-'+String(y+1).slice(2);};
+function dobWordsOnly(d){return d?dobWords(d).replace(/\s+\d{2}-\d{2}-\d{4}$/,''):'';}
+function nextCertNo(type){const n=S.certs.filter(c=>c.type===type).reduce((m,c)=>Math.max(m,Number(c.no)||0),0)+1;return n;}
+function viewCertHub(){
+  const recent=[...S.certs].sort((a,b)=>(b.created||0)-(a.created||0)).slice(0,12);
+  if(UI.ctype){viewCertPick();return;}
+  $('#main').innerHTML=`${pageHead('Certificates','Make, print and send','cert')}
+  <div class="ctypes">${CERTS.map(([k,t,d,e,a,b])=>`<button class="ctype" style="--k1:${a};--k2:${b}" onclick="UI.ctype='${k}';UI.cq='';render()"><span class="em">${e}</span><b>${t}</b><span>${d}</span></button>`).join('')}</div>
+  <h3 class="sec">Recently issued</h3>
+  <div class="list">${recent.map(c=>{const s=getS(c.studentId)||{name:c.name};const T=CT(c.type);return `<button class="item" onclick="openIssued('${c.id}')">
+    <div class="av" style="background:linear-gradient(135deg,${T[4]},${T[5]})">${T[3]}</div><div class="t"><div class="n">${esc(s.name||c.name)}</div><div class="s">${esc(T[1])}, No. ${esc(c.no)}, ${dmy(c.date)}</div></div></button>`;}).join('')||'<div class="empty card">No certificates made yet.</div>'}</div>`;
+}
+function viewCertPick(){
+  const T=CT(UI.ctype);
+  $('#main').innerHTML=`<div class="phead no-print" style="--c1:${T[4]};--c2:${T[5]}"><button class="back" onclick="UI.ctype='';render()" aria-label="Back">‹</button><div><b>${T[3]} ${T[1]}</b><span>Choose the student</span></div></div>
+  ${campSelect()}
+  <div class="filters"><input type="search" placeholder="Search name, father, Adm No." value="${esc(UI.cq)}" oninput="UI.cq=this.value;fillList()">${clsSelect(UI.cls,'UI.cls=this.value;render()',true)}</div>
+  <p class="note" style="margin:-4px 2px 8px">${['slc','char','dob','merit'].includes(UI.ctype)?'Current students and students in history are both listed.':'Current students are listed first.'}</p>
+  <div class="list" id="list"></div>`;
+  filler=()=>{const q=UI.cq.trim().toLowerCase();
+    const l=S.students.filter(s=>inCamp(s)&&(!UI.cls||inFilter(s,UI.cls))&&(!q||[s.name,s.father,s.admNo].some(v=>String(v||'').toLowerCase().includes(q))))
+      .sort((a,b)=>(isActive(b)-isActive(a))||sortStudents(a,b)).slice(0,200);
+    $('#list').innerHTML=l.map(s=>`<button class="item" onclick="UI.cstu='${s.id}';UI.cdata=null;go('certview')"><div class="av">${esc(initials(s.name))}</div>
+      <div class="t"><div class="n">${esc(s.name)}</div><div class="s">${s.admNo?'Adm '+esc(s.admNo)+', ':''}${esc(s.father||'')}</div></div>
+      <div class="r">${isActive(s)?`<span class="chip paid">${esc(gLabel(gOf(s)))}</span>`:`<span class="chip na">${s.wdDate?'Left '+esc(s.wdDate.slice(0,4)):'History'}</span>`}</div></button>`).join('')||'<div class="empty card">No student found. Type part of the name.</div>';};
+  fillList();
+}
+/* default details for a certificate, taken from the record */
+function certDefaults(type,s){
+  const L=ledger(s), bal=Math.max(0,L.bal);
+  const left=!isActive(s);
+  return {
+    no:String(nextCertNo(type)), date:todayStr(), sex:guessSex(s),
+    name:s.name||'', father:s.father||'', admNo:s.admNo||'', dob:s.dob||'', admit:s.admit||'', admClass:s.admClass||s.cls||'',
+    cls:left?(s.wdClass||s.cls||''):gLabel(gOf(s)), wdDate:s.wdDate||(type==='slc'?todayStr():''), wdClass:s.wdClass||s.cls||'',
+    residence:s.residence||'', caste:s.caste||'', reason:s.remarks||(type==='slc'?"On parent's request":''), conduct:'Good',
+    dues:bal?rs(bal)+' due':'All dues cleared', session:sessionTxt(), until:left&&s.wdDate?s.wdDate:todayStr(),
+    achievement:'securing First Position in the Annual Examination '+sessY(todayStr()), remarks:''
+  };
+}
+function certFields(type){
+  const base=[['no','Certificate No.'],['date','Date of issue','date'],['sex','Son or daughter','sex'],['name','Student name'],['father',"Father's name"]];
+  const m={
+    dob:[['admNo','Adm No.'],['dob','Date of birth','date'],['admit','Date of admission','date']],
+    slc:[['admNo','Adm No.'],['dob','Date of birth','date'],['admit','Date of admission','date'],['admClass','Class admitted to'],['wdClass','Class left from'],['wdDate','Date of leaving','date'],['reason','Reason for leaving'],['conduct','Conduct'],['dues','Fee dues'],['remarks','Remarks']],
+    char:[['admNo','Adm No.'],['admit','Studied from','date'],['until','Studied until','date'],['cls','Last class'],['conduct','Character and conduct']],
+    study:[['admNo','Adm No.'],['cls','Class'],['session','Session'],['dob','Date of birth','date'],['residence','Residence']],
+    adm:[['admNo','Adm No.'],['admit','Date of admission','date'],['admClass','Class admitted to'],['dob','Date of birth','date']],
+    dues:[['admNo','Adm No.'],['cls','Class'],['until','Fee paid up to','date']],
+    merit:[['cls','Class'],['achievement','For (reason)'],['session','Session']]
+  };
+  return base.concat(m[type]||[]);
+}
+function viewCert(){
+  const s=getS(UI.cstu);if(!s){UI.ctype='';go('cert');return;}
+  const type=UI.ctype||'dob', T=CT(type);
+  if(!UI.cdata||UI.cdata._for!==s.id+type){UI.cdata={...certDefaults(type,s),_for:s.id+type};}
+  const D=UI.cdata, bal=Math.max(0,ledger(s).bal);
+  const warn=type==='dues'&&bal?`<div class="total" style="margin-top:10px"><span>This student still owes ${rs(bal)}.</span><span></span></div>`:'';
+  $('#main').innerHTML=`<div class="phead no-print" style="--c1:${T[4]};--c2:${T[5]}"><button class="back" onclick="UI.cstu='';UI.cdata=null;go('cert')" aria-label="Back">‹</button><div><b>${T[3]} ${T[1]}</b><span>${esc(s.name)}</span></div></div>
+  <div class="chips no-print">${CERTS.map(c=>`<button class="chipbtn ${c[0]===type?'on':''}" onclick="UI.ctype='${c[0]}';UI.cdata=null;render()">${c[3]} ${c[1].replace(' Certificate','').replace('Certificate of ','')}</button>`).join('')}</div>
+  ${warn}
+  <details class="card no-print" style="padding:0 14px;margin-top:10px"><summary style="padding:13px 0;font-weight:800;color:var(--c1)">✏️ Check or change the details</summary><div class="inner" style="padding-bottom:12px">
+    ${certFields(type).map(([k,l,t])=>t==='sex'?`<label>${l}<select onchange="UI.cdata.sex=this.value;certRefresh()"><option value="M" ${D.sex==='M'?'selected':''}>Son (he)</option><option value="F" ${D.sex==='F'?'selected':''}>Daughter (she)</option></select></label>`
+      :t==='date'?`<label>${l}${dateBox('',D[k],`oninput="maskDate(this);const x=parseDMY(this.value);if(x||!this.value){UI.cdata['${k}']=x;certRefresh()}"`)}</label>`
+      :`<label>${l}<input value="${esc(D[k])}" oninput="UI.cdata['${k}']=this.value;certRefresh()"></label>`).join('')}
+  </div></details>
+  <div class="certwrap" id="certwrap"><div class="certscale" id="certscale">${certHtml(type,D)}</div></div>
+  <div class="cert-actions no-print">
+    <button class="btn" onclick="certPrint()">🖨️ Print</button>
+    <button class="btn" onclick="certPdf(false)">📄 PDF</button>
+    <button class="btn green" onclick="certPdf(true)">📤 Send</button>
+  </div>`;
+  certFit();
+}
+function openIssued(id){const c=S.certs.find(x=>x.id===id);if(!c)return;UI.ctype=c.type;UI.cstu=c.studentId;UI.cdata={...certDefaults(c.type,getS(c.studentId)||{}),...(c.data||{}),_for:c.studentId+c.type};go('certview');}
+function certFit(){const w=$('#certwrap'),sc=$('#certscale');if(!w||!sc)return;const k=w.clientWidth/794;sc.style.transform=`scale(${k})`;w.style.height=(1123*k)+'px';}
+window.addEventListener('resize',()=>{if(UI.tab==='certview')certFit();});
+function certRefresh(){const sc=$('#certscale');if(sc)sc.innerHTML=certHtml(UI.ctype,UI.cdata);}
+function certHtml(type,D){
+  const T=CT(type), set=S.settings, she=D.sex==='F';
+  const He=she?'She':'He', he=she?'she':'he', his=she?'her':'his', His=she?'Her':'His', Him=she?'Her':'Him', sonof=she?'daughter of':'son of';
+  const f=v=>`<span class="f">${esc(v||'_______')}</span>`;
+  const studName=`${f(D.name)} ${sonof} ${f(D.father)}`;
+  let title='', body='';
+  if(type==='dob'){title='Date of Birth';
+    body=`Certified that ${studName}, Admission No. ${f(D.admNo)}, was admitted to this school on ${f(dmy(D.admit))}. According to the school Admission Register, ${his} date of birth is ${f(dmy(D.dob))} <i>(${esc(dobWordsOnly(D.dob)||'_______')})</i>.<br>This certificate is issued on ${his} request.`;}
+  else if(type==='slc'){title='School Leaving';
+    body=`<div style="font-size:18px">Certified that ${studName} has left this school. ${His} particulars as recorded in the school Admission Register are given below:</div>
+    <table class="dt">${[['Admission No.',D.admNo],['Name',D.name],["Father's name",D.father],['Date of birth (figures)',dmy(D.dob)],['Date of birth (words)',dobWordsOnly(D.dob)],['Date of admission',dmy(D.admit)],['Class admitted to',D.admClass],['Class left from',D.wdClass],['Date of leaving',dmy(D.wdDate)],['Reason for leaving',D.reason],['Conduct',D.conduct],['Fee dues',D.dues],['Remarks',D.remarks]].filter(x=>x[0]!=='Remarks'||x[1]).map(([a,b])=>`<tr><td>${a}</td><td>${esc(b||'')}</td></tr>`).join('')}</table>`;}
+  else if(type==='char'){title='Character';
+    body=`This is to certify that ${studName}, Admission No. ${f(D.admNo)}, remained a student of this school from ${f(dmy(D.admit))} to ${f(dmy(D.until))}${D.cls?' and last studied in class '+f(D.cls):''}.<br>During this period ${his} character and conduct remained ${f(D.conduct)}. ${He} bears a good moral character and to the best of my knowledge ${he} has not taken part in any activity against the law or the school.<br>We wish ${Him.toLowerCase()} every success in life.`;}
+  else if(type==='study'){title='Studying';
+    body=`This is to certify that ${studName}, resident of ${f(D.residence)}, is a bonafide student of this school. ${He} is studying in class ${f(D.cls)} in the session ${f(D.session)} vide Admission No. ${f(D.admNo)}.<br>According to the school record, ${his} date of birth is ${f(dmy(D.dob))}.<br>This certificate is issued on ${his} request for whatever purpose it may serve.`;}
+  else if(type==='adm'){title='Admission';
+    body=`This is to certify that ${studName} has been admitted to class ${f(D.admClass)} of this school on ${f(dmy(D.admit))}. ${His} Admission No. is ${f(D.admNo)} and ${his} date of birth according to the school record is ${f(dmy(D.dob))}.<br>This certificate is issued on ${his} request.`;}
+  else if(type==='dues'){title='No Dues';
+    body=`This is to certify that ${studName}, Admission No. ${f(D.admNo)}, of class ${f(D.cls)} has paid all school dues up to ${f(dmy(D.until))}. Nothing is due against ${Him.toLowerCase()} in the accounts of this school.`;}
+  else if(type==='merit'){title='Appreciation';
+    body=`<div style="text-align:center;font-size:20px">This certificate is proudly presented to</div>
+    <div style="text-align:center;font-family:'Great Vibes',cursive;font-size:58px;color:${T[5]};line-height:1.25;margin:6px 0">${esc(D.name||'')}</div>
+    <div style="text-align:center">${sonof} ${f(D.father)} of class ${f(D.cls)}<br>for ${f(D.achievement)}<br>in the session ${f(D.session)}. We are proud of ${his} hard work and wish ${Him.toLowerCase()} a bright future.</div>`;}
+  const rgba=(hx,a)=>{const n=parseInt(hx.slice(1),16);return `rgba(${n>>16&255},${n>>8&255},${n&255},${a})`;};
+  return `<div class="cert" style="--k1:${T[4]};--k2:${T[5]};--k1b:${rgba(T[4],.35)};--k1l:${rgba(T[4],.07)}">
+    <div class="ribbon"></div><div class="ribbon bt"></div><div class="b1"></div><div class="b2"></div><div class="b3"></div>
+    <div class="cn tl"></div><div class="cn tr"></div><div class="cn bl"></div><div class="cn br"></div>
+    <img class="wm" src="${LOGO}" alt="">
+    <div class="in">
+      <div class="hd"><img src="${LOGO}" alt=""><div><div class="sn">${esc(set.school)}</div><div class="sp">${esc(set.place)}${set.phone?'  •  '+esc(set.phone):''}</div></div></div>
+      <div class="meta"><span>No. <b>${esc(CT(type)[0].toUpperCase())}-${esc(String(D.no).padStart(4,'0'))}</b></span><span>Date: <b>${dmy(D.date)}</b></span></div>
+      <div class="tt"><div class="t1">Certificate</div><div class="t2">${title.toUpperCase()}${type==='merit'?'':' CERTIFICATE'}</div></div>
+      <div class="bd">${body}</div>
+      <div class="ft">
+        <div class="sg"><div class="ln"></div>${type==='slc'||type==='dues'?'Clerk / Accountant':'Class Teacher'}</div>
+        <div class="seal">${esc(set.school)}<br>★ SEAL ★</div>
+        <div class="sg"><div class="ln"></div>Principal</div>
+      </div>
+      <div class="note">This certificate is made from the school record. Any cutting or overwriting makes it invalid.</div>
+    </div></div>`;
+}
+function certLog(){
+  const s=getS(UI.cstu), D={...UI.cdata};delete D._for;
+  const ex=S.certs.find(c=>c.type===UI.ctype&&String(c.no)===String(D.no));
+  if(ex){if(ex.studentId===s.id)upd('certs',ex.id,{data:D,date:D.date});return;}
+  add('certs',{type:UI.ctype,no:Number(D.no)||nextCertNo(UI.ctype),studentId:s.id,name:s.name,date:D.date,data:D,by:ME.name,created:Date.now()});
+  if(D.sex&&D.sex!==s.gender)upd('students',s.id,{gender:D.sex});
+}
+function certPrint(){certLog();setTimeout(()=>printAs('pr-cert'),150);}
+function loadScript(src,glob){if(window[glob])return Promise.resolve(window[glob]);return new Promise((res,rej)=>{const s=document.createElement('script');s.src=src;s.onload=()=>res(window[glob]);s.onerror=()=>rej(new Error('Could not load. Check internet.'));document.head.appendChild(s);});}
+async function certPdf(send){
+  const s=getS(UI.cstu), T=CT(UI.ctype);
+  toast('Making PDF...');
+  try{
+    await loadScript('https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js','html2canvas');
+    await loadScript('https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js','jspdf');
+    if(document.fonts&&document.fonts.ready)await document.fonts.ready;
+    const host=document.createElement('div');host.style.cssText='position:fixed;left:-10000px;top:0;width:794px;height:1123px;';host.innerHTML=certHtml(UI.ctype,UI.cdata);document.body.appendChild(host);
+    const canvas=await html2canvas(host.firstElementChild,{scale:2,backgroundColor:'#fffdf7',useCORS:true});
+    host.remove();
+    const pdf=new jspdf.jsPDF({unit:'mm',format:'a4',orientation:'portrait'});
+    pdf.addImage(canvas.toDataURL('image/jpeg',0.92),'JPEG',0,0,210,297);
+    const fname=`${T[1]} - ${(s.name||'student').replace(/[^a-z0-9 ]/gi,'')}.pdf`;
+    const blob=pdf.output('blob');
+    certLog();
+    const file=new File([blob],fname,{type:'application/pdf'});
+    if(send&&navigator.canShare&&navigator.canShare({files:[file]})){
+      await navigator.share({files:[file],title:T[1],text:`${T[1]} of ${s.name}, ${S.settings.school}`}).catch(()=>{});
+      return;
+    }
+    const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=fname;document.body.appendChild(a);a.click();a.remove();
+    if(send){toast('PDF saved. Attach it in WhatsApp.');if(s.phone)setTimeout(()=>window.open(waLink(s.phone,`Assalam o Alaikum. ${T[1]} of ${s.name} from ${S.settings.school} is attached.`),'_blank'),900);}
+    else toast('PDF saved to your phone');
+  }catch(e){toast('Could not make PDF: '+(e.message||e));}
 }
 
 /* ================= Check that data reaches the database ================= */
@@ -1904,7 +2212,7 @@ function openStudent(id){
     ${isActive(s)||L.bal>0?`<button class="btn green" onclick="openCollect('${id}')">Collect fee</button>`:''}
     ${L.bal>0&&s.phone?`<a class="btn ghost" target="_blank" rel="noopener" href="${remindLink(s)}">Remind</a>`:''}
     <button class="btn ghost" onclick="openStudentForm('${id}')">Edit</button>
-    ${isOwner()?`<button class="btn ghost" onclick="openChargeForm('${id}')">Add charge</button>`:''}
+    ${isOwner()?`<button class="btn ghost" onclick="openChargeForm('${id}')">Add charge</button><button class="btn ghost" onclick="closeSheet();UI.ctype='dob';UI.cstu='${id}';UI.cdata=null;go('certview')">Certificate</button>`:''}
   </div>
   ${isOwner()?`<div class="actions"><label class="btn ghost" style="margin:0;color:var(--ink)">Add photo of form<input type="file" accept="image/*" capture="environment" hidden onchange="savePhoto(this.files[0],'${id}')"></label><button class="btn ghost" onclick="openPhotos('${id}')">Photos</button></div>`:''}
   <details><summary>Fee statement (${mk.length} entries)</summary><div class="inner">${mk.map(m=>{const g=months[m];const k=g.paid>=g.amt?'paid':g.paid>0?'part':'due';
@@ -2584,7 +2892,7 @@ async function resolveRole(user){
   if(!pr||pr.active===false){noAccess(!pr&&!net?'This account is not added to the school. Ask the owner.':'');return;}
   try{localStorage.setItem(meKey,JSON.stringify(pr));}catch(e){}
   ME=pr.role==='owner'?{uid:user.id,role:'owner',name:pr.name||'Owner',email:user.email}:{uid:user.id,role:'teacher',name:pr.name,classes:pr.classes||[],email:user.email};
-  S={students:[],payments:[],charges:[],staff:[],attendance:[],photos:[],settings:{...DEFAULTS}};
+  S={students:[],payments:[],charges:[],staff:[],attendance:[],photos:[],certs:[],settings:{...DEFAULTS}};
   loadLocal();loadQueue();Q.forEach(applyOpLocal);
   if(isOwner())ME.name=S.settings.ownerName||ME.name;
   UI.tab='';UI.cls='';UI.attCls='';UI.date=todayStr();
