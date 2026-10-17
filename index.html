@@ -82,7 +82,7 @@ main{max-width:760px;margin:0 auto;padding:14px 14px calc(env(safe-area-inset-bo
 .tbl{width:100%;border-collapse:collapse;font-size:13.5px}
 .tbl th{text-align:left;color:var(--muted);font-weight:600;font-size:12px;padding:6px 6px;border-bottom:1px solid var(--line)}
 .tbl td{padding:8px 6px;border-bottom:1px solid var(--line)}
-.tbl .n{text-align:right}
+.tbl .n{text-align:right;white-space:nowrap}
 
 /* Buttons */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:0;border-radius:11px;background:var(--pri);color:#fff;font-weight:700;padding:0 16px;height:46px;cursor:pointer;text-decoration:none;white-space:nowrap}
@@ -204,6 +204,7 @@ hr{border:0;border-top:1px solid var(--line);margin:16px 0}
 #toast.show{opacity:1}
 
 @media print{
+  .hero2,.tiles7{display:none!important}
   body{background:#fff;color:#000}
   body.pr-receipt #app,body.pr-receipt #login,body.pr-receipt #toast,body.pr-receipt .no-print{display:none!important}
   body.pr-receipt #sheetWrap{position:static;display:block!important;background:none}
@@ -294,6 +295,46 @@ body.no-nav .sticky-act{bottom:calc(env(safe-area-inset-bottom,0px) + 10px)}
 .photo-full{width:100%;border-radius:12px;margin-top:10px;display:block}
 .sheet label.btn{display:inline-flex;margin-top:0;font-size:15px;font-weight:700}
 .sheet label.btn:not(.ghost){color:#fff}
+/* attractive owner home */
+:root{--gA1:#0f7a3a;--gA2:#2fb36b;--gB1:#1f5fc4;--gB2:#4f8ff0;--gP1:#6d3fd6;--gP2:#a07bf2;--gO1:#c25a05;--gO2:#f39a3d;--gR1:#c0265a;--gR2:#f06a95;--gT1:#0b7a6e;--gT2:#2fbfae}
+.hero2{position:relative;overflow:hidden;border-radius:22px;padding:18px 18px 16px;color:#fff;background:linear-gradient(135deg,#0d5c22 0%,#16803a 55%,#1aa37a 100%);box-shadow:0 10px 26px rgba(13,92,34,.25)}
+.hero2::after{content:"";position:absolute;right:-40px;top:-40px;width:170px;height:170px;border-radius:50%;background:rgba(255,255,255,.09)}
+.hero2::before{content:"";position:absolute;right:40px;bottom:-60px;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,.07)}
+.hero2 .hi{font-size:13px;opacity:.9;font-weight:600}
+.hero2 h2{font-size:21px;font-weight:800;margin:2px 0 12px;position:relative;z-index:1}
+.hero2 .st{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;position:relative;z-index:1}
+.hero2 .st div{background:rgba(255,255,255,.16);border-radius:14px;padding:10px 8px;text-align:center;backdrop-filter:blur(2px)}
+.hero2 .st b{display:block;font-size:19px;font-weight:800;line-height:1.15}
+.hero2 .st span{font-size:11.5px;opacity:.92;font-weight:600}
+.alerts{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.alert{display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:14px;font-size:13.5px;font-weight:600;cursor:pointer;border:0;text-align:left;font:inherit}
+.alert.warn{background:var(--partbg);color:var(--part)}.alert.bad{background:var(--duebg);color:var(--due)}.alert.ok{background:var(--paidbg);color:var(--paid)}
+.alert b{font-weight:800}
+.tiles7{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.tile7{position:relative;overflow:hidden;border:0;border-radius:20px;padding:16px 14px 14px;text-align:left;cursor:pointer;color:#fff;min-height:132px;display:flex;flex-direction:column;justify-content:space-between;font:inherit;background:linear-gradient(140deg,var(--c1),var(--c2));box-shadow:0 8px 18px -8px var(--c1);transition:transform .12s}
+.tile7:active{transform:scale(.97)}
+.tile7:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.tile7::after{content:"";position:absolute;right:-26px;bottom:-26px;width:96px;height:96px;border-radius:50%;background:rgba(255,255,255,.12)}
+.tile7 .ic{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:rgba(255,255,255,.22)}
+.tile7 .ic svg{width:25px;height:25px}
+.tile7 b{display:block;font-size:17px;font-weight:800;margin-top:12px;line-height:1.2}
+.tile7 span.s{display:block;font-size:12.5px;font-weight:600;opacity:.92;margin-top:2px;position:relative;z-index:1}
+.repcards{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.repcard{border:1px solid var(--line);background:var(--card);border-radius:16px;padding:14px;text-align:left;cursor:pointer;font:inherit;color:var(--ink)}
+.repcard b{display:block;font-size:15px;margin-top:8px}
+.repcard span{display:block;font-size:12.5px;color:var(--muted);margin-top:2px}
+.repcard .dot2{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;color:#fff;background:linear-gradient(140deg,var(--c1),var(--c2))}
+.repcard .dot2 svg{width:19px;height:19px}
+.srcbtns{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.srcbtns>*{border:1.5px solid var(--line);background:var(--card);border-radius:14px;padding:12px 8px;text-align:center;cursor:pointer;font:inherit;font-weight:700;font-size:13.5px;color:var(--ink);display:flex;flex-direction:column;align-items:center;gap:6px}
+.srcbtns svg{width:26px;height:26px;color:var(--pri2)}
+.mt-row{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)}
+.mt-row:last-child{border-bottom:0}
+.mt-row .t{flex:1;min-width:0}
+.mt-row .src{font-size:12.5px;color:var(--muted)}
+.mt-row select{width:100%;height:40px;margin-top:4px;border:1px solid var(--line);border-radius:10px;background:var(--bg);padding:0 8px;font-size:14px;font-weight:600;color:var(--ink)}
+.mt-row input[type=checkbox]{width:22px;height:22px;margin-top:3px;flex:none;accent-color:var(--pri2)}
+.prog{height:8px;border-radius:5px;background:var(--soft);overflow:hidden;margin-top:12px}.prog i{display:block;height:100%;width:0;background:var(--pri2);transition:width .2s}
 .mycash{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
 </style>
 </head>
@@ -353,7 +394,7 @@ const SUPABASE_KEY = "sb_publishable_JiH4kZdQ9IlnOiCejy8tKQ_fArOg88j";
 
 <script>
 /* ================= Basics ================= */
-const APP_VERSION = '2026-10-17 v15';
+const APP_VERSION = '2026-10-17 v16';
 const ONLINE = !!(SUPABASE_URL && SUPABASE_KEY);
 const LKEY = 'gvps-fee-data', SKEY = 'gvps-session', STAFF_DOMAIN = 'staff.gvps.app';
 const LOGO = 'data:image/webp;base64,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';
@@ -367,7 +408,7 @@ const CHARGE_NAMES = ['Admission fee','Exam fee','Annual charges','Sports fee','
 const MARK = {P:'Present',A:'Absent',L:'Leave'};
 let S = {students:[], payments:[], charges:[], staff:[], attendance:[], photos:[], settings:{...DEFAULTS}};
 let ME = null;
-let UI = {camp:null,curMode:'students',attMode:'daily',recStu:'all',recYear:'',stu:'active',tab:'', month:thisMonth(), cls:'', attCls:'', date:todayStr(), q:'', from:todayStr(), to:todayStr(), dueMin:0, feeMode:'collect', by:'', hideInst:false};
+let UI = {rep:'',camp:null,curMode:'students',attMode:'daily',recStu:'all',recYear:'',stu:'active',tab:'', month:thisMonth(), cls:'', attCls:'', date:todayStr(), q:'', from:todayStr(), to:todayStr(), dueMin:0, feeMode:'collect', by:'', hideInst:false};
 let sb=null, chan=null, Q=[], flushing=false, lastFetch=0, filler=null, C={};
 
 const $ = s => document.querySelector(s);
@@ -731,9 +772,9 @@ function render(){
     if(UI.tab==='students')UI.tab='current';
     if(UI.tab==='teachers'){UI.tab='current';UI.curMode='teachers';}
     if(UI.tab==='register'){UI.tab='att';UI.attMode='register';}
-    const ok=['home','att','take','fees','reports','current','record','campus'];if(!ok.includes(UI.tab))UI.tab='home';
+    const ok=['home','att','take','fees','reports','current','record','campus','rep'];if(!ok.includes(UI.tab))UI.tab='home';
     document.body.classList.add('no-nav');filler=null;
-    ({home:viewOwnerHome,att:viewAttPage,take:viewTake,fees:viewFeePage,reports:viewReports,current:viewCurrent,record:viewRecord,campus:viewCampus})[UI.tab]();
+    ({home:viewOwnerHome,att:viewAttPage,take:viewTake,fees:viewFeePage,reports:viewReports,current:viewCurrent,record:viewRecord,campus:viewCampus,rep:viewRepHub})[UI.tab]();
     return;
   }
   document.body.classList.remove('no-nav');
@@ -753,32 +794,45 @@ const OI={
   camp:'<path d="M3 21h18M5 21V9l7-5 7 5v12"/><path d="M9 21v-6h6v6M10 11h4"/>'
 };
 const ic=k=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${OI[k]}</svg>`;
-const TONE={g:'--tb:var(--g1);--tf:var(--g2)',b:'--tb:var(--b1);--tf:var(--b2)',p:'--tb:var(--p1);--tf:var(--p2)',o:'--tb:var(--o1);--tf:var(--o2)',t:'--tb:var(--t1);--tf:var(--t2)'};
+const TONE={r:'--tb:var(--r1);--tf:var(--r2)',g:'--tb:var(--g1);--tf:var(--g2)',b:'--tb:var(--b1);--tf:var(--b2)',p:'--tb:var(--p1);--tf:var(--p2)',o:'--tb:var(--o1);--tf:var(--o2)',t:'--tb:var(--t1);--tf:var(--t2)'};
 function pageHead(title,sub,tone,back){return `<div class="phead no-print" style="${TONE[tone]||TONE.g}"><button class="back" onclick="go('${back||'home'}')" aria-label="Back">‹</button><div><b>${title}</b>${sub?`<span>${sub}</span>`:''}</div></div>`;}
 function campSelect(){
   if(!hasCampus())return '';
   return `<div class="campsel no-print"><select aria-label="Campus" onchange="UI.camp=this.value==='*'?null:this.value;UI.cls='';UI.attCls='';render()"><option value="*">All campuses</option>${campusKeys().map(k=>`<option value="${esc(k)}" ${UI.camp===k?'selected':''}>${esc(campName(k))}</option>`).join('')}</select></div>`;
 }
+const OI2={rep:'<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>'};
 function viewOwnerHome(){
   const d=todayStr(), gs=allGroups(UI.camp).filter(g=>classStudents(g).length);
-  let tot=0,pres=0,sub=0;gs.forEach(g=>{const a=attOf(d,g);if(a&&a.counts){sub++;tot+=a.counts.total;pres+=a.counts.P;}});
+  let tot=0,pres=0;const notDone=[];gs.forEach(g=>{const a=attOf(d,g);if(a&&a.counts){tot+=a.counts.total;pres+=a.counts.P;}else notDone.push(g);});
   const tp=S.payments.filter(p=>p.date===d&&(UI.camp===null||((getS(p.studentId)||{}).campus||'')===UI.camp));
   const act=S.students.filter(s=>isActive(s)&&inCamp(s)), all=S.students.filter(inCamp);
-  const cash=sum(S.payments.filter(p=>p.settled===false),'amount');
-  const tile=(tab,tone,icon,title,sub,wide)=>`<button class="tile6 ${wide?'wide':''}" style="${TONE[tone]}" onclick="${tab}"><span class="ic">${ic(icon)}</span><div><b>${title}</b><span>${sub}</span></div></button>`;
+  const cashL=S.payments.filter(p=>p.settled===false), cash=sum(cashL,'amount');
+  const hr=new Date().getHours(), greet=hr<12?'Good morning':hr<17?'Good afternoon':'Good evening';
+  const tile=(on,c,icon,title,sub)=>`<button class="tile7" style="--c1:var(--g${c}1);--c2:var(--g${c}2)" onclick="${on}"><span class="ic">${icon}</span><div><b>${title}</b><span class="s">${sub}</span></div></button>`;
+  const alerts=[];
+  if(gs.length&&notDone.length&&hr>=9)alerts.push(`<button class="alert warn" onclick="UI.attMode='daily';UI.attCls='';go('att')">⏰ <span><b>${notDone.length}</b> of ${pl(gs.length,'class')} have not sent attendance today</span></button>`);
+  if(cash)alerts.push(`<button class="alert bad" onclick="UI.feeMode='collect';go('fees')">💰 <span><b>${rs(cash)}</b> fee is still with teachers</span></button>`);
+  if(!act.length&&all.length)alerts.push(`<button class="alert ok" onclick="UI.curMode='students';go('current')">👉 <span>Next step: choose current students for each class</span></button>`);
   $('#main').innerHTML=`
   ${moveBanner()}${installBanner()}
   ${campSelect()}
-  <div class="today">
-    <div><span>Attendance today</span><b>${tot?Math.round(pres/tot*100)+'%':'–'}</b><small>${sub} of ${pl(gs.length,'class')} done</small></div>
-    <div><span>Fee today</span><b>${rs(sum(tp,'amount'))}</b><small>${cash?rs(cash)+' with teachers':pl(tp.length,'receipt')}</small></div>
-  </div>
-  <div class="tiles6">
-    ${tile("UI.attMode='daily';UI.attCls='';go('att')",'g','att','Attendance','Daily and register')}
-    ${tile("UI.feeMode='collect';go('fees')",'b','fee','Fee','Class fee and receive')}
-    ${tile("UI.curMode='students';go('current')",'p','cur','Current Students',pl(act.length,'student')+' studying')}
-    ${tile("go('record')",'o','rec','Student Record','Admission register, '+all.length)}
-    ${tile("go('campus')",'t','camp','Campus',hasCampus()?pl(campusKeys().length,'campus'):campName(''),true)}
+  <section class="hero2">
+    <div class="hi">${greet}${S.settings.ownerName&&S.settings.ownerName!=='Owner'?', '+esc(S.settings.ownerName):''}</div>
+    <h2>${niceDay(d)}</h2>
+    <div class="st">
+      <div><b>${tot?Math.round(pres/tot*100)+'%':'–'}</b><span>Present today</span></div>
+      <div><b>${rs(sum(tp,'amount')).replace('Rs ','')}</b><span>Rs fee today</span></div>
+      <div><b>${act.length}</b><span>Studying</span></div>
+    </div>
+  </section>
+  ${alerts.length?`<div class="alerts">${alerts.join('')}</div>`:''}
+  <div class="tiles7">
+    ${tile("UI.attMode='daily';UI.attCls='';go('att')",'A',ic('att'),'Attendance',`${gs.length-notDone.length} of ${gs.length} classes today`)}
+    ${tile("UI.feeMode='collect';go('fees')",'B',ic('fee'),'Fee',`${pl(tp.length,'receipt')} today`)}
+    ${tile("UI.curMode='students';go('current')",'P',ic('cur'),'Current Students',pl(act.length,'student'))}
+    ${tile("go('record')",'O',ic('rec'),'Student Record',pl(all.length,'student')+' in register')}
+    ${tile("UI.rep='';go('rep')",'R',`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${OI2.rep}</svg>`,'Reports','View and print')}
+    ${tile("go('campus')",'T',ic('camp'),'Campus',hasCampus()?pl(campusKeys().length,'campus'):esc(campName('')))}
   </div>`;
 }
 
@@ -929,7 +983,8 @@ function viewCurrent(){
   <section class="card" style="padding:12px 14px"><b>${pl(act.length,'student')} studying</b>
     <div class="brk">${counts.map(([g,n])=>`<div><span>${esc(gLabel(g))}</span><span>${n}${teacherOf(g)?', '+esc(teacherOf(g)):''}</span></div>`).join('')||'<p class="muted">No students yet.</p>'}</div></section>
   ${!act.length&&S.students.length?`<div class="inst" style="border-color:var(--p2);background:var(--p1)"><div><b>Now choose current students</b>${pl(S.students.length,'student')} are in the register. Pick a class and tick who studies there now.</div></div>`:''}
-  <div class="actions"><button class="btn" style="flex:2 1 200px" onclick="openCurrentPicker()">Choose students for a class</button></div>
+  <div class="actions"><button class="btn" style="flex:2 1 200px" onclick="openMatch()">Add from class list (photo, Excel or names)</button></div>
+  <div class="actions"><button class="btn ghost" style="flex:2 1 200px" onclick="openCurrentPicker()">Tick students for a class</button></div>
   <div class="actions"><button class="btn ghost" onclick="openStudentForm()">+ New student</button><button class="btn ghost" onclick="openImport()">Import Excel</button></div>
   <div class="filters" style="margin-top:12px"><input type="search" placeholder="Search name, father, Adm No." value="${esc(UI.q)}" oninput="UI.q=this.value;fillList()">${clsSelect(UI.cls,'UI.cls=this.value;render()',true)}</div>
   <div class="list" id="list"></div>`;
@@ -1056,6 +1111,195 @@ function doMoveClass(){
   if(!l.length){$('#mc_err').textContent='No students in this class at that campus.';return;}
   if(!confirm(`Move ${pl(l.length,'student')} of ${c} to ${campName(to)}? Teachers of this class must be given the class again at the new campus.`))return;
   updMany('students',l.map(s=>[s.id,{campus:to}]));closeSheet();toast(pl(l.length,'student')+' moved to '+campName(to));
+}
+
+
+/* ================= Reports hub ================= */
+const REPS=[
+  ['attday','Daily attendance','Present and absent in every class','A'],
+  ['attmonth','Monthly attendance','Each class: days, present %','A'],
+  ['register','Attendance register','One class, full month sheet','A'],
+  ['feemonth','Monthly fee','Expected, received, pending by class','B'],
+  ['feecoll','Fee collection','Receipts between two dates','B'],
+  ['dues','Dues list','Who owes fee and how much','R'],
+  ['classlist','Class lists','Students of each class with phone','P'],
+  ['admreg','Admission register','Admissions and withdrawals by year','O']
+];
+function viewRepHub(){
+  if(UI.rep==='feecoll'){UI.rep='';go('reports');return;}
+  if(!UI.rep){
+    $('#main').innerHTML=`${pageHead('Reports','View and print','r')}${campSelect()}
+    <div class="repcards">${REPS.map(([k,t,d,c])=>`<button class="repcard" style="--c1:var(--g${c}1);--c2:var(--g${c}2)" onclick="UI.rep='${k}';render()"><span class="dot2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${OI2.rep}</svg></span><b>${t}</b><span>${d}</span></button>`).join('')}</div>`;
+    return;
+  }
+  const R=REPS.find(x=>x[0]===UI.rep)||REPS[0], gs=allGroups(UI.camp).filter(g=>classStudents(g).length);
+  const head=`<div class="phead no-print" style="${TONE.r}"><button class="back" onclick="UI.rep='';render()" aria-label="Back">‹</button><div><b>${R[1]}</b><span>${R[2]}</span></div></div>${campSelect()}`;
+  const printBtn=`<div class="actions no-print"><button class="btn" onclick="printAs('pr-report')">Print</button></div>`;
+  const campTxt=hasCampus()?(UI.camp===null?', all campuses':', '+campName(UI.camp)):'';
+  const tbl=(cols,rows,foot)=>`<div class="card tblwrap" style="padding:4px 8px"><table class="tbl"><tr>${cols.map(c=>`<th class="${c[1]||''}">${c[0]}</th>`).join('')}</tr>${rows.join('')}${foot||''}</table></div>`;
+  let body='';
+  if(UI.rep==='attday'){
+    const d=UI.date;let T=0,P=0,A=0,L=0;
+    const rows=gs.map(g=>{const a=attOf(d,g);if(a&&a.counts){T+=a.counts.total;P+=a.counts.P;A+=a.counts.A;L+=a.counts.L;}
+      const ab=a?classStudents(g).filter(s=>a.marks[s.id]==='A').map(s=>s.name):[];
+      return `<tr><td><b>${esc(gLabel(g))}</b><small>${esc(teacherOf(g))||''}</small></td><td class="n">${a?a.counts.total:'–'}</td><td class="n c-paid">${a?a.counts.P:'–'}</td><td class="n c-due">${a?a.counts.A:'–'}</td><td class="n">${a?a.counts.L:'–'}</td><td>${a?(ab.length?esc(ab.join(', ')):'None'):'<span class="c-due">Not submitted</span>'}</td></tr>`;});
+    body=`<div class="filters no-print">${dateBox('',d,'aria-label="Date" oninput="maskDate(this)" onchange="const x=parseDMY(this.value);if(x){UI.date=x;render()}"')}</div>
+    ${repHead('Daily attendance report, '+niceDay(d)+campTxt)}
+    ${tbl([['Class'],['Total','n'],['Present','n'],['Absent','n'],['Leave','n'],['Absent students']],rows,`<tr><td><b>Total</b></td><td class="n"><b>${T}</b></td><td class="n"><b>${P}</b></td><td class="n"><b>${A}</b></td><td class="n"><b>${L}</b></td><td><b>${T?Math.round(P/T*100)+'% present':''}</b></td></tr>`)}`;
+  }else if(UI.rep==='attmonth'){
+    const m=UI.month;
+    const rows=gs.map(g=>{const docs=classAtt(g).filter(a=>monthOf(a.date)===m);const P=sum(docs,a=>a.counts.P),T=sum(docs,a=>a.counts.total),A=sum(docs,a=>a.counts.A);
+      const low=classStudents(g).map(s=>({s,a:attStats(s,m)})).filter(x=>x.a.n&&x.a.pct<75).map(x=>x.s.name+' '+x.a.pct+'%');
+      return `<tr><td><b>${esc(gLabel(g))}</b><small>${esc(teacherOf(g))||''}</small></td><td class="n">${docs.length}</td><td class="n">${T?Math.round(P/T*100)+'%':'–'}</td><td class="n c-due">${A}</td><td>${low.length?esc(low.join(', ')):'–'}</td></tr>`;});
+    body=`<div class="filters no-print"><input type="month" aria-label="Month" value="${m}" onchange="UI.month=this.value||thisMonth();render()"></div>
+    ${repHead('Monthly attendance, '+monthName(m)+campTxt)}
+    ${tbl([['Class'],['Days','n'],['Present','n'],['Absences','n'],['Below 75%']],rows)}`;
+  }else if(UI.rep==='register'){
+    if(!UI.attCls||!gs.includes(UI.attCls))UI.attCls=gs[0]||'';
+    body=`<div class="filters no-print"><select onchange="UI.attCls=this.value;render()">${gs.map(x=>`<option value="${esc(x)}" ${x===UI.attCls?'selected':''}>${esc(gLabel(x))}</option>`).join('')}</select><input type="month" value="${UI.month}" onchange="UI.month=this.value||thisMonth();render()"></div>
+    ${UI.attCls?registerHtml(UI.attCls,UI.month).replace('class="rep-head print-only"','class="rep-head"'):'<div class="empty card">No classes yet.</div>'}`;
+  }else if(UI.rep==='feemonth'){
+    const m=UI.month;let E=0,Rc=0,Pd=0;
+    const rows=gs.map(g=>{let e=0,rc=0,pd=0,np=0;classStudents(g).forEach(s=>{const i=monthInfo(s,m);if(i.k==='na')return;e+=i.amt;rc+=i.paid;pd+=i.due;if(i.due>0)np++;});E+=e;Rc+=rc;Pd+=pd;
+      return `<tr><td><b>${esc(gLabel(g))}</b><small>${esc(teacherOf(g))||''}</small></td><td class="n">${rs(e)}</td><td class="n c-paid">${rs(rc)}</td><td class="n ${pd?'c-due':''}">${rs(pd)}</td><td class="n">${np}</td></tr>`;});
+    body=`<div class="filters no-print"><input type="month" value="${m}" onchange="UI.month=this.value||thisMonth();render()"></div>
+    ${repHead('Monthly fee report, '+monthName(m)+campTxt)}
+    ${tbl([['Class'],['Expected','n'],['Received','n'],['Pending','n'],['Not paid','n']],rows,`<tr><td><b>Total</b></td><td class="n"><b>${rs(E)}</b></td><td class="n"><b>${rs(Rc)}</b></td><td class="n"><b>${rs(Pd)}</b></td><td></td></tr>`)}`;
+  }else if(UI.rep==='dues'){
+    const f=UI.cls;const l=S.students.filter(s=>inCamp(s)&&inFilter(s,f)).map(s=>({s,L:ledger(s)})).filter(x=>x.L.bal>0).sort((a,b)=>gOrder(gOf(a.s))-gOrder(gOf(b.s))||b.L.bal-a.L.bal);
+    body=`<div class="filters no-print">${clsSelect(f,'UI.cls=this.value;render()',true)}</div>
+    ${repHead('Fee dues, '+niceDate(todayStr())+(f?', '+esc(gLabel(f)):'')+campTxt)}
+    ${tbl([['Student'],['Class'],['Months'],['Due','n']],l.map(({s,L})=>`<tr><td><b>${esc(s.name)}</b><small>${esc(s.father||'')}${s.phone?', '+esc(s.phone):''}</small></td><td>${esc(gLabel(gOf(s)))}</td><td>${monthsText(unpaidMonths(L))}</td><td class="n c-due">${rs(L.bal)}</td></tr>`),`<tr><td colspan="3"><b>${pl(l.length,'student')}</b></td><td class="n"><b>${rs(sum(l,x=>x.L.bal))}</b></td></tr>`)}`;
+  }else if(UI.rep==='classlist'){
+    const sel=UI.attCls&&gs.includes(UI.attCls)?[UI.attCls]:gs;
+    body=`<div class="filters no-print"><select onchange="UI.attCls=this.value;render()"><option value="">All classes</option>${gs.map(x=>`<option value="${esc(x)}" ${x===UI.attCls?'selected':''}>${esc(gLabel(x))}</option>`).join('')}</select></div>
+    ${sel.map(g=>`${repHead('Class list: '+esc(gLabel(g))+(teacherOf(g)?', teacher '+esc(teacherOf(g)):'')+', '+pl(classStudents(g).length,'student'))}
+      ${tbl([['Roll'],['Adm No.'],['Name'],["Father's name"],['Phone']],classStudents(g).map(s=>`<tr><td>${esc(s.roll)}</td><td>${esc(s.admNo||'')}</td><td><b>${esc(s.name)}</b></td><td>${esc(s.father||'')}</td><td>${esc(s.phone||'')}</td></tr>`))}<div style="height:16px"></div>`).join('')}`;
+  }else if(UI.rep==='admreg'){
+    const ys=[...new Set(S.students.map(s=>(s.admit||'').slice(0,4)).filter(Boolean))].sort().reverse();
+    if(!UI.recYear)UI.recYear=ys[0]||'';
+    const l=S.students.filter(s=>inCamp(s)&&(s.admit||'').startsWith(UI.recYear)).sort((a,b)=>(a.admit||'').localeCompare(b.admit||'')||(parseInt(a.admNo)||0)-(parseInt(b.admNo)||0));
+    const wd=S.students.filter(s=>inCamp(s)&&(s.wdDate||'').startsWith(UI.recYear));
+    body=`<div class="filters no-print"><select onchange="UI.recYear=this.value;render()">${ys.map(y=>`<option ${y===UI.recYear?'selected':''}>${y}</option>`).join('')}</select></div>
+    <div class="actions no-print" style="margin-top:0"><button class="btn ghost" onclick="openRegisterExport()">Download Excel</button></div>
+    ${repHead(`Admission register ${UI.recYear}: ${pl(l.length,'admission')}, ${pl(wd.length,'withdrawal')}`+campTxt)}
+    ${tbl([['Adm No.'],['Date'],['Name'],["Father's name"],['Class'],['Withdrawn']],l.map(s=>`<tr><td>${esc(s.admNo||'')}</td><td>${dmy(s.admit)}</td><td><b>${esc(s.name)}</b></td><td>${esc(s.father||'')}</td><td>${esc(s.admClass||s.cls)}</td><td>${s.wdDate?dmy(s.wdDate)+(s.wdClass?' ('+esc(s.wdClass)+')':''):''}</td></tr>`))}`;
+  }
+  $('#main').innerHTML=head+body+printBtn;
+  if(UI.rep==='register')scrollRegister(UI.month);
+}
+
+/* ================= Add current students from a class list ================= */
+/* Read names from a photo, an Excel sheet or typed text, find each one in the Student Record, and add them to a class. */
+let MT=null;
+function loadOCR(){
+  if(window.Tesseract)return Promise.resolve(window.Tesseract);
+  return new Promise((res,rej)=>{const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/tesseract.js@6.0.1/dist/tesseract.min.js';
+    s.onload=()=>res(window.Tesseract);s.onerror=()=>rej(new Error('Could not load the photo reader. Check internet.'));document.head.appendChild(s);});
+}
+const SVG_CAM='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>';
+const SVG_XL='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8l8 8M16 8l-8 8"/></svg>';
+const SVG_TXT='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg>';
+function openMatch(g){
+  const gs=allGroups(UI.camp);g=g||(UI.cls&&gs.includes(UI.cls)?UI.cls:gs[0]);
+  MT={g,rows:[],moveOut:false};
+  sheet(`<h3>Add students from a class list</h3><p class="muted">The app finds each name in the Student Record and adds them to the class you choose.</p>
+  <label>Add them to<select id="mt_g" onchange="MT.g=this.value">${gs.map(x=>`<option value="${esc(x)}" ${x===g?'selected':''}>${esc(gLabel(x))} (${classStudents(x).length} now)</option>`).join('')}</select></label>
+  <div class="srcbtns">
+    <label>${SVG_CAM}Photo of register<input type="file" accept="image/*" capture="environment" hidden onchange="mtPhoto(this.files[0])"></label>
+    <label>${SVG_XL}Excel sheet<input type="file" accept=".xlsx,.xls,.csv,.ods" hidden onchange="mtExcel(this.files[0])"></label>
+    <button onclick="mtTypeBox()">${SVG_TXT}Type names</button>
+  </div>
+  <div id="mt_area"><p class="note" style="margin-top:12px">Photo works best with clear, printed or neat writing and one student per line. You will check every match before anything is saved.</p></div>
+  <div class="actions"><button class="btn ghost" onclick="closeSheet()">Cancel</button></div>`);
+}
+function mtTypeBox(){
+  $('#mt_area').innerHTML=`<label>One student per line. Add father's name or Adm No. if you can.<textarea id="mt_txt" rows="9" placeholder="Ali Khan s/o Gul Rahman&#10;Ayesha, Sher Muhammad&#10;1523 Hamza"></textarea></label>
+  <div class="actions"><button class="btn" onclick="mtLines($('#mt_txt').value.split('\\n'))">Find these students</button></div>`;
+}
+async function mtPhoto(file){
+  if(!file)return;
+  $('#mt_area').innerHTML=`<p class="note" style="margin-top:12px" id="mt_msg">Getting the photo reader ready...</p><div class="prog"><i id="mt_bar"></i></div>`;
+  try{
+    const T=await loadOCR();
+    const img=await shrinkImage(file);
+    const res=await T.recognize(img,'eng',{logger:m=>{if(m.status==='recognizing text'){$('#mt_msg').textContent='Reading names... '+Math.round(m.progress*100)+'%';$('#mt_bar').style.width=Math.round(m.progress*100)+'%';}else if($('#mt_msg'))$('#mt_msg').textContent=m.status.replace(/^./,c=>c.toUpperCase())+'...';}});
+    const lines=(res.data.text||'').split('\n');
+    if(!lines.some(l=>/[a-z]{3}/i.test(l))){$('#mt_area').innerHTML='<p class="err">No names could be read from this photo. Try a sharper photo in good light, or use Type names.</p>';return;}
+    mtLines(lines,'photo');
+  }catch(e){$('#mt_area').innerHTML=`<p class="err">${esc(e.message||e)}</p>`;}
+}
+async function mtExcel(file){
+  if(!file)return;
+  try{
+    const X=await loadXLSX(), wb=X.read(await file.arrayBuffer(),{type:'array'});
+    const rows=X.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]],{header:1,blankrows:false,defval:''});
+    const hi=findHeaderRow(rows), map=guessMap(rows[hi]||[]);
+    let lines;
+    if(map.name!==undefined)lines=rows.slice(hi+1).map(r=>[map.admNo!==undefined?cellStr(r[map.admNo]):'',cellStr(r[map.name]),map.father!==undefined?'s/o '+cellStr(r[map.father]):''].join(' ').trim());
+    else lines=rows.map(r=>r.map(cellStr).filter(Boolean).join(' '));
+    mtLines(lines,'excel');
+  }catch(e){$('#mt_area').innerHTML=`<p class="err">Could not read this file: ${esc(e.message||e)}</p>`;}
+}
+/* ---- name matching ---- */
+function nn(s){return String(s||'').toLowerCase().replace(/\b(mohammad|mohammed|muhammed|mohamad|mohd|muhamad|mhd)\b/g,'muhammad').replace(/\b(m)\.?\s/g,'muhammad ').replace(/[^a-z ]/g,' ').replace(/\s+/g,' ').trim();}
+function bigrams(s){s=s.replace(/ /g,'');const b=new Map();for(let i=0;i<s.length-1;i++){const k=s.slice(i,i+2);b.set(k,(b.get(k)||0)+1);}return b;}
+function dice(a,b){if(!a||!b)return 0;if(a===b)return 1;const A=bigrams(a),B=bigrams(b);let n=0,ta=0,tb=0;A.forEach(v=>ta+=v);B.forEach(v=>tb+=v);A.forEach((v,k)=>{if(B.has(k))n+=Math.min(v,B.get(k));});return ta+tb?2*n/(ta+tb):0;}
+function nameSim(a,b){a=nn(a);b=nn(b);if(!a||!b)return 0;const d=dice(a,b);const ta=a.split(' '),tb=b.split(' ');const tok=ta.filter(t=>t.length>1&&tb.some(u=>u===t||(t.length>3&&dice(t,u)>.8))).length/Math.max(ta.length,tb.length);return Math.max(d,tok*.95);}
+function parseLine(l){
+  let s=String(l||'').replace(/[|_]/g,' ').trim();if(!s)return null;
+  let adm='';const m=s.match(/\b(\d{1,5})\b/);if(m){adm=m[1];}
+  s=s.replace(/^\s*\d{1,3}\s*[.)\-:]?\s+/,'');
+  let name=s, father='';
+  const sp=s.split(/\s+(?:s\/o|d\/o|s\.o|d\.o|son of|daughter of|bin|bint)\s+|\s*[,;\t]\s*|\s+-\s+/i);
+  if(sp.length>1){name=sp[0];father=sp.slice(1).join(' ');}
+  name=name.replace(/\d+/g,' ').replace(/\s+/g,' ').trim();father=father.replace(/\d+/g,' ').replace(/\s+/g,' ').trim();
+  if(!/[a-z]{2}/i.test(name))return null;
+  if(/^(name|names|student|students|roll|class|section|s\.?\s*no|sr|total|father|attendance|register|month)\b/i.test(name))return null;
+  return {raw:String(l).trim(),name,father,adm};
+}
+function mtCandidates(p,g){
+  const pool=S.students.filter(s=>UI.camp===null||(s.campus||'')===UI.camp);
+  const out=pool.map(s=>{let sc=nameSim(p.name,s.name);
+    if(p.father){sc=sc*.7+nameSim(p.father,s.father)*.3;}
+    if(p.adm&&String(s.admNo)===p.adm)sc=Math.min(1,sc+.35);
+    if(sameCls(likelyCls(s),gCls(g)))sc+=.06;
+    if(isActive(s)&&inGroup(s,g))sc+=.04;
+    if(s.wdDate&&!isActive(s))sc-=.1;
+    return {s,sc};}).filter(x=>x.sc>.45).sort((a,b)=>b.sc-a.sc).slice(0,6);
+  return out;
+}
+function mtLines(lines,src){
+  const g=$('#mt_g').value;MT.g=g;
+  const parsed=lines.map(parseLine).filter(Boolean);
+  if(!parsed.length){$('#mt_area').innerHTML='<p class="err">No names found.</p>';return;}
+  const used=new Set();
+  MT.rows=parsed.map(p=>{const c=mtCandidates(p,g);let pick=c.find(x=>!used.has(x.s.id));
+    const ok=pick&&pick.sc>=.78&&(c.length<2||c[0].s.id!==pick.s.id||c[0].sc-(c[1]||{sc:0}).sc>.04||pick.sc>=.95);
+    if(pick&&pick.sc>=.6)used.add(pick.s.id);
+    const wd=pick&&pick.s.wdDate&&!isActive(pick.s);
+    return {p,c,id:pick&&pick.sc>=.6?pick.s.id:'',on:!!(pick&&pick.sc>=.6&&!wd),sure:!!ok&&!wd};});
+  mtShow();
+}
+function mtShow(){
+  const g=MT.g, found=MT.rows.filter(r=>r.id).length, check=MT.rows.filter(r=>r.id&&!r.sure).length, none=MT.rows.length-found;
+  $('#mt_area').innerHTML=`<div class="balbox good" style="margin-top:12px"><span>${pl(MT.rows.length,'name')} read</span><b>${found} found</b>
+    <span>${check?check+' to check (marked in orange), ':''}${none?none+' not found':'all names found'}</span></div>
+  <div class="card" style="padding:0 12px;margin-top:10px">${MT.rows.map((r,i)=>`<div class="mt-row"><input type="checkbox" ${r.on&&r.id?'checked':''} ${r.id?'':'disabled'} onchange="MT.rows[${i}].on=this.checked;mtCount()" aria-label="Add">
+    <div class="t"><div class="src">From list: <b style="color:var(--ink)">${esc(r.p.raw)}</b></div>
+    <select onchange="MT.rows[${i}].id=this.value;MT.rows[${i}].on=!!this.value;MT.rows[${i}].sure=true;mtShow()" style="${r.id&&!r.sure?'border-color:var(--part);background:var(--partbg)':''}">
+      <option value="">${r.c.length?'Not this one / no match':'No match in the record'}</option>
+      ${r.c.map(x=>`<option value="${x.s.id}" ${x.s.id===r.id?'selected':''}>${esc(x.s.name)}${x.s.father?' s/o '+esc(x.s.father):''}${x.s.admNo?', Adm '+esc(x.s.admNo):''}${isActive(x.s)?' ('+esc(gLabel(gOf(x.s)))+')':x.s.wdDate?' (withdrawn '+dmy(x.s.wdDate)+')':''}</option>`).join('')}
+    </select></div></div>`).join('')}</div>
+  <label class="check" style="margin-top:12px"><input type="checkbox" ${MT.moveOut?'checked':''} onchange="MT.moveOut=this.checked"> Students now in ${esc(gLabel(g))} who are not on this list move to history</label>
+  <div class="actions"><button class="btn ghost" onclick="openMatch('${esc(g)}')">Start again</button><button class="btn green" id="mt_save" onclick="mtSave()"></button></div>`;
+  mtCount();
+}
+function mtCount(){const n=MT.rows.filter(r=>r.on&&r.id).length;$('#mt_save').textContent=`Add ${pl(n,'student')} to ${gLabel(MT.g)}`;}
+function mtSave(){
+  const ids=[...new Set(MT.rows.filter(r=>r.on&&r.id).map(r=>r.id))];if(!ids.length){toast('Tick at least one student');return;}
+  CP={g:MT.g,sel:new Set(ids.concat(MT.moveOut?[]:classStudents(MT.g).map(s=>s.id))),likely:true,wd:false,q:'',year:''};
+  MT=null;cpSave();
 }
 
 /* ================= Check that data reaches the database ================= */
@@ -1602,7 +1846,7 @@ function viewReports(){
   const title=(UI.from===UI.to?niceDate(UI.from):niceDate(UI.from)+' to '+niceDate(UI.to))+(UI.by?', by '+UI.by:'');
   const on=k=>{const save=[UI.from,UI.to];setRange(k);const r=UI.from===save[0]&&UI.to===save[1];[UI.from,UI.to]=save;return r?'on':'';};
   $('#main').innerHTML=`
-  ${pageHead('Fee reports','Money received by date','b','fees')}
+  ${pageHead('Fee collection','Receipts between two dates','r','rep')}
   <div class="chips no-print">${[['today','Today'],['yesterday','Yesterday'],['month','This month'],['last','Last month']].map(([k,l])=>`<button class="chipbtn ${on(k)}" onclick="setRange('${k}');render()">${l}</button>`).join('')}</div>
   <div class="filters no-print">${dateBox('',UI.from,'aria-label="From date" oninput="maskDate(this)" onchange="const d=parseDMY(this.value);if(d){UI.from=d;render()}"')}${dateBox('',UI.to,'aria-label="To date" oninput="maskDate(this)" onchange="const d=parseDMY(this.value);if(d){UI.to=d;render()}"')}
   ${people.length>1?`<select aria-label="Collected by" onchange="UI.by=this.value;render()"><option value="">Everyone</option>${people.map(n=>`<option ${n===UI.by?'selected':''}>${esc(n)}</option>`).join('')}</select>`:''}</div>
