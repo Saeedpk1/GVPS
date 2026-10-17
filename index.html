@@ -363,8 +363,9 @@ const recNo = n => String(n||0).padStart(5,'0');
 const slug = s => String(s).replace(/[^a-zA-Z0-9]+/g,'-');
 const isOwner = () => !!ME && ME.role==='owner';
 function myClasses(){if(!ME)return [];if(isOwner())return classes();const c=classes();return (ME.classes||[]).slice().sort((a,b)=>c.indexOf(a)-c.indexOf(b));}
-const inScope = s => isOwner()||myClasses().includes(s.cls);
-function teacherOf(c){return S.staff.filter(t=>t.active!==false&&(t.classes||[]).includes(c)).map(t=>t.name).join(', ');}
+const sameCls = (a,b) => String(a||'').toLowerCase().replace(/[^a-z0-9]/g,'')===String(b||'').toLowerCase().replace(/[^a-z0-9]/g,'');
+const inScope = s => isOwner()||myClasses().some(c=>sameCls(c,s.cls));
+function teacherOf(c){return S.staff.filter(t=>t.active!==false&&(t.classes||[]).some(x=>sameCls(x,c))).map(t=>t.name).join(', ');}
 
 function inWords(n){
   n=Math.round(Math.abs(n));if(!n)return 'Zero Rupees Only';
@@ -465,7 +466,7 @@ function applyOpLocal(op){
     if(op.t==='del')S.staff=S.staff.filter(x=>!op.ids.includes(x.id));else op.rows.forEach(r=>apply('staff',fromProfile(r)));
   }
 }
-let fetching=null;
+let fetching=null, fetchErr='';
 function fetchAll(){if(!fetching)fetching=doFetch().finally(()=>{fetching=null;});return fetching;}
 async function doFetch(){
   if(!ONLINE||!ME)return;
@@ -485,8 +486,8 @@ async function doFetch(){
       ME.name=S.settings.ownerName||ME.name;
     }
     Q.forEach(applyOpLocal);
-    lastFetch=Date.now();C={};saveLocal();render();
-  }catch(e){if(!isNetErr(e))console.error(e);}
+    lastFetch=Date.now();fetchErr='';C={};saveLocal();render();
+  }catch(e){fetchErr=isNetErr(e)?'No internet':((e&&e.message)||String(e));if(!isNetErr(e)){console.error(e);toast('Could not load school data: '+fetchErr);}render();}
 }
 function subscribe(){
   if(chan)sb.removeChannel(chan);
@@ -560,7 +561,7 @@ function sortStudents(a,b){
 }
 function matches(s){
   if(!inScope(s))return false;
-  if(UI.cls&&s.cls!==UI.cls)return false;
+  if(UI.cls&&!sameCls(s.cls,UI.cls))return false;
   const q=UI.q.trim().toLowerCase();if(!q)return true;
   return [s.name,s.father,s.roll,s.phone,s.admNo,s.fileNo].some(v=>String(v||'').toLowerCase().includes(q));
 }
@@ -578,7 +579,7 @@ const attId = (d,c) => d+'_'+slug(c);
 function attMap(){if(!C.att){C.att={};S.attendance.forEach(a=>{C.att[a.date+'|'+a.cls]=a;});}return C.att;}
 const attOf = (d,c) => attMap()[d+'|'+c];
 function classAtt(c){C.ca=C.ca||{};if(!C.ca[c])C.ca[c]=S.attendance.filter(a=>a.cls===c).sort((a,b)=>a.date.localeCompare(b.date));return C.ca[c];}
-const classStudents = c => S.students.filter(s=>s.cls===c&&isActive(s)).sort(sortStudents);
+const classStudents = c => S.students.filter(s=>sameCls(s.cls,c)&&isActive(s)).sort(sortStudents);
 function absentStreak(sid,c,before){
   const l=classAtt(c).filter(a=>a.date<before);let n=0;
   for(let i=l.length-1;i>=0;i--){const m=l[i].marks&&l[i].marks[sid];if(m===undefined)continue;if(m==='A')n++;else break;}
@@ -726,6 +727,22 @@ function openClassDay(c){
   <div class="actions"><button class="btn ghost" onclick="closeSheet()">Close</button></div>`);
 }
 
+function refreshData(){if(!ONLINE){render();return;}toast('Getting latest data...');fetchAll().then(()=>toast(fetchErr?'Could not load: '+fetchErr:'Updated: '+pl(S.students.length,'student')+' in school'));}
+function teacherHelp(){
+  const cl=myClasses();
+  const rows=cl.map(c=>{const all=S.students.filter(s=>sameCls(s.cls,c)), a=all.filter(isActive).length, l=all.length-a;
+    return `<div class="mrow"><div><b>${esc(c)}</b><small>${a} studying${l?`, ${l} marked as left`:''}</small></div></div>`;}).join('');
+  const total=S.students.length;
+  let tip='';
+  if(fetchErr)tip=`Could not load school data: ${esc(fetchErr)}`;
+  else if(ONLINE&&!lastFetch)tip='Still loading. Check internet and tap Refresh.';
+  else if(!total)tip='No students received from the school yet. Ask the owner to open the app with internet so their students are sent, then tap Refresh.';
+  else if(cl.length&&cl.every(c=>!S.students.some(s=>sameCls(s.cls,c))))tip=`The school has ${pl(total,'student')}, but none in ${esc(cl.join(', '))}. The owner should check that these students are in exactly this class.`;
+  else tip='Students marked as left do not show. The owner can change them back to studying.';
+  return `<div class="card" style="padding:12px 14px;margin-top:10px"><b>Your classes</b>${rows||'<p class="muted">No class given yet.</p>'}
+    <p class="note" style="margin-top:8px">${tip}</p><div class="actions"><button class="btn sm" onclick="refreshData()">Refresh</button></div></div>`;
+}
+
 /* ================= Attendance: owner overview ================= */
 function viewAttOwner(){
   const d=UI.date, cl=classes().filter(c=>S.students.some(s=>s.cls===c&&isActive(s)));
@@ -746,7 +763,7 @@ function viewTake(){
   const cl=myClasses();
   if(!UI.attCls||!cl.includes(UI.attCls))UI.attCls=cl[0]||'';
   const cls=UI.attCls;
-  if(!cls){$('#main').innerHTML=`${installBanner()}<div class="empty card">No class is given to you yet. Ask the owner to add your class.</div>`;return;}
+  if(!cls){$('#main').innerHTML=`${installBanner()}<div class="empty card">No class is given to you yet. Ask the owner to add your class.</div>${teacherHelp()}`;return;}
   const d=UI.date, doc=attOf(d,cls), list=classStudents(cls), D=draftFor(d,cls);
   $('#main').innerHTML=`
   ${isOwner()?'':installBanner()}
@@ -761,7 +778,7 @@ function viewTake(){
     <div class="att-row ${m!=='P'?'is-'+m:''}" data-id="${s.id}"><div class="t"><div class="n"><span class="roll">${esc(s.roll)}</span>${esc(s.name)}</div>${st>=2?`<div class="s c-due">Absent ${st} days before this</div>`:''}</div>
     <div class="pal">${['P','A','L'].map(k=>`<button class="pk ${k} ${m===k?'on':''}" onclick="mark('${s.id}','${k}')" aria-label="${MARK[k]}">${k}</button>`).join('')}</div></div>`;}).join('')}</div>
   <div class="sticky-act"><button class="btn wide" id="attBtn" onclick="submitAtt()"></button></div>`
-  :`<div class="empty card" style="margin-top:10px">No students in ${esc(cls)} yet.<br><button class="btn" onclick="UI.cls='${esc(cls)}';go('students')">Add students</button></div>`}`;
+  :`<div class="empty card" style="margin-top:10px">No students in ${esc(cls)} yet.</div>${isOwner()?'':teacherHelp()}`}`;
   if(list.length)updCounts();
 }
 function mark(id,k){
@@ -960,7 +977,8 @@ function viewStudents(){
     <div class="gap">${isOwner()?'<button class="btn sm ghost" onclick="openImport()">Import Excel</button>':''}<button class="btn sm ghost" onclick="openBulk()">Add many</button><button class="btn sm" onclick="openStudentForm()">+ Add</button></div></div>
   ${bar({q:true,cls:true})}
   <div class="chips">${[['active','Studying'],['left','Left school'],['all','All']].map(([k,t])=>`<button class="chipbtn ${UI.stu===k?'on':''}" onclick="UI.stu='${k}';render()">${t} (${S.students.filter(s=>inScope(s)&&(k==='all'||(k==='left')!==isActive(s))).length})</button>`).join('')}</div>
-  <div class="list" id="list"></div>`;
+  <div class="list" id="list"></div>
+  ${isOwner()&&UI.stu==='left'?'<div class="actions"><button class="btn ghost" onclick="reactivateShown()">Mark all shown as studying</button></div>':''}`;
   filler=()=>{
     const l=S.students.filter(s=>matches(s)&&(UI.stu==='all'||(UI.stu==='left')!==isActive(s))).sort(sortStudents);
     $('#list').innerHTML=l.length?l.map(s=>{const a=attStats(s,m);return `
@@ -968,9 +986,17 @@ function viewStudents(){
         <div class="av">${esc(initials(s.name))}</div>
         <div class="t"><div class="n">${esc(s.name)}</div><div class="s">${s.admNo?'Adm '+esc(s.admNo)+', ':''}${sline(s)}</div></div>
         <div class="r">${isActive(s)?balChip(ledger(s).bal):'<span class="chip left">Left'+(s.wdDate?' '+esc(s.wdDate.slice(0,4)):'')+'</span>'}<span class="s ${a.pct!==null&&a.pct<75?'c-due':''}">${isActive(s)?(a.pct===null?'No attendance yet':a.pct+'% present'):(s.admit?'Admitted '+esc(s.admit.slice(0,4)):'')}</span></div>
-      </button>`;}).join(''):`<div class="empty card">${S.students.some(inScope)?'No student matches this search.':'No students yet.<br>'+(isOwner()?'<button class="btn" onclick="openImport()">Import from Excel</button> ':'')+'<button class="btn ghost" onclick="openStudentForm()">Add first student</button>'}</div>`;
+      </button>`;}).join(''):`<div class="empty card">${S.students.some(inScope)?'No student matches this search.':'No students yet.<br>'+(isOwner()?'<button class="btn" onclick="openImport()">Import from Excel</button> ':'')+'<button class="btn ghost" onclick="openStudentForm()">Add first student</button>'}</div>${isOwner()||l.length?'':teacherHelp()}`;
   };
   fillList();
+}
+function reactivateShown(){
+  const l=S.students.filter(s=>matches(s)&&!isActive(s));if(!l.length)return;
+  if(!confirm(`Mark ${pl(l.length,'student')} as studying now? Monthly fee will be charged from this month and they will show in attendance.`))return;
+  const m=thisMonth();
+  updMany('students',l.map(s=>[s.id,{active:true,leftMonth:null,wdDate:'',wdClass:'',admit:(s.admit&&s.admit<m+'-01'&&monthOf(s.admit)<(S.settings.startMonth||m))?s.admit:s.admit,
+    fees:feeHist(s).some(x=>Number(x.fee))?feeHist(s):[{from:'0000-00',fee:classFee(s.cls),disc:0}],fee:Number(s.fee)||classFee(s.cls)}]));
+  UI.stu='active';render();toast(pl(l.length,'student')+' marked as studying');
 }
 function nextRoll(c){return (S.students.filter(s=>s.cls===c).reduce((m,s)=>Math.max(m,parseInt(s.roll)||0),0)+1)+'';}
 function openStudentForm(id){
@@ -1165,7 +1191,7 @@ function openTeachers(){
   const l=[...S.staff].sort((a,b)=>(a.active===false)-(b.active===false)||String(a.name).localeCompare(b.name));
   sheet(`<h3>Teachers</h3><p class="muted">Each teacher gets their own page for attendance and fee of their classes.</p>
   <div class="list" style="margin-top:12px">${l.map(t=>`<button class="item" onclick="openTeacherForm('${t.id}')"><div class="av">${esc(initials(t.name))}</div>
-    <div class="t"><div class="n">${esc(t.name)}</div><div class="s">${esc((t.classes||[]).join(', ')||'No class')}${t.username?', login: '+esc(t.username):''}</div></div>
+    <div class="t"><div class="n">${esc(t.name)}</div><div class="s">${esc((t.classes||[]).map(c=>c+' ('+classStudents(c).length+')').join(', ')||'No class')}${t.username?', login: '+esc(t.username):''}</div></div>
     ${t.active===false?'<span class="chip left">Removed</span>':''}</button>`).join('')||'<p class="muted">No teachers yet.</p>'}</div>
   <div class="actions"><button class="btn" onclick="openTeacherForm()">+ Add teacher</button><button class="btn ghost" onclick="openSettings()">Back</button></div>`);
 }
@@ -1177,7 +1203,7 @@ function openTeacherForm(id){
   <label>Teacher name<input id="t_name" value="${esc(t.name)}" placeholder="e.g. Rahmad Zada" ${id?'':`oninput="if(!$('#t_user').dataset.touched)$('#t_user').value=suggestUser(this.value)"`}></label>
   <label>Phone<input id="t_phone" type="tel" value="${esc(t.phone)}" placeholder="03xx xxxxxxx"></label>
   <label>Classes this teacher looks after</label>
-  <div class="cks">${classes().map(c=>`<label><input type="checkbox" value="${esc(c)}" ${(t.classes||[]).includes(c)?'checked':''}> ${esc(c)}${taken[c]?`<small class="muted" style="font-size:11px">&nbsp;(${esc(taken[c])})</small>`:''}</label>`).join('')}</div>
+  <div class="cks">${classes().map(c=>`<label><input type="checkbox" value="${esc(c)}" ${(t.classes||[]).includes(c)?'checked':''}> ${esc(c)} <small class="muted" style="font-size:11px">${classStudents(c).length}${taken[c]?', '+esc(taken[c]):''}</small></label>`).join('')}</div>
   ${!id?`<div class="two"><label>Login username<input id="t_user" autocapitalize="none" oninput="this.dataset.touched=1"></label>
     <label>Password<input id="t_pass" value="${Math.random().toString(36).slice(2,8)}"></label></div>
     <p class="note">${ONLINE?'The teacher signs in with this username and password.':'In test mode, the teacher is picked from the start screen. No password needed.'}</p>`
@@ -1231,7 +1257,7 @@ function openSettings(){
     <p class="note">${isInstalled()?'The app is installed on this device.':'Put the GVPS app on this phone with the school logo as its icon.'}</p>
     ${isInstalled()?'':`<div class="actions"><button class="btn" onclick="installApp()">Download app</button></div>`}</div></details>`;
   const acct=ONLINE?`<p class="note" style="margin-top:14px">Signed in as ${esc(ME.name)}${ME.email?' ('+esc(String(ME.email).replace('@'+STAFF_DOMAIN,''))+')':''}</p>
-    <div class="actions"><button class="btn ghost" onclick="openPassword()">Change password</button><button class="btn red" onclick="signOut()">Sign out</button></div>`
+    <div class="actions"><button class="btn ghost" onclick="closeSheet();refreshData()">Refresh data</button><button class="btn ghost" onclick="openPassword()">Change password</button><button class="btn red" onclick="signOut()">Sign out</button></div>`
     :`<div class="actions"><button class="btn ghost" onclick="switchUser()">Switch user</button></div>`;
   if(!own){sheet(`<h3>Settings</h3><p class="muted">${esc(ME.name)}, ${esc(myClasses().join(', ')||'no class yet')}</p>${appBlock}${acct}<div class="actions"><button class="btn ghost" onclick="closeSheet()">Close</button></div>`);return;}
   const clsText=classes().map(c=>c+(classFee(c)?' = '+classFee(c):'')).join('\n');
