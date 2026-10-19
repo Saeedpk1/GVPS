@@ -874,6 +874,62 @@ body:has(.fab) #toast{bottom:calc(env(safe-area-inset-bottom,0px) + 150px)}
 .pal{gap:4px!important}
 .pk{width:33px!important;height:33px!important;font-size:13px!important}
 @media (prefers-color-scheme:dark){.att-row.is-S{--rb:#2a1f48!important}}
+
+/* admission form entry */
+.admcard{display:flex;align-items:center;gap:12px;width:100%;margin-bottom:10px;border:0;border-radius:18px;padding:14px 16px 14px 12px;cursor:pointer;font:inherit;text-align:left;color:#fff;background:linear-gradient(135deg,#0d5c22,#1aa37a);box-shadow:0 10px 20px -12px #0d5c22}
+.admcard .em{width:46px;height:46px;border-radius:14px;background:#fff;display:grid;place-items:center;font-size:24px;flex:none}
+.admcard .tx{flex:1}.admcard b{display:block;font-size:16.5px}.admcard small{display:block;font-size:12.5px;opacity:.92}.admcard i{font-style:normal;font-size:24px;font-weight:800}
+.afcard{background:var(--card);border-radius:18px;padding:14px;margin-top:12px;border:1.5px solid color-mix(in srgb,var(--c2) 30%,var(--line));box-shadow:0 6px 16px -14px var(--c1)}
+.afcard h4{font-size:15px;font-weight:800;color:#fff;margin:-14px -14px 10px;padding:10px 14px;border-radius:16px 16px 0 0;background:linear-gradient(135deg,var(--c1),var(--c2))}
+.afcard label{display:block;font-size:12.5px;font-weight:700;color:var(--c1);margin-top:10px}
+.afcard input,.afcard select{display:block;width:100%;margin-top:4px;height:46px;border:1.5px solid color-mix(in srgb,var(--c2) 30%,var(--line));border-radius:11px;background:color-mix(in srgb,var(--c2) 5%,var(--card));padding:0 12px;font-size:15.5px;font-weight:600;color:var(--ink)}
+.afcard input:focus,.afcard select:focus{outline:none;border-color:var(--c1);box-shadow:0 0 0 3px color-mix(in srgb,var(--c2) 28%,transparent)}
+.afcard label.check{display:flex;align-items:center;gap:10px;color:var(--ink);font-size:14px}
+.afcard label.check input{width:22px;height:22px;margin:0;flex:none}
+.afg{display:grid;grid-template-columns:1fr 1fr;gap:0 10px}
+.afphoto{display:flex;gap:12px;align-items:flex-start}
+.afph{width:96px!important;height:118px;margin-top:10px!important;border-radius:14px;border:2px dashed color-mix(in srgb,var(--c2) 55%,var(--line));display:grid!important;place-items:center;overflow:hidden;cursor:pointer;flex:none;background:color-mix(in srgb,var(--c2) 6%,var(--card));text-align:center;color:var(--c1)!important;font-size:12px!important}
+.afph img{width:100%;height:100%;object-fit:cover}
+.afsearch{margin-top:6px!important}
+.afsibs{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.afsibs button{border:1.5px solid color-mix(in srgb,var(--c2) 40%,var(--line));background:color-mix(in srgb,var(--c2) 8%,var(--card));border-radius:12px;padding:8px 12px;text-align:left;font:inherit;cursor:pointer;color:var(--ink)}
+.afsibs b{display:block;font-size:14px}.afsibs small{font-size:12px;color:var(--muted)}
+.afmore{margin-top:10px;border:1.5px dashed color-mix(in srgb,var(--c2) 35%,var(--line));border-radius:12px;padding:0 12px 10px}
+.afmore summary{padding:10px 0 0;font-weight:800;color:var(--c1);cursor:pointer}
+/* printable admission form (A4, plain colours) */
+.adoc{width:794px;min-height:1123px;background:#fff;color:#1d2433;font-family:"Plus Jakarta Sans",system-ui,sans-serif;position:relative;padding:30px 36px 26px;color-scheme:light;box-sizing:border-box;display:flex;flex-direction:column}
+.ad-rib{position:absolute;left:0;right:0;top:0;height:9px;background:linear-gradient(90deg,#0d5c22,#2fb36b,#d9a531)}
+.ad-rib.bt{top:auto;bottom:0}
+.ad-hd{display:flex;align-items:center;gap:16px;padding-bottom:12px;border-bottom:3px double #0d5c22}
+.ad-hd>img{width:92px;height:92px}
+.ad-sc{flex:1;text-align:center}
+.ad-sc .sn{font-family:"Cinzel",Georgia,serif;font-size:29px;font-weight:800;color:#0d5c22;line-height:1.1}
+.ad-sc .sa{font-size:12.5px;color:#445;margin-top:3px}
+.ad-ph{width:96px;height:116px;border:2px solid #0d5c22;border-radius:8px;overflow:hidden;display:grid;place-items:center;color:#99a;font-size:12px;flex:none;background:#f6faf7}
+.ad-ph img{width:100%;height:100%;object-fit:cover}
+.ad-band{display:flex;justify-content:space-between;align-items:center;margin-top:12px;padding:8px 16px;border-radius:8px;background:linear-gradient(90deg,#0d5c22,#2fb36b);color:#fff}
+.ad-band span{font-family:"Cinzel",Georgia,serif;font-weight:800;letter-spacing:4px;font-size:17px}
+.ad-band em{font-style:normal;font-weight:700;font-size:13px;background:rgba(255,255,255,.2);padding:3px 10px;border-radius:20px}
+.ad-key{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:10px}
+.ad-key div{border:1.5px solid #cfe3d5;border-radius:8px;padding:5px 8px;background:#f3faf5}
+.ad-key span{display:block;font-size:10px;color:#667;text-transform:uppercase;letter-spacing:.4px}
+.ad-key b{display:block;font-size:14px;color:#0d5c22}
+.adoc h5{margin:14px 0 6px;font-size:13px;font-weight:800;color:#0d5c22;text-transform:uppercase;letter-spacing:.8px;border-left:5px solid #d9a531;padding-left:8px}
+.ad-g{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid #d6e2d9;border-radius:8px;overflow:hidden}
+.ad-g .c{padding:5px 9px;border-right:1px solid #e3ebe5;border-bottom:1px solid #e3ebe5;min-height:40px}
+.ad-g .c.w2{grid-column:span 2}.ad-g .c.w3{grid-column:span 3}
+.ad-g .c span{display:block;font-size:10px;color:#6a7486;text-transform:uppercase;letter-spacing:.3px}
+.ad-g .c b{display:block;font-size:13.5px;color:#1d2433;font-weight:700;line-height:1.25}
+.ad-g .nil{color:#b8c0cc;font-weight:400}
+.ad-off{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:12px;padding:8px 12px;border:1.5px dashed #d9a531;border-radius:8px;background:#fffaf0;font-size:12.5px}
+.ad-off b{color:#8a5a00}.ad-off i{font-style:normal;font-weight:800}
+.ad-decl{font-size:11.5px;color:#556;margin-top:10px;font-style:italic}
+.ad-ft{margin-top:auto;padding-top:36px;display:flex;justify-content:space-between;font-size:12.5px;font-weight:700;color:#334}
+.ad-ft>div{width:190px;text-align:center}.ad-ft .ln{border-top:1.4px solid #334;margin-bottom:4px}
+body.pr-cert .adoc{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+
+header p#h_sub{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+header .grow{min-width:0}
 </style>
 </head>
 <body>
@@ -933,7 +989,7 @@ const SUPABASE_KEY = "sb_publishable_JiH4kZdQ9IlnOiCejy8tKQ_fArOg88j";
 
 <script>
 /* ================= Basics ================= */
-const APP_VERSION = '2026-10-17 v29';
+const APP_VERSION = '2026-10-17 v30';
 const ONLINE = !!(SUPABASE_URL && SUPABASE_KEY);
 const LKEY = 'gvps-fee-data', SKEY = 'gvps-session', STAFF_DOMAIN = 'staff.gvps.app';
 const LOGO = 'data:image/webp;base64,UklGRhIsAABXRUJQVlA4WAoAAAAQAAAAnwAAnwAAQUxQSFUHAAABv8agbSNJ5wx/1Lt7H4KIyMuem8kZWTkykYchZ1aOyMg2cmbPWRgi9yE1Vv5IqG3bRpLP3n/qfNXVEf2fAEq1DO1OqexZcqAk4I1uFN6BXv0LHDyINzaQzNxk4ook2QFqKRkK2jZyEv6wb/4AEBETQFOVTS3sNB0i4OJNT/tdNoAR6RLdRp9hIKUkbXsiyXm/X83dVc3MTDHMzMwzqxmfwV7bF6Clw/fzSUr6DeWqrkyVIryLiAmgddu28rZZ51z9/5eUmZmZw4nDUjgxM9uSzPZ3zy5XtXTvc0RMALU2KSX+PToxPTXVCAvmYOvHe91ud2ePv7pLQYllig40F3e2NpZnZptDdH6ys7W1PD89vboF0FKoLDIisHRy/mhvRbT3JG9jcuMfV6cedx7OA4lQMcxaMHp8/ebhFEB0ISE6FxKyBLA7MXbtUQ8SoQLIkjN66fGtHSAlSaKnCrkDizd/ubUNKXJnIcKFp492waNMVFMKd1g8+8OdIFjOLMDk44/XIbmMaivM4d7X30OwXFmAte/fr0HLjDoq3Nj48QDMciRFDr77tkaUUd9Q4vDbjzukyI5F1j5/naIVRL2VW8SXr48TlBVLTL9/P0wMov6KxOFHb9CyfEjOg7fTRBOZzIm154OgTChy8mablol8KtLCqwtEy4IxcO8q0UReFbnwaIIMKnF4dwSM7ErO7VOS1SzApWNaRpYtcnDNCPVi+sI4Erk2t3MrqEZidZ9oZNwSe9u4aiJnaxUXuV/eIakWSqxNYGRfSRsDXgsfWCGKPqjE/BiqwdAELvqiYHqI6g/O0lebw5WT6LNS1YzCCp0mcSxKfIxOizebFFjsHtkp8aaPCgT090ynQLBMsdcbUxXmMJWKWaxnxuy+U2qhCbxHZguLHsVCaWsK70lYbxxRcNnUatL/AbcpfvsYDU7cOnCVTdJ1Bq808diDwqs1d89jQKI5hyi+GOuZBgPnDq0CgJ8ZbPaJ2ymowEhP2x6DsPiCShTf7bm6C78w61EJ1vvOojvrfW2iEsPPzntXZp/06wHL7xK6CatfeFCN2X+7343pwyNXPWC8Q+gs8KEFFZn9Z6wjsdJz1QTWnMM6GeAHC6qy8d86Uqv5wStDPFtP9l+BJyvUZh59RwfRvniujeDdWFS74KeXqM+0ddutHTy3WCH+Gm+jOP4Mq4+ge0vJ/mVc2EwFojhxjzbw1BM16o9IgOLoLVmJmK4uJYFxvOlFoti4goG4oUiRut8EiNxCZWK6PBJlvnCAFYpv7WLidDKpTEh2AYkLJArVuYwnjlCpGDsDMTX2y0XsLMPiYsGk4Q3YCbFYSBzANk6xik1YR+UCq7BMwYr5kZFZVDILU82igcbsVJOCFQOzU4OoXEhMT8spWGemQdFAwyhcLeAlI1ZF4Yr/va12bA2rGbF4QuXmfaxu9rfrxtjsnqCKcXrdHSpW5I3eFqoX2N042KJq17sso3oR6/vM180SzGA1MwtTSqoWZxyWN6hW+ckM1p0kqoXZZRIPUb1MHSVxF6+XNiYe7LsqJamNwpbGqZSwxXGCFGNEpdDZdSHG8DoxrmAQPFz2qJJ0eBOBUv+aqiTTnrPgr7+a1wicJQEEN1Zd9aF0eJ74i1LvN3J9hMZm/W+Ab0n1gX2L87fZOg8s14bSykXy3+HNF1Rnw7e9pH8Ivt9KqgydfIn458BP5Lpo7A+MDo2dg6SqcF0ndELge8s1kW0MozO9H14T2LuEzrD733iuh5yunTW6sReOTNVgPBuhG3z6I49ayP7rjUTXYS9vuOpAHJ1hkOYv55JKQD78gTOVD7+nCM1fzLidBZZOT6OVz+LKrSTO+pkov3jOmcvHbhOls3RlMdlZYelkN6tsSrPXXPTypjVlgzuIHopwjVwy43Ai9QRjYQ/1L6XtjSR6G9iej+pXSiNHiF6LfXP1KdhD9N7ZoG9vyKsgwmJ/EvONRCWVxib7EmMTrmqADzWx8jRGEdUdpbwaosoCQ4WpviirDFWNpl8O0T+ijgc9UBnYP0R1YH8TV/5krPUZTlkzg3vuIjG/i4YDGbPreN7EwZRMDKuc8T+xlC8Z009xhlksd/AYVZF4PIu8VshObk/iMYoC1q71SdRdTucGHho1isStWyRRf0H37ENaMVpyYu7sIiayGIkbP/bwPDqy+dHPV/BgVAoOfvpV5nk0ZHN+fGkTC0ZotJj56EcsZQ2bwo3Lr14lBaNVkeh89FOQIoZJuQUXP/4ZR4xeM7j48/NxkptqoSBx8vstUCDTIcDWm1e7EDFVTKEWLPz4DSiQcQuRkbuv7zQhIqtMiARHl7+/1MUCmTdFWL378EoDiEjqkSQlg4P2hQtTkEQflHmC1Uu3LuwCpCQk1JWQkDvA/L0rt2bALUSfNHmCkd3zl3d3hmmfHNRGYGb8bTMz2WmP74KlCIpqIgK2un64uTo/3xik22ZvfWNxZmJm6RhIKCiwZB7592hzbmZmblwr9q+lvL/Z3Vzv7/HXZAoxxABWUDggliQAALBoAJ0BKqAAoAA+WSCLRSOiIRtdTsA4BYSzAGaB7UamSBy/3FfPPt/rp2E3d7/f/D9SvmB/3jy1vU3+7nqX/ID2n/xV93H+P9Q7+tf7XrOPQr/bT08/3M+Fb+0f+b9tPaI6gD//8Q//UvxV9y3eL92/Izzb/FPmH7h/bP2z/vn/s/1Pxs43/Of4n/i/4b1K/kP2z/Nf379uf8H7Sf6LwV+DP+J6gX4//Kf8L+Zn+H/df6DPg/9d24uuf43/ef4b2CPaf6H/qv77/hP+1/ifSm/lPQr7Af6r8yPoA/lv9H/1P9//d7/J+z94MP3L/Zf8D/Gfjl9gH8k/q/+x/vv7x/6D6X/5T/t/4z/V/uD7ZfzH++/8X/Kf5/9kfsI/lX9J/2f9+/z3/t/zH///9H3jeyj9svZb/Z3/kM+8omBiuauSoO0yarV2lbaAnMS1/r/+F3ct5oVUhenwItuzwzy0vsrVYENoq+ICRPghYDSUnfBlRr3QNls+QoBBG3v/7LlTbznRDKemMV22e6+6196aXrjCMgXaHLcFoXXYX9alAwaP/kOmOBbn/y6aziKQysB4CvYznU2kIa6ZT87i+aftVkc51ACzsXSpclCFUJ4Tnq9uiaTiGk5m0rWUGII4Sdfj72I0hhHHppcYEhPs2f9Le1bGERXNiNlcNT+W3i+zdxJfhduSkVU+E9Cd2wDvKG2cg0Y/95hDkrM+QBbIJmkS9B3h5CygeyDmM/5H+l3DNCAz0DdzD1yya0hGCoznlwY6RIYiYjwne8Z2lu4AswfxkP6Ag31E2+d3yRDKb22DxZl35Id3UTs3XMitCPRB8/ImHIiZ6j+eDxwckY3phq1ydSKnWdNtg01mzyvK/QIhV0Xdl3g/wjmah10/dt0IuxkwQR3yNkMKaK6Jn3dc6Bku/ZrDn6NUnA7Jh5MkJNR9xvta/QjUgbxhYpmbrFaS7mOk3eOOfpURaT1pK25cH2o88bahsuoXbavJqr3yQwTRDTUDgBZARLWNuhDr0sL/5puP9huXcgI/u15ogc8mayg6aYf4b4Wp0J4W12Oz+EDtUh+Jr6qE87lRaS5TbbYodiwDJ5n4fWzFZ74yV+OC7w9NLeVys+i1p5tOPo82F/dOAAD+/qU24HiV9p/W5yqO75KGdcKuXSfDI4VkCknWGpPhRuVNNzHTWI4Hwna4g7MSwZO92FQC/Qy7dMCCom7I7hk4a3ETG6ha+8frGcFC+mHfkKrxTfVfLo1yw/z3VgKeYnLN2tTXELLcI61TMnxAVBzy7XLaRebr6eo27Yd3Tcuo7EcNATsw2sBVO8S64AOijKBAgUANJCKB11h3pKGnldhJ0rlhscFMoDoKb6TFyA8wTDoa/Sej9nuBQHF53JQtPTvj9/yr1UhkFTpv0j6DqLxYW8VxQ0YUWuasHByqrntAAS3Th6rqhqOm9dK+9Hs0piXuptEawxxvzKMCpjBMk5FId+V5r8pqTIGM7FqyC4o33VXgxsNBWShNqBxy5Q6t5ECV6xJUBjKogTyAVPK8UCl0Y0uqUnmDUgXHpytJKHRXvBFQHjHSyi3St3+OmUoMYNIRyOftYU59TibK7+bVyzqs5tI8X9QQL+uMd/dcO6zI162Sc77sWjEiqbIwMwSiYYtsESxNjwyxMWSgGd21B09sAO/xWRjOR+oT6p0e81Hw6XFdjphim9hArIfGVzH0hBQHDtO8AwxHf2KgjuHvW/niRgaCsDgf8XCBJ1q6eWagw3fHmwhjhw840MD7Ri5Q+9vkEh6hBHFZ9PMqbveWLrjLl1KVnPg5csKCFTJ8YepOsLPDFbydLZD74ZDHmwPdGvGC4F+ckspLDIUAGnNaKZDp8roXB9pAqZ8pPXdMkClX3f3Ja25DHDLZ+X3AyPhZWcZSgZJtaneR07U8vC381mcfQQ7TFcjsbnEI+ykMvrkn/PEMWkEvzVNWWDiO6QIBBwzG6lKD7XdTxMBksfqguV2WUDMe8ywe1e1KsQVZ4hbbnUPjmwYDvMYUBB4MmzEf4tY49W+a62Oz39yH/dZl0rMAhWqYJo+xAsDe+mQJo5cGl86Oetbi8cLjhq23aIv62Wh788wHzjaSYrCDywLyExbS3YW8/QEK7MpKrP1aQQXDjNjYmShpxUyxvXpEG75j3HfcYObttF0ezRzB1sttLLDM3cxMgwF8QDfytdVVw2MLs7FBoQlwLG8y2n4lXanW4eyPvfemJi2yqFcTbl0Ye/sL7JQMzj9LTFAAfwuAk0xpTAR6GatItCIA5zont9k+5D7vDChnm3I95gpl8nsarHi1Y+qTXj15/DYLpIsXVjQM8I6GcgUZblSqzOmoF5dZIZXVlAwzgop1gRrNcpwBlC4WwSJoSoRIq5iS+rU3IYD8yNbvFovjmYWaOUdANE9ndNDowunkaKrSF+E4kzdncriKQFIcfYA+/lM5leBCItzRj3LD1hy9RHAAf6luBoI0koSi41woEdEQ4RZHFGcqkQ5MK4aRqRPWHePVevWPqSarUlPzLJ6Jy6Bew0bOiu3tGuEVJXyFdbArpAaV7DpKSdbnQRvuvL7iq4JVyCMbRTanaHdwnmdSukBlb9sSJHp5m8tq7bsDFgL3bRjqVojiPaAnZPTahGNb/OTRfu9kgz/Oj3lKF8IC72dbrhtw/ytFFe4JxQ2y+scgooTsOGIfrCH0jqClYJjCgXusfElwHrtxqQNPZkWM0bFh3UeeQSc4uG5ILx5tgOA6z6V6wQt5LnGT4gSGvyxCtpYvOQC+X34tVlkN3UXHcVWtZ8Lj/QvpVSlPn2s0+yW18c3B3aNYv1RN58YVmFmSWVRHsaNin0ovJlKkln4Hi/9Cz9CaKYLWn23WTD781dNlvyJewZL7tZXpCUszCtgks0SxNYiGAMKITiaKKGX3eRmbR5yaosm9jQLS2vR1/m1GAY9BcJm1+fTan3+4G/kXr0fveQvwy7RDBlCjHHzO9ZZxVlVskeY4c8HhklFSSY1pM151W4ZrcvLyZj8I1NiH9yeIgHqTPperdP9uIvAi+HPw1NxnbF/K5994z5FtvlScDIGcnip8FqHFfKuDD3arGd+azVUf18ZLbys4FeGbUk/1vHfH32QD7ckXtkmn8vcRkKmXDrymud7vh53ViBhxrkJHIoEorf0HHS4xMTy7+rHUc5PBuKp9dbcHyF1fgVXVMBacQzlFQW9ufvGZNCiE3WLX4Wg6S4cTkjZd1/F5OVHwTFjTF8RHKhgY1DcRGZrDtCJiolUvbTWhaTTxeJtWkjm7tZ1OuQtUZyEcOn5ZSn9ODfXHUGkOIkDtegosgFov8I4TOOxFXyAPqK+fqfmGmWOgBDmG6gpu5QYWIAt/ti3JTVH1zxCgyKJrPF0wmCOHJeEbHUrZu69eUWGPZBBxc6iRJJLrHoKbFdiIMcT+HJJ0PjnTQnh0hIh1rIME7jQABYUOZ5WT1XLF/iLnHdh1cRDBdTEzT+nWwXQ53ZsloWA7cIXOi3J3DeuIgjnYF2q46n/ibxxKLF04RP0fm1rrfXaumJsQcOkzcZi1DBk6mc5VVmv9al7p73i0DkM6zYiqkyVXDzT3KE/sVKLe7x57zVDhXynASoKpSd3XwsekztVYFRVvew/5Bgj2593etvAQVGm1CR+R6lHNrQrxHuutF9CTzI3UW4Fg2vaf2UdNB1D+fRPonb1KBG74+bMvtw2zYv5cTpzMnz0yFJ6G8T2RrCtlUWlxYbNFLfRZyNdj32l/V7kz+Q9CbEmGrEhHKZi2d7MI9lbyfeMEQ9gCoiYXfTcecVPPUIPUk4fvuXCo2TOI3s2I3TMGk7qSB0QnTxq9NfejABtRmnFm64YoHMVqQM6l8sILKyFc/SWn1HmICStDvjsN9+2YAHuEpIgp4AwPirJ1U4D7WFS37LQYUm0pmnvZ3NDo9mKRzTu7AeWNAych/E0k34An4lqGHE16jnaks14u7r8N/1Az+SWPJNZFYRqsIPSgqX3QKbXdxQyo6hLYV1oCqA0ZO0H73X0F4qSkwHK54Ou4aaH9iOSCYlJaOt6ZrC2KpvMOhTmlgdswSYxDV/DkCSPOWswYsROrLXU75l8akw0NSXIL5fePFNjN6CbtLusyon7UgSRlQtD4UKpWfQ664QFeez81vYP8/1TFOqu4E/BNVqCmQeSRJOvLOaguHxovGHNRcbSNgVuDwbD6Hog8syd2OzfJ7Fapawmm5R8KVldX+vUcJveL9efZaEzpjH83J+TAVJ9X3wbeSZYnfL86hw3xJ7I2yz6i/zmMYEsMzpxJRZx2Qj/MULgIY4ckhploDHvK4wbHEwhnbIDsZGOal0d4zGXwO+7osEJnP4EypaZoD8d9VP0Eo6wTtpbAo6QwYF2lLaqLMsKTRUQKaTTzFIIN1HMt8du01AADUwValIW2CcwH9l0zTSL6p/lCjeNj6JymRHuNBQGYz22s7yaFN0i3vjb9/MClKK5/Y4MP0ultGLSY2kOKrDvayfmPgWz5I3RcbuZrQohsqGx613nFGJEvpAnaqGzg+ZgjJP7BLve48XVZMezbqxN4Low7slLS8+kbQMuoDgol3a7wTMLHsi7dNlMya9K9PI/qWhq/A/hgej7PT7hBP3o1TXg9vT2/I6hJq+qK9dZ4DG0Twu2LryRjpzQbvPgiuYSFvRpsE7/4CTdWO0YjBoszKhtjwX7Ce3uT727yO+VcjkXji0v5d3TTNp8iHU5NyQNwTLnSe7Ke5cMY4WJTOvcLWlhi+R+6IbVufigov5rAQZyJHBm3uc4mvjUnUQP5aZe7pfzTxa54RShW6RyplKQEuKb8EV3sT+xheWfNLvJW4LAREbG0C0UuXVXfAcoCOJgrPQoXa2BD5mH/B24tQgR6DGnLXPNu0AB3Tcp3opAhSA94GcFpKrsp3NZMRYR6LMnm187KIoOA9KL+VrboPadkEj8fAaJPt+F7/ZbaN7uhzBECTxSQ4IoPzlzxqExoZXxy7svFt++mhPNTRGR6yO/qxLvCIr2REcwi5A7MdBul4+ydBhVimtGUHUBDxNWaVSoeDUaUOVOFl5RTvZwiojWpVsL0Htpj058TuzUPiGEQ/ZLaf2s8PX0T4nRl/18wvrFCkuCIf387fKpmVECUvej/d0iOL0486AAjZ3CrKXgzkB3RkSQ0MsZewCy9m2js0hS0JldtorpwPn3N0QthIC+0sR/8bBX8Qc3fLMaUnOj893HumAFSiE7/252VeQ7zeau3Qi8CpeKvMfxzkO0WHoivFMiK+wTyT1CiQpVBWRP07ch+lIzH00oSICRsapVSo/ttCMdpeCjswzBfDsuvNCFVxtvdo72p7Uf2vwgAL6toHDHbFJJhzeJsIX0pzUt9C4MEvZRlFmefJ4ksBgFXI6Sc/25eq/dH4YE7Rg7Go/1W88Jj/uinmXtQS3mCWjPvB0Htk92tZgRps5pnjbA3HZNo3m+jKOT/NNsQk8xCXvOfLFeczCte9j17+1XJaHvNkNLWKMXt+AT/U9mPm0Z1KnJeeVuErfrMV6mbamqNa8qSb/xZ2AwSfIS8Yq/yEB6zMm4rLxW4YvXuD1gpfKZTASNkcGAvkjxf3+UPIjvaPBwJeMGCpbbiA62fzneyi9ZBz9EWJMHVgLYLYEhGrR8Uc0sHP2S3gNX/mI67hnIPdng6tijxV1nuK1T8p4dEmKT0I22XMcw533tTCH23x0/1WT7Ve+6/arHYhhT47h4H/N5xzOXoolLhC4nTSsUlyEdDupst13C8WKhtWC5el8EEVPTBHD/xZZeok9xVepDrPxWP6hOC20gznvn6u7s2ZoN0xzZmFaCDsAsrSUnHhfbCk901RhQTB9vSIzwgenC3yX2bOTpo+cXUtT7N40CgnfRMJDGdXqLXnzUSOvn1zeCbAOakC+nYGBT1DRsQL608f1WaoCSXHkIWdGeS91Ek7DuIxA24Z60sLliqhaOo85eWwWc4WBVrYI1NlAiXuKWap5c4p40mTW8AAtTIYCY5HVsUcyGOayvxHO7faWp5P+1Q3SQ2U6NlNGnJz71WEKyhXb0o2hhqW+ZKDYbnpier7NpAmUEP2H1ZO3JWVcpVAnMOJoW1Quc8byyyqH25CtReTt3b7uvn3JAoN1TDMzgaTBdiRuTSq7IPV7AONTOWThE0LuJTX2j0SwkT6cl2iKl+4Bo+kMH+rnZg2Wsp/NWxVDX3dRIpPp5hU+tUQDdjUI9OP3//91moCKN4Hip0ERurNeiuhkgOp78J/AkQfyexa+l9L51tjwDKj1nh/L5VJ7+RCj9mMAopAuPyWG9J0F7McKUmyiqqu16MAGxZGQEUjd426nzpDuIPcNLRvEF/Z/62b84j88bz3nq591zZ23YQpsf/PxaY3Q7e4I4kc0MgBwGi3B5GDRkQ9oLmG3ehA4Leb5uNqzvsgUxbfRgv5zz/lUH4UZmrl0rgqqSyK3JjVqWP43piEcK6Ik7++swozaZ+415uKTKy4azM9PTko6hF7tWFJz+0xVnTsaUoyzQWfLg5GEmO4ghz3pFPGZBK6jTwcDhQ1csawqGse06t4ahF8HOOe99JZy6N67EIsgMcVpidqhIjhPqjfjAvuYKotqL3UwKDtw0j8m/7RGNUmn8Qo3g0xnsj/DfUZFLTIaDymRIpwYfpJPjmNdjlK3jIWKD2wFoZwYt+ltS2nJLdyP/jMHyURkPxLZ385gvfOXm/nqUecG1mcTn2XO2EPNaz8UAVpENYWzAV8/8mG3+ZCTWPwH62V4/MWbma5LtZAdpwNzrza8pbYU3w+LCXWU6USBsi0qnaGX8VUmuiUW+YmIGHeX/iFupXJrndH2VlxAlVipdFoGa0ueaf2AcJQVwjJSS2AKEXUZ+SCfDNa3SHZCqY1qJUAgpC/Y3KocYiDt9ci7Yz66xP7WSRksviAXYe3pPNaWOcO+8B40R5MOaxAzDmhF2EULUZVyjTgztKQ0xkm8vcvfFi1RnjH6wk4kmbge3hubO9aAf/CzupU//3z4wAfPFT16kaFL8YZk0AX7nQKIoq32eJX37dkm8lzT5+4hV8/yndsEetwInvFnJjQ7cHH8q68IneZ2RLq2F6TI1mrxPHksDEvoQv37qpro5HVc7uka6xS5bny2iDhAFKQB6GLEN1uIK05HOaL1AADPtFSQL48bHlKfFPZUX83xE8goP0Pas9gDaXJS7dncuWXhLdCt4CzLHf+3J89UBu9P947CGnG0A7zWl8O9VSpC53LvCFrQESrOkIns0zLBRF6pzYoSM4cpXjfwoeySU8XWD6RQR17uvL/z3Ml+Z6Vt+vmeHdCVSeAL0ZY7K90kO23OIwD+KnLDOf7jzTKAZCje2OzLkfg04j8RulAxw+ARYNOvmfKP3Z3YkpPmGwWY2LWpq1Ay7PnNN66P/1bEIHhVqqv0+kUSyY3yzwBR9guXbu0klu+FSzoexgyAQcf1BTIzrLc97FtLzkX2ro+4PV16Xn9oEuDNvBEgrFTkDWJx+yxE9AfvRS2eLplbRWtrDSGUAkNgQf/icw/eW6O9PCFtHf3I7pdF1vSNLFM5NSJwQEKe/TeRzzguG8TtNN2b8zkNJXyjWlsiXizZlg8ahP+aL3R44XGdig/4sZUYtCfvJfs3surO+HkIJDrjM98MN0tSF94j+SMq2L5v2KWwJ9yYrplqx3OtvHSHhVdmt/ThAvfN1pOAMZqU1Ccp0Oyul98QWVSVjjec7zluTPD0xCXBrHIAt+D+ILVewiXNT2+py+lI+FqAxFw2cCe+B/9es+KIaJCaOpp0CF4voWsyBogmo0vi88dQynmGKKmimiA9AUj7K371TVjWjiKDjwkNRnHMNSIV+o5A+iYIrRT1CgwZjjvxENNbPJO0lyItqmviqAAVE6Jx0DUWr7wklA34LMRb/kMz/ZYi9IVtvpmhsVbVNJEXnvNPrGtLXdtOXkBahB8jPPMlPhcg4u9NSy3w5T/1uaXJmi4xOnPoTVSvKoG0v22w80z0+ldgm8Ya/kocbKP/Bkhl+sHwZMzQRdBeNEbUOk/M9Y5PmzXh7uj23/xDCYIlU3ETyyHbWxB6Uk8fNHwymWMAxS7EYYnpTlbo3JH+QTQPiR1BdI/9CA0f/lWn2/3Mpf1ybOkKaioZ1zO9oKmtBxcOUm08hligCa7kVFpVSNg5+eeaGcnqf4QcTqjzFU8jU+Vsz/yY6P557Dvnar+bpuhgAGqj2zEtsH5yw7DZf3d+rbHcguSRVbqOjy0RB7znIs5dqYIJMdHnglf5Ut5KHwrzhLHnvugeCdv40mbale2p48GFoMWuV5ijJf0vmSR/jUipSvRlMxE0eTdJ0+8c1+tfMRWNsuXbO6L8QM1xt762Dsy2M0oK2m+TeLv4KkqbFCldYNkduMCwKZAmCbSO7czjvTXzp02/tmK3AalMnFHgWGRYSvPp51WHKwrAoyWG+5IoSti2XmA1Ja+Rb/ks9zcooDg2L+xPWnn75rEfMK0g+xzh90DzPDxByY6+10h727+pbvkShpRUaK0I59H/1eY/nC+sndicwG9PIoqMrFOXsCF+45ovrrpy5s6nd+stB1Y/GUGynVKwmuUFuF0Oq1vV/vk2Z402H/ATuS6gJUGp+FIOKoj874b85Y9jEoE5T2WmJq88w3EvXNg7YoUQNww0w0C0agK2lOyLuq1rETVVqQRzI64VeCPPAlBlq8emQaAfRHgLNDSb35GBpfpE7H8JQ4V052Fh4DjkIIUbHBdYgk9u+IyVE7Vc2aMLIN4m04pZJLQGHDKMkCLudfa3KE2j8NyJcPzFOq2zK6WrcT4OTubInBtUOgV5LEADI4B6XNxqpYziCeEozN8wxIcK8lotUfICNOtKHMBdyourykjAZn1QJcBA6K6KKuts4wbM8u+87+ZN/eTsKx66vdJxuq7u8Ud1sxpw0/PmrN82Y2P5r77Ix/DVdZ6BP+bfGQ8+J8nZCIgO7bAejlYH0xviPHhKPIA3uosRLPkbUNCAWlWinwrQdcwnQUuzJUNblyYu/tEoVspqtYIoCyzrjm8Qz14uIco1InBYrs/bDLxiJI/fI0B98y9rjtALdWJZNh8lqpCXSRIHo9tKl0pCoa5AnJ/ZWz6E8pv1xz+kgTayRcR7JId9OBSYRRM7VjeENE2h1u3sxSQggg1n3jtJ6hRS1hxY47j73FPxEfnzwZrFYCy0al9Y8voRtJcOOpTZFW2Z6lnuriKTemxbygdrk/IwVPSI1LtJAvhooAATWqHsLCMsGA4uL/beLevo+sti5u2NZjTVfPKibkvIf4v28i8u/qLlqKMZHcepcVITyf8NJM3ir35Hpknwt1nWqtRuWOaUrtgvuOGj3U98+Yx1w9iUbUsHXM2qj15aDOSvcO2IfDwIkI+Em7H34H1w+lkJn7XOYdyA9Hrr39K2zMPhVcN40ltdXVXOy8jrLT5QUUAEJNUsKHAhlyIIXIIUGZx96QAENp3nbf8Wda0VGydFs5hkRcVGsneMsCgXA3nbDsBgz2JjH9GhfpVFiU89I7bSfeOQoPBVXnoB7eXqI4Qu20uwwKIJruU2QNPVmd7zjy27iTWJNth2sReJcjvZ1/4APX5awTtiYljqwxTRSur9/fbyXZIXwcPyLhXQlVORcs7RB0DDk9E0J1tI+v/bDGPU1PX3Z0gMWYYL1O52As4s5fh0R94vghzM2H5d7tkeV+9xzw9ymkL5lJ7YWRhug9NEIcxOv6RoyRiLP/saBKTH9JVXt30Tf6Wpq9abWNrOS0XiydYSJrL4sL7AQAcp/Vg3z1+h87+a9MqoOWxqUrbAV/kpTSqcrHEkg7ryuGcNB+NxoNa2Q0P4xEmrYOE5jLsboRC/S6GAIyo2YmqZDRyuF9sz0B7dKuyEX6WZSP471Q/J6EqtNt+1WiQv6DP7KkD+2hYIsrJ52IHzEUANOxt5RXMgtcjUWjaj0jSqpvYYOF2EgRcWaesXup6GGEbRAcEWHUH+oSTjVvRGdDm0P3szD0AWGze5M2WDZoWkhulorugMhXS8UKdMgdwqUV64R8w7CB0eovRfBGb9fYP+llei/1Tfp8gek28IoJc9PfpTOpDNRO4vIRbMeA+AHtE9QIexyhSeAfrXsw+h885mA0T7tol2aE7GS5BtFN7EfhN1QgxFh5vGC+sJiOTc0S+OxXSy9fK91zAd7QHPGBnKseAq6wJYpcb1vQOwMiurF+8YDgjWQL/YKTiQgeHUnrlGYjjiDmsH93SC2tJddc3ox8XUs2SrF95ToFm6SpTWFj5UCQJby4/DWtEDZG5ReoNMC2IkkPm76pg/2ZZSZIejmaHUkxYmgx/QwTmQ7xWky3OWl0c+j8pJ6hlYDYkpF0vVMa7UZDcJqJ0/dZ1VFrVd8ZMv+JqSgJNhJWnYPg839novwMcv3XF8mJiTXmPfgnavYE65qSjDCwXrjjN+zFWMl7zmspS/H3NlWGd7NmI0GThQUcrLYy+1JLG04TwB0knEFUZVmudHm+bX1NY4HxrTAl/c9kaYEfC1Ag3YDiF5s5VBMT2jO6LDpQcCM9+p0alVfKuAYoIaMh8ka1n3KwpcTlpBgH0j/GldznC3oJUEth45qf8Jv3hxxj/p5Mmut0BA5bZl54wmTIYqSC3jy1wVULLtOxigrpkbkSb2UwG3Zd3t7AudtMLsERHBhhMCH9fwNkyRIHFRZvNvVyNMNYJsBl7TXZ3POibK01fv4s6Y+mBaa6F/ZY2yWkSS2rCXZ+xATlRBi/MLgUFANIXCE3pB62J+ev8ZZ//lTHOllN5ReHlhssLyZekr4OonSc6RTbKWAD7xX4d9sBa2rjnw3Y6RO4/zDr2CwN4cP06nGyINeP8pz7vSjJ6J+nX1mRPoREJ1ZiwM16Z91pRVvWGwo6Aph5U9Yt9J2E0bEp7wgBEn4PWUPh0+KU/hPFnorQJJ4su3bj22PjLC+K5agH77bNGV0z+zCkBF3/e9DJkkKVMhE8UV3OXGcDd9tzbcMcMMMja6tW228NVw4DfnkKykG/IXIFsDbXOepMuIlPuppRENANWgvkKuxcqwMFC5YGeKL63Qq/TOGN7QRjRaYkmAkNxKjP/L2NcGN8Wh78D7h7Y1LAUPzlY7jrSx5DIJ3dtu52L1tecGXksr8kb3qgkUlWdLP3i1BH+LqwvL50G6adLTWZF59oFAPIIS/3rS5YT2tqJL2E75pWoIaq7BywcJZH9tmjA4x+8Kt0NP9BA5tFyo7vXFVq4HR434aj/W6EYgcYPiG6dkwkg6TpyGfAP/L0SkEqL+2Q2KsudMJKoD82cO5hnFgxqy/JwcEjgBEpFHy19ECfteJZl+6WP5sIqlbYWCZUjdpPo2xmu+OZ5eChP+UdBMjSsYcmALRdf8DDg7OFN0tSFx06BX0MuWV71+2Z93jvlyAdysJwN9cRUeLx2b1Vp9Q3xR82w4t1Iw+uwf0Qn2rxnzy9IA1P5SEdj2e8BOrDlRM4rREN7R4NYb+ALkDZ+CjBzddvcNZybmBwNOB3aL/+Ll//Egv/+J27qEz4RHxrtp4PSUv6fAEa3qYBAmrtPgMJpeGRrnr5TshHM/B7eBrGBZc1VL3Y37RMthtj8WTKsOhq/VLbzai1P7Fzk5xe2+6479CRF/teCAJXQUfg7ug2r4So1rVHc1moHTAm9o+v7v084+bcSeMwznqAf818tRKQnMRv/SseQhRZM4wIaeWc5/DfWjDWicqFHb9AHGwKcSf4I5iQclVOI8frCY0bHVhwfI9OP1Yd3VA4JqJJzbG9vJXbyhSW2kAoxZe2+9Mly0LCeInUo5H96QIxJNS/bpnphhNxw5AjPJUr42FipCnAveXYLOnIpNTXK23lhWz6ib5JF8BNxE7M3GHjBarypeMnJBXTaTz5+KDRT9qImKOol0gHylLeFAzV3AvJbdb6uRNTPMbOX1HFRtQ1inVkQb32d1mNJBzGAOf4gOCBUrwXimogONobRZeYnXBw8To/68Zzw3cahdLCYV7EMFvMSX5ckXppabrQGixxE/23AhwGLW6yjLf3BcDSJ5XSNJb3+cxlPzRdNHs3yD5H+OVfXcORCgYOEPgTOcbsDyRSXkZwW8K8kmNeF/k8z54o12shZhROA/wduVdWoi6J35V6j4ia4eNxRrueLJ6iAyXaya/MVZb+QFPDwRWj+oRHm2EjPOX5iFm/EjJasQk+WLPG1sQ13xEcA627ZA/XhgH+5uYrZvx0x34pPjfjs5Y88DJ+pQML1klk/xLlwOC94T7LCbH5ARdce5UCYfSULlogvK3pnj1pN4Ny1Ea3mDRrFJCr9/wHldONKG/ibDv1m+6qNN91jphI/5YdifC6hG6l630XCl4tblW/hZsMKA0b/aL3UIq8DT8SIqTSSHvmlz0eW/sm19COBgkw+NXBMN7WvqEDwAAoxduqz03TBEH/rrCcXEPaowRphCI4BcyH/WZ3MiVb3yA8vsxaern/2+3//auP/2pV//2mg7O5qWmXb1YbtNm6qaJsAAAAAA==';
@@ -1377,14 +1433,14 @@ function render(){
   document.title=set.school+(isOwner()?' – Owner':' – '+ME.name);
   if(!ONLINE)$('#testBar').textContent=`Test mode: records stay on this phone. Using as ${ME.name}.`;else syncBar();
   {const hb=$('#hBack');if(hb)hb.hidden=(isOwner()?UI.tab==='home':(UI.tab==='today'&&!NAV.length));}
-  {const tn={att:'att',take:'att',today:'att',register:'att',fees:'fee',reports:'rep',rep:'rep',current:'cur',students:'cur',teachers:'cur',cert:'cert',certview:'cert',record:'rec',campus:'camp'};document.body.dataset.tone=tn[UI.tab]||'att';}
+  {const tn={att:'att',take:'att',today:'att',register:'att',fees:'fee',reports:'rep',rep:'rep',current:'cur',students:'cur',teachers:'cur',cert:'cert',certview:'cert',admform:'cert',admview:'cert',record:'rec',campus:'camp'};document.body.dataset.tone=tn[UI.tab]||'att';}
   if(isOwner()){
     if(UI.tab==='students')UI.tab='current';
     if(UI.tab==='teachers'){UI.tab='current';UI.curMode='teachers';}
     if(UI.tab==='register'){UI.tab='att';UI.attMode='register';}
-    const ok=['home','att','take','fees','reports','current','record','campus','rep','cert','certview'];if(!ok.includes(UI.tab))UI.tab='home';
+    const ok=['home','att','take','fees','reports','current','record','campus','rep','cert','certview','admform','admview'];if(!ok.includes(UI.tab))UI.tab='home';
     document.body.classList.add('no-nav');filler=null;
-    ({home:viewOwnerHome,att:viewAttPage,take:viewTake,fees:viewFeePage,reports:viewReports,current:viewCurrent,record:viewRecord,campus:viewCampus,rep:viewRepHub,cert:viewCertHub,certview:viewCert})[UI.tab]();
+    ({home:viewOwnerHome,att:viewAttPage,take:viewTake,fees:viewFeePage,reports:viewReports,current:viewCurrent,record:viewRecord,campus:viewCampus,rep:viewRepHub,cert:viewCertHub,certview:viewCert,admform:viewAdmForm,admview:viewAdmDoc})[UI.tab]();
     return;
   }
   document.body.classList.remove('no-nav');
@@ -1451,7 +1507,7 @@ function viewOwnerHome(){
   <div class="qas">
     ${qa("UI.attMode='daily';UI.attCls='';go('att')",'A',I.att,'Attend')}
     ${qa("UI.feeMode='collect';go('fees')",'B',I.fee,'Collect fee')}
-    ${qa("openStudentForm()",'O',I.plus,'Admission')}
+    ${qa("openAdmForm()",'O',I.plus,'Admission')}
     ${qa("UI.ctype='';go('cert')",'C',I.cert,'Certificate')}
     ${qa("UI.rep='classlist';go('rep')",'R',I.print,'Print')}
   </div>
@@ -1637,7 +1693,7 @@ function viewRecord(){
   ${campSelect()}
   <div class="today"><div><span>In register</span><b>${all.length}</b></div><div><span>Studying</span><b class="c-paid">${studying}</b></div><div><span>History</span><b>${all.length-studying}</b></div></div>
   <button class="prtile" onclick="openPrintReg()"><span class="ic">🖨️</span><span class="tx"><b>Print register</b><small>Class wise, year wise or the whole register</small></span><i>›</i></button>
-  <div class="actions"><button class="btn ghost" onclick="openStudentForm()">+ New admission</button><button class="btn ghost" onclick="openRegisterExport()">Download register</button><button class="btn ghost" onclick="openPhotos('')">Saved photos</button></div>
+  <div class="actions"><button class="btn ghost" onclick="openAdmForm()">+ New admission</button><button class="btn ghost" onclick="openRegisterExport()">Download register</button><button class="btn ghost" onclick="openPhotos('')">Saved photos</button></div>
   <div class="chips" style="margin-top:12px">${[['all','All'],['active','Studying'],['left','History']].map(([k,l])=>`<button class="chipbtn ${UI.recStu===k?'on':''}" onclick="UI.recStu='${k}';render()">${l}</button>`).join('')}</div>
   <div class="filters"><input type="search" placeholder="Search name, father, Adm No., file no." value="${esc(UI.q)}" oninput="UI.q=this.value;fillList()">
   <select aria-label="Year" onchange="UI.recYear=this.value;render()"><option value="">All years</option>${ys.map(y=>`<option ${y===UI.recYear?'selected':''}>${y}</option>`).join('')}</select></div>
@@ -1965,6 +2021,7 @@ function viewCertHub(){
   const recent=[...S.certs].sort((a,b)=>(b.created||0)-(a.created||0)).slice(0,12);
   if(UI.ctype){viewCertPick();return;}
   $('#main').innerHTML=`${pageHead('Certificates','Make, print and send','cert')}
+  <button class="admcard" onclick="openAdmForm()"><span class="em">📋</span><span class="tx"><b>Admission Form</b><small>New admission, or print the form of any student</small></span><i>›</i></button>
   <div class="ctypes">${CERTS.map(([k,t,d,e,a,b])=>`<button class="ctype" style="--k1:${a};--k2:${b}" onclick="sub(()=>{UI.ctype='${k}';UI.cq=''})"><span class="em">${e}</span><b>${t}</b><span>${d}</span></button>`).join('')}</div>
   <div class="toprow" style="margin-top:16px"><h3 class="sec" style="margin:0!important">Issued certificates (${S.certs.length})</h3>${S.certs.length>12?`<button class="btn sm ghost" onclick="UI.certAll=!UI.certAll;render()">${UI.certAll?'Show recent':'Show all'}</button>`:''}</div>
   <div class="list">${(UI.certAll?[...S.certs].sort((a,b)=>(b.created||0)-(a.created||0)):recent).map(c=>{const s=getS(c.studentId)||{name:c.name};const T=CT(c.type);return `<div class="item">
@@ -2042,7 +2099,7 @@ function deleteCert(id){
   if(UI.tab==='certview'){UI.cstu='';UI.cdata=null;go('cert');}
 }
 function openIssued(id){const c=S.certs.find(x=>x.id===id);if(!c)return;UI.ctype=c.type;UI.cstu=c.studentId;UI.cdata={...certDefaults(c.type,getS(c.studentId)||{}),...(c.data||{}),_for:c.studentId+c.type};go('certview');}
-function certFit(){const w=$('#certwrap'),sc=$('#certscale');if(!w||!sc)return;const k=w.clientWidth/794;sc.style.transform=`scale(${k})`;w.style.height=(1123*k)+'px';}
+function certFit(){const w=$('#certwrap'),sc=$('#certscale');if(!w||!sc)return;const k=w.clientWidth/794;sc.style.transform=`scale(${k})`;const H=(sc.firstElementChild&&sc.firstElementChild.offsetHeight)||1123;w.style.height=(H*k)+'px';}
 window.addEventListener('resize',()=>{if(UI.tab==='certview')certFit();});
 function certRefresh(){const sc=$('#certscale');if(sc)sc.innerHTML=certHtml(UI.ctype,UI.cdata);}
 function certHtml(type,D){
@@ -2238,6 +2295,239 @@ function doPrintReg(){
   closeSheet();
   let a=$('#printArea');if(a)a.remove();a=document.createElement('div');a.id='printArea';a.innerHTML=html;$('#main').appendChild(a);
   document.body.classList.add('pr-area');setTimeout(()=>printAs('pr-report',true),120);
+}
+
+
+/* ================= Admission Form ================= */
+const AFO={
+  gender:['Male','Female'],
+  religion:['Islam','Christianity','Hinduism','Sikhism'],
+  nationality:['Pakistani','Afghan'],
+  place:['Swat','Buner','Shangla','Dir Lower','Dir Upper','Malakand','Mardan','Peshawar','Karachi','Islamabad','Rawalpindi','Lahore'],
+  blood:['A+','A-','B+','B-','AB+','AB-','O+','O-','Not known'],
+  status:['Confirmed','Provisional','Pending'],
+  category:['Regular','Orphan','Sibling in school','Staff child','Scholarship','Hafiz-e-Quran','Needy'],
+  occ:['Farming','Service abroad','Government service','Private job','Business','Shopkeeper','Labour','Teacher','Driver','Army','Police','Doctor','Engineer','Mason','Tailor','Mechanic','Retired','Late (deceased)'],
+  mocc:['Housewife','Teacher','Government service','Private job','Business','Late (deceased)'],
+  edu:['Illiterate','Primary','Middle','Matric','FA / FSc','BA / BSc','MA / MSc','MPhil / PhD','Hafiz-e-Quran','Aalim / Dars-e-Nizami'],
+  rel:['Father','Mother','Uncle','Grandfather','Brother','Other relative'],
+  reason:['Change of residence','Better education','Fee issue','Parents request','Transport issue','Moved to new school'],
+  prevcls:['None (new)','Playgroup','Nursery','KG / Prep','1st','2nd','3rd','4th','5th','6th','7th','8th','9th']
+};
+let AF=null;
+const afLevel=c=>{const l=clsLevel(c);return l<=2?'PP':l<=7?'P':l<=10?'M':'H';};
+function afBlank(){
+  const c=classes().find(x=>clsLevel(x)===1)||classes()[0], an=String(nextAdmNo());
+  return {name:'',father:'',gender:'',dob:'',place:'Swat',bform:'',religion:'Islam',nationality:'Pakistani',domicile:'Swat',blood:'',
+    present:'',permanent:'',samePerm:true,fatherCnic:'',fatherOcc:'',fatherEdu:'',fatherMobile:'',whatsapp:'',sameWa:true,
+    mother:'',motherOcc:'Housewife',motherEdu:'',motherMobile:'',guardian:'',guardianRel:'',guardianMobile:'',
+    session:sessionTxt(),cls:gKey(c,'',UI.camp||''),admit:todayStr(),admNo:an,fileNo:an,category:'Regular',status:'Confirmed',
+    prevSchool:'',prevClass:'None (new)',leaveReason:'',slcNo:'',emPerson:'',emMobile:'',remarks:'',fee:classFee(c)||'',disc:'',caste:''};
+}
+function afFrom(s){
+  const f=s.form||{};
+  return {...afBlank(),...f,name:s.name||'',father:s.father||'',gender:f.gender||(s.gender==='F'?'Female':s.gender==='M'?'Male':''),dob:s.dob||'',
+    present:f.present||s.residence||'',permanent:f.permanent||s.residence||'',fatherOcc:f.fatherOcc||s.occupation||'',fatherMobile:f.fatherMobile||s.phone||'',
+    cls:gOf(s),admit:s.admit||'',admNo:s.admNo||'',fileNo:s.fileNo||s.admNo||'',caste:s.caste||'',remarks:s.remarks||'',
+    fee:feeEntry(s,thisMonth()).fee||'',disc:feeEntry(s,thisMonth()).disc||'',prevClass:f.prevClass||'None (new)'};
+}
+function openAdmForm(id,viewFirst){
+  const s=id?getS(id):null;
+  AF={id:s?s.id:'',d:s?afFrom(s):afBlank(),photo:null,touchedGender:!!(s&&s.form&&s.form.gender),sib:''};
+  if(s)afLoadPhoto(s.id);
+  go(viewFirst&&s?'admview':'admform');
+}
+async function afLoadPhoto(sid){
+  try{let p=null;
+    if(ONLINE){const {data}=await sb.from('records').select('data').eq('id','face-'+sid).maybeSingle();p=data&&data.data;}
+    else p=S.photos.find(x=>x.id==='face-'+sid);
+    if(p&&AF&&AF.id===sid){AF.photo=p.img;AF.photoSaved=true;if(UI.tab==='admform'||UI.tab==='admview')render();}
+  }catch(e){}
+}
+/* form controls */
+function afSel(k,label,opts,extra){
+  const v=AF.d[k]||'', list=opts.includes(v)||!v?opts:[v,...opts];
+  return `<label>${label}<select onchange="afPick('${k}',this)" ${extra||''}><option value="">Choose...</option>${list.map(o=>`<option ${o===v?'selected':''}>${esc(o)}</option>`).join('')}<option value="__other">✏️ Other (type)</option></select></label>`;
+}
+function afPick(k,el){
+  if(el.value==='__other'){const t=(prompt('Type the value')||'').trim();if(t){AF.d[k]=t;}afDraw();return;}
+  AF.d[k]=el.value;
+  if(k==='cls'){const f=classFee(gCls(el.value));if(f)AF.d.fee=f;}
+  if(k==='gender')AF.touchedGender=true;
+  afDraw(true);
+}
+function afTxt(k,label,opt){opt=opt||{};
+  return `<label>${label}<input value="${esc(AF.d[k]||'')}" ${opt.type?`type="${opt.type}"`:''} ${opt.mode?`inputmode="${opt.mode}"`:''} ${opt.ph?`placeholder="${opt.ph}"`:''} ${opt.list?`list="${opt.list}"`:''} ${opt.max?`maxlength="${opt.max}"`:''}
+    oninput="${opt.mask?opt.mask+'(this);':''}AF.d['${k}']=this.value${opt.after?';'+opt.after:''}" ${opt.caps?'autocapitalize="characters"':''}></label>`;
+}
+function maskPhone(el){let v=el.value.replace(/\D/g,'').slice(0,11);if(v.length>4)v=v.slice(0,4)+'-'+v.slice(4);el.value=v;}
+function maskCnic(el){let v=el.value.replace(/\D/g,'').slice(0,13);if(v.length>12)v=v.slice(0,5)+'-'+v.slice(5,12)+'-'+v.slice(12);else if(v.length>5)v=v.slice(0,5)+'-'+v.slice(5);el.value=v;}
+function afAge(){
+  const b=AF.d.dob, on=AF.d.admit||todayStr();if(!b)return '';
+  const [y1,m1,d1]=b.split('-').map(Number),[y2,m2,d2]=on.split('-').map(Number);
+  let y=y2-y1,m=m2-m1;if(d2<d1)m--;if(m<0){y--;m+=12;}
+  return y>=0?`Age on admission: ${y} year${y===1?'':'s'}${m?' '+m+' month'+(m===1?'':'s'):''}`:'';
+}
+function afDraw(keepScroll){const y=window.scrollY;render();if(keepScroll)window.scrollTo(0,y);}
+function viewAdmForm(){
+  if(!AF)AF={id:'',d:afBlank(),photo:null};
+  const D=AF.d, gs=allGroups(UI.camp===null?null:UI.camp);
+  const villages=[...new Set(S.students.map(s=>(s.form&&s.form.present)||s.residence).filter(Boolean))].sort().slice(0,400);
+  const sibs=AF.sib.trim().length>=2?S.students.filter(s=>[s.name,s.father,s.admNo].some(v=>String(v||'').toLowerCase().includes(AF.sib.trim().toLowerCase()))).slice(0,6):[];
+  $('#main').innerHTML=`${pageHead(AF.id?'Edit admission form':'New admission form',AF.id?esc(D.name):'Fill once, it goes into the register','cert','cert')}
+  <datalist id="af_vil">${villages.map(v=>`<option value="${esc(v)}">`).join('')}</datalist>
+  <section class="afcard"><h4>👨‍👩‍👧 Brother or sister already in school?</h4>
+    <p class="note">Search them to copy the father's name, phone, address and family details.</p>
+    <input class="afsearch" placeholder="Search name, father or Adm No." value="${esc(AF.sib)}" oninput="AF.sib=this.value;clearTimeout(AF.t);AF.t=setTimeout(()=>{afDraw(true);const e=document.querySelector('.afsearch');if(e){e.focus();e.setSelectionRange(e.value.length,e.value.length);}},350)">
+    ${sibs.length?`<div class="afsibs">${sibs.map(s=>`<button onclick="afCopy('${s.id}')"><b>${esc(s.name)}</b><small>s/o ${esc(s.father||'')}, Adm ${esc(s.admNo||'')}</small></button>`).join('')}</div>`:''}
+  </section>
+  <section class="afcard"><h4>1. Student</h4>
+    <div class="afphoto"><label class="afph">${AF.photo?`<img src="${AF.photo}" alt="Student photo">`:'<span>📷<br>Add photo</span>'}<input type="file" accept="image/*" capture="user" hidden onchange="afPhoto(this.files[0])"></label>
+      <div style="flex:1;min-width:0">${afTxt('name','Student name *',{caps:1,after:"if(!AF.touchedGender){AF.d.gender=guessSex({name:this.value})==='F'?'Female':'Male'}"})}${afTxt('father',"Father's name *",{caps:1})}</div></div>
+    <div class="afg">
+      ${afSel('gender','Gender',AFO.gender)}
+      <label>Date of birth${dateBox('',D.dob,`oninput="maskDate(this);const x=parseDMY(this.value);AF.d.dob=x;const w=document.getElementById('af_dobw');if(w)w.textContent=x?dobWords(x)+'. '+afAge():''"`)}</label>
+    </div>
+    <p class="note" id="af_dobw">${D.dob?esc(dobWords(D.dob))+'. '+afAge():''}</p>
+    <div class="afg">${afSel('place','Place of birth',AFO.place)}${afTxt('bform','Form-B / CNIC',{mode:'numeric',mask:'maskCnic',ph:'12345-1234567-1',max:15})}
+      ${afSel('religion','Religion',AFO.religion)}${afSel('nationality','Nationality',AFO.nationality)}
+      ${afSel('domicile','Domicile',AFO.place)}${afSel('blood','Blood group',AFO.blood)}</div>
+    ${afTxt('present','Present address',{list:'af_vil',ph:'Village, Parrai, Swat',after:"if(AF.d.samePerm)AF.d.permanent=this.value"})}
+    <label class="check"><input type="checkbox" ${D.samePerm?'checked':''} onchange="AF.d.samePerm=this.checked;if(this.checked)AF.d.permanent=AF.d.present;afDraw(true)"> Permanent address is the same</label>
+    ${D.samePerm?'':afTxt('permanent','Permanent address',{list:'af_vil'})}
+  </section>
+  <section class="afcard"><h4>2. Admission</h4>
+    <div class="afg">
+      <label>Class<select onchange="afPick('cls',this)">${gs.map(g=>`<option value="${esc(g)}" ${sameG(g,D.cls)?'selected':''}>${esc(gLabel(g))}</option>`).join('')}</select></label>
+      ${afTxt('session','Session',{})}
+      <label>Admission date${dateBox('',D.admit,`oninput="maskDate(this);const x=parseDMY(this.value);if(x)AF.d.admit=x"`)}</label>
+      ${afTxt('admNo','Adm / Reg No.',{mode:'numeric',after:"AF.d.fileNo=this.value"})}
+      ${afSel('category','Category',AFO.category)}${afSel('status','Admission status',AFO.status)}
+      ${afTxt('fileNo','File No.',{})}${afSel('prevClass','Previous class',AFO.prevcls)}
+    </div>
+    ${D.prevClass&&D.prevClass!=='None (new)'?`<div class="afg">${afTxt('prevSchool','Previous school',{})}${afTxt('slcNo','SLC No. (old school)',{})}</div>${afSel('leaveReason','Reason for leaving old school',AFO.reason)}`:''}
+  </section>
+  <section class="afcard"><h4>3. Father and family</h4>
+    <div class="afg">${afTxt('fatherCnic',"Father's CNIC",{mode:'numeric',mask:'maskCnic',ph:'12345-1234567-1',max:15})}
+      ${afTxt('fatherMobile',"Father's mobile *",{type:'tel',mask:'maskPhone',ph:'03xx-xxxxxxx',max:12,after:"if(AF.d.sameWa)AF.d.whatsapp=this.value"})}
+      ${afSel('fatherOcc',"Father's occupation",AFO.occ)}${afSel('fatherEdu',"Father's education",AFO.edu)}</div>
+    <label class="check"><input type="checkbox" ${D.sameWa?'checked':''} onchange="AF.d.sameWa=this.checked;if(this.checked)AF.d.whatsapp=AF.d.fatherMobile;afDraw(true)"> WhatsApp is the same number</label>
+    ${D.sameWa?'':afTxt('whatsapp','WhatsApp number',{type:'tel',mask:'maskPhone',ph:'03xx-xxxxxxx',max:12})}
+    <div class="afg">${afTxt('mother',"Mother's name",{caps:1})}${afSel('motherOcc',"Mother's occupation",AFO.mocc)}
+      ${afSel('motherEdu',"Mother's education",AFO.edu)}${afTxt('motherMobile',"Mother's mobile",{type:'tel',mask:'maskPhone',ph:'03xx-xxxxxxx',max:12})}</div>
+    <details class="afmore" ${D.guardian?'open':''}><summary>Guardian (if not the father)</summary>
+      <div class="afg">${afTxt('guardian','Guardian name',{caps:1})}${afSel('guardianRel','Relation',AFO.rel)}${afTxt('guardianMobile','Guardian mobile',{type:'tel',mask:'maskPhone',max:12})}${afTxt('caste','Caste / tribe',{})}</div></details>
+    <div class="afg">${afTxt('emPerson','Emergency contact person',{})}${afTxt('emMobile','Emergency number',{type:'tel',mask:'maskPhone',max:12})}</div>
+  </section>
+  <section class="afcard"><h4>4. Office use</h4>
+    <div class="afg">${afTxt('fee','Monthly fee (Rs)',{mode:'numeric'})}${afTxt('disc','Discount per month (Rs)',{mode:'numeric',ph:'0'})}</div>
+    ${afTxt('remarks','Remarks',{})}
+  </section>
+  <p class="err" id="af_err"></p>
+  <div class="fabpad"></div>
+  <button class="fab" onclick="afSave()"><span class="fi">✓</span><span class="ft"><b>${AF.id?'Save changes':'Save admission'}</b><small>Adds to the register, then view and print</small></span></button>`;
+}
+function afCopy(id){
+  const s=getS(id);if(!s)return;const f=s.form||{};
+  Object.assign(AF.d,{father:s.father||AF.d.father,fatherCnic:f.fatherCnic||'',fatherMobile:f.fatherMobile||s.phone||'',whatsapp:f.whatsapp||f.fatherMobile||s.phone||'',
+    fatherOcc:f.fatherOcc||s.occupation||'',fatherEdu:f.fatherEdu||'',mother:f.mother||'',motherOcc:f.motherOcc||'Housewife',motherEdu:f.motherEdu||'',motherMobile:f.motherMobile||'',
+    present:f.present||s.residence||'',permanent:f.permanent||s.residence||'',religion:f.religion||'Islam',domicile:f.domicile||'Swat',caste:s.caste||'',
+    guardian:f.guardian||'',guardianRel:f.guardianRel||'',guardianMobile:f.guardianMobile||'',emPerson:f.emPerson||'',emMobile:f.emMobile||'',category:'Sibling in school'});
+  AF.sib='';toast('Family details copied from '+s.name);afDraw(true);
+}
+async function afPhoto(file){if(!file)return;try{const big=await shrinkImage(file);const img=new Image();img.src=big;await img.decode();
+  const c=document.createElement('canvas'),k=Math.min(1,320/Math.max(img.width,img.height));c.width=Math.round(img.width*k);c.height=Math.round(img.height*k);c.getContext('2d').drawImage(img,0,0,c.width,c.height);
+  AF.photo=c.toDataURL('image/jpeg',0.8);AF.photoSaved=false;afDraw(true);}catch(e){toast('Photo not added');}}
+async function afSave(){
+  const D=AF.d, err=t=>{$('#af_err').textContent=t;$('#af_err').scrollIntoView({block:'center'});};
+  D.name=String(D.name||'').trim().toUpperCase();D.father=String(D.father||'').trim().toUpperCase();
+  if(!D.name)return err("Write the student's name.");
+  if(!D.father)return err("Write the father's name.");
+  if(!D.cls)return err('Choose the class.');
+  if(D.admNo&&S.students.some(x=>x.id!==AF.id&&String(x.admNo)===String(D.admNo)))return err('Adm No. '+D.admNo+' is already used. Change it.');
+  if(D.samePerm)D.permanent=D.present;if(D.sameWa)D.whatsapp=D.fatherMobile;
+  const fee=Math.round(Number(D.fee)||0), disc=Math.round(Number(D.disc)||0), c=gCls(D.cls);
+  const form={...D};delete form.fee;delete form.disc;
+  const o={name:D.name,father:D.father,gender:D.gender==='Female'?'F':D.gender==='Male'?'M':'',dob:D.dob||'',admNo:String(D.admNo||''),admit:D.admit||todayStr(),admClass:c,
+    cls:c,sec:gSec(D.cls),campus:gCamp(D.cls),residence:D.present||'',phone:D.fatherMobile||'',occupation:D.fatherOcc||'',caste:D.caste||'',fileNo:D.fileNo||'',remarks:D.remarks||'',form};
+  let sid=AF.id;
+  if(sid){const old=getS(sid);o.admClass=old.admClass||c;o.fee=fee;o.disc=disc;o.fees=newFeeHist(old,fee,disc,false);upd('students',sid,o);}
+  else{o.roll=nextRoll(c);o.fee=fee;o.disc=disc;o.fees=[{from:'0000-00',fee,disc}];o.active=true;o.opening=0;o.created=Date.now();o.addedBy=ME.name;add('students',o);sid=o.id;AF.id=sid;}
+  if(AF.photo&&!AF.photoSaved){
+    const ph={id:'face-'+sid,title:'Student photo, '+D.name,date:todayStr(),studentId:sid,kind:'face',by:ME.name,img:AF.photo};
+    try{if(ONLINE){await sb.from('records').upsert({id:ph.id,col:'photo',cls:null,data:clean(ph),updated_at:new Date().toISOString()});}
+      else{S.photos=S.photos.filter(x=>x.id!==ph.id);S.photos.push(ph);saveLocal();}AF.photoSaved=true;}catch(e){toast('Photo will need internet');}
+  }
+  toast(AF.id&&getS(AF.id)?'Saved in the register':'Admission saved');
+  go('admview');
+}
+function afv(v){return v?esc(v):'<span class="nil">—</span>';}
+function admDocHtml(D,photo,s){
+  const set=S.settings, lv=afLevel(gCls(D.cls));
+  const cell=(l,v,w)=>`<div class="c${w?' w'+w:''}"><span>${l}</span><b>${afv(v)}</b></div>`;
+  return `<div class="adoc">
+    <div class="ad-rib"></div>
+    <div class="ad-hd"><img src="${LOGO}" alt=""><div class="ad-sc"><div class="sn">${esc(set.school)}</div><div class="sa">${esc(set.place)}</div>
+      <div class="sa">${set.phone?'Reception: '+esc(set.phone):''}${set.regNo?'  |  Reg No: '+esc(set.regNo):''}</div></div>
+      <div class="ad-ph">${photo?`<img src="${photo}" alt="">`:'<span>Photo</span>'}</div></div>
+    <div class="ad-band"><span>ADMISSION FORM</span><em>Session ${esc(D.session||'')}</em></div>
+    <div class="ad-key">
+      <div><span>Adm / Reg No.</span><b>${afv(D.admNo)}</b></div><div><span>School Reg No.</span><b>${D.admNo?lv+'-'+esc(D.admNo):'—'}</b></div>
+      <div><span>Class</span><b>${afv(gLabel(D.cls))}</b></div><div><span>Admission date</span><b>${afv(dmy(D.admit))}</b></div><div><span>Status</span><b>${afv(D.status)}</b></div></div>
+    <h5>1. Personal information</h5>
+    <div class="ad-g">${cell('Student name',D.name,2)}${cell("Father's name",D.father)}
+      ${cell('Gender',D.gender)}${cell('Date of birth',dmy(D.dob))}${cell('Place of birth',D.place)}
+      ${cell('Date of birth in words',dobWordsOnly(D.dob),3)}
+      ${cell('Form-B / CNIC',D.bform)}${cell('Religion',D.religion)}${cell('Nationality',D.nationality)}
+      ${cell('Domicile',D.domicile)}${cell('Blood group',D.blood)}${cell('Caste / tribe',D.caste)}
+      ${cell('Present address',D.present,3)}${D.permanent&&D.permanent!==D.present?cell('Permanent address',D.permanent,3):''}</div>
+    <h5>2. Admission information</h5>
+    <div class="ad-g">${cell('Class admitted in',gCls(D.cls))}${cell('Section',gSec(D.cls)||'—')}${cell('Campus',campName(gCamp(D.cls))===('Main campus')?set.school:campName(gCamp(D.cls)))}
+      ${cell('File No.',D.fileNo)}${cell('Category',D.category)}${cell('Previous class',D.prevClass)}
+      ${D.prevClass&&D.prevClass!=='None (new)'?cell('Previous school',D.prevSchool,2)+cell('SLC No.',D.slcNo)+cell('Reason for leaving',D.leaveReason,3):''}</div>
+    <h5>3. Parents / guardian</h5>
+    <div class="ad-g">${cell("Father's CNIC",D.fatherCnic)}${cell("Father's mobile",D.fatherMobile)}${cell('WhatsApp',D.whatsapp)}
+      ${cell("Father's occupation",D.fatherOcc)}${cell("Father's education",D.fatherEdu)}${cell("Mother's name",D.mother)}
+      ${cell("Mother's occupation",D.motherOcc)}${cell("Mother's education",D.motherEdu)}${cell("Mother's mobile",D.motherMobile)}
+      ${D.guardian?cell('Guardian',D.guardian)+cell('Relation',D.guardianRel)+cell('Guardian mobile',D.guardianMobile):''}
+      ${cell('Emergency contact',D.emPerson)}${cell('Emergency number',D.emMobile)}${cell('Remarks',D.remarks)}</div>
+    <div class="ad-off"><b>Office use</b><span>Monthly fee: <i>${D.fee?rs(D.fee):'—'}</i></span><span>Discount: <i>${D.disc?rs(D.disc):'—'}</i></span><span>Fee payable: <i>${D.fee?rs(Math.max(0,(Number(D.fee)||0)-(Number(D.disc)||0))):'—'}</i></span></div>
+    <p class="ad-decl">I certify that the information given above is correct. I will follow the rules of the school and pay the fee on time.</p>
+    <div class="ad-ft"><div><div class="ln"></div>Parent's signature</div><div><div class="ln"></div>Administrator</div><div><div class="ln"></div>Principal</div></div>
+    <div class="ad-rib bt"></div>
+  </div>`;
+}
+function viewAdmDoc(){
+  if(!AF||!AF.id){go('cert');return;}
+  const s=getS(AF.id);if(!s){go('cert');return;}
+  const D=afFrom(s);
+  $('#main').innerHTML=`${pageHead('Admission form',esc(s.name)+', Adm '+esc(s.admNo||''),'cert','cert')}
+  <div class="certwrap" id="certwrap"><div class="certscale" id="certscale">${admDocHtml(D,AF.photo,s)}</div></div>
+  <div class="cert-actions no-print" style="grid-template-columns:repeat(3,1fr)">
+    <button class="btn" onclick="printAs('pr-cert')">🖨️ Print</button>
+    <button class="btn" onclick="admPdf(false)">📄 PDF</button>
+    <button class="btn green" onclick="admPdf(true)">📤 Send</button>
+  </div>
+  <div class="actions no-print"><button class="btn ghost" onclick="UI.tab='admform';AF.d=afFrom(getS(AF.id));render()">✏️ Edit form</button><button class="btn ghost" onclick="openStudent('${s.id}')">Student record</button><button class="btn ghost" onclick="openAdmForm()">+ Next admission</button></div>`;
+  certFit();
+}
+async function admPdf(send){
+  const s=getS(AF.id);if(!s)return;
+  toast('Making PDF...');
+  try{
+    await loadScript('https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js','html2canvas');
+    await loadScript('https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js','jspdf');
+    if(document.fonts&&document.fonts.ready)await document.fonts.ready;
+    const host=document.createElement('div');host.style.cssText='position:fixed;left:-10000px;top:0;width:794px;';host.innerHTML=admDocHtml(afFrom(s),AF.photo,s);document.body.appendChild(host);
+    const canvas=await html2canvas(host.firstElementChild,{scale:2,backgroundColor:'#ffffff'});host.remove();
+    const pdf=new jspdf.jsPDF({unit:'mm',format:'a4'});const hmm=Math.min(297,canvas.height*210/canvas.width);
+    pdf.addImage(canvas.toDataURL('image/jpeg',0.92),'JPEG',0,0,210,hmm);
+    const fname=`Admission form - ${String(s.name).replace(/[^a-z0-9 ]/gi,'')} ${s.admNo||''}.pdf`, blob=pdf.output('blob'), file=new File([blob],fname,{type:'application/pdf'});
+    if(send&&navigator.canShare&&navigator.canShare({files:[file]})){await navigator.share({files:[file],title:'Admission form',text:`Admission form of ${s.name}, ${S.settings.school}`}).catch(()=>{});return;}
+    const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=fname;document.body.appendChild(a);a.click();a.remove();
+    if(send){toast('PDF saved. Attach it in WhatsApp.');if(s.phone)setTimeout(()=>window.open(waLink(s.phone,`Assalam o Alaikum. Admission form of ${s.name} from ${S.settings.school} is attached.`),'_blank'),900);}
+    else toast('PDF saved to your phone');
+  }catch(e){toast('Could not make PDF: '+(e.message||e));}
 }
 
 /* ================= Check that data reaches the database ================= */
@@ -2829,7 +3119,7 @@ function openStudent(id){
     ${isActive(s)||L.bal>0?`<button class="btn green" onclick="openCollect('${id}')">Collect fee</button>`:''}
     ${L.bal>0&&s.phone?`<a class="btn ghost" target="_blank" rel="noopener" href="${remindLink(s)}">Remind</a>`:''}
     <button class="btn ghost" onclick="openStudentForm('${id}')">Edit</button>
-    ${isOwner()?`<button class="btn ghost" onclick="openChargeForm('${id}')">Add charge</button><button class="btn ghost" onclick="closeSheet();UI.ctype='dob';UI.cstu='${id}';UI.cdata=null;go('certview')">Certificate</button>`:''}
+    ${isOwner()?`<button class="btn ghost" onclick="openChargeForm('${id}')">Add charge</button><button class="btn ghost" onclick="closeSheet();UI.ctype='dob';UI.cstu='${id}';UI.cdata=null;go('certview')">Certificate</button><button class="btn ghost" onclick="closeSheet();openAdmForm('${id}',true)">Admission form</button>`:''}
   </div>
   ${isOwner()?`<div class="actions"><label class="btn ghost" style="margin:0;color:var(--ink)">Add photo of form<input type="file" accept="image/*" capture="environment" hidden onchange="savePhoto(this.files[0],'${id}')"></label><button class="btn ghost" onclick="openPhotos('${id}')">Photos</button></div>`:''}
   <details><summary>Fee statement (${mk.length} entries)</summary><div class="inner">${mk.map(m=>{const g=months[m];const k=g.paid>=g.amt?'paid':g.paid>0?'part':'due';
@@ -3070,6 +3360,7 @@ function openSettings(){
     <label>Address<input id="s_place" value="${esc(set.place)}"></label>
     <div class="two"><label>School phone<input id="s_phone" type="tel" value="${esc(set.phone)}"></label>
     <label>Your name (owner)<input id="s_owner" value="${esc(set.ownerName||'')}" placeholder="Owner"></label></div>
+    <label>School registration no. (on forms)<input id="s_reg" value="${esc(set.regNo||'')}" placeholder="e.g. 203-H/Swat B"></label>
     <label>Received by name on your receipts<input id="s_acc" value="${esc(set.accountant)}" placeholder="Same as your name"></label>
     <label>Fee starts from month<input id="s_start" type="month" value="${esc(set.startMonth||thisMonth())}"></label>
     <p class="note">Monthly fee is counted from this month. Older dues go in each student's Old dues.</p>
@@ -3110,7 +3401,7 @@ function saveSettings(){
     if(name&&!cl.includes(name)){cl.push(name);if(fee)fees[name]=fee;}
   });
   saveSettingsData({school:$('#s_school').value.trim()||DEFAULTS.school,place:$('#s_place').value.trim(),phone:$('#s_phone').value.trim(),
-    ownerName:$('#s_owner').value.trim()||'Owner',accountant:$('#s_acc').value.trim(),startMonth:$('#s_start').value||S.settings.startMonth||thisMonth(),
+    ownerName:$('#s_owner').value.trim()||'Owner',regNo:$('#s_reg').value.trim(),accountant:$('#s_acc').value.trim(),startMonth:$('#s_start').value||S.settings.startMonth||thisMonth(),
     classes:cl.length?cl:DEFAULTS.classes,classFees:fees});
   toast('Settings saved');closeSheet();
 }
