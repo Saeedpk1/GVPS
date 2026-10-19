@@ -12,7 +12,7 @@
 <meta name="apple-mobile-web-app-title" content="GVPS">
 <title>Green Valley Public School</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Cinzel:wght@600;800&family=Great+Vibes&family=Playfair+Display:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Cinzel:wght@600;800&family=Great+Vibes&family=Playfair+Display:ital,wght@0,600;1,500&family=Noto+Nastaliq+Urdu:wght@600&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js"></script>
 <style>
 :root{
@@ -999,6 +999,67 @@ header .grow{min-width:0}
 .ofstart span{font-weight:800;font-size:13px;color:#2f4f8f}
 .ofstart select{height:36px;border:1.5px solid #c9d9f5;border-radius:10px;background:#fff;padding:0 8px;font-weight:700}
 @media (prefers-color-scheme:dark){.ofc.pre{background:repeating-linear-gradient(45deg,#1a2338,#1a2338 5px,#202a42 5px,#202a42 10px);color:#8b97b0;border-color:#33415f}.ofstart{background:#152039;border-color:#2f4570}.ofstart span{color:#b9cdf5}.ofstart select{background:#111a2c;color:var(--ink);border-color:#2f4570}}
+
+/* ===== admission form v2 (formal, solid lines) ===== */
+.af2{width:794px;height:1123px;background:#fff;position:relative;padding:22px 30px 12px;font-family:"Plus Jakarta Sans",Arial,sans-serif;color:#13202f;overflow:hidden;color-scheme:light;box-sizing:border-box}
+.af2 *{box-sizing:border-box}
+.af2 .a2fr1{position:absolute;inset:10px;border:2.5px solid #0d5c22;border-radius:6px}
+.af2 .a2fr2{position:absolute;inset:15px;border:1px solid #c9a227;border-radius:4px}
+.af2 .a2wm{position:absolute;left:50%;top:52%;width:420px;transform:translate(-50%,-50%);opacity:.05}
+.af2 .a2hd{display:grid;grid-template-columns:90px 1fr 100px;gap:14px;align-items:center;position:relative}
+.af2 .a2hd>img{width:90px;height:90px}
+.af2 .a2sc{text-align:center}
+.af2 .a2sn{font-family:Cinzel,Georgia,serif;font-weight:800;font-size:27px;color:#0d5c22;line-height:1.05;letter-spacing:.5px}
+.af2 .a2ur{font-family:"Noto Nastaliq Urdu",serif;font-size:16px;color:#0d5c22;line-height:1.8}
+.af2 .a2sa{font-size:11.5px;color:#334;font-weight:600}
+.af2 .a2ph{width:100px;height:120px;border:2px solid #0d5c22;border-radius:6px;display:grid;place-items:center;text-align:center;font-size:11px;color:#7a8696;background:#f6faf7;overflow:hidden}
+.af2 .a2ph img{width:100%;height:100%;object-fit:cover}
+.af2 .a2band{margin-top:8px;display:flex;border:2px solid #0d5c22;border-radius:6px;overflow:hidden;position:relative}
+.af2 .a2bt{flex:1;background:#0d5c22;color:#fff;font-family:Cinzel,Georgia,serif;font-weight:800;letter-spacing:5px;font-size:16.5px;padding:6px 14px}
+.af2 .a2bs{background:#c9a227;color:#fff;font-weight:800;font-size:12.5px;padding:0 14px;display:grid;place-items:center}
+.af2 .a2bc{background:#fff;color:#0d5c22;font-weight:800;font-size:11px;padding:0 12px;display:grid;place-items:center;border-left:2px solid #0d5c22}
+.af2 .a2keys{display:grid;grid-template-columns:repeat(5,1fr);margin-top:7px;border:1.5px solid #0d5c22;border-radius:6px;overflow:hidden;position:relative}
+.af2 .a2keys div{padding:4px 8px;border-right:1.5px solid #0d5c22;background:#eef7f1}
+.af2 .a2keys div:last-child{border-right:0}
+.af2 .a2keys span{display:block;font-size:9.5px;font-weight:700;color:#4a5a6a;text-transform:uppercase;letter-spacing:.4px}
+.af2 .a2keys b{display:block;font-size:14px;color:#0d5c22;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.af2 .a2sec{margin-top:8px;border:1.5px solid #0d5c22;border-radius:6px;overflow:hidden;position:relative;background:rgba(255,255,255,.6)}
+.af2 .a2sec h5{background:#0d5c22;color:#fff;font-size:11.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:4px 10px;display:flex;justify-content:space-between;margin:0;border:0}
+.af2 .a2sec h5 i{font-style:normal;color:#ffe08a;font-weight:700;letter-spacing:0}
+.af2 .a2sec.gold{border-color:#c9a227}.af2 .a2sec.gold h5{background:#c9a227}.af2 .a2sec.gold h5 i{color:#fff}
+.af2 table{width:100%;border-collapse:collapse;font-size:12.5px}
+.af2 td{border:1px solid #6f8579;padding:3px 7px;height:24px;vertical-align:middle}
+.af2 tr td:first-child{border-left:0}.af2 tr td:last-child{border-right:0}.af2 tr:last-child td{border-bottom:0}
+.af2 td.l{background:#eef5f0;color:#2a3a4a;font-weight:700;font-size:11px;width:17%;white-space:nowrap}
+.af2 td.v{font-weight:700;color:#0e1726}
+.af2 td.v.big{font-size:14px}
+.af2 td.v.e{color:#aab4bf;font-weight:400;letter-spacing:1px}
+.af2 .a2sm{color:#5a7a66;font-weight:600}
+.af2 .a2ck{display:inline-flex;align-items:center;gap:4px;margin-right:12px;font-weight:700}
+.af2 .a2ck i{width:13px;height:13px;border:1.5px solid #0d5c22;border-radius:2px;display:inline-grid;place-items:center;font-style:normal;font-size:10px;color:#fff;line-height:1}
+.af2 .a2ck i.on{background:#0d5c22}
+.af2 .a2docs{display:flex;flex-wrap:wrap;gap:4px 14px;padding:5px 10px;font-size:12px}
+.af2 .a2off{display:grid;grid-template-columns:repeat(5,1fr);font-size:12px}
+.af2 .a2off div{padding:4px 8px;border-right:1px solid #6f8579}
+.af2 .a2off div:last-child{border-right:0}
+.af2 .a2off span{display:block;font-size:9.5px;font-weight:700;color:#5a4a20;text-transform:uppercase}
+.af2 .a2off b{display:block;font-size:13.5px;color:#7a5200}
+.af2 .a2decl{font-size:11px;color:#334;margin-top:6px;line-height:1.45;position:relative}
+.af2 .a2sig{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:16px;margin-top:10px;align-items:end;font-size:11.5px;font-weight:700;color:#223;text-align:center;position:relative}
+.af2 .a2sig .a2ln{border-top:1.5px solid #223;padding-top:4px}
+.af2 .a2thumb{width:58px;height:58px;border:1.5px dashed #6f8579;border-radius:6px;margin:0 auto 4px;display:grid;place-items:center;font-size:9.5px;color:#8a96a6;font-weight:600}
+.af2 .a2seal{width:80px;height:80px;margin:0 auto;border:2.5px double #c9a227;border-radius:50%;display:grid;place-items:center;font-size:9px;color:#a8861a;font-family:Cinzel,serif;font-weight:800;line-height:1.3;transform:rotate(-10deg);text-align:center}
+.af2 .a2cut{margin-top:10px;border-top:2px dashed #6f8579;position:relative;padding-top:7px}
+.af2 .a2cut:before{content:"✂";position:absolute;left:-4px;top:-12px;font-size:15px;color:#6f8579;background:#fff}
+.af2 .a2slip{display:grid;grid-template-columns:50px 1.4fr 1fr 1fr 1fr;border:1.5px solid #0d5c22;border-radius:6px;overflow:hidden;font-size:11.5px}
+.af2 .a2slip>div{padding:4px 8px;border-right:1px solid #6f8579}
+.af2 .a2slip>div:last-child{border-right:0}
+.af2 .a2slip img{width:34px;height:34px}
+.af2 .a2slip span{display:block;font-size:9px;font-weight:700;color:#4a5a6a;text-transform:uppercase}
+.af2 .a2slip b{display:block;font-size:12.5px;color:#0d5c22;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.af2 .a2ft{display:flex;justify-content:space-between;font-size:9.5px;color:#6a7686;margin-top:4px}
+body.pr-cert .af2{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.afdocs{display:grid;grid-template-columns:1fr 1fr;gap:2px 10px}
 </style>
 </head>
 <body>
@@ -1058,7 +1119,7 @@ const SUPABASE_KEY = "sb_publishable_JiH4kZdQ9IlnOiCejy8tKQ_fArOg88j";
 
 <script>
 /* ================= Basics ================= */
-const APP_VERSION = '2026-10-17 v33';
+const APP_VERSION = '2026-10-17 v34';
 const ONLINE = !!(SUPABASE_URL && SUPABASE_KEY);
 const LKEY = 'gvps-fee-data', SKEY = 'gvps-session', STAFF_DOMAIN = 'staff.gvps.app';
 const LOGO = 'data:image/webp;base64,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';
@@ -2445,6 +2506,7 @@ const AFO={
   reason:['Change of residence','Better education','Fee issue','Parents request','Transport issue','Moved to new school'],
   prevcls:['None (new)','Playgroup','Nursery','KG / Prep','1st','2nd','3rd','4th','5th','6th','7th','8th','9th']
 };
+const AF_DOCS=['Form-B copy',"Father's CNIC copy",'2 photos','SLC of old school','Result card'];
 let AF=null;
 const afLevel=c=>{const l=clsLevel(c);return l<=2?'PP':l<=7?'P':l<=10?'M':'H';};
 function afBlank(){
@@ -2453,7 +2515,7 @@ function afBlank(){
     present:'',permanent:'',samePerm:true,fatherCnic:'',fatherOcc:'',fatherEdu:'',fatherMobile:'',whatsapp:'',sameWa:true,
     mother:'',motherOcc:'Housewife',motherEdu:'',motherMobile:'',guardian:'',guardianRel:'',guardianMobile:'',
     session:sessionTxt(),cls:gKey(c,'',UI.camp||''),admit:todayStr(),admNo:an,fileNo:an,category:'Regular',status:'Confirmed',
-    prevSchool:'',prevClass:'None (new)',leaveReason:'',slcNo:'',emPerson:'',emMobile:'',remarks:'',fee:classFee(c)||'',disc:'',caste:''};
+    prevSchool:'',prevClass:'None (new)',leaveReason:'',slcNo:'',emPerson:'',emMobile:'',remarks:'',fee:classFee(c)||'',disc:'',caste:'',admFee:'',docs:[]};
 }
 function afFrom(s){
   const f=s.form||{};
@@ -2584,8 +2646,12 @@ function viewAdmForm(){
       <div class="afg">${afTxt('guardian','Guardian name',{caps:1})}${afSel('guardianRel','Relation',AFO.rel)}${afTxt('guardianMobile','Guardian mobile',{type:'tel',mask:'maskPhone',max:12})}${afTxt('caste','Caste / tribe',{})}</div></details>
     <div class="afg">${afTxt('emPerson','Emergency contact person',{})}${afTxt('emMobile','Emergency number',{type:'tel',mask:'maskPhone',max:12})}</div>
   </section>
-  <section class="afcard"><h4>4. Office use</h4>
-    <div class="afg">${afTxt('fee','Monthly fee (Rs)',{mode:'numeric'})}${afTxt('disc','Discount per month (Rs)',{mode:'numeric',ph:'0'})}</div>
+  <section class="afcard"><h4>4. Documents received</h4>
+    <div class="afdocs">${AF_DOCS.map(d=>`<label class="check"><input type="checkbox" ${(D.docs||[]).includes(d)?'checked':''} onchange="AF.d.docs=AF.d.docs||[];if(this.checked){if(!AF.d.docs.includes('${d}'))AF.d.docs.push('${d}')}else AF.d.docs=AF.d.docs.filter(x=>x!=='${d}')"> ${d}</label>`).join('')}</div>
+  </section>
+  <section class="afcard"><h4>5. Office use</h4>
+    <div class="afg">${afTxt('admFee','Admission fee (Rs)',{mode:'numeric',ph:'0'})}${afTxt('fee','Monthly fee (Rs)',{mode:'numeric'})}${afTxt('disc','Discount per month (Rs)',{mode:'numeric',ph:'0'})}</div>
+    <p class="note">Admission fee is added to the student's dues for the admission month.</p>
     ${afTxt('remarks','Remarks',{})}
   </section>
   <p class="err" id="af_err"></p>
@@ -2618,43 +2684,65 @@ async function afSave(){
     try{if(ONLINE){await sb.from('records').upsert({id:ph.id,col:'photo',cls:null,data:clean(ph),updated_at:new Date().toISOString()});}
       else{S.photos=S.photos.filter(x=>x.id!==ph.id);S.photos.push(ph);saveLocal();}AF.photoSaved=true;}catch(e){toast('Photo will need internet');}
   }
+  const af=Math.round(Number(D.admFee)||0);
+  if(isOwner()){
+    const ex=S.charges.find(c=>c.target==='student'&&c.studentId===sid&&c.title==='Admission fee');
+    if(af>0&&!ex)add('charges',{title:'Admission fee',amount:af,month:monthOf(o.admit),target:'student',studentId:sid,created:Date.now()});
+    else if(ex&&af>0&&Number(ex.amount)!==af)upd('charges',ex.id,{amount:af});
+    else if(ex&&!af)del('charges',ex.id);
+  }
   toast(AF.id&&getS(AF.id)?'Saved in the register':'Admission saved');
   go('admview');
 }
 function afv(v){return v?esc(v):'<span class="nil">—</span>';}
 function admDocHtml(D,photo,s){
-  const set=S.settings, lv=afLevel(gCls(D.cls));
-  const cell=(l,v,w)=>`<div class="c${w?' w'+w:''}"><span>${l}</span><b>${afv(v)}</b></div>`;
-  return `<div class="adoc">
-    <div class="ad-rib"></div>
-    <div class="ad-hd"><img src="${LOGO}" alt=""><div class="ad-sc"><div class="sn">${esc(set.school)}</div><div class="sa">${esc(set.place)}</div>
-      <div class="sa">${set.phone?'Reception: '+esc(set.phone):''}${set.regNo?'  |  Reg No: '+esc(set.regNo):''}</div></div>
-      <div class="ad-ph">${photo?`<img src="${photo}" alt="">`:'<span>Photo</span>'}</div></div>
-    <div class="ad-band"><span>ADMISSION FORM</span><em>Session ${esc(D.session||'')}</em></div>
-    <div class="ad-key">
-      <div><span>Adm / Reg No.</span><b>${afv(D.admNo)}</b></div><div><span>School Reg No.</span><b>${D.admNo?lv+'-'+esc(D.admNo):'—'}</b></div>
-      <div><span>Class</span><b>${afv(gLabel(D.cls))}</b></div><div><span>Admission date</span><b>${afv(dmy(D.admit))}</b></div><div><span>Status</span><b>${afv(D.status)}</b></div></div>
-    <h5>1. Personal information</h5>
-    <div class="ad-g">${cell('Student name',D.name,2)}${cell("Father's name",D.father)}
-      ${cell('Gender',D.gender)}${cell('Date of birth',dmy(D.dob))}${cell('Place of birth',D.place)}
-      ${cell('Date of birth in words',dobWordsOnly(D.dob),3)}
-      ${cell('Form-B / CNIC',D.bform)}${cell('Religion',D.religion)}${cell('Nationality',D.nationality)}
-      ${cell('Domicile',D.domicile)}${cell('Blood group',D.blood)}${cell('Caste / tribe',D.caste)}
-      ${cell('Present address',D.present,3)}${D.permanent&&D.permanent!==D.present?cell('Permanent address',D.permanent,3):''}</div>
-    <h5>2. Admission information</h5>
-    <div class="ad-g">${cell('Class admitted in',gCls(D.cls))}${cell('Section',gSec(D.cls)||'—')}${cell('Campus',campName(gCamp(D.cls))===('Main campus')?set.school:campName(gCamp(D.cls)))}
-      ${cell('File No.',D.fileNo)}${cell('Category',D.category)}${cell('Previous class',D.prevClass)}
-      ${D.prevClass&&D.prevClass!=='None (new)'?cell('Previous school',D.prevSchool,2)+cell('SLC No.',D.slcNo)+cell('Reason for leaving',D.leaveReason,3):''}</div>
-    <h5>3. Parents / guardian</h5>
-    <div class="ad-g">${cell("Father's CNIC",D.fatherCnic)}${cell("Father's mobile",D.fatherMobile)}${cell('WhatsApp',D.whatsapp)}
-      ${cell("Father's occupation",D.fatherOcc)}${cell("Father's education",D.fatherEdu)}${cell("Mother's name",D.mother)}
-      ${cell("Mother's occupation",D.motherOcc)}${cell("Mother's education",D.motherEdu)}${cell("Mother's mobile",D.motherMobile)}
-      ${D.guardian?cell('Guardian',D.guardian)+cell('Relation',D.guardianRel)+cell('Guardian mobile',D.guardianMobile):''}
-      ${cell('Emergency contact',D.emPerson)}${cell('Emergency number',D.emMobile)}${cell('Remarks',D.remarks)}</div>
-    <div class="ad-off"><b>Office use</b><span>Monthly fee: <i>${D.fee?rs(D.fee):'—'}</i></span><span>Discount: <i>${D.disc?rs(D.disc):'—'}</i></span><span>Fee payable: <i>${D.fee?rs(Math.max(0,(Number(D.fee)||0)-(Number(D.disc)||0))):'—'}</i></span></div>
-    <p class="ad-decl">I certify that the information given above is correct. I will follow the rules of the school and pay the fee on time.</p>
-    <div class="ad-ft"><div><div class="ln"></div>Parent's signature</div><div><div class="ln"></div>Administrator</div><div><div class="ln"></div>Principal</div></div>
-    <div class="ad-rib bt"></div>
+  const set=S.settings, lv=afLevel(gCls(D.cls)), urdu=set.urduName||(/green valley/i.test(set.school)?'گرین ویلی پبلک اسکول':'');
+  const v=(x,wide)=>x?`<td class="v"${wide?' colspan="3"':''}>${esc(x)}</td>`:`<td class="v e"${wide?' colspan="3"':''}>${wide?'_______________________________________':'__________________'}</td>`;
+  const ck=(on,t)=>`<span class="a2ck"><i class="${on?'on':''}">${on?'✓':''}</i>${t}</span>`;
+  const age=(()=>{if(!D.dob)return '';const [y1,m1,d1]=D.dob.split('-').map(Number),[y2,m2,d2]=(D.admit||todayStr()).split('-').map(Number);let y=y2-y1,m=m2-m1;if(d2<d1)m--;if(m<0){y--;m+=12;}return y>=0?`${y} year${y===1?'':'s'}${m?' '+m+' month'+(m===1?'':'s'):''}`:'';})();
+  const cur=s?gLabel(gOf(s)):gLabel(D.cls), adm=D.admClass||(s&&s.admClass)||gCls(D.cls);
+  const fee=Number(D.fee)||0, disc=Number(D.disc)||0, docs=D.docs||[];
+  const same=D.permanent&&D.permanent===D.present;
+  const recv=set.accountant||(ME&&ME.name)||'';
+  return `<div class="af2">
+  <div class="a2fr1"></div><div class="a2fr2"></div><img class="a2wm" src="${LOGO}" alt="">
+  <div class="a2hd"><img src="${LOGO}" alt=""><div class="a2sc"><div class="a2sn">${esc(set.school)}</div>${urdu?`<div class="a2ur">${esc(urdu)}</div>`:''}
+    <div class="a2sa">${esc(set.place)}</div><div class="a2sa">${set.phone?'Reception: '+esc(set.phone):''}${set.regNo?' &nbsp;|&nbsp; Reg No: '+esc(set.regNo):''}</div></div>
+    <div class="a2ph">${photo?`<img src="${photo}" alt="">`:'Paste<br>passport size<br>photo'}</div></div>
+  <div class="a2band"><div class="a2bt">ADMISSION FORM</div><div class="a2bs">Session ${esc(D.session||'')}</div><div class="a2bc">FORM NO. ${esc(D.admNo||'')}</div></div>
+  <div class="a2keys"><div><span>Adm / Reg No.</span><b>${esc(D.admNo||'—')}</b></div><div><span>School Reg No.</span><b>${D.admNo?lv+'-'+esc(D.admNo):'—'}</b></div>
+    <div><span>Class / Section</span><b>${esc(cur)}</b></div><div><span>Admission date</span><b>${dmy(D.admit)||'—'}</b></div><div><span>Status</span><b>${esc(D.status||'—')}</b></div></div>
+  <div class="a2sec"><h5>1. Personal information <i>Student</i></h5><table>
+    <tr><td class="l">Student name</td><td class="v big" colspan="3">${esc(D.name)}</td></tr>
+    <tr><td class="l">Father's name</td>${v(D.father)}<td class="l">Gender</td><td class="v">${ck(D.gender==='Male','Male')}${ck(D.gender==='Female','Female')}</td></tr>
+    <tr><td class="l">Date of birth</td>${v(dmy(D.dob))}<td class="l">Age on admission</td>${v(age)}</tr>
+    <tr><td class="l">Birth in words</td>${v(dobWordsOnly(D.dob),1)}</tr>
+    <tr><td class="l">Form-B / CNIC</td>${v(D.bform)}<td class="l">Place of birth</td>${v(D.place)}</tr>
+    <tr><td class="l">Religion</td>${v(D.religion)}<td class="l">Nationality</td>${v(D.nationality)}</tr>
+    <tr><td class="l">Domicile</td>${v(D.domicile)}<td class="l">Blood group</td>${v(D.blood&&D.blood!=='Not known'?D.blood:'')}</tr>
+    <tr><td class="l">Present address</td>${v(D.present,1)}</tr>
+    <tr><td class="l">Permanent address</td>${same?`<td class="v" colspan="3">${esc(D.permanent)} <span class="a2sm">(same as present)</span></td>`:v(D.permanent,1)}</tr>
+  </table></div>
+  <div class="a2sec"><h5>2. Admission information <i>School</i></h5><table>
+    <tr><td class="l">Class admitted in</td>${v(adm)}<td class="l">Present class</td>${v(cur)}</tr>
+    <tr><td class="l">File No.</td>${v(D.fileNo)}<td class="l">Category</td>${v(D.category)}</tr>
+    <tr><td class="l">Previous school</td>${D.prevClass&&D.prevClass!=='None (new)'?v(D.prevSchool):'<td class="v e">None (new admission)</td>'}<td class="l">SLC No.</td>${v(D.slcNo)}</tr>
+  </table></div>
+  <div class="a2sec"><h5>3. Parents / guardian <i>Family</i></h5><table>
+    <tr><td class="l">Father's CNIC</td>${v(D.fatherCnic)}<td class="l">Father's mobile</td>${v(D.fatherMobile)}</tr>
+    <tr><td class="l">Occupation</td>${v(D.fatherOcc)}<td class="l">Education</td>${v(D.fatherEdu)}</tr>
+    <tr><td class="l">Mother's name</td>${v(D.mother)}<td class="l">WhatsApp</td>${v(D.whatsapp)}</tr>
+    <tr><td class="l">Emergency contact</td>${v([D.emPerson,D.emMobile].filter(Boolean).join(', '))}<td class="l">Guardian</td>${v(D.guardian?D.guardian+(D.guardianRel?' ('+D.guardianRel+')':''):'Father')}</tr>
+  </table></div>
+  <div class="a2sec"><h5>4. Documents received <i>Tick</i></h5><div class="a2docs">${AF_DOCS.map(d=>ck(docs.includes(d),esc(d))).join('')}</div></div>
+  <div class="a2sec gold"><h5>5. Office use <i>Fee</i></h5><div class="a2off">
+    <div><span>Admission fee</span><b>${D.admFee?rs(D.admFee):'—'}</b></div><div><span>Monthly fee</span><b>${fee?rs(fee):'—'}</b></div><div><span>Discount</span><b>${disc?rs(disc):'—'}</b></div>
+    <div><span>Fee payable</span><b>${fee?rs(Math.max(0,fee-disc)):'—'}</b></div><div><span>Received by</span><b>${esc(recv||'—')}</b></div></div></div>
+  <p class="a2decl"><b>Undertaking:</b> I certify that the information given above is correct. I will obey the rules of the school, pay the fee by the 10th of every month, and make sure my child attends regularly.</p>
+  <div class="a2sig"><div><div class="a2thumb">Thumb</div><div class="a2ln">Parent / guardian</div></div><div><div class="a2ln">Class teacher</div></div><div><div class="a2seal">${esc(String(set.school).split(' ').slice(0,2).join(' ').toUpperCase())}<br>★ SEAL ★</div></div><div><div class="a2ln">Principal</div></div></div>
+  <div class="a2cut"><div class="a2slip"><div><img src="${LOGO}" alt=""></div><div><span>Parent copy: name</span><b>${esc(D.name)}</b></div><div><span>Class / Adm No.</span><b>${esc(cur)} / ${esc(D.admNo||'')}</b></div>
+    <div><span>Admission date</span><b>${dmy(D.admit)||'—'}</b></div><div><span>Monthly fee</span><b>${fee?rs(Math.max(0,fee-disc)):'—'}</b></div></div>
+    <div class="a2ft"><span>${esc(set.school)}, ${esc(String(set.place).split(',').slice(0,2).join(','))}</span><span>Printed ${dmy(todayStr())}</span></div></div>
   </div>`;
 }
 function viewAdmDoc(){
@@ -3520,6 +3608,7 @@ function openSettings(){
     <label>Address<input id="s_place" value="${esc(set.place)}"></label>
     <div class="two"><label>School phone<input id="s_phone" type="tel" value="${esc(set.phone)}"></label>
     <label>Your name (owner)<input id="s_owner" value="${esc(set.ownerName||'')}" placeholder="Owner"></label></div>
+    <label>School name in Urdu (on forms)<input id="s_urdu" dir="rtl" value="${esc(set.urduName||(/green valley/i.test(set.school)?'گرین ویلی پبلک اسکول':''))}"></label>
     <label>School registration no. (on forms)<input id="s_reg" value="${esc(set.regNo||'')}" placeholder="e.g. 203-H/Swat B"></label>
     <label>Received by name on your receipts<input id="s_acc" value="${esc(set.accountant)}" placeholder="Same as your name"></label>
     <label>Fee starts from month<input id="s_start" type="month" value="${esc(set.startMonth||thisMonth())}"></label>
@@ -3561,7 +3650,7 @@ function saveSettings(){
     if(name&&!cl.includes(name)){cl.push(name);if(fee)fees[name]=fee;}
   });
   saveSettingsData({school:$('#s_school').value.trim()||DEFAULTS.school,place:$('#s_place').value.trim(),phone:$('#s_phone').value.trim(),
-    ownerName:$('#s_owner').value.trim()||'Owner',regNo:$('#s_reg').value.trim(),accountant:$('#s_acc').value.trim(),startMonth:$('#s_start').value||S.settings.startMonth||thisMonth(),
+    ownerName:$('#s_owner').value.trim()||'Owner',regNo:$('#s_reg').value.trim(),urduName:$('#s_urdu').value.trim(),accountant:$('#s_acc').value.trim(),startMonth:$('#s_start').value||S.settings.startMonth||thisMonth(),
     classes:cl.length?cl:DEFAULTS.classes,classFees:fees});
   toast('Settings saved');closeSheet();
 }
