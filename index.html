@@ -1163,6 +1163,19 @@ body.pr-cert .af2{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 
 .obin input,.omin{-moz-appearance:textfield;appearance:textfield;padding:0 6px!important;font-size:14px!important}
 .obin input::-webkit-outer-spin-button,.obin input::-webkit-inner-spin-button,.omin::-webkit-outer-spin-button,.omin::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+
+.omt th:nth-child(1){width:27%!important}.omt th:nth-child(2){width:15%!important}.omt th:nth-child(3){width:19%!important}.omt th:nth-child(4){width:23%!important}.omt th:nth-child(5){width:16%!important}
+.omt td.omob{background:color-mix(in srgb,#2fbfae 10%,var(--rb))}
+.omobin{width:100%;max-width:80px;height:36px;border:2px solid #9fd9d1;border-radius:9px;text-align:right;padding:0 6px;font-size:13.5px;font-weight:800;color:#0b5f56;background:#fff;-moz-appearance:textfield;appearance:textfield}
+.omobin::-webkit-outer-spin-button,.omobin::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.omobin:focus{outline:none;border-color:#0b7a6e;box-shadow:0 0 0 3px rgba(11,122,110,.2)}
+.omobin::placeholder{color:#b4bfcf}
+.omt th:nth-child(3){background:#e3f5f3!important;color:#0b5f56!important}
+@media (prefers-color-scheme:dark){.omobin{background:#0d1524;color:#7fe0d2;border-color:#1f5a52}.omt th:nth-child(3){background:#10332f!important;color:#7fe0d2!important}}
+
+.oldbtn.fr{background:linear-gradient(135deg,#1f5fc4,#4f8ff0);box-shadow:0 8px 16px -10px #1f5fc4}
+.fsv{min-width:640px}.fsv th{white-space:nowrap}
+.fsv td.who b{display:block;font-size:12.5px}.fsv td.who small{display:block;font-size:11px;color:var(--muted)}
 </style>
 </head>
 <body>
@@ -1222,7 +1235,7 @@ const SUPABASE_KEY = "sb_publishable_JiH4kZdQ9IlnOiCejy8tKQ_fArOg88j";
 
 <script>
 /* ================= Basics ================= */
-const APP_VERSION = '2026-10-17 v37';
+const APP_VERSION = '2026-10-17 v39';
 const ONLINE = !!(SUPABASE_URL && SUPABASE_KEY);
 const LKEY = 'gvps-fee-data', SKEY = 'gvps-session', STAFF_DOMAIN = 'staff.gvps.app';
 const LOGO = 'data:image/webp;base64,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';
@@ -1811,8 +1824,8 @@ function viewFeePage(){
   </section>
   ${Object.keys(cash).length?`<h3 class="sec">Cash still with teachers</h3><div class="list">${Object.keys(cash).map(k=>`<div class="item"><div class="av">${esc(initials(cash[k].name))}</div><div class="t"><div class="n">${esc(cash[k].name)}</div><div class="s">${pl(cash[k].n,'receipt')}</div></div>
     <div class="r"><span class="amt">${rs(cash[k].amt)}</span><button class="btn sm" onclick="settleCash('${k}')">Received</button></div></div>`).join('')}</div>`:''}
-  <button class="oldbtn no-print" onclick="openOldFee()"><span>📅</span><span><b>Old months fee</b><small>Add fee paid and dues of earlier months</small></span><i>›</i></button>
-  <button class="oldbtn ob no-print" onclick="openOldBal()"><span>💼</span><span><b>Old balance</b><small>What each student owed before ${monthName(S.settings.startMonth||thisMonth())}</small></span><i>›</i></button>
+  <button class="oldbtn ob no-print" onclick="openOldBal()"><span>💼</span><span><b>Old balance</b><small>What each student owed before ${monthName(S.settings.startMonth||thisMonth())}. Fee then counts from that month.</small></span><i>›</i></button>
+  <button class="oldbtn fr no-print" onclick="UI.rep='feesheet';UI.fsCls=UI.cls||'';go('rep')"><span>🖨️</span><span><b>Fee report</b><small>A4 landscape sheet with the school logo</small></span><i>›</i></button>
   <div class="chips no-print" style="margin-top:14px">${[['collect','Students'],['receipts','Receipts'],['dues','Dues']].map(([k,l])=>`<button class="chipbtn ${UI.feeMode===k?'on':''}" onclick="UI.feeMode='${k}';render()">${l}</button>`).join('')}<button class="chipbtn" onclick="go('reports')">Reports</button></div>
   <div id="feeBody"></div>`;
   if(UI.feeMode==='receipts'){
@@ -2038,6 +2051,7 @@ const REPS=[
   ['attday','Daily attendance','Present and absent in every class','A'],
   ['attmonth','Monthly attendance','Each class: days, present %','A'],
   ['register','Attendance register','One class, full month sheet','A'],
+  ['feesheet','Fee report (A4)','Each student: old balance, months, paid, balance','B'],
   ['feemonth','Monthly fee','Expected, received, pending by class','B'],
   ['feecoll','Fee collection','Receipts between two dates','B'],
   ['dues','Dues list','Who owes fee and how much','R'],
@@ -2053,7 +2067,7 @@ function viewRepHub(){
   }
   const R=REPS.find(x=>x[0]===UI.rep)||REPS[0], gs=allGroups(UI.camp).filter(g=>classStudents(g).length);
   const head=`<div class="phead no-print" style="${TONE.r}"><button class="back" onclick="if(NAV.length)navBack();else{UI.rep='';render()}" aria-label="Back">‹</button><div><b>${R[1]}</b><span>${R[2]}</span></div></div>${campSelect()}`;
-  const printBtn=`<div class="actions no-print"><button class="btn" onclick="printAs('pr-report',${UI.rep==='admreg'||UI.rep==='register'})">🖨️ Print</button></div>`;
+  const printBtn=`<div class="actions no-print"><button class="btn" onclick="printAs('pr-report',${UI.rep==='admreg'||UI.rep==='register'||UI.rep==='feesheet'})">🖨️ Print</button></div>`;
   const campTxt=hasCampus()?(UI.camp===null?', all campuses':', '+campName(UI.camp)):'';
   const tbl=(cols,rows,foot)=>`<div class="card tblwrap" style="padding:4px 8px"><table class="tbl"><tr>${cols.map(c=>`<th class="${c[1]||''}">${c[0]}</th>`).join('')}</tr>${rows.join('')}${foot||''}</table></div>`;
   let body='';
@@ -2098,6 +2112,25 @@ function viewRepHub(){
       <div class="no-print">${repHead('Class list: '+esc(gLabel(g))+(teacherOf(g)?', teacher '+esc(teacherOf(g)):'')+', '+pl(classStudents(g).length,'student'))}
       <div class="card tblwrap rtbl no-print" style="padding:4px 6px"><table class="tbl"><tr><th>Roll</th><th>Student</th><th>Adm</th><th>Phone</th></tr>
       ${classStudents(g).map(s=>`<tr><td><span class="admb">${esc(s.roll||'–')}</span></td><td class="who"><b>${esc(s.name)}</b><small>${s.father?(guessSex(s)==='F'?'d/o ':'s/o ')+esc(s.father):''}</small></td><td class="nw">${esc(s.admNo||'')}</td><td class="nw">${esc(s.phone||'')}</td></tr>`).join('')}</table></div></div><div style="height:16px"></div>`).join('')}`;
+  }else if(UI.rep==='feesheet'){
+    const start=S.settings.startMonth||thisMonth(), now=thisMonth(), months=monthsFrom(start,now), fmt=n=>Math.round(n).toLocaleString('en-PK');
+    const sel=UI.fsCls&&gs.includes(UI.fsCls)?[UI.fsCls]:gs;
+    const MS=m=>new Date(+m.slice(0,4),+m.slice(5)-1,1).toLocaleString('en',{month:'short'})+'-'+m.slice(2,4);
+    const rowsFor=g=>classStudents(g).map((s,i)=>{const L=ledger(s), ob=Number(s.opening)||0, cash=months.map(m=>sum(paysOf(s.id).filter(p=>monthOf(p.date)===m),'amount'));
+      return {s,i,ob,fee:feeAt(s,now),cash,charged:L.charged,paid:L.paid,disc:L.disc||0,bal:L.bal};});
+    const cols=[['S.No','3.5%','c'],['Adm No.','5%','c b'],['Name of Student','','b'],["Father's Name",''],['Monthly Fee','6.5%','c'],['Old Balance','7%','c']]
+      .concat(months.map(m=>[MS(m)+'<br><small>paid</small>',Math.min(7,Math.max(4,36/months.length)).toFixed(1)+'%','c']))
+      .concat([['Total Due','7%','c b'],['Total Paid','7%','c b'],['Balance','7.5%','c b']]);
+    const docs=sel.map((g,gi)=>{const R=rowsFor(g);
+      const body=R.map(x=>[x.i+1,esc(x.s.admNo||''),esc(x.s.name),esc(x.s.father||''),fmt(x.fee),x.ob?fmt(x.ob):'—'].concat(x.cash.map(c=>c?fmt(c):'—')).concat([fmt(x.charged),fmt(x.paid),x.bal>0?fmt(x.bal):x.bal<0?'Adv '+fmt(-x.bal):'Clear']));
+      const tot=['','','<b>Total</b>','','',`<b>${fmt(sum(R,'ob'))}</b>`].concat(months.map((m,k)=>`<b>${fmt(sum(R,x=>x.cash[k]))}</b>`)).concat([`<b>${fmt(sum(R,'charged'))}</b>`,`<b>${fmt(sum(R,'paid'))}</b>`,`<b>${fmt(sum(R,x=>Math.max(0,x.bal)))}</b>`]);
+      return `<div class="${gi?'pbreak':''}">${printDoc('FEE REPORT: '+esc(gLabel(g)).toUpperCase(),`Session ${sessionTxt()} &nbsp;|&nbsp; Old balance up to ${monthName(prevM(start))} &nbsp;|&nbsp; Fee from ${monthName(start)} to ${monthName(now)} &nbsp;|&nbsp; Students: ${R.length}${teacherOf(g)?' &nbsp;|&nbsp; Class teacher: '+esc(teacherOf(g)):''}`,cols,body.concat([tot]))}</div>`;}).join('');
+    const pv=g=>{const R=rowsFor(g);return `<h3 class="sec">${esc(gLabel(g))}</h3><div class="card tblwrap" style="padding:4px 6px"><table class="tbl fsv"><tr><th>#</th><th>Student</th><th>Fee</th><th>Old bal.</th>${months.map(m=>`<th>${MS(m)}</th>`).join('')}<th>Due</th><th>Paid</th><th>Balance</th></tr>
+      ${R.map(x=>`<tr><td>${x.i+1}</td><td class="who"><b>${esc(x.s.name)}</b><small>${esc(x.s.father||'')}</small></td><td class="n">${fmt(x.fee)}</td><td class="n">${x.ob?fmt(x.ob):'—'}</td>${x.cash.map(c=>`<td class="n">${c?fmt(c):'—'}</td>`).join('')}<td class="n">${fmt(x.charged)}</td><td class="n c-paid">${fmt(x.paid)}</td><td class="n ${x.bal>0?'c-due':'c-paid'}"><b>${x.bal>0?fmt(x.bal):x.bal<0?'Adv '+fmt(-x.bal):'Clear'}</b></td></tr>`).join('')}
+      <tr><td></td><td><b>Total</b></td><td></td><td class="n"><b>${fmt(sum(R,'ob'))}</b></td>${months.map((m,k)=>`<td class="n"><b>${fmt(sum(R,x=>x.cash[k]))}</b></td>`).join('')}<td class="n"><b>${fmt(sum(R,'charged'))}</b></td><td class="n"><b>${fmt(sum(R,'paid'))}</b></td><td class="n"><b>${fmt(sum(R,x=>Math.max(0,x.bal)))}</b></td></tr></table></div>`;};
+    body=`<div class="filters no-print"><select onchange="UI.fsCls=this.value;render()" aria-label="Class"><option value="">All classes (each on its own page)</option>${gs.map(x=>`<option value="${esc(x)}" ${x===UI.fsCls?'selected':''}>${esc(gLabel(x))}</option>`).join('')}</select></div>
+    <p class="note no-print" style="margin:-4px 2px 10px">Prints on A4 landscape with the school logo. Old balance up to ${monthName(prevM(start))}, then each month from ${monthName(start)} shows the fee received in that month.</p>
+    <div class="no-print">${sel.map(pv).join('')||'<div class="empty card">No students yet.</div>'}</div>${docs}`;
   }else if(UI.rep==='admreg'){
     const ys=[...new Set(S.students.map(s=>(s.admit||'').slice(0,4)).filter(Boolean))].sort().reverse();
     if(!UI.recYear)UI.recYear=ys[0]||'';
@@ -2116,7 +2149,7 @@ function viewRepHub(){
         <td><span class="clsp">${esc(regCls(s.admClass||s.cls))}</span></td></tr>`).join('')}
     </table></div>`;})()}`;
   }
-  const foot=['admreg','classlist'].includes(UI.rep)?'':`<div class="print-only pdoc"><div class="pfoot"><div><div class="pline"></div>Prepared by</div><div class="pdate">Printed on ${dmy(todayStr())}</div><div><div class="pline"></div>Principal</div></div></div>`;
+  const foot=['admreg','classlist','feesheet'].includes(UI.rep)?'':`<div class="print-only pdoc"><div class="pfoot"><div><div class="pline"></div>Prepared by</div><div class="pdate">Printed on ${dmy(todayStr())}</div><div><div class="pline"></div>Principal</div></div></div>`;
   $('#main').innerHTML=head+body+foot+printBtn;
   if(UI.rep==='register')scrollRegister(UI.month);
 }
@@ -2425,16 +2458,18 @@ function openOldFee(g){
   const gs=isOwner()?allGroups(UI.camp).filter(x=>classStudents(x).length):myClasses();
   if(!gs.length){toast('No students yet');return;}
   g=g&&gs.includes(g)?g:(UI.cls&&gs.includes(UI.cls)?UI.cls:gs[0]);
-  const y=Number(thisMonth().slice(0,4));OF={g,year:y,view:'month',month:y+'-01'<=thisMonth()?y+'-01':thisMonth(),pend:[],rem:new Set(),fees:{},from:{},edit:''};
+  const y=Number(thisMonth().slice(0,4));OF={g,year:y,view:'month',month:y+'-01'<=thisMonth()?y+'-01':thisMonth(),pend:[],rem:new Set(),fees:{},from:{},open:{},edit:''};
   closeSheet();go('oldfee');
 }
 /* show the table as if the not-yet-saved changes were already saved */
 function ofSim(fn){
   const real=S.payments, realSt=S.students;
   S.payments=real.filter(p=>!OF.rem.has(p.id)).concat(OF.pend);
-  if(Object.keys(OF.fees).length||Object.keys(OF.from).length)S.students=realSt.map(s=>{let o=s;
+  OF.open=OF.open||{};
+  if(Object.keys(OF.fees).length||Object.keys(OF.from).length||Object.keys(OF.open).length)S.students=realSt.map(s=>{let o=s;
     if(OF.fees[s.id]!==undefined)o={...o,fee:OF.fees[s.id],disc:0,fees:[{from:'0000-00',fee:OF.fees[s.id],disc:0}]};
-    if(OF.from[s.id])o={...o,feeFrom:OF.from[s.id]};return o;});
+    if(OF.from[s.id])o={...o,feeFrom:OF.from[s.id]};
+    if(OF.open[s.id]!==undefined)o={...o,opening:OF.open[s.id]};return o;});
   C={};try{return fn();}finally{S.payments=real;S.students=realSt;C={};}
 }
 function ofCell(s,m){
@@ -2506,7 +2541,8 @@ function ofSetAmount(id,m,amt){
   if(saved.length&&!isOwner()){toast('This month is saved. Ask the owner to change it.');return false;}
   OF.pend=OF.pend.filter(p=>!(p.studentId===id&&monthOf(p.date)===m));saved.forEach(p=>OF.rem.add(p.id));
   const s=getS(id);if(amt>0){const st=ofSim(()=>startOf(getS(id)));if(m<st)OF.from[id]=m;
-    OF.pend.push({id:'pend-'+uid(),studentId:id,amount:Math.round(amt),date:midDay(m),old:true,created:Date.now()+OF.pend.length});}
+    const fm=ofSim(()=>{const L=ledger(getS(id),thisMonth());const ms=[...new Set(L.items.filter(i=>i.m&&i.m<=m&&i.paid<i.amt).map(i=>i.m))];if(!ms.includes(m))ms.push(m);return ms.sort();});
+    OF.pend.push({id:'pend-'+uid(),studentId:id,amount:Math.round(amt),date:midDay(m),forMonths:fm,old:true,created:Date.now()+OF.pend.length});}
   return true;
 }
 function ofOwe(id,m){const had=OF.from[id];const st=ofSim(()=>startOf(getS(id)));if(m<st)OF.from[id]=m;const o=ofSim(()=>owedUpTo(getS(id),m));if(had===undefined)delete OF.from[id];else OF.from[id]=had;return o;}
@@ -2525,9 +2561,10 @@ function viewOldFeeMonth(){
   const months=[];for(let m=nextM(prevM(now));months.length<36;m=prevM(m)){months.push(m);}
   if(!OF.month||OF.month>now)OF.month=now;
   const m=OF.month;
-  const pendN=OF.pend.length+OF.rem.size+Object.keys(OF.fees).length+Object.keys(OF.from).length;
+  OF.open=OF.open||{};
+  const pendN=OF.pend.length+OF.rem.size+Object.keys(OF.fees).length+Object.keys(OF.from).length+Object.keys(OF.open).length;
   const data=ofSim(()=>classStudents(g).map(s=>{const c=ofCell(s,m), cash=sum(paysOf(s.id).filter(p=>monthOf(p.date)===m),'amount'), L=ledger(s,now);
-    return {s,c,cash,fee:feeAt(s,now),bal:L.bal};}));
+    return {s,c,cash,fee:feeAt(s,now),bal:L.bal,ob:Number(s.opening)||0,start:L.start};}));
   data.forEach(d=>{const o=ofOwe(d.s.id,m);d.owe=o.amt;d.oweMonths=o.months.filter(Boolean);});
   const total=sum(data,'cash');
   const stTxt=d=>d.c.k==='p'?'<span class="omst p">Paid</span>':d.c.k==='h'?'<span class="omst h">Part</span>':d.c.k==='f'?'<span class="omst f">Free</span>':d.c.k==='pre'?'<span class="omst x">Not counted</span>':d.c.k==='na'?'<span class="omst x">Left</span>':'<span class="omst d">Due</span>';
@@ -2537,19 +2574,20 @@ function viewOldFeeMonth(){
   <div class="ommonth"><button onclick="OF.month=prevM(OF.month);render()" aria-label="Previous month">‹</button>
     <select onchange="OF.month=this.value;render()" aria-label="Month">${months.map(x=>`<option value="${x}" ${x===m?'selected':''}>${mShort(x)}</option>`).join('')}</select>
     <button onclick="if(OF.month<thisMonth()){OF.month=nextM(OF.month);render()}" aria-label="Next month" ${m>=now?'disabled':''}>›</button></div>
-  <div class="omtop"><span>Fee paid in <b>${monthName(m)}</b>. Type the amount, or tap <b>Full</b>. Missed months before it are added automatically.</span>
+  <div class="omtop"><span><b>1.</b> Put each student's <b>old balance</b> once (what they owed before fee counting starts). <b>2.</b> Then pick a month and type the fee paid, or tap <b>Full</b>.</span>
     <button class="btn sm" onclick="ofFillAll()">All paid full fee</button></div>
   <div class="omwrap"><table class="omt">
-    <thead><tr><th>Student</th><th>Fee</th><th>Paid in ${mShort(m)}</th><th>Due (Rs)</th></tr></thead>
+    <thead><tr><th>Student</th><th>Fee</th><th>Old balance</th><th>Paid in ${mShort(m)}</th><th>Due (Rs)</th></tr></thead>
     <tbody>${data.map((d,i)=>{const s=d.s, ed=OF.edit===s.id, can=d.c.k!=='na'&&d.c.k!=='f';
       return `<tr class="or${i%5}"><td class="omname"><b>${esc(s.name)}</b><small>${stTxt(d)}</small></td>
       <td>${ed?`<input class="omfee" type="number" inputmode="numeric" id="ofFee" value="${d.fee}" aria-label="Monthly fee">`:`<button class="ofee ${cf&&d.fee!==cf?'cn':''}" onclick="OF.edit='${s.id}';render()">${fmt(d.fee)}✏️</button>`}</td>
+      <td class="omob"><input class="omobin" type="number" inputmode="numeric" min="0" value="${d.ob||''}" placeholder="0" onchange="OF.open['${s.id}']=Math.max(0,Math.round(Number(this.value)||0));render()" onkeydown="if(event.key==='Enter')this.blur()" aria-label="Old balance of ${esc(s.name)}"></td>
       <td class="omamt">${can?`<input class="omin" type="number" inputmode="numeric" min="0" data-i="${i}" value="${d.cash||''}" placeholder="${d.owe>0?fmt(d.owe):'0'}" onchange="ofMonthInput(this,'${s.id}')" onkeydown="if(event.key==='Enter')this.blur()" aria-label="Amount paid by ${esc(s.name)}">`:'–'}
       ${can&&!d.cash&&d.owe>0?`<button class="omfull" onclick="ofFull('${s.id}')">Full${d.oweMonths.length>1?` <small>${d.oweMonths.length} months</small>`:''}</button>`:d.cash?`<button class="omclr" onclick="if(ofSetAmount('${s.id}',OF.month,0))render()" aria-label="Clear">✕</button>`:''}</td>
-      <td>${d.bal>0?`<span class="odue">${fmt(d.bal)}</span>`:`<span class="oclr">Clear</span>`}</td></tr>`;}).join('')||'<tr><td colspan="4" style="padding:20px">No students in this class.</td></tr>'}</tbody>
-    <tfoot><tr><td colspan="2">Total received in ${mShort(m)}</td><td colspan="2">Rs ${fmt(total)}</td></tr></tfoot>
+      <td>${d.bal>0?`<span class="odue">${fmt(d.bal)}</span>`:`<span class="oclr">Clear</span>`}</td></tr>`;}).join('')||'<tr><td colspan="5" style="padding:20px">No students in this class.</td></tr>'}</tbody>
+    <tfoot><tr><td colspan="2">Totals</td><td>${fmt(sum(data,'ob'))}</td><td>${fmt(total)}</td><td>${fmt(sum(data,d=>Math.max(0,d.bal)))}</td></tr></tfoot>
   </table></div>
-  <p class="note" style="margin-top:8px">${isOwner()?'':'Saved months are locked. Ask the owner to change them. '}The placeholder shows the fee owed up to this month. Money paid clears the oldest due month first.</p>
+  <p class="note" style="margin-top:8px">${isOwner()?'':'Saved months are locked. Ask the owner to change them. '}Old balance is paid first, then the oldest month. The grey number in a box is what is owed up to that month.</p>
   <div class="fabpad"></div>
   <button class="fab" onclick="ofSave()" style="${pendN?'':'opacity:.55'}"><span class="fi">✓</span><span class="ft"><b>Save${pendN?' ('+pendN+')':''}</b><small>${pendN?'Changes not saved yet':'Nothing changed yet'}</small></span></button>`;
   const fi=$('#ofFee');if(fi){fi.focus();fi.select();const done=()=>{const v=Math.max(0,Math.round(Number(fi.value)||0)), s=getS(OF.edit);if(s&&v!==feeAt(s,now))OF.fees[s.id]=v;OF.edit='';render();};fi.onblur=done;fi.onkeydown=e=>{if(e.key==='Enter')fi.blur();};}
@@ -2560,7 +2598,7 @@ function ofFromAll(m){
   toast(n?`Fee now counted from ${mShort(m)} for ${pl(n,'student')} (students admitted later start from admission)`:'Already counted from that month');render();
 }
 /* fee still owed up to and including month m */
-function owedUpTo(s,m){const L=ledger(s,thisMonth());const its=L.items.filter(i=>!i.m||i.m<=m);return {amt:sum(its,i=>Math.max(0,i.amt-i.paid)),months:[...new Set(its.filter(i=>i.paid<i.amt).map(i=>i.m))]};}
+function owedUpTo(s,m){const L=ledger(s,thisMonth());const its=L.items.filter(i=>i.m&&i.m<=m);return {amt:sum(its,i=>Math.max(0,i.amt-i.paid)),months:[...new Set(its.filter(i=>i.paid<i.amt).map(i=>i.m))]};}
 function ofTap(id,m){
   const s=getS(id);
   const c=ofSim(()=>ofCell(getS(id),m));
@@ -2574,7 +2612,7 @@ function ofTap(id,m){
     const v=prompt(`${s.name}, fee paid in ${mShort(m)} (Rs). Write 0 to remove.`,curAmt);if(v===null)return;
     const amt=Math.max(0,Math.round(Number(v)||0));
     OF.pend=OF.pend.filter(p=>!(p.studentId===id&&monthOf(p.date)===m));saved.forEach(p=>OF.rem.add(p.id));
-    if(amt>0)OF.pend.push({id:'pend-'+uid(),studentId:id,amount:amt,date:midDay(m),old:true,created:Date.now()+OF.pend.length});
+    if(amt>0)ofSetAmount(id,m,amt);
     render();return;
   }
   if(c.k==='pre'){
@@ -2583,31 +2621,33 @@ function ofTap(id,m){
   }else if(c.k==='p'){toast('Already covered by an earlier payment. Tap a month with an amount to change it.');return;}
   const o=ofSim(()=>owedUpTo(getS(id),m));
   if(o.amt<=0){toast('Nothing owed up to '+mShort(m));render();return;}
-  OF.pend.push({id:'pend-'+uid(),studentId:id,amount:Math.round(o.amt),date:midDay(m),old:true,created:Date.now()+OF.pend.length});
+  OF.pend.push({id:'pend-'+uid(),studentId:id,amount:Math.round(o.amt),date:midDay(m),forMonths:o.months.filter(Boolean).sort(),old:true,created:Date.now()+OF.pend.length});
   if(o.months.filter(Boolean).length>1)toast(`Rs ${Math.round(o.amt).toLocaleString('en-PK')} for ${monthsText(o.months)}`);
   render();
 }
 function ofSave(){
-  const n=OF.pend.length+OF.rem.size+Object.keys(OF.fees).length+Object.keys(OF.from).length;
+  OF.open=OF.open||{};
+  const n=OF.pend.length+OF.rem.size+Object.keys(OF.fees).length+Object.keys(OF.from).length+Object.keys(OF.open).length;
   if(!n){toast('Nothing to save');return;}
-  const ids=new Set([...Object.keys(OF.fees),...Object.keys(OF.from)]);
-  const ups=[...ids].map(id=>{const o={};if(OF.fees[id]!==undefined)Object.assign(o,{fee:OF.fees[id],disc:0,fees:[{from:'0000-00',fee:OF.fees[id],disc:0}]});if(OF.from[id])o.feeFrom=OF.from[id];return [id,o];});
+  const ids=new Set([...Object.keys(OF.fees),...Object.keys(OF.from),...Object.keys(OF.open)]);
+  const ups=[...ids].map(id=>{const o={};if(OF.fees[id]!==undefined)Object.assign(o,{fee:OF.fees[id],disc:0,fees:[{from:'0000-00',fee:OF.fees[id],disc:0}]});if(OF.from[id])o.feeFrom=OF.from[id];if(OF.open[id]!==undefined)o.opening=OF.open[id];return [id,o];});
   if(ups.length)updMany('students',ups);
   [...OF.rem].forEach(id=>del('payments',id));
   C={};
   let rn=nextReceipt();const pays=[];
   OF.pend.sort((a,b)=>a.date.localeCompare(b.date)).forEach(p=>{const s=getS(p.studentId);if(!s||p.amount<=0)return;
     const L=ledger(s), m=monthOf(p.date);
-    let left=p.amount;const cov=[];for(const i of L.items){const u=i.amt-i.paid;if(u<=0)continue;if(left<=0)break;if(!cov.includes(i.m))cov.push(i.m);left-=Math.min(u,left);}
+    let left=p.amount;const cov=[];const order=p.forMonths?[...L.items.filter(i=>p.forMonths.includes(i.m)),...L.items.filter(i=>!p.forMonths.includes(i.m))]:L.items;
+    for(const i of order){const u=i.amt-i.paid;if(u<=0)continue;if(left<=0)break;if(!cov.includes(i.m))cov.push(i.m);left-=Math.min(u,left);}
     const o={studentId:s.id,name:s.name,father:s.father||'',cls:s.cls,sec:s.sec||'',grp:gOf(s),roll:s.roll||'',amount:p.amount,date:p.date,
-      method:'Old record',note:'Paid in '+mShort(m),receiptNo:rn++,prevBal:L.bal,disc:0,newBal:L.bal-p.amount,covers:monthsText(cov)||mShort(m),
+      method:'Old record',note:'Paid in '+mShort(m),forMonths:p.forMonths||undefined,receiptNo:rn++,prevBal:L.bal,disc:0,newBal:L.bal-p.amount,covers:monthsText(cov)||mShort(m),
       by:isOwner()?(S.settings.accountant||ME.name):ME.name,byUid:ME.uid,settled:true,old:true,created:Date.now()+pays.length};
-    pays.push(o);S.payments.push({...o,id:'tmp-'+pays.length});C={};
+    if(!o.forMonths)delete o.forMonths;pays.push(o);S.payments.push({...o,id:'tmp-'+pays.length});C={};
   });
   S.payments=S.payments.filter(p=>!String(p.id).startsWith('tmp-'));C={};
   if(pays.length)addMany('payments',pays);
   toast(`Saved: ${pl(pays.length,'payment')}${ups.length?', '+pl(ups.length,'student')+' updated':''}${OF.rem.size?', '+OF.rem.size+' changed':''}`);
-  OF.pend=[];OF.rem=new Set();OF.fees={};OF.from={};render();
+  OF.pend=[];OF.rem=new Set();OF.fees={};OF.from={};OF.open={};render();
 }
 
 /* ================= Print the admission register: whole, by year or by class ================= */
@@ -2976,7 +3016,7 @@ function viewOldBal(){
     <div><span>Old balance up to</span><b>${monthName(upto)}</b></div>
     <div><span>Monthly fee counted from</span><b>${monthName(start)}</b></div>
   </div>
-  ${isOwner()?`<details class="obchg"><summary>Change the start month</summary><div class="inner"><label>Monthly fee counted from<input type="month" id="ob_start" value="${start}"></label>
+  ${isOwner()?`<details class="obchg"><summary>Change the start month (now ${mShort(start)})</summary><div class="inner"><label>Monthly fee counted from<input type="month" id="ob_start" value="${start}"></label>
     <div class="actions"><button class="btn sm" onclick="const v=$('#ob_start').value;if(v){saveSettingsData({startMonth:v});toast('Fee now counted from '+monthName(v));}">Save</button></div></div></details>`:''}
   <div class="ofbar"><select onchange="OB.g=this.value;render()" aria-label="Class">${gs.map(x=>`<option value="${esc(x)}" ${x===g?'selected':''}>${esc(gLabel(x))} (${classStudents(x).length})</option>`).join('')}</select>
     <button class="btn sm ghost" onclick="obPrint()">🖨️ Print sheet</button></div>
@@ -3264,8 +3304,8 @@ function viewFees(){
   }
   $('#main').innerHTML=`${top}
   <div class="chips">${[['collect','Collect fee'],['dues','Dues list']].map(([k,l])=>`<button class="chipbtn ${UI.feeMode===k?'on':''}" onclick="UI.feeMode='${k}';render()">${l}</button>`).join('')}${isOwner()?`<button class="chipbtn" onclick="go('reports')">Reports</button>`:''}</div>
-  <button class="oldbtn" onclick="openOldFee()"><span>📅</span><span><b>Old months fee</b><small>Add fee paid and dues of earlier months</small></span><i>›</i></button>
-  <button class="oldbtn ob" onclick="openOldBal()"><span>💼</span><span><b>Old balance</b><small>What each student owed before ${monthName(S.settings.startMonth||thisMonth())}</small></span><i>›</i></button>
+  <button class="oldbtn ob" onclick="openOldBal()"><span>💼</span><span><b>Old balance</b><small>What each student owed before ${monthName(S.settings.startMonth||thisMonth())}. Fee then counts from that month.</small></span><i>›</i></button>
+  ${isOwner()?'':'<!--'}<button class="oldbtn fr" onclick="UI.rep='feesheet';UI.fsCls=UI.cls||'';go('rep')"><span>🖨️</span><span><b>Fee report</b><small>A4 landscape sheet with the school logo</small></span><i>›</i></button>${isOwner()?'':'-->'}
   <div id="feeBody"></div>`;
   UI.feeMode==='dues'?duesBody():collectBody();
 }
