@@ -1176,6 +1176,61 @@ body.pr-cert .af2{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .oldbtn.fr{background:linear-gradient(135deg,#1f5fc4,#4f8ff0);box-shadow:0 8px 16px -10px #1f5fc4}
 .fsv{min-width:640px}.fsv th{white-space:nowrap}
 .fsv td.who b{display:block;font-size:12.5px}.fsv td.who small{display:block;font-size:11px;color:var(--muted)}
+
+.hubtn{display:flex;align-items:center;gap:12px;width:100%;margin-top:10px;border:0;border-radius:18px;padding:13px 16px 13px 12px;cursor:pointer;font:inherit;text-align:left;color:#fff;background:linear-gradient(135deg,var(--c1),var(--c2));box-shadow:0 8px 18px -12px var(--c1)}
+.hubtn .ic{width:46px;height:46px;border-radius:14px;background:#fff;display:grid;place-items:center;font-size:23px;flex:none}
+.hubtn .tx{flex:1;min-width:0}.hubtn b{display:block;font-size:16px}.hubtn small{display:block;font-size:12.5px;opacity:.92}
+.hubtn i{font-style:normal;font-size:24px;font-weight:800;opacity:.85}
+.prtile.wd{background:linear-gradient(135deg,#b42f27,#ef6b5f);box-shadow:0 10px 20px -12px #b42f27}
+.clist{display:grid;grid-template-columns:1fr;gap:10px;margin-top:12px}
+.ccard{background:var(--card);border-radius:16px;padding:12px 14px;border:1.5px solid color-mix(in srgb,var(--c2) 35%,var(--line));border-left:6px solid var(--c1)}
+.ccard.empty{opacity:.7;border-left-color:var(--line)}
+.ccard .ch{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.ccard .ch b{font-size:16px;color:var(--c1)}.ccard .ch span{font-size:12.5px;font-weight:700;color:var(--muted)}
+.ccard .cm{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;margin-top:4px;color:var(--ink)}
+.ccard .cb{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.ccard .cb .btn{flex:1 1 90px}
+
+.cempty{margin-top:10px;border:1.5px dashed color-mix(in srgb,var(--c2) 40%,var(--line));border-radius:14px;padding:0 12px;background:var(--card)}
+.cempty summary{padding:11px 0;font-weight:800;color:var(--c1);cursor:pointer}
+.cechips{display:flex;flex-wrap:wrap;gap:6px;padding-bottom:12px}
+.cechips button{border:1.5px solid color-mix(in srgb,var(--c2) 40%,var(--line));background:color-mix(in srgb,var(--c2) 8%,var(--card));border-radius:20px;padding:6px 12px;font:inherit;font-weight:700;font-size:13px;color:var(--c1);cursor:pointer}
+.cechips small{font-size:11px;opacity:.75}
+
+/* ===== home: style A with decoration ===== */
+body.no-nav main:has(.appgrid){background:radial-gradient(circle at 12% 30%,rgba(22,128,58,.06) 0 2px,transparent 3px) 0 0/22px 22px}
+.welc{position:relative;overflow:hidden;border-radius:24px;padding:18px 16px 26px;color:#fff;display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,#0d5c22 0%,#16803a 55%,#1aa37a 100%);box-shadow:0 14px 28px -16px #0b4f1e}
+.welc-art{position:absolute;inset:0;width:100%;height:100%}
+.welc-logo{position:relative;width:66px;height:66px;border-radius:50%;background:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.25),0 8px 18px -8px rgba(0,0,0,.5);flex:none}
+.welc-tx{position:relative;min-width:0}
+.welc-tx span{display:block;font-size:12.5px;font-weight:700;color:#ffe28c;letter-spacing:.3px}
+.welc-tx b{display:block;font-size:19px;font-weight:800;line-height:1.2;margin-top:2px}
+.welc-tx em{display:inline-block;font-style:normal;margin-top:7px;font-size:12px;font-weight:700;background:rgba(255,255,255,.18);padding:3px 10px;border-radius:20px}
+.rchips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.rchip{border:0;border-radius:20px;padding:7px 12px;font:inherit;font-size:12.5px;font-weight:800;cursor:pointer}
+.rchip.g{background:#e6f7ec;color:#15803d}.rchip.b{background:#e8f0ff;color:#1d4ed8}.rchip.r{background:#ffeceb;color:#b91c1c}
+.apphd{display:flex;align-items:center;gap:10px;margin:20px 4px 6px}
+.apphd span{flex:1;height:1.5px;background:linear-gradient(90deg,transparent,#b9d9c3,transparent)}
+.apphd b{font-size:13.5px;color:#4a6a55;font-weight:800;white-space:nowrap}
+.appgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px 6px;padding:12px 4px 6px}
+.appi{border:0;background:none;cursor:pointer;font:inherit;text-align:center;display:flex;flex-direction:column;align-items:center;color:var(--ink);padding:0}
+.appi:focus-visible{outline:3px solid #16803a;outline-offset:4px;border-radius:16px}
+.aic{position:relative;width:70px;height:70px;border-radius:24px;display:grid;place-items:center;font-size:33px;background:linear-gradient(145deg,var(--a1),var(--a2));box-shadow:0 10px 18px -10px var(--a2),inset 0 -4px 0 rgba(0,0,0,.08);transition:transform .12s}
+.aic::before{content:"";position:absolute;inset:4px 8px auto 8px;height:44%;border-radius:20px 20px 40% 40%;background:linear-gradient(rgba(255,255,255,.45),rgba(255,255,255,0))}
+.appi:active .aic{transform:scale(.92)}
+.abdg{position:absolute;top:-5px;right:-5px;min-width:22px;height:22px;border-radius:11px;background:#dc2626;color:#fff;font-style:normal;font-size:12px;font-weight:800;display:grid;place-items:center;padding:0 5px;box-shadow:0 0 0 2.5px var(--bg)}
+.appi b{font-size:13.5px;font-weight:800;margin-top:8px}
+.appi small{font-size:11px;color:var(--muted);margin-top:1px}
+.motto{display:flex;justify-content:center;align-items:center;gap:7px;margin-top:22px;font-size:11px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:#4a6a55}
+.motto i{font-style:normal;color:#d9a531}
+.valleyf{display:block;width:calc(100% + 28px);height:46px;margin:6px -14px -30px}
+@media (prefers-color-scheme:dark){.apphd b,.motto{color:#9fd3b1}.apphd span{background:linear-gradient(90deg,transparent,#2f5a3f,transparent)}.valleyf path:first-child{fill:#173a25}.valleyf path:last-child{fill:#1f4d31}
+  .rchip.g{background:#14321f;color:#8fe0b0}.rchip.b{background:#16284a;color:#9cc0ff}.rchip.r{background:#3a1a19;color:#ff9a91}}
+/* fee page: today's numbers */
+.ftoday{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}
+.ftoday div{border-radius:14px;padding:9px 10px;background:linear-gradient(135deg,var(--gB1),var(--gB2));color:#fff}
+.ftoday div:nth-child(1){background:linear-gradient(135deg,var(--gA1),var(--gA2))}.ftoday div:nth-child(2){background:linear-gradient(135deg,#0b7a6e,#2fbfae)}
+.ftoday span{display:block;font-size:11px;font-weight:700;opacity:.92}.ftoday b{display:block;font-size:17px;font-weight:800}
 </style>
 </head>
 <body>
@@ -1235,7 +1290,7 @@ const SUPABASE_KEY = "sb_publishable_JiH4kZdQ9IlnOiCejy8tKQ_fArOg88j";
 
 <script>
 /* ================= Basics ================= */
-const APP_VERSION = '2026-10-17 v39';
+const APP_VERSION = '2026-10-17 v41';
 const ONLINE = !!(SUPABASE_URL && SUPABASE_KEY);
 const LKEY = 'gvps-fee-data', SKEY = 'gvps-session', STAFF_DOMAIN = 'staff.gvps.app';
 const LOGO = 'data:image/webp;base64,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';
@@ -1679,14 +1734,14 @@ function render(){
   document.title=set.school+(isOwner()?' – Owner':' – '+ME.name);
   if(!ONLINE)$('#testBar').textContent=`Test mode: records stay on this phone. Using as ${ME.name}.`;else syncBar();
   {const hb=$('#hBack');if(hb)hb.hidden=(isOwner()?UI.tab==='home':(UI.tab==='today'&&!NAV.length));}
-  {const tn={att:'att',take:'att',today:'att',register:'att',fees:'fee',oldfee:'fee',oldbal:'fee',reports:'rep',rep:'rep',current:'cur',students:'cur',teachers:'cur',cert:'cert',certview:'cert',admform:'cert',admview:'cert',record:'rec',campus:'camp'};document.body.dataset.tone=tn[UI.tab]||'att';}
+  {const tn={adm:'rec',classes:'cur',tchr:'camp',att:'att',take:'att',today:'att',register:'att',fees:'fee',oldfee:'fee',oldbal:'fee',reports:'rep',rep:'rep',current:'cur',students:'cur',teachers:'cur',cert:'cert',certview:'cert',admform:'cert',admview:'cert',record:'rec',campus:'camp'};document.body.dataset.tone=tn[UI.tab]||'att';}
   if(isOwner()){
     if(UI.tab==='students')UI.tab='current';
     if(UI.tab==='teachers'){UI.tab='current';UI.curMode='teachers';}
     if(UI.tab==='register'){UI.tab='att';UI.attMode='register';}
-    const ok=['home','att','take','fees','reports','current','record','campus','rep','cert','certview','admform','admview','oldfee','oldbal'];if(!ok.includes(UI.tab))UI.tab='home';
+    const ok=['home','att','take','fees','reports','current','record','campus','rep','cert','certview','admform','admview','oldfee','oldbal','adm','classes','tchr'];if(!ok.includes(UI.tab))UI.tab='home';
     document.body.classList.add('no-nav');filler=null;
-    ({home:viewOwnerHome,att:viewAttPage,take:viewTake,fees:viewFeePage,reports:viewReports,current:viewCurrent,record:viewRecord,campus:viewCampus,rep:viewRepHub,cert:viewCertHub,certview:viewCert,admform:viewAdmForm,admview:viewAdmDoc,oldfee:viewOldFee,oldbal:viewOldBal})[UI.tab]();
+    ({home:viewOwnerHome,att:viewAttPage,take:viewTake,fees:viewFeePage,reports:viewReports,current:viewCurrent,record:viewRecord,campus:viewCampus,rep:viewRepHub,cert:viewCertHub,certview:viewCert,admform:viewAdmForm,admview:viewAdmDoc,oldfee:viewOldFee,oldbal:viewOldBal,adm:viewAdmHub,classes:viewClasses,tchr:viewTeachersPage})[UI.tab]();
     return;
   }
   document.body.classList.remove('no-nav');
@@ -1715,58 +1770,153 @@ function campSelect(){
 const OI2={rep:'<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>'};
 function viewOwnerHome(){
   const d=todayStr(), gs=allGroups(UI.camp).filter(g=>classStudents(g).length);
-  let tot=0,pres=0;const notDone=[];gs.forEach(g=>{const a=attOf(d,g);if(a&&a.counts){tot+=a.counts.total;pres+=a.counts.P;}else notDone.push(g);});
-  const tp=S.payments.filter(p=>p.date===d&&(UI.camp===null||((getS(p.studentId)||{}).campus||'')===UI.camp));
+  const notDone=gs.filter(g=>!attOf(d,g));
   const act=S.students.filter(s=>isActive(s)&&inCamp(s)), all=S.students.filter(inCamp);
-  const cash=sum(S.payments.filter(p=>p.settled===false),'amount');
+  const cash=sum(S.payments.filter(p=>p.settled===false),'amount'), dues=sum(act,s=>Math.max(0,ledger(s).bal));
   const hr=new Date().getHours(), greet=hr<12?'Good morning':hr<17?'Good afternoon':'Good evening';
   const own=S.settings.ownerName&&S.settings.ownerName!=='Owner'?S.settings.ownerName:'';
   const [y,mo,dd]=d.split('-').map(Number), dt=new Date(y,mo-1,dd);
-  const svg=k=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${k}</svg>`;
-  const I={att:OI.att,fee:OI.fee,cur:OI.cur,rec:OI.rec,camp:OI.camp,rep:OI2.rep,
-    cert:'<rect x="3" y="4" width="18" height="13" rx="2"/><path d="M7 9h10M7 12.5h6"/><circle cx="17" cy="17" r="3"/><path d="M15.5 19.5 15 22l2-1 2 1-.5-2.5"/>',
-    plus:'<path d="M12 5v14M5 12h14"/>',print:'<path d="M6 9V3h12v6M6 18H4v-6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v6h-2"/><rect x="6" y="14" width="12" height="7" rx="1"/>',
-    chev:'<path d="m9 6 6 6-6 6"/>'};
-  const tile=(on,c,icon,title,sub,badge)=>`<button class="tile8" style="--c1:var(--g${c}1);--c2:var(--g${c}2)" onclick="${on}">
-    <span class="ic">${svg(icon)}</span><span class="tx"><b>${title}</b><span>${sub}</span></span>${badge?`<i class="bdg">${badge}</i>`:''}<span class="chev">${svg(I.chev)}</span></button>`;
-  const qa=(on,c,icon,label)=>`<button class="qa" style="--c1:var(--g${c}1);--c2:var(--g${c}2)" onclick="${on}"><span>${svg(icon)}</span>${label}</button>`;
-  let next='';
-  if(!act.length&&all.length)next=`<button class="nextc" onclick="openMatch()"><span class="nx-ic">👉</span><span class="nx-t"><b>Next step</b><span>Choose the current students for each class</span></span><span class="nx-go">Start ›</span></button>`;
-  else if(gs.length&&notDone.length&&hr>=9)next=`<button class="nextc warn" onclick="UI.attMode='daily';UI.attCls='';go('att')"><span class="nx-ic">⏰</span><span class="nx-t"><b>${notDone.length} of ${pl(gs.length,'class')}</b><span>have not sent attendance today</span></span><span class="nx-go">See ›</span></button>`;
-  if(cash)next+=`<button class="nextc bad" onclick="UI.feeMode='collect';go('fees')"><span class="nx-ic">💰</span><span class="nx-t"><b>${rs(cash)}</b><span>fee is still with teachers</span></span><span class="nx-go">See ›</span></button>`;
+  const tchN=S.staff.filter(t=>t.active!==false).length;
+  const app=(on,c1,c2,emoji,title,sub,badge)=>`<button class="appi" onclick="${on}"><span class="aic" style="--a1:${c1};--a2:${c2}">${emoji}${badge?`<i class="abdg">${badge}</i>`:''}</span><b>${title}</b><small>${sub}</small></button>`;
+  const rem=[];
+  if(!act.length&&all.length)rem.push(`<button class="rchip g" onclick="go('classes')">👉 Put students into classes</button>`);
+  else if(gs.length&&notDone.length&&hr>=9)rem.push(`<button class="rchip b" onclick="UI.attMode='daily';UI.attCls='';go('att')">⏰ ${notDone.length} class${notDone.length>1?'es':''} without attendance</button>`);
+  if(cash)rem.push(`<button class="rchip r" onclick="UI.feeMode='collect';go('fees')">💰 ${rs(cash)} with teachers</button>`);
   $('#main').innerHTML=`
   ${moveBanner()}${installBanner()}
   ${campSelect()}
-  <section class="hero3">
-    <img class="hwm" src="${LOGO}" alt="">
-    <div class="h3top">
-      <div><span class="h3g">${greet}</span><b class="h3n">${esc(own||S.settings.school)}</b></div>
-      <div class="h3d"><b>${dd}</b><span>${dt.toLocaleString('en',{month:'short'})}</span><em>${dt.toLocaleString('en',{weekday:'short'})}</em></div>
-    </div>
-    <div class="h3s">
-      <div><span class="si">✅</span><b>${tot?Math.round(pres/tot*100)+'%':'0%'}</b><span>Present today</span></div>
-      <div><span class="si">💵</span><b>${Math.round(sum(tp,'amount')).toLocaleString('en-PK')}</b><span>Rs fee today</span></div>
-      <div><span class="si">🎓</span><b>${act.length}</b><span>Studying</span></div>
-    </div>
+  <section class="welc">
+    <svg class="welc-art" viewBox="0 0 360 150" preserveAspectRatio="none" aria-hidden="true">
+      <circle cx="320" cy="18" r="62" fill="rgba(255,255,255,.10)"/><circle cx="350" cy="120" r="40" fill="rgba(255,255,255,.07)"/>
+      <path d="M0 150V112c40-18 80-22 120-10s80 22 120 8 80-30 120-22v62Z" fill="rgba(255,255,255,.10)"/>
+      <path d="M0 150v-22c50-14 100-8 150 2s100 12 150 0 50-10 60-8v28Z" fill="rgba(255,255,255,.13)"/>
+      <g fill="rgba(255,226,140,.9)"><circle cx="40" cy="26" r="1.8"/><circle cx="64" cy="14" r="1.2"/><circle cx="96" cy="30" r="1.5"/><circle cx="250" cy="22" r="1.3"/><circle cx="210" cy="40" r="1"/></g>
+    </svg>
+    <img class="welc-logo" src="${LOGO}" alt="">
+    <div class="welc-tx"><span>${greet}</span><b>${esc(own?'Assalam o Alaikum, '+own:S.settings.school)}</b>
+      <em>${dt.toLocaleString('en',{weekday:'long'})}, ${dmy(d)}</em></div>
   </section>
-  ${next?`<div class="nexts">${next}</div>`:''}
-  <div class="qas">
-    ${qa("UI.attMode='daily';UI.attCls='';go('att')",'A',I.att,'Attend')}
-    ${qa("UI.feeMode='collect';go('fees')",'B',I.fee,'Collect fee')}
-    ${qa("openAdmForm()",'O',I.plus,'Admission')}
-    ${qa("UI.ctype='';go('cert')",'C',I.cert,'Certificate')}
-    ${qa("UI.rep='classlist';go('rep')",'R',I.print,'Print')}
+  ${rem.length?`<div class="rchips">${rem.join('')}</div>`:''}
+  <div class="apphd"><span></span><b>What would you like to do?</b><span></span></div>
+  <div class="appgrid">
+    ${app("go('adm')",'#f59e0b','#ea580c','📝','Admission','New & forms')}
+    ${app("go('record')",'#f472b6','#db2777','🗂️','Records','& Withdrawal')}
+    ${app("go('classes')",'#a78bfa','#7c3aed','🏫','Classes',pl(act.length,'student'))}
+    ${app("go('tchr')",'#2dd4bf','#0d9488','👨‍🏫','Teachers',tchN?pl(tchN,'teacher'):'Add & logins')}
+    ${app("UI.attMode='daily';UI.attCls='';go('att')",'#4ade80','#16a34a','✅','Attendance',gs.length?`${gs.length-notDone.length}/${gs.length} today`:'Daily',notDone.length&&hr>=9?notDone.length:'')}
+    ${app("UI.feeMode='collect';go('fees')",'#60a5fa','#2563eb','💰','Fee',dues?'Rs '+Math.round(dues).toLocaleString('en-PK')+' due':'All clear')}
+    ${app("UI.ctype='';go('cert')",'#fcd34d','#b8892c','🎓','Certificates','7 types')}
+    ${app("UI.rep='';go('rep')",'#f87171','#dc2626','📊','Reports','View & print')}
+    ${app("go('campus')",'#22d3ee','#0e7490','🏛️','Campus',hasCampus()?pl(campusKeys().length,'campus'):'Main campus')}
   </div>
-  <div class="hsec">Manage school</div>
-  <div class="tiles8">
-    ${tile("UI.attMode='daily';UI.attCls='';go('att')",'A',I.att,'Attendance',`${gs.length-notDone.length}/${gs.length} done today`)}
-    ${tile("UI.feeMode='collect';go('fees')",'B',I.fee,'Fee',`${tp.length} today`)}
-    ${tile("UI.curMode='students';go('current')",'P',I.cur,'Current Students',`${act.length} studying`)}
-    ${tile("go('record')",'O',I.rec,'Student Record',`${all.length} students`)}
-    ${tile("UI.rep='';go('rep')",'R',I.rep,'Reports','View, print')}
-    ${tile("UI.ctype='';go('cert')",'C',I.cert,'Certificates','7 types')}
-    ${tile("go('campus')",'T',I.camp,'Campus',hasCampus()?pl(campusKeys().length,'campus'):esc(campName('')))}
-  </div>`;
+  <div class="motto"><span>Knowledge</span><i>✦</i><span>Character</span><i>✦</i><span>Power</span><i>✦</i><span>Life</span></div>
+  <svg class="valleyf" viewBox="0 0 400 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 60V34c40-16 80-20 130-8s90 18 140 4 90-24 130-16v46Z" fill="#cfe9d8"/><path d="M0 60V46c60-10 110-6 170 2s110 8 160-2 60-8 70-6v20Z" fill="#9fd3b1"/></svg>`;
+}
+
+/* ---- Admission ---- */
+function viewAdmHub(){
+  const yr=String(new Date().getFullYear());
+  const rec=S.students.filter(s=>inCamp(s)&&(s.admit||'').startsWith(yr)).sort((a,b)=>(b.admit||'').localeCompare(a.admit||'')||(parseInt(b.admNo)||0)-(parseInt(a.admNo)||0));
+  const big=(on,icon,t,d,c)=>`<button class="hubtn" style="--c1:var(--g${c}1);--c2:var(--g${c}2)" onclick="${on}"><span class="ic">${icon}</span><span class="tx"><b>${t}</b><small>${d}</small></span><i>›</i></button>`;
+  $('#main').innerHTML=`${pageHead('Admission','New students and admission forms','o')}
+  ${big("openAdmForm()",'➕','New admission','Fill the admission form. The student is added to the register and class.','A')}
+  ${big("openAdmForm();AF.who='old';afDraw()",'📋','Form of an existing student','Pick class and name, then view and print their form.','O')}
+  ${big("openImport()",'📥','Import students from Excel','Your register sheet or a class list.','B')}
+  ${big("downloadTemplate()",'📄','Blank register sheet (Excel)','Same columns as your admission register.','P')}
+  <h3 class="sec">Admissions in ${yr} (${rec.length})</h3>
+  <div class="list">${rec.slice(0,30).map(s=>`<button class="item" onclick="openAdmForm('${s.id}',true)"><div class="av" style="font-size:12px">${esc(s.admNo||'–')}</div>
+    <div class="t"><div class="n">${esc(s.name)}</div><div class="s">${esc(s.father||'')}, ${dmy(s.admit)}</div></div>
+    <div class="r"><span class="chip ${isActive(s)?'paid':'left'}">${esc(isActive(s)?gLabel(gOf(s)):'Left')}</span><span class="s">View form</span></div></button>`).join('')||'<div class="empty card">No admissions this year yet.</div>'}</div>`;
+}
+
+/* ---- Classes ---- */
+function viewClasses(){
+  const ks=UI.camp===null?campusKeys():[UI.camp];
+  const act=S.students.filter(s=>isActive(s)&&inCamp(s));
+  $('#main').innerHTML=`${pageHead('Classes','Classes, sections, fee and students','p')}
+  ${campSelect()}
+  <div class="today"><div><span>Students studying</span><b>${act.length}</b></div><div><span>Classes in use</span><b>${allGroups(UI.camp).filter(g=>classStudents(g).length).length}</b></div></div>
+  <div class="actions" style="margin-top:12px"><button class="btn" onclick="openMatch()">➕ Add students to a class</button><button class="btn ghost" onclick="openClassSetup()">⚙️ Classes and fees</button></div>
+  ${ks.map(k=>{const emp=classes().filter(c=>![gKey(c,'',k),...sectionsOf(c,k).map(x=>gKey(c,x,k))].some(g=>classStudents(g).length));
+    return `${ks.length>1?`<h3 class="sec">${esc(campName(k))}</h3>`:''}<div class="clist">${classes().map(c=>{
+      const groups=[gKey(c,'',k),...sectionsOf(c,k).map(x=>gKey(c,x,k))];
+      return groups.map(g=>{const n=classStudents(g).length, t=teacherOf(g);if(!n)return '';
+        return `<div class="ccard ${n?'':'empty'}"><div class="ch"><b>${esc(gLabel(g).replace(', '+campName(k),''))}</b><span>Rs ${(classFee(gCls(g))||0).toLocaleString('en-PK')}/month</span></div>
+          <div class="cm"><span>👥 ${pl(n,'student')}</span><span>👨‍🏫 ${esc(t)||'No teacher'}</span></div>
+          <div class="cb"><button class="btn sm ghost" onclick="UI.cls='${esc(g)}';go('current')">Students</button><button class="btn sm" onclick="openMatch('${esc(g)}')">Add students</button><button class="btn sm ghost" onclick="openCurrentPicker('${esc(g)}')">Tick / remove</button></div></div>`;}).join('');}).join('')||'<div class="empty card">No students in classes yet. Tap Add students to a class.</div>'}</div>
+    ${emp.length?`<details class="cempty"><summary>Classes with no students (${emp.length})</summary><div class="cechips">${emp.map(c=>`<button onclick="openMatch('${esc(gKey(c,'',k))}')">${esc(c)} <small>+ add</small></button>`).join('')}</div></details>`:''}`;}).join('')}
+  <div class="actions"><button class="btn ghost" onclick="promote()">⬆️ New session: promote all students</button></div>`;
+}
+function openClassSetup(){
+  const set=S.settings;
+  const clsText=classes().map(c=>c+(classFee(c)?' = '+classFee(c):'')).join('\n');
+  sheet(`<h3>Classes and monthly fee</h3><p class="muted">One class per line with its fee, in order from youngest to oldest. Sections are added from Teachers when you give a section to a teacher.</p>
+  <label>Classes<textarea id="cs_txt" rows="14">${esc(clsText)}</textarea></label>
+  <p class="note">Write like: Class 1 = 1500. New students get this fee automatically.</p>
+  <div class="actions"><button class="btn ghost" onclick="closeSheet()">Cancel</button><button class="btn" onclick="saveClassSetup()">Save classes</button></div>`);
+}
+function saveClassSetup(){
+  const cl=[], fees={};
+  $('#cs_txt').value.split('\n').map(x=>x.trim()).filter(Boolean).forEach(line=>{const m=line.match(/^(.*?)\s*[=:,]\s*([\d,]+)\s*$/);const name=(m?m[1]:line).trim(), fee=m?Number(m[2].replace(/,/g,'')):0;if(name&&!cl.includes(name)){cl.push(name);if(fee)fees[name]=fee;}});
+  saveSettingsData({classes:cl.length?cl:DEFAULTS.classes,classFees:fees});closeSheet();toast('Classes saved');
+}
+
+/* ---- Teachers ---- */
+function viewTeachersPage(){
+  $('#main').innerHTML=`${pageHead('Teachers','Give classes and login details','t')}${campSelect()}${teachersHtml()}`;
+}
+function teacherLogin(tid){
+  const t=S.staff.find(x=>x.id===tid);if(!t)return;
+  const link=location.protocol.startsWith('http')?location.href.split('#')[0].split('?')[0]:'';
+  const msg=`Assalam o Alaikum ${t.name}.\nYour ${S.settings.school} app login:\n${link?'Link: '+link+'\n':''}Username: ${t.username||''}\nPassword: the one given to you when your login was made.\nYour classes: ${(t.classes||[]).map(gLabel).join(', ')||'not given yet'}`;
+  sheet(`<h3>🔑 Login of ${esc(t.name)}</h3>
+  <div class="cred">App link: <b>${esc(link||'your GitHub link')}</b><br>Username: <b>${esc(t.username||'–')}</b><br>Classes: <b>${esc((t.classes||[]).map(gLabel).join(', ')||'none yet')}</b></div>
+  <p class="note">For safety the app does not keep passwords. The password was shown when this teacher was added, and the teacher can change it in their own Settings. If it is forgotten, remove the teacher (untick "Teacher can sign in" in Edit) and add them again with a new password.</p>
+  <div class="actions">${t.phone?`<a class="btn green" target="_blank" rel="noopener" href="${waLink(t.phone,msg)}">Send on WhatsApp</a>`:''}<button class="btn ghost" onclick="closeSheet()">Close</button></div>`);
+}
+
+/* ---- Withdraw a student ---- */
+let WD=null;
+function openWithdraw(id){
+  WD={id:id||'',q:''};
+  if(id){wdForm();return;}
+  wdPick();
+}
+function wdPick(){
+  const q=WD.q.trim().toLowerCase();
+  const l=q.length>=2?S.students.filter(s=>isActive(s)&&inCamp(s)&&[s.name,s.father,s.admNo].some(v=>String(v||'').toLowerCase().includes(q))).slice(0,10):[];
+  sheet(`<h3>🚪 Withdraw a student</h3><p class="muted">Search the student who is leaving.</p>
+  <input class="afsearch" style="display:block;width:100%;height:46px;margin-top:10px" placeholder="Name, father or Adm No." value="${esc(WD.q)}" oninput="WD.q=this.value;clearTimeout(WD.t);WD.t=setTimeout(()=>{wdPick();const e=document.querySelector('.afsearch');if(e){e.focus();e.setSelectionRange(e.value.length,e.value.length);}},300)">
+  <div class="list" style="margin-top:10px">${l.map(s=>`<button class="item" onclick="WD.id='${s.id}';wdForm()"><div class="av">${esc(initials(s.name))}</div><div class="t"><div class="n">${esc(s.name)}</div><div class="s">${sline(s)}${s.admNo?', Adm '+esc(s.admNo):''}</div></div></button>`).join('')||(q.length>=2?'<p class="muted">No studying student found.</p>':'')}</div>`);
+}
+const WD_REASONS=['Took SLC on parents request','Promoted to Middle (6th)','Passed out','Change of residence','Admission in another school','Fee issue','Long absence','Other'];
+function wdForm(){
+  const s=getS(WD.id);if(!s)return;
+  const bal=Math.max(0,ledger(s).bal);
+  sheet(`<h3>🚪 Withdraw ${esc(s.name)}</h3><p class="muted">${sline(s)}, Adm ${esc(s.admNo||'–')}, admitted ${dmy(s.admit)||'–'}</p>
+  ${bal?`<div class="total" style="margin-top:10px"><span>Fee still due: ${rs(bal)}</span><button class="btn sm" style="background:#fff;color:var(--due)" onclick="openCollect('${s.id}')">Collect</button></div>`:'<div class="total good" style="margin-top:10px"><span>All fee paid</span><span></span></div>'}
+  <div class="two"><label>Date of leaving${dateBox('wd_date',todayStr())}</label><label>Class withdrawn from<select id="wd_cls">${classes().map(c=>`<option ${sameCls(c,s.cls)?'selected':''}>${esc(c)}</option>`).join('')}</select></label></div>
+  <label>Reason<select id="wd_reason">${WD_REASONS.map(x=>`<option>${x}</option>`).join('')}</select></label>
+  <div class="two"><label>SLC No.<input id="wd_slc" value="${esc(String(nextCertNo('slc')))}"></label><label>Remarks<input id="wd_rem" value="${esc(s.remarks||'')}" placeholder="Optional"></label></div>
+  <label class="check"><input type="checkbox" id="wd_cert" checked> Make the School Leaving Certificate now</label>
+  <p id="wd_err" class="err"></p>
+  <div class="actions"><button class="btn ghost" onclick="closeSheet()">Cancel</button><button class="btn red" onclick="wdSave()">Withdraw student</button></div>`);
+}
+function wdSave(){
+  const s=getS(WD.id);let d;try{d=getDate('wd_date')||todayStr();}catch(e){$('#wd_err').textContent=e.message;return;}
+  const reason=$('#wd_reason').value, rem=$('#wd_rem').value.trim(), slc=$('#wd_slc').value.trim(), cert=$('#wd_cert').checked;
+  if(!confirm(`Withdraw ${s.name} on ${dmy(d)}? Monthly fee stops after ${mShort(monthOf(d))}.`))return;
+  upd('students',s.id,{active:false,leftMonth:monthOf(d),wdDate:d,wdClass:$('#wd_cls').value,remarks:rem||reason,wdReason:reason,slcNo:slc});
+  closeSheet();toast(s.name+' withdrawn');
+  if(cert){UI.ctype='slc';UI.cstu=s.id;UI.cdata={...certDefaults('slc',getS(s.id)),no:slc||String(nextCertNo('slc')),reason,remarks:rem,_for:s.id+'slc'};go('certview');}
+  else render();
+}
+function readmit(id){
+  const s=getS(id);if(!s)return;
+  if(!confirm(`Re-admit ${s.name} into ${s.cls}? Monthly fee starts again from this month.`))return;
+  const fee=classFee(s.cls)||feeAt(s,thisMonth())||0;
+  upd('students',id,{active:true,leftMonth:null,wdDate:'',wdClass:'',feeFrom:thisMonth(),fee,disc:0,fees:[{from:'0000-00',fee,disc:0}]});
+  closeSheet();toast(s.name+' re-admitted');
 }
 
 /* ---- Attendance page ---- */
@@ -1812,8 +1962,12 @@ function viewFeePage(){
   const by={};mp.forEach(p=>{const k=p.byUid===ME.uid||p.byUid==='owner'?'Owner':(p.by||'Teacher');by[k]=(by[k]||0)+Number(p.amount||0);});
   const cash={};S.payments.filter(p=>p.settled===false&&ids.has(p.studentId)).forEach(p=>{const g=cash[p.byUid]||(cash[p.byUid]={name:p.by||'Teacher',amt:0,n:0});g.amt+=Number(p.amount||0);g.n++;});
   const pct=exp?Math.round(rec/exp*100):0;
+  const td=todayStr(), gsA=allGroups(UI.camp).filter(g=>classStudents(g).length);
+  let tTot=0,tPres=0;gsA.forEach(g=>{const a=attOf(td,g);if(a&&a.counts){tTot+=a.counts.total;tPres+=a.counts.P;}});
+  const feeToday=sum(S.payments.filter(p=>p.date===td&&!p.old&&(UI.camp===null||((getS(p.studentId)||{}).campus||'')===UI.camp)),'amount');
   $('#main').innerHTML=`${pageHead('Fee',f?esc(gLabel(f)):'All classes','b')}
   ${campSelect()}
+  <div class="ftoday no-print"><div><span>🎓 Studying</span><b>${S.students.filter(s=>isActive(s)&&inCamp(s)).length}</b></div><div><span>✅ Present today</span><b>${tTot?Math.round(tPres/tTot*100)+'%':'–'}</b></div><div><span>💵 Fee today</span><b>Rs ${Math.round(feeToday).toLocaleString('en-PK')}</b></div></div>
   <div class="filters no-print">${clsSelect(f,'UI.cls=this.value;render()',true)}<input type="month" aria-label="Month" value="${m}" onchange="UI.month=this.value||thisMonth();render()"></div>
   <section class="card hero">
     <div class="lbl">${monthName(m)} fee received</div>
@@ -1909,18 +2063,14 @@ function cpSave(){
 
 /* ---- Current students ---- */
 function viewCurrent(){
-  const head=pageHead('Current Students','Classes, sections and teachers','p');
-  const chips=`<div class="chips">${[['students','Students'],['teachers','Teachers and classes']].map(([k,l])=>`<button class="chipbtn ${UI.curMode===k?'on':''}" onclick="UI.curMode='${k}';render()">${l}</button>`).join('')}</div>`;
-  if(UI.curMode==='teachers'){$('#main').innerHTML=head+campSelect()+chips+teachersHtml();return;}
+  const head=pageHead('Students in classes',UI.cls?esc(gLabel(UI.cls)):'All classes','p','classes');
+  const chips='';
   const act=S.students.filter(s=>isActive(s)&&inCamp(s));
   const counts=allGroups(UI.camp).map(g=>[g,classStudents(g).length]).filter(x=>x[1]);
   $('#main').innerHTML=`${head}${campSelect()}${chips}
   <section class="card" style="padding:12px 14px"><b>${pl(act.length,'student')} studying</b>
     <div class="brk">${counts.map(([g,n])=>`<div><span>${esc(gLabel(g))}</span><span>${n}${teacherOf(g)?', '+esc(teacherOf(g)):''}</span></div>`).join('')||'<p class="muted">No students yet.</p>'}</div></section>
-  ${!act.length&&S.students.length?`<div class="inst" style="border-color:var(--p2);background:var(--p1)"><div><b>Now choose current students</b>${pl(S.students.length,'student')} are in the register. Pick a class and tick who studies there now.</div></div>`:''}
-  <div class="actions"><button class="btn" style="flex:2 1 200px" onclick="openMatch()">Add from class list (photo, Excel or names)</button></div>
-  <div class="actions"><button class="btn ghost" style="flex:2 1 200px" onclick="openCurrentPicker()">Tick students for a class</button></div>
-  <div class="actions"><button class="btn ghost" onclick="openStudentForm()">+ New student</button><button class="btn ghost" onclick="openImport()">Import Excel</button></div>
+
   <div class="filters" style="margin-top:12px"><input type="search" placeholder="Search name, father, Adm No." value="${esc(UI.q)}" oninput="UI.q=this.value;fillList()">${clsSelect(UI.cls,'UI.cls=this.value;render()',true)}</div>
   <div class="list" id="list"></div>`;
   filler=()=>{
@@ -1936,11 +2086,12 @@ function viewCurrent(){
 function viewRecord(){
   const all=S.students.filter(inCamp), studying=all.filter(isActive).length;
   const ys=[...new Set(all.map(s=>(s.admit||'').slice(0,4)).filter(Boolean))].sort().reverse();
-  $('#main').innerHTML=`${pageHead('Student Record','Admission and withdrawal register','o')}
+  $('#main').innerHTML=`${pageHead('Records & Withdrawal','Admission and withdrawal register of all students','o')}
   ${campSelect()}
   <div class="today"><div><span>In register</span><b>${all.length}</b></div><div><span>Studying</span><b class="c-paid">${studying}</b></div><div><span>History</span><b>${all.length-studying}</b></div></div>
   <button class="prtile" onclick="openPrintReg()"><span class="ic">🖨️</span><span class="tx"><b>Print register</b><small>Class wise, year wise or the whole register</small></span><i>›</i></button>
-  <div class="actions"><button class="btn ghost" onclick="openAdmForm()">+ New admission</button><button class="btn ghost" onclick="openRegisterExport()">Download register</button><button class="btn ghost" onclick="openPhotos('')">Saved photos</button></div>
+  <button class="prtile wd" onclick="openWithdraw()"><span class="ic">🚪</span><span class="tx"><b>Withdraw a student</b><small>Leaving date, reason, SLC No. and School Leaving Certificate</small></span><i>›</i></button>
+  <div class="actions"><button class="btn ghost" onclick="openRegisterExport()">Download register</button><button class="btn ghost" onclick="openPhotos('')">Saved photos</button></div>
   <div class="chips" style="margin-top:12px">${[['all','All'],['active','Studying'],['left','History']].map(([k,l])=>`<button class="chipbtn ${UI.recStu===k?'on':''}" onclick="UI.recStu='${k}';render()">${l}</button>`).join('')}</div>
   <div class="filters"><input type="search" placeholder="Search name, father, Adm No., file no." value="${esc(UI.q)}" oninput="UI.q=this.value;fillList()">
   <select aria-label="Year" onchange="UI.recYear=this.value;render()"><option value="">All years</option>${ys.map(y=>`<option ${y===UI.recYear?'selected':''}>${y}</option>`).join('')}</select></div>
@@ -2288,7 +2439,6 @@ function viewCertHub(){
   const recent=[...S.certs].sort((a,b)=>(b.created||0)-(a.created||0)).slice(0,12);
   if(UI.ctype){viewCertPick();return;}
   $('#main').innerHTML=`${pageHead('Certificates','Make, print and send','cert')}
-  <button class="admcard" onclick="openAdmForm()"><span class="em">📋</span><span class="tx"><b>Admission Form</b><small>New admission, or print the form of any student</small></span><i>›</i></button>
   <div class="ctypes">${CERTS.map(([k,t,d,e,a,b])=>`<button class="ctype" style="--k1:${a};--k2:${b}" onclick="sub(()=>{UI.ctype='${k}';UI.cq=''})"><span class="em">${e}</span><b>${t}</b><span>${d}</span></button>`).join('')}</div>
   <div class="toprow" style="margin-top:16px"><h3 class="sec" style="margin:0!important">Issued certificates (${S.certs.length})</h3>${S.certs.length>12?`<button class="btn sm ghost" onclick="UI.certAll=!UI.certAll;render()">${UI.certAll?'Show recent':'Show all'}</button>`:''}</div>
   <div class="list">${(UI.certAll?[...S.certs].sort((a,b)=>(b.created||0)-(a.created||0)):recent).map(c=>{const s=getS(c.studentId)||{name:c.name};const T=CT(c.type);return `<div class="item">
@@ -3637,6 +3787,7 @@ function openStudent(id){
   </dl></div></details>`:''}
   <div class="actions">
     ${isActive(s)||L.bal>0?`<button class="btn green" onclick="openCollect('${id}')">Collect fee</button>`:''}
+    ${isOwner()&&isActive(s)?`<button class="btn ghost" onclick="openWithdraw('${id}')">Withdraw</button>`:''}${isOwner()&&!isActive(s)?`<button class="btn ghost" onclick="readmit('${id}')">Re-admit</button>`:''}
     ${L.bal>0&&s.phone?`<a class="btn ghost" target="_blank" rel="noopener" href="${remindLink(s)}">Remind</a>`:''}
     <button class="btn ghost" onclick="openStudentForm('${id}')">Edit</button>
     ${isOwner()?`<button class="btn ghost" onclick="openChargeForm('${id}')">Add charge</button><button class="btn ghost" onclick="closeSheet();UI.ctype='dob';UI.cstu='${id}';UI.cdata=null;go('certview')">Certificate</button><button class="btn ghost" onclick="closeSheet();openAdmForm('${id}',true)">Admission form</button>`:''}
@@ -3711,7 +3862,7 @@ function viewReports(){
 }
 
 /* ================= Teachers (owner) ================= */
-function openTeachers(){closeSheet();UI.curMode='teachers';go('current');}
+function openTeachers(){closeSheet();go('tchr');}
 function viewTeachers(){$('#main').innerHTML=teachersHtml();}
 function teachersHtml(){
   const act=S.students.filter(s=>isActive(s)&&inCamp(s)), groups=allGroups(UI.camp).filter(g=>classStudents(g).length);
@@ -3728,7 +3879,7 @@ function teachersHtml(){
   <section class="card" style="padding:14px;margin-top:12px">
     <div style="display:flex;gap:12px;align-items:center"><div class="av">${esc(initials(t.name))}</div>
       <div style="flex:1;min-width:0"><b>${esc(t.name)}</b>${t.active===false?' <span class="chip left">Removed</span>':''}<div class="s muted" style="font-size:12.5px">${t.username?'Login: '+esc(t.username):''}${t.phone?', '+esc(t.phone):''}</div></div>
-      <button class="btn sm ghost" onclick="openTeacherForm('${t.id}')">Edit</button></div>
+      <span style="display:flex;gap:6px"><button class="btn sm ghost" onclick="teacherLogin('${t.id}')">🔑 Login</button><button class="btn sm ghost" onclick="openTeacherForm('${t.id}')">Edit</button></span></div>
     ${gs.map(g=>{const n=classStudents(g).length;return `<div class="mrow"><div><b>${esc(gLabel(g))}</b><small class="${n?'':'c-due'}">${n?pl(n,'student'):'No students yet'}</small></div>
       <span style="display:flex;gap:6px"><button class="btn sm" onclick="openAssign('${esc(g)}','${t.id}')">Choose students</button><button class="btn sm red" aria-label="Remove ${esc(gLabel(g))}" onclick="removeGroup('${t.id}','${esc(g)}')">✕</button></span></div>`;}).join('')
       ||'<p class="note" style="margin-top:8px">No class given yet.</p>'}
@@ -3804,7 +3955,7 @@ function saveAssign(){
   const kept=!sec?classStudents(g).filter(s=>!AS.sel.has(s.id)).length:0;
   closeSheet();toast(`${gLabel(g)}: ${pl(AS.sel.size,'student')}${moved?', '+moved+' moved in':''}${out?', '+out+' taken out':''}`);
   if(kept)setTimeout(()=>toast(`${pl(kept,'student')} stay in ${gLabel(g)}. To move them, tick them in another class or section.`),2900);
-  AS=null;UI.curMode='teachers';if(UI.tab!=='current')go('current');else render();
+  AS=null;if(UI.tab!=='tchr'&&UI.tab!=='classes')go('tchr');else render();
 }
 function suggestUser(n){return String(n||'').toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,16);}
 function openTeacherForm(id){
@@ -3858,7 +4009,7 @@ function showCreds(t,pass){
   :'<p class="note" style="margin-top:10px">In test mode, open Settings, tap "Switch user" and pick this teacher to see their page.</p>'}
   <div class="actions">${ONLINE&&t.phone?`<a class="btn green" target="_blank" rel="noopener" href="${waLink(t.phone,msg)}">Send login on WhatsApp</a>`:''}</div>
   <div class="actions"><button class="btn" onclick="openAddGroup('${t.id}')">Next: give a class</button></div>`);
-  if(UI.tab!=='current'||UI.curMode!=='teachers'){UI.curMode='teachers';UI.tab='current';render();}
+  if(UI.tab!=='tchr'){UI.tab='tchr';render();}
 }
 
 /* ================= Settings ================= */
