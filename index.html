@@ -1338,6 +1338,39 @@ body.no-nav main:has(.appgrid){background:radial-gradient(circle at 12% 30%,rgba
 .afcard h4 .ok{margin-left:auto;font-style:normal;font-size:12px;font-weight:800;opacity:0;background:#fff;color:#15803d;border-radius:20px;padding:2px 9px;transition:opacity .2s}
 .afcard.done h4 .ok{opacity:1}.afcard.done h4 .ok::before{content:"✓ Done"}
 .afcard.done{border-color:#86efac}
+
+/* ===== pre-primary ===== */
+.pptabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;margin-bottom:10px}
+.pptabs button{flex:none;border:0;border-radius:20px;padding:8px 13px;font:inherit;font-size:13px;font-weight:800;cursor:pointer;background:#fce7f3;color:#be185d}
+.pptabs button b{background:rgba(255,255,255,.6);border-radius:10px;padding:0 6px;margin-left:3px;font-size:12px}
+.pptabs button.on{background:linear-gradient(135deg,#db2777,#f472b6);color:#fff}
+.ppacts{display:grid;grid-template-columns:1fr 1.5fr;gap:8px;margin-bottom:10px}
+.ppadd,.pppro{border:0;border-radius:14px;padding:12px 8px;font:inherit;font-weight:800;font-size:14px;cursor:pointer;color:#fff;line-height:1.2}
+.ppadd{background:linear-gradient(135deg,#db2777,#f472b6);box-shadow:0 8px 16px -10px #db2777}
+.pppro{background:linear-gradient(135deg,#16a34a,#4ade80);box-shadow:0 8px 16px -10px #16a34a}
+.pppro small{display:block;font-size:11px;opacity:.9}
+.pppro:disabled{opacity:.5}
+.pplist{display:flex;flex-direction:column;gap:6px}
+.pprow{display:flex;align-items:center;gap:10px;width:100%;text-align:left;font:inherit;color:var(--ink);cursor:pointer;background:var(--card);border:1px solid var(--line);border-left:4px solid #ec4899;border-radius:12px;padding:8px 10px}
+.ppn{flex:none;min-width:62px;text-align:center;font-size:11.5px;font-weight:800;color:#fff;background:linear-gradient(135deg,#f472b6,#db2777);border-radius:8px;padding:5px 4px}
+.ppt{flex:1;min-width:0}.ppt b{display:block;font-size:13.5px;line-height:1.25;word-break:break-word}.ppt small{display:block;font-size:11.5px;color:var(--muted)}
+.ppt small.ppok{color:#15803d;font-weight:700}.ppt small.ppleft{color:var(--due);font-weight:700}
+.ppc{flex:none;font-size:10.5px;font-weight:800;border-radius:20px;padding:2px 8px;background:#fce7f3;color:#be185d}
+.ppc.g{background:#dcfce7;color:#15803d}.ppc.y{background:#fef3c7;color:#92400e}
+.ppd{flex:none;font-size:10.5px;font-weight:800;border-radius:20px;padding:2px 8px;background:var(--duebg);color:var(--due)}
+.pprow.pro{border-left-color:#d1d5db}.pprow.pro.on{border-left-color:#16a34a}
+.ppck{width:24px;height:24px;border-radius:7px;border:2px solid #16a34a;display:grid;place-items:center;color:#fff;font-weight:800;flex:none}
+.pprow.pro.on .ppck{background:#16a34a}
+.ppinfo{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:8px;align-items:end;background:var(--card);border:1.5px solid #bbf7d0;border-radius:14px;padding:10px 12px}
+.ppinfo label{font-size:11.5px;font-weight:700;color:var(--muted);display:block}
+.ppinfo input{display:block;width:100%;height:40px;margin-top:3px;border:1.5px solid #bbf7d0;border-radius:10px;padding:0 8px;font-weight:700}
+.ppinfo span{display:block;font-size:11.5px;font-weight:700;color:var(--muted)}.ppinfo b{display:block;font-size:16px;color:#15803d;height:40px;line-height:40px}
+.ppnote{margin-top:10px;padding:10px 12px;border-radius:12px;background:#f0fdf4;border:1px solid #bbf7d0;font-size:12.5px;color:#3f5a48;line-height:1.6}
+@media (prefers-color-scheme:dark){.pptabs button{background:#3a1a2c;color:#f9a8d4}.ppc{background:#3a1a2c;color:#f9a8d4}.ppc.g{background:#14321f;color:#8fe0b0}.ppc.y{background:#3a2c10;color:#ffd99a}
+  .ppnote{background:#10261a;border-color:#1f5a3a;color:#a8d8b8}.ppinfo{border-color:#1f5a3a}.ppinfo input{border-color:#1f5a3a}.ppinfo b{color:#8fe0b0}}
+.admacts{grid-template-columns:repeat(4,1fr)!important;gap:7px!important}
+.admact{padding:12px 3px 10px!important}.admact b{font-size:12px!important}
+.aic.sm{width:46px!important;height:46px!important;font-size:21px!important;border-radius:16px!important}
 </style>
 </head>
 <body>
@@ -1397,7 +1430,7 @@ const SUPABASE_KEY = "sb_publishable_JiH4kZdQ9IlnOiCejy8tKQ_fArOg88j";
 
 <script>
 /* ================= Basics ================= */
-const APP_VERSION = '2026-10-17 v44';
+const APP_VERSION = '2026-10-17 v45';
 const ONLINE = !!(SUPABASE_URL && SUPABASE_KEY);
 const LKEY = 'gvps-fee-data', SKEY = 'gvps-session', STAFF_DOMAIN = 'staff.gvps.app';
 const LOGO = 'data:image/webp;base64,UklGRhIsAABXRUJQVlA4WAoAAAAQAAAAnwAAnwAAQUxQSFUHAAABv8agbSNJ5wx/1Lt7H4KIyMuem8kZWTkykYchZ1aOyMg2cmbPWRgi9yE1Vv5IqG3bRpLP3n/qfNXVEf2fAEq1DO1OqexZcqAk4I1uFN6BXv0LHDyINzaQzNxk4ook2QFqKRkK2jZyEv6wb/4AEBETQFOVTS3sNB0i4OJNT/tdNoAR6RLdRp9hIKUkbXsiyXm/X83dVc3MTDHMzMwzqxmfwV7bF6Clw/fzSUr6DeWqrkyVIryLiAmgddu28rZZ51z9/5eUmZmZw4nDUjgxM9uSzPZ3zy5XtXTvc0RMALU2KSX+PToxPTXVCAvmYOvHe91ud2ePv7pLQYllig40F3e2NpZnZptDdH6ys7W1PD89vboF0FKoLDIisHRy/mhvRbT3JG9jcuMfV6cedx7OA4lQMcxaMHp8/ebhFEB0ISE6FxKyBLA7MXbtUQ8SoQLIkjN66fGtHSAlSaKnCrkDizd/ubUNKXJnIcKFp492waNMVFMKd1g8+8OdIFjOLMDk44/XIbmMaivM4d7X30OwXFmAte/fr0HLjDoq3Nj48QDMciRFDr77tkaUUd9Q4vDbjzukyI5F1j5/naIVRL2VW8SXr48TlBVLTL9/P0wMov6KxOFHb9CyfEjOg7fTRBOZzIm154OgTChy8mablol8KtLCqwtEy4IxcO8q0UReFbnwaIIMKnF4dwSM7ErO7VOS1SzApWNaRpYtcnDNCPVi+sI4Erk2t3MrqEZidZ9oZNwSe9u4aiJnaxUXuV/eIakWSqxNYGRfSRsDXgsfWCGKPqjE/BiqwdAELvqiYHqI6g/O0lebw5WT6LNS1YzCCp0mcSxKfIxOizebFFjsHtkp8aaPCgT090ynQLBMsdcbUxXmMJWKWaxnxuy+U2qhCbxHZguLHsVCaWsK70lYbxxRcNnUatL/AbcpfvsYDU7cOnCVTdJ1Bq808diDwqs1d89jQKI5hyi+GOuZBgPnDq0CgJ8ZbPaJ2ymowEhP2x6DsPiCShTf7bm6C78w61EJ1vvOojvrfW2iEsPPzntXZp/06wHL7xK6CatfeFCN2X+7343pwyNXPWC8Q+gs8KEFFZn9Z6wjsdJz1QTWnMM6GeAHC6qy8d86Uqv5wStDPFtP9l+BJyvUZh59RwfRvniujeDdWFS74KeXqM+0ddutHTy3WCH+Gm+jOP4Mq4+ge0vJ/mVc2EwFojhxjzbw1BM16o9IgOLoLVmJmK4uJYFxvOlFoti4goG4oUiRut8EiNxCZWK6PBJlvnCAFYpv7WLidDKpTEh2AYkLJArVuYwnjlCpGDsDMTX2y0XsLMPiYsGk4Q3YCbFYSBzANk6xik1YR+UCq7BMwYr5kZFZVDILU82igcbsVJOCFQOzU4OoXEhMT8spWGemQdFAwyhcLeAlI1ZF4Yr/va12bA2rGbF4QuXmfaxu9rfrxtjsnqCKcXrdHSpW5I3eFqoX2N042KJq17sso3oR6/vM180SzGA1MwtTSqoWZxyWN6hW+ckM1p0kqoXZZRIPUb1MHSVxF6+XNiYe7LsqJamNwpbGqZSwxXGCFGNEpdDZdSHG8DoxrmAQPFz2qJJ0eBOBUv+aqiTTnrPgr7+a1wicJQEEN1Zd9aF0eJ74i1LvN3J9hMZm/W+Ab0n1gX2L87fZOg8s14bSykXy3+HNF1Rnw7e9pH8Ivt9KqgydfIn458BP5Lpo7A+MDo2dg6SqcF0ndELge8s1kW0MozO9H14T2LuEzrD733iuh5yunTW6sReOTNVgPBuhG3z6I49ayP7rjUTXYS9vuOpAHJ1hkOYv55JKQD78gTOVD7+nCM1fzLidBZZOT6OVz+LKrSTO+pkov3jOmcvHbhOls3RlMdlZYelkN6tsSrPXXPTypjVlgzuIHopwjVwy43Ai9QRjYQ/1L6XtjSR6G9iej+pXSiNHiF6LfXP1KdhD9N7ZoG9vyKsgwmJ/EvONRCWVxib7EmMTrmqADzWx8jRGEdUdpbwaosoCQ4WpviirDFWNpl8O0T+ijgc9UBnYP0R1YH8TV/5krPUZTlkzg3vuIjG/i4YDGbPreN7EwZRMDKuc8T+xlC8Z009xhlksd/AYVZF4PIu8VshObk/iMYoC1q71SdRdTucGHho1isStWyRRf0H37ENaMVpyYu7sIiayGIkbP/bwPDqy+dHPV/BgVAoOfvpV5nk0ZHN+fGkTC0ZotJj56EcsZQ2bwo3Lr14lBaNVkeh89FOQIoZJuQUXP/4ZR4xeM7j48/NxkptqoSBx8vstUCDTIcDWm1e7EDFVTKEWLPz4DSiQcQuRkbuv7zQhIqtMiARHl7+/1MUCmTdFWL378EoDiEjqkSQlg4P2hQtTkEQflHmC1Uu3LuwCpCQk1JWQkDvA/L0rt2bALUSfNHmCkd3zl3d3hmmfHNRGYGb8bTMz2WmP74KlCIpqIgK2un64uTo/3xik22ZvfWNxZmJm6RhIKCiwZB7592hzbmZmblwr9q+lvL/Z3Vzv7/HXZAoxxABWUDggliQAALBoAJ0BKqAAoAA+WSCLRSOiIRtdTsA4BYSzAGaB7UamSBy/3FfPPt/rp2E3d7/f/D9SvmB/3jy1vU3+7nqX/ID2n/xV93H+P9Q7+tf7XrOPQr/bT08/3M+Fb+0f+b9tPaI6gD//8Q//UvxV9y3eL92/Izzb/FPmH7h/bP2z/vn/s/1Pxs43/Of4n/i/4b1K/kP2z/Nf379uf8H7Sf6LwV+DP+J6gX4//Kf8L+Zn+H/df6DPg/9d24uuf43/ef4b2CPaf6H/qv77/hP+1/ifSm/lPQr7Af6r8yPoA/lv9H/1P9//d7/J+z94MP3L/Zf8D/Gfjl9gH8k/q/+x/vv7x/6D6X/5T/t/4z/V/uD7ZfzH++/8X/Kf5/9kfsI/lX9J/2f9+/z3/t/zH///9H3jeyj9svZb/Z3/kM+8omBiuauSoO0yarV2lbaAnMS1/r/+F3ct5oVUhenwItuzwzy0vsrVYENoq+ICRPghYDSUnfBlRr3QNls+QoBBG3v/7LlTbznRDKemMV22e6+6196aXrjCMgXaHLcFoXXYX9alAwaP/kOmOBbn/y6aziKQysB4CvYznU2kIa6ZT87i+aftVkc51ACzsXSpclCFUJ4Tnq9uiaTiGk5m0rWUGII4Sdfj72I0hhHHppcYEhPs2f9Le1bGERXNiNlcNT+W3i+zdxJfhduSkVU+E9Cd2wDvKG2cg0Y/95hDkrM+QBbIJmkS9B3h5CygeyDmM/5H+l3DNCAz0DdzD1yya0hGCoznlwY6RIYiYjwne8Z2lu4AswfxkP6Ag31E2+d3yRDKb22DxZl35Id3UTs3XMitCPRB8/ImHIiZ6j+eDxwckY3phq1ydSKnWdNtg01mzyvK/QIhV0Xdl3g/wjmah10/dt0IuxkwQR3yNkMKaK6Jn3dc6Bku/ZrDn6NUnA7Jh5MkJNR9xvta/QjUgbxhYpmbrFaS7mOk3eOOfpURaT1pK25cH2o88bahsuoXbavJqr3yQwTRDTUDgBZARLWNuhDr0sL/5puP9huXcgI/u15ogc8mayg6aYf4b4Wp0J4W12Oz+EDtUh+Jr6qE87lRaS5TbbYodiwDJ5n4fWzFZ74yV+OC7w9NLeVys+i1p5tOPo82F/dOAAD+/qU24HiV9p/W5yqO75KGdcKuXSfDI4VkCknWGpPhRuVNNzHTWI4Hwna4g7MSwZO92FQC/Qy7dMCCom7I7hk4a3ETG6ha+8frGcFC+mHfkKrxTfVfLo1yw/z3VgKeYnLN2tTXELLcI61TMnxAVBzy7XLaRebr6eo27Yd3Tcuo7EcNATsw2sBVO8S64AOijKBAgUANJCKB11h3pKGnldhJ0rlhscFMoDoKb6TFyA8wTDoa/Sej9nuBQHF53JQtPTvj9/yr1UhkFTpv0j6DqLxYW8VxQ0YUWuasHByqrntAAS3Th6rqhqOm9dK+9Hs0piXuptEawxxvzKMCpjBMk5FId+V5r8pqTIGM7FqyC4o33VXgxsNBWShNqBxy5Q6t5ECV6xJUBjKogTyAVPK8UCl0Y0uqUnmDUgXHpytJKHRXvBFQHjHSyi3St3+OmUoMYNIRyOftYU59TibK7+bVyzqs5tI8X9QQL+uMd/dcO6zI162Sc77sWjEiqbIwMwSiYYtsESxNjwyxMWSgGd21B09sAO/xWRjOR+oT6p0e81Hw6XFdjphim9hArIfGVzH0hBQHDtO8AwxHf2KgjuHvW/niRgaCsDgf8XCBJ1q6eWagw3fHmwhjhw840MD7Ri5Q+9vkEh6hBHFZ9PMqbveWLrjLl1KVnPg5csKCFTJ8YepOsLPDFbydLZD74ZDHmwPdGvGC4F+ckspLDIUAGnNaKZDp8roXB9pAqZ8pPXdMkClX3f3Ja25DHDLZ+X3AyPhZWcZSgZJtaneR07U8vC381mcfQQ7TFcjsbnEI+ykMvrkn/PEMWkEvzVNWWDiO6QIBBwzG6lKD7XdTxMBksfqguV2WUDMe8ywe1e1KsQVZ4hbbnUPjmwYDvMYUBB4MmzEf4tY49W+a62Oz39yH/dZl0rMAhWqYJo+xAsDe+mQJo5cGl86Oetbi8cLjhq23aIv62Wh788wHzjaSYrCDywLyExbS3YW8/QEK7MpKrP1aQQXDjNjYmShpxUyxvXpEG75j3HfcYObttF0ezRzB1sttLLDM3cxMgwF8QDfytdVVw2MLs7FBoQlwLG8y2n4lXanW4eyPvfemJi2yqFcTbl0Ye/sL7JQMzj9LTFAAfwuAk0xpTAR6GatItCIA5zont9k+5D7vDChnm3I95gpl8nsarHi1Y+qTXj15/DYLpIsXVjQM8I6GcgUZblSqzOmoF5dZIZXVlAwzgop1gRrNcpwBlC4WwSJoSoRIq5iS+rU3IYD8yNbvFovjmYWaOUdANE9ndNDowunkaKrSF+E4kzdncriKQFIcfYA+/lM5leBCItzRj3LD1hy9RHAAf6luBoI0koSi41woEdEQ4RZHFGcqkQ5MK4aRqRPWHePVevWPqSarUlPzLJ6Jy6Bew0bOiu3tGuEVJXyFdbArpAaV7DpKSdbnQRvuvL7iq4JVyCMbRTanaHdwnmdSukBlb9sSJHp5m8tq7bsDFgL3bRjqVojiPaAnZPTahGNb/OTRfu9kgz/Oj3lKF8IC72dbrhtw/ytFFe4JxQ2y+scgooTsOGIfrCH0jqClYJjCgXusfElwHrtxqQNPZkWM0bFh3UeeQSc4uG5ILx5tgOA6z6V6wQt5LnGT4gSGvyxCtpYvOQC+X34tVlkN3UXHcVWtZ8Lj/QvpVSlPn2s0+yW18c3B3aNYv1RN58YVmFmSWVRHsaNin0ovJlKkln4Hi/9Cz9CaKYLWn23WTD781dNlvyJewZL7tZXpCUszCtgks0SxNYiGAMKITiaKKGX3eRmbR5yaosm9jQLS2vR1/m1GAY9BcJm1+fTan3+4G/kXr0fveQvwy7RDBlCjHHzO9ZZxVlVskeY4c8HhklFSSY1pM151W4ZrcvLyZj8I1NiH9yeIgHqTPperdP9uIvAi+HPw1NxnbF/K5994z5FtvlScDIGcnip8FqHFfKuDD3arGd+azVUf18ZLbys4FeGbUk/1vHfH32QD7ckXtkmn8vcRkKmXDrymud7vh53ViBhxrkJHIoEorf0HHS4xMTy7+rHUc5PBuKp9dbcHyF1fgVXVMBacQzlFQW9ufvGZNCiE3WLX4Wg6S4cTkjZd1/F5OVHwTFjTF8RHKhgY1DcRGZrDtCJiolUvbTWhaTTxeJtWkjm7tZ1OuQtUZyEcOn5ZSn9ODfXHUGkOIkDtegosgFov8I4TOOxFXyAPqK+fqfmGmWOgBDmG6gpu5QYWIAt/ti3JTVH1zxCgyKJrPF0wmCOHJeEbHUrZu69eUWGPZBBxc6iRJJLrHoKbFdiIMcT+HJJ0PjnTQnh0hIh1rIME7jQABYUOZ5WT1XLF/iLnHdh1cRDBdTEzT+nWwXQ53ZsloWA7cIXOi3J3DeuIgjnYF2q46n/ibxxKLF04RP0fm1rrfXaumJsQcOkzcZi1DBk6mc5VVmv9al7p73i0DkM6zYiqkyVXDzT3KE/sVKLe7x57zVDhXynASoKpSd3XwsekztVYFRVvew/5Bgj2593etvAQVGm1CR+R6lHNrQrxHuutF9CTzI3UW4Fg2vaf2UdNB1D+fRPonb1KBG74+bMvtw2zYv5cTpzMnz0yFJ6G8T2RrCtlUWlxYbNFLfRZyNdj32l/V7kz+Q9CbEmGrEhHKZi2d7MI9lbyfeMEQ9gCoiYXfTcecVPPUIPUk4fvuXCo2TOI3s2I3TMGk7qSB0QnTxq9NfejABtRmnFm64YoHMVqQM6l8sILKyFc/SWn1HmICStDvjsN9+2YAHuEpIgp4AwPirJ1U4D7WFS37LQYUm0pmnvZ3NDo9mKRzTu7AeWNAych/E0k34An4lqGHE16jnaks14u7r8N/1Az+SWPJNZFYRqsIPSgqX3QKbXdxQyo6hLYV1oCqA0ZO0H73X0F4qSkwHK54Ou4aaH9iOSCYlJaOt6ZrC2KpvMOhTmlgdswSYxDV/DkCSPOWswYsROrLXU75l8akw0NSXIL5fePFNjN6CbtLusyon7UgSRlQtD4UKpWfQ664QFeez81vYP8/1TFOqu4E/BNVqCmQeSRJOvLOaguHxovGHNRcbSNgVuDwbD6Hog8syd2OzfJ7Fapawmm5R8KVldX+vUcJveL9efZaEzpjH83J+TAVJ9X3wbeSZYnfL86hw3xJ7I2yz6i/zmMYEsMzpxJRZx2Qj/MULgIY4ckhploDHvK4wbHEwhnbIDsZGOal0d4zGXwO+7osEJnP4EypaZoD8d9VP0Eo6wTtpbAo6QwYF2lLaqLMsKTRUQKaTTzFIIN1HMt8du01AADUwValIW2CcwH9l0zTSL6p/lCjeNj6JymRHuNBQGYz22s7yaFN0i3vjb9/MClKK5/Y4MP0ultGLSY2kOKrDvayfmPgWz5I3RcbuZrQohsqGx613nFGJEvpAnaqGzg+ZgjJP7BLve48XVZMezbqxN4Low7slLS8+kbQMuoDgol3a7wTMLHsi7dNlMya9K9PI/qWhq/A/hgej7PT7hBP3o1TXg9vT2/I6hJq+qK9dZ4DG0Twu2LryRjpzQbvPgiuYSFvRpsE7/4CTdWO0YjBoszKhtjwX7Ce3uT727yO+VcjkXji0v5d3TTNp8iHU5NyQNwTLnSe7Ke5cMY4WJTOvcLWlhi+R+6IbVufigov5rAQZyJHBm3uc4mvjUnUQP5aZe7pfzTxa54RShW6RyplKQEuKb8EV3sT+xheWfNLvJW4LAREbG0C0UuXVXfAcoCOJgrPQoXa2BD5mH/B24tQgR6DGnLXPNu0AB3Tcp3opAhSA94GcFpKrsp3NZMRYR6LMnm187KIoOA9KL+VrboPadkEj8fAaJPt+F7/ZbaN7uhzBECTxSQ4IoPzlzxqExoZXxy7svFt++mhPNTRGR6yO/qxLvCIr2REcwi5A7MdBul4+ydBhVimtGUHUBDxNWaVSoeDUaUOVOFl5RTvZwiojWpVsL0Htpj058TuzUPiGEQ/ZLaf2s8PX0T4nRl/18wvrFCkuCIf387fKpmVECUvej/d0iOL0486AAjZ3CrKXgzkB3RkSQ0MsZewCy9m2js0hS0JldtorpwPn3N0QthIC+0sR/8bBX8Qc3fLMaUnOj893HumAFSiE7/252VeQ7zeau3Qi8CpeKvMfxzkO0WHoivFMiK+wTyT1CiQpVBWRP07ch+lIzH00oSICRsapVSo/ttCMdpeCjswzBfDsuvNCFVxtvdo72p7Uf2vwgAL6toHDHbFJJhzeJsIX0pzUt9C4MEvZRlFmefJ4ksBgFXI6Sc/25eq/dH4YE7Rg7Go/1W88Jj/uinmXtQS3mCWjPvB0Htk92tZgRps5pnjbA3HZNo3m+jKOT/NNsQk8xCXvOfLFeczCte9j17+1XJaHvNkNLWKMXt+AT/U9mPm0Z1KnJeeVuErfrMV6mbamqNa8qSb/xZ2AwSfIS8Yq/yEB6zMm4rLxW4YvXuD1gpfKZTASNkcGAvkjxf3+UPIjvaPBwJeMGCpbbiA62fzneyi9ZBz9EWJMHVgLYLYEhGrR8Uc0sHP2S3gNX/mI67hnIPdng6tijxV1nuK1T8p4dEmKT0I22XMcw533tTCH23x0/1WT7Ve+6/arHYhhT47h4H/N5xzOXoolLhC4nTSsUlyEdDupst13C8WKhtWC5el8EEVPTBHD/xZZeok9xVepDrPxWP6hOC20gznvn6u7s2ZoN0xzZmFaCDsAsrSUnHhfbCk901RhQTB9vSIzwgenC3yX2bOTpo+cXUtT7N40CgnfRMJDGdXqLXnzUSOvn1zeCbAOakC+nYGBT1DRsQL608f1WaoCSXHkIWdGeS91Ek7DuIxA24Z60sLliqhaOo85eWwWc4WBVrYI1NlAiXuKWap5c4p40mTW8AAtTIYCY5HVsUcyGOayvxHO7faWp5P+1Q3SQ2U6NlNGnJz71WEKyhXb0o2hhqW+ZKDYbnpier7NpAmUEP2H1ZO3JWVcpVAnMOJoW1Quc8byyyqH25CtReTt3b7uvn3JAoN1TDMzgaTBdiRuTSq7IPV7AONTOWThE0LuJTX2j0SwkT6cl2iKl+4Bo+kMH+rnZg2Wsp/NWxVDX3dRIpPp5hU+tUQDdjUI9OP3//91moCKN4Hip0ERurNeiuhkgOp78J/AkQfyexa+l9L51tjwDKj1nh/L5VJ7+RCj9mMAopAuPyWG9J0F7McKUmyiqqu16MAGxZGQEUjd426nzpDuIPcNLRvEF/Z/62b84j88bz3nq591zZ23YQpsf/PxaY3Q7e4I4kc0MgBwGi3B5GDRkQ9oLmG3ehA4Leb5uNqzvsgUxbfRgv5zz/lUH4UZmrl0rgqqSyK3JjVqWP43piEcK6Ik7++swozaZ+415uKTKy4azM9PTko6hF7tWFJz+0xVnTsaUoyzQWfLg5GEmO4ghz3pFPGZBK6jTwcDhQ1csawqGse06t4ahF8HOOe99JZy6N67EIsgMcVpidqhIjhPqjfjAvuYKotqL3UwKDtw0j8m/7RGNUmn8Qo3g0xnsj/DfUZFLTIaDymRIpwYfpJPjmNdjlK3jIWKD2wFoZwYt+ltS2nJLdyP/jMHyURkPxLZ385gvfOXm/nqUecG1mcTn2XO2EPNaz8UAVpENYWzAV8/8mG3+ZCTWPwH62V4/MWbma5LtZAdpwNzrza8pbYU3w+LCXWU6USBsi0qnaGX8VUmuiUW+YmIGHeX/iFupXJrndH2VlxAlVipdFoGa0ueaf2AcJQVwjJSS2AKEXUZ+SCfDNa3SHZCqY1qJUAgpC/Y3KocYiDt9ci7Yz66xP7WSRksviAXYe3pPNaWOcO+8B40R5MOaxAzDmhF2EULUZVyjTgztKQ0xkm8vcvfFi1RnjH6wk4kmbge3hubO9aAf/CzupU//3z4wAfPFT16kaFL8YZk0AX7nQKIoq32eJX37dkm8lzT5+4hV8/yndsEetwInvFnJjQ7cHH8q68IneZ2RLq2F6TI1mrxPHksDEvoQv37qpro5HVc7uka6xS5bny2iDhAFKQB6GLEN1uIK05HOaL1AADPtFSQL48bHlKfFPZUX83xE8goP0Pas9gDaXJS7dncuWXhLdCt4CzLHf+3J89UBu9P947CGnG0A7zWl8O9VSpC53LvCFrQESrOkIns0zLBRF6pzYoSM4cpXjfwoeySU8XWD6RQR17uvL/z3Ml+Z6Vt+vmeHdCVSeAL0ZY7K90kO23OIwD+KnLDOf7jzTKAZCje2OzLkfg04j8RulAxw+ARYNOvmfKP3Z3YkpPmGwWY2LWpq1Ay7PnNN66P/1bEIHhVqqv0+kUSyY3yzwBR9guXbu0klu+FSzoexgyAQcf1BTIzrLc97FtLzkX2ro+4PV16Xn9oEuDNvBEgrFTkDWJx+yxE9AfvRS2eLplbRWtrDSGUAkNgQf/icw/eW6O9PCFtHf3I7pdF1vSNLFM5NSJwQEKe/TeRzzguG8TtNN2b8zkNJXyjWlsiXizZlg8ahP+aL3R44XGdig/4sZUYtCfvJfs3surO+HkIJDrjM98MN0tSF94j+SMq2L5v2KWwJ9yYrplqx3OtvHSHhVdmt/ThAvfN1pOAMZqU1Ccp0Oyul98QWVSVjjec7zluTPD0xCXBrHIAt+D+ILVewiXNT2+py+lI+FqAxFw2cCe+B/9es+KIaJCaOpp0CF4voWsyBogmo0vi88dQynmGKKmimiA9AUj7K371TVjWjiKDjwkNRnHMNSIV+o5A+iYIrRT1CgwZjjvxENNbPJO0lyItqmviqAAVE6Jx0DUWr7wklA34LMRb/kMz/ZYi9IVtvpmhsVbVNJEXnvNPrGtLXdtOXkBahB8jPPMlPhcg4u9NSy3w5T/1uaXJmi4xOnPoTVSvKoG0v22w80z0+ldgm8Ya/kocbKP/Bkhl+sHwZMzQRdBeNEbUOk/M9Y5PmzXh7uj23/xDCYIlU3ETyyHbWxB6Uk8fNHwymWMAxS7EYYnpTlbo3JH+QTQPiR1BdI/9CA0f/lWn2/3Mpf1ybOkKaioZ1zO9oKmtBxcOUm08hligCa7kVFpVSNg5+eeaGcnqf4QcTqjzFU8jU+Vsz/yY6P557Dvnar+bpuhgAGqj2zEtsH5yw7DZf3d+rbHcguSRVbqOjy0RB7znIs5dqYIJMdHnglf5Ut5KHwrzhLHnvugeCdv40mbale2p48GFoMWuV5ijJf0vmSR/jUipSvRlMxE0eTdJ0+8c1+tfMRWNsuXbO6L8QM1xt762Dsy2M0oK2m+TeLv4KkqbFCldYNkduMCwKZAmCbSO7czjvTXzp02/tmK3AalMnFHgWGRYSvPp51WHKwrAoyWG+5IoSti2XmA1Ja+Rb/ks9zcooDg2L+xPWnn75rEfMK0g+xzh90DzPDxByY6+10h727+pbvkShpRUaK0I59H/1eY/nC+sndicwG9PIoqMrFOXsCF+45ovrrpy5s6nd+stB1Y/GUGynVKwmuUFuF0Oq1vV/vk2Z402H/ATuS6gJUGp+FIOKoj874b85Y9jEoE5T2WmJq88w3EvXNg7YoUQNww0w0C0agK2lOyLuq1rETVVqQRzI64VeCPPAlBlq8emQaAfRHgLNDSb35GBpfpE7H8JQ4V052Fh4DjkIIUbHBdYgk9u+IyVE7Vc2aMLIN4m04pZJLQGHDKMkCLudfa3KE2j8NyJcPzFOq2zK6WrcT4OTubInBtUOgV5LEADI4B6XNxqpYziCeEozN8wxIcK8lotUfICNOtKHMBdyourykjAZn1QJcBA6K6KKuts4wbM8u+87+ZN/eTsKx66vdJxuq7u8Ud1sxpw0/PmrN82Y2P5r77Ix/DVdZ6BP+bfGQ8+J8nZCIgO7bAejlYH0xviPHhKPIA3uosRLPkbUNCAWlWinwrQdcwnQUuzJUNblyYu/tEoVspqtYIoCyzrjm8Qz14uIco1InBYrs/bDLxiJI/fI0B98y9rjtALdWJZNh8lqpCXSRIHo9tKl0pCoa5AnJ/ZWz6E8pv1xz+kgTayRcR7JId9OBSYRRM7VjeENE2h1u3sxSQggg1n3jtJ6hRS1hxY47j73FPxEfnzwZrFYCy0al9Y8voRtJcOOpTZFW2Z6lnuriKTemxbygdrk/IwVPSI1LtJAvhooAATWqHsLCMsGA4uL/beLevo+sti5u2NZjTVfPKibkvIf4v28i8u/qLlqKMZHcepcVITyf8NJM3ir35Hpknwt1nWqtRuWOaUrtgvuOGj3U98+Yx1w9iUbUsHXM2qj15aDOSvcO2IfDwIkI+Em7H34H1w+lkJn7XOYdyA9Hrr39K2zMPhVcN40ltdXVXOy8jrLT5QUUAEJNUsKHAhlyIIXIIUGZx96QAENp3nbf8Wda0VGydFs5hkRcVGsneMsCgXA3nbDsBgz2JjH9GhfpVFiU89I7bSfeOQoPBVXnoB7eXqI4Qu20uwwKIJruU2QNPVmd7zjy27iTWJNth2sReJcjvZ1/4APX5awTtiYljqwxTRSur9/fbyXZIXwcPyLhXQlVORcs7RB0DDk9E0J1tI+v/bDGPU1PX3Z0gMWYYL1O52As4s5fh0R94vghzM2H5d7tkeV+9xzw9ymkL5lJ7YWRhug9NEIcxOv6RoyRiLP/saBKTH9JVXt30Tf6Wpq9abWNrOS0XiydYSJrL4sL7AQAcp/Vg3z1+h87+a9MqoOWxqUrbAV/kpTSqcrHEkg7ryuGcNB+NxoNa2Q0P4xEmrYOE5jLsboRC/S6GAIyo2YmqZDRyuF9sz0B7dKuyEX6WZSP471Q/J6EqtNt+1WiQv6DP7KkD+2hYIsrJ52IHzEUANOxt5RXMgtcjUWjaj0jSqpvYYOF2EgRcWaesXup6GGEbRAcEWHUH+oSTjVvRGdDm0P3szD0AWGze5M2WDZoWkhulorugMhXS8UKdMgdwqUV64R8w7CB0eovRfBGb9fYP+llei/1Tfp8gek28IoJc9PfpTOpDNRO4vIRbMeA+AHtE9QIexyhSeAfrXsw+h885mA0T7tol2aE7GS5BtFN7EfhN1QgxFh5vGC+sJiOTc0S+OxXSy9fK91zAd7QHPGBnKseAq6wJYpcb1vQOwMiurF+8YDgjWQL/YKTiQgeHUnrlGYjjiDmsH93SC2tJddc3ox8XUs2SrF95ToFm6SpTWFj5UCQJby4/DWtEDZG5ReoNMC2IkkPm76pg/2ZZSZIejmaHUkxYmgx/QwTmQ7xWky3OWl0c+j8pJ6hlYDYkpF0vVMa7UZDcJqJ0/dZ1VFrVd8ZMv+JqSgJNhJWnYPg839novwMcv3XF8mJiTXmPfgnavYE65qSjDCwXrjjN+zFWMl7zmspS/H3NlWGd7NmI0GThQUcrLYy+1JLG04TwB0knEFUZVmudHm+bX1NY4HxrTAl/c9kaYEfC1Ag3YDiF5s5VBMT2jO6LDpQcCM9+p0alVfKuAYoIaMh8ka1n3KwpcTlpBgH0j/GldznC3oJUEth45qf8Jv3hxxj/p5Mmut0BA5bZl54wmTIYqSC3jy1wVULLtOxigrpkbkSb2UwG3Zd3t7AudtMLsERHBhhMCH9fwNkyRIHFRZvNvVyNMNYJsBl7TXZ3POibK01fv4s6Y+mBaa6F/ZY2yWkSS2rCXZ+xATlRBi/MLgUFANIXCE3pB62J+ev8ZZ//lTHOllN5ReHlhssLyZekr4OonSc6RTbKWAD7xX4d9sBa2rjnw3Y6RO4/zDr2CwN4cP06nGyINeP8pz7vSjJ6J+nX1mRPoREJ1ZiwM16Z91pRVvWGwo6Aph5U9Yt9J2E0bEp7wgBEn4PWUPh0+KU/hPFnorQJJ4su3bj22PjLC+K5agH77bNGV0z+zCkBF3/e9DJkkKVMhE8UV3OXGcDd9tzbcMcMMMja6tW228NVw4DfnkKykG/IXIFsDbXOepMuIlPuppRENANWgvkKuxcqwMFC5YGeKL63Qq/TOGN7QRjRaYkmAkNxKjP/L2NcGN8Wh78D7h7Y1LAUPzlY7jrSx5DIJ3dtu52L1tecGXksr8kb3qgkUlWdLP3i1BH+LqwvL50G6adLTWZF59oFAPIIS/3rS5YT2tqJL2E75pWoIaq7BywcJZH9tmjA4x+8Kt0NP9BA5tFyo7vXFVq4HR434aj/W6EYgcYPiG6dkwkg6TpyGfAP/L0SkEqL+2Q2KsudMJKoD82cO5hnFgxqy/JwcEjgBEpFHy19ECfteJZl+6WP5sIqlbYWCZUjdpPo2xmu+OZ5eChP+UdBMjSsYcmALRdf8DDg7OFN0tSFx06BX0MuWV71+2Z93jvlyAdysJwN9cRUeLx2b1Vp9Q3xR82w4t1Iw+uwf0Qn2rxnzy9IA1P5SEdj2e8BOrDlRM4rREN7R4NYb+ALkDZ+CjBzddvcNZybmBwNOB3aL/+Ll//Egv/+J27qEz4RHxrtp4PSUv6fAEa3qYBAmrtPgMJpeGRrnr5TshHM/B7eBrGBZc1VL3Y37RMthtj8WTKsOhq/VLbzai1P7Fzk5xe2+6479CRF/teCAJXQUfg7ug2r4So1rVHc1moHTAm9o+v7v084+bcSeMwznqAf818tRKQnMRv/SseQhRZM4wIaeWc5/DfWjDWicqFHb9AHGwKcSf4I5iQclVOI8frCY0bHVhwfI9OP1Yd3VA4JqJJzbG9vJXbyhSW2kAoxZe2+9Mly0LCeInUo5H96QIxJNS/bpnphhNxw5AjPJUr42FipCnAveXYLOnIpNTXK23lhWz6ib5JF8BNxE7M3GHjBarypeMnJBXTaTz5+KDRT9qImKOol0gHylLeFAzV3AvJbdb6uRNTPMbOX1HFRtQ1inVkQb32d1mNJBzGAOf4gOCBUrwXimogONobRZeYnXBw8To/68Zzw3cahdLCYV7EMFvMSX5ckXppabrQGixxE/23AhwGLW6yjLf3BcDSJ5XSNJb3+cxlPzRdNHs3yD5H+OVfXcORCgYOEPgTOcbsDyRSXkZwW8K8kmNeF/k8z54o12shZhROA/wduVdWoi6J35V6j4ia4eNxRrueLJ6iAyXaya/MVZb+QFPDwRWj+oRHm2EjPOX5iFm/EjJasQk+WLPG1sQ13xEcA627ZA/XhgH+5uYrZvx0x34pPjfjs5Y88DJ+pQML1klk/xLlwOC94T7LCbH5ARdce5UCYfSULlogvK3pnj1pN4Ny1Ea3mDRrFJCr9/wHldONKG/ibDv1m+6qNN91jphI/5YdifC6hG6l630XCl4tblW/hZsMKA0b/aL3UIq8DT8SIqTSSHvmlz0eW/sm19COBgkw+NXBMN7WvqEDwAAoxduqz03TBEH/rrCcXEPaowRphCI4BcyH/WZ3MiVb3yA8vsxaern/2+3//auP/2pV//2mg7O5qWmXb1YbtNm6qaJsAAAAAA==';
@@ -1505,6 +1538,11 @@ function dobWords(d){
   return `${ordinal(dd)} ${mn} ${yearWords(y)} ${String(dd).padStart(2,'0')}-${String(m).padStart(2,'0')}-${y}`;
 }
 function regCls(c){const m=String(c||'').match(/^Class (\d+)$/);return m?ordinal(Number(m[1])):(c||'');}
+const isPreCls=c=>clsLevel(c)<=2;
+const inReg=s=>!s.pre;
+function nextPPNo(){return S.students.reduce((m,s)=>Math.max(m,parseInt(String(s.ppNo||'').replace(/\D/g,''))||0),0)+1;}
+const kidsTxt=n=>n+' '+(n===1?'child':'children');
+const ppTxt=n=>'PP-'+String(n).padStart(4,'0');
 function nextAdmNo(){return S.students.reduce((m,s)=>Math.max(m,parseInt(s.admNo)||0),0)+1;}
 
 /* ================= Data layer =================
@@ -1841,14 +1879,14 @@ function render(){
   document.title=set.school+(isOwner()?' – Owner':' – '+ME.name);
   if(!ONLINE)$('#testBar').textContent=`Test mode: records stay on this phone. Using as ${ME.name}.`;else syncBar();
   {const hb=$('#hBack');if(hb)hb.hidden=(isOwner()?UI.tab==='home':(UI.tab==='today'&&!NAV.length));}
-  {const tn={adm:'rec',classes:'cur',tchr:'camp',att:'att',take:'att',today:'att',register:'att',fees:'fee',oldfee:'fee',oldbal:'fee',reports:'rep',rep:'rep',current:'cur',students:'cur',teachers:'cur',cert:'cert',certview:'cert',admform:'cert',admview:'cert',record:'rec',campus:'camp'};document.body.dataset.tone=tn[UI.tab]||'att';}
+  {const tn={pre:'rep',prepromo:'att',adm:'rec',classes:'cur',tchr:'camp',att:'att',take:'att',today:'att',register:'att',fees:'fee',oldfee:'fee',oldbal:'fee',reports:'rep',rep:'rep',current:'cur',students:'cur',teachers:'cur',cert:'cert',certview:'cert',admform:'cert',admview:'cert',record:'rec',campus:'camp'};document.body.dataset.tone=tn[UI.tab]||'att';}
   if(isOwner()){
     if(UI.tab==='students')UI.tab='current';
     if(UI.tab==='teachers'){UI.tab='current';UI.curMode='teachers';}
     if(UI.tab==='register'){UI.tab='att';UI.attMode='register';}
-    const ok=['home','att','take','fees','reports','current','record','campus','rep','cert','certview','admform','admview','oldfee','oldbal','adm','classes','tchr'];if(!ok.includes(UI.tab))UI.tab='home';
+    const ok=['home','att','take','fees','reports','current','record','campus','rep','cert','certview','admform','admview','oldfee','oldbal','adm','classes','tchr','pre','prepromo'];if(!ok.includes(UI.tab))UI.tab='home';
     document.body.classList.add('no-nav');filler=null;
-    ({home:viewOwnerHome,att:viewAttPage,take:viewTake,fees:viewFeePage,reports:viewReports,current:viewCurrent,record:viewRecord,campus:viewCampus,rep:viewRepHub,cert:viewCertHub,certview:viewCert,admform:viewAdmForm,admview:viewAdmDoc,oldfee:viewOldFee,oldbal:viewOldBal,adm:viewAdmHub,classes:viewClasses,tchr:viewTeachersPage})[UI.tab]();
+    ({home:viewOwnerHome,att:viewAttPage,take:viewTake,fees:viewFeePage,reports:viewReports,current:viewCurrent,record:viewRecord,campus:viewCampus,rep:viewRepHub,cert:viewCertHub,certview:viewCert,admform:viewAdmForm,admview:viewAdmDoc,oldfee:viewOldFee,oldbal:viewOldBal,adm:viewAdmHub,classes:viewClasses,tchr:viewTeachersPage,pre:viewPre,prepromo:viewPrePromo})[UI.tab]();
     return;
   }
   document.body.classList.remove('no-nav');
@@ -1930,11 +1968,11 @@ function viewOwnerHome(){
 
 /* ---- Admission ---- */
 function viewAdmHub(){
-  const ys=[...new Set(S.students.filter(inCamp).map(s=>(s.admit||'').slice(0,4)).filter(Boolean))].sort().reverse();
+  const ys=[...new Set(S.students.filter(s=>inCamp(s)&&inReg(s)).map(s=>(s.admit||'').slice(0,4)).filter(Boolean))].sort().reverse();
   const cy=String(new Date().getFullYear());
   if(!UI.admYear)UI.admYear=ys.includes(cy)?cy:(ys[0]||cy);
   const yr=UI.admYear;
-  const rec=S.students.filter(s=>inCamp(s)&&(s.admit||'').startsWith(yr)).sort((a,b)=>(b.admit||'').localeCompare(a.admit||'')||(parseInt(b.admNo)||0)-(parseInt(a.admNo)||0));
+  const rec=S.students.filter(s=>inCamp(s)&&inReg(s)&&(s.admit||'').startsWith(yr)).sort((a,b)=>(b.admit||'').localeCompare(a.admit||'')||(parseInt(b.admNo)||0)-(parseInt(a.admNo)||0));
   const q=(UI.admQ||'').trim().toLowerCase();
   const shown=rec.filter(s=>!q||[s.name,s.father,s.admNo].some(v=>String(v||'').toLowerCase().includes(q)));
   const act=(on,emoji,t,c1,c2)=>`<button class="admact" style="--a1:${c1};--a2:${c2}" onclick="${on}"><span class="aic sm" style="--a1:${c1};--a2:${c2}">${emoji}</span><b>${t}</b></button>`;
@@ -1943,6 +1981,7 @@ function viewAdmHub(){
     ${act("openAdmForm()",'➕','New admission','#4ade80','#16a34a')}
     ${act("openAdmForm();AF.who='old';afDraw()",'📋','Student form','#fbbf24','#ea580c')}
     ${act("openImport()",'📥','Import Excel','#60a5fa','#2563eb')}
+    ${act("UI.ppTab='';go('pre')",'🧸','Pre-primary','#f9a8d4','#db2777')}
   </div>
   <div class="admyr">
     <div class="ay-t"><span>Admissions in</span><select onchange="UI.admYear=this.value;UI.admQ='';render()" aria-label="Year">${(ys.length?ys:[cy]).map(y=>`<option ${y===yr?'selected':''}>${y}</option>`).join('')}</select></div>
@@ -2027,8 +2066,8 @@ function wdForm(){
   ${bal?`<div class="total" style="margin-top:10px"><span>Fee still due: ${rs(bal)}</span><button class="btn sm" style="background:#fff;color:var(--due)" onclick="openCollect('${s.id}')">Collect</button></div>`:'<div class="total good" style="margin-top:10px"><span>All fee paid</span><span></span></div>'}
   <div class="two"><label>Date of leaving${dateBox('wd_date',todayStr())}</label><label>Class withdrawn from<select id="wd_cls">${classes().map(c=>`<option ${sameCls(c,s.cls)?'selected':''}>${esc(c)}</option>`).join('')}</select></label></div>
   <label>Reason<select id="wd_reason">${WD_REASONS.map(x=>`<option>${x}</option>`).join('')}</select></label>
-  <div class="two"><label>SLC No.<input id="wd_slc" value="${esc(String(nextCertNo('slc')))}"></label><label>Remarks<input id="wd_rem" value="${esc(s.remarks||'')}" placeholder="Optional"></label></div>
-  <label class="check"><input type="checkbox" id="wd_cert" checked> Make the School Leaving Certificate now</label>
+  ${s.pre?`<input type="hidden" id="wd_slc" value=""><label>Remarks<input id="wd_rem" value="${esc(s.remarks||'')}" placeholder="Optional"></label><input type="checkbox" id="wd_cert" hidden><p class="note">Pre-primary child (${esc(s.ppNo||'')}): no SLC needed.</p>`:`<div class="two"><label>SLC No.<input id="wd_slc" value="${esc(String(nextCertNo('slc')))}"></label><label>Remarks<input id="wd_rem" value="${esc(s.remarks||'')}" placeholder="Optional"></label></div>
+  <label class="check"><input type="checkbox" id="wd_cert" checked> Make the School Leaving Certificate now</label>`}
   <p id="wd_err" class="err"></p>
   <div class="actions"><button class="btn ghost" onclick="closeSheet()">Cancel</button><button class="btn red" onclick="wdSave()">Withdraw student</button></div>`);
 }
@@ -2214,7 +2253,7 @@ function viewCurrent(){
 
 /* ---- Student record (admission & withdrawal register) ---- */
 function viewRecord(){
-  const all=S.students.filter(inCamp), studying=all.filter(isActive).length;
+  const all=S.students.filter(s=>inCamp(s)&&inReg(s)), studying=all.filter(isActive).length;
   const ys=[...new Set(all.map(s=>(s.admit||'').slice(0,4)).filter(Boolean))].sort().reverse();
   $('#main').innerHTML=`${pageHead('Records & Withdrawal','Admission and withdrawal register of all students','o')}
   ${campSelect()}
@@ -2415,7 +2454,7 @@ function viewRepHub(){
   }else if(UI.rep==='admreg'){
     const ys=[...new Set(S.students.map(s=>(s.admit||'').slice(0,4)).filter(Boolean))].sort().reverse();
     if(!UI.recYear)UI.recYear=ys[0]||'';
-    const l=S.students.filter(s=>inCamp(s)&&(s.admit||'').startsWith(UI.recYear)).sort((a,b)=>(a.admit||'').localeCompare(b.admit||'')||(parseInt(a.admNo)||0)-(parseInt(b.admNo)||0));
+    const l=S.students.filter(s=>inCamp(s)&&inReg(s)&&(s.admit||'').startsWith(UI.recYear)).sort((a,b)=>(a.admit||'').localeCompare(b.admit||'')||(parseInt(a.admNo)||0)-(parseInt(b.admNo)||0));
     const wd=S.students.filter(s=>inCamp(s)&&(s.wdDate||'').startsWith(UI.recYear));
     body=`<div class="filters no-print"><select onchange="UI.recYear=this.value;render()">${ys.map(y=>`<option ${y===UI.recYear?'selected':''}>${y}</option>`).join('')}</select></div>
     <div class="actions no-print" style="margin-top:0"><button class="btn ghost" onclick="openRegisterExport()">Download Excel</button></div>
@@ -2948,7 +2987,7 @@ function openPrintReg(){
   <div class="actions"><button class="btn ghost" onclick="closeSheet()">Cancel</button><button class="btn" ${n?'':'disabled'} onclick="doPrintReg()">🖨️ Print ${pl(n,'student')}</button></div>`);
 }
 function prList(){
-  return S.students.filter(s=>inCamp(s)
+  return S.students.filter(s=>inCamp(s)&&inReg(s)
     &&(PR.stu==='all'||(PR.stu==='left')!==isActive(s))
     &&(PR.by!=='year'||(s.admit||'').startsWith(PR.year))
     &&(PR.by!=='class'||(isActive(s)?sameCls(s.cls,PR.cls):(sameCls(s.wdClass||s.cls,PR.cls)))))
@@ -3083,15 +3122,15 @@ function viewAdmForm(){
   const inCls=S.students.filter(s=>inCamp(s)&&sameCls(s.cls,pc)).sort((a,b)=>(isActive(b)-isActive(a))||sortStudents(a,b));
   const villages=[...new Set(S.students.map(s=>(s.form&&s.form.present)||s.residence).filter(Boolean))].sort().slice(0,400);
   const sibs=AF.sib.trim().length>=2?S.students.filter(s=>[s.name,s.father,s.admNo].some(v=>String(v||'').toLowerCase().includes(AF.sib.trim().toLowerCase()))).slice(0,6):[];
-  $('#main').innerHTML=`${pageHead(AF.id?'Admission form':'New admission form',AF.id?esc(D.name)+', Adm '+esc(D.admNo||''):'Fill once, it goes into the register','cert','cert')}
-  <div class="afwho"><button class="${who==='new'?'on':''}" onclick="if(AF.who!=='new'){afNew()}">➕ New admission</button><button class="${who==='old'?'on':''}" onclick="AF.who='old';afDraw()">👤 Existing student</button></div>
-  ${who==='old'?`<section class="afcard afpick"><h4>👤 Choose the student</h4>
+  $('#main').innerHTML=`${pageHead(AF.queue?`Admission form ${AF.qi+1} of ${AF.queue.length}`:AF.id?'Admission form':'New admission form',AF.queue?'Promoted to '+esc(gCls(D.cls))+'. Add what is missing.':AF.id?esc(D.name)+', Adm '+esc(D.admNo||''):'Fill once, it goes into the register','cert','cert')}
+  ${AF.queue?'':`<div class="afwho"><button class="${who==='new'?'on':''}" onclick="if(AF.who!=='new'){afNew()}">➕ New admission</button><button class="${who==='old'?'on':''}" onclick="AF.who='old';afDraw()">👤 Existing student</button></div>`}
+  ${who==='old'&&!AF.queue?`<section class="afcard afpick"><h4>👤 Choose the student</h4>
     <div class="afg"><label>Class<select onchange="afPickCls(this.value)">${pcs.map(c=>`<option ${sameCls(c,pc)?'selected':''}>${esc(c)}</option>`).join('')}</select></label>
     <label>Student<select onchange="afLoad(this.value)"><option value="">Choose name... (${inCls.length})</option>${inCls.map(s=>`<option value="${s.id}" ${s.id===AF.id?'selected':''}>${esc(s.name)}${s.roll&&isActive(s)?' ('+esc(s.roll)+')':''}${isActive(s)?'':' – left'}</option>`).join('')}</select></label></div>
     ${AF.id?`<div class="afloaded"><span class="oav" style="--rc:#0d5c22">${esc(initials(D.name))}</span><div><b>${esc(D.name)}</b><small>s/o ${esc(D.father)}, Adm ${esc(D.admNo||'–')}. Already in the record, so you can tap <b>View and print</b> straight away. Save only if you add or change something.</small></div></div>`:'<p class="note">All details from the register are filled in for you.</p>'}
   </section>`:''}
-  ${who==='old'&&!AF.id?'':`<datalist id="af_vil">${villages.map(v=>`<option value="${esc(v)}">`).join('')}</datalist>
-  ${who==='old'?'':`<section class="afcard"><h4>👨‍👩‍👧 Brother or sister already in school?</h4>
+  ${who==='old'&&!AF.id&&!AF.queue?'':`<datalist id="af_vil">${villages.map(v=>`<option value="${esc(v)}">`).join('')}</datalist>
+  ${who==='old'||AF.queue?'':`<section class="afcard"><h4>👨‍👩‍👧 Brother or sister already in school?</h4>
     <p class="note">Search them to copy the father's name, phone, address and family details.</p>
     <input class="afsearch" placeholder="Search name, father or Adm No." value="${esc(AF.sib)}" oninput="AF.sib=this.value;clearTimeout(AF.t);AF.t=setTimeout(()=>{afDraw(true);const e=document.querySelector('.afsearch');if(e){e.focus();e.setSelectionRange(e.value.length,e.value.length);}},350)">
     ${sibs.length?`<div class="afsibs">${sibs.map(s=>`<button onclick="afCopy('${s.id}')"><b>${esc(s.name)}</b><small>s/o ${esc(s.father||'')}, Adm ${esc(s.admNo||'')}</small></button>`).join('')}</div>`:''}
@@ -3147,7 +3186,7 @@ function viewAdmForm(){
   </section>
   <p class="err" id="af_err"></p>
   <div class="fabpad"></div>
-  <div class="afbar">${AF.id?`<button class="btn green" onclick="afPreview()">🖨️ View and print</button><button class="btn ghost" onclick="afSave()">✓ Save changes</button>`:`<button class="btn ghost" onclick="afPreview()">👁️ View before saving</button><button class="btn green" onclick="afSave()">✓ Save admission</button>`}</div>`}`;
+  <div class="afbar">${AF.queue?`<button class="btn ghost" onclick="afNextInQueue(false)">Skip</button><button class="btn green" onclick="afSave()">✓ Save & next${AF.queue.length>AF.qi+1?' ('+(AF.qi+2)+' of '+AF.queue.length+')':''}</button>`:AF.id?`<button class="btn green" onclick="afPreview()">🖨️ View and print</button><button class="btn ghost" onclick="afSave()">✓ Save changes</button>`:`<button class="btn ghost" onclick="afPreview()">👁️ View before saving</button><button class="btn green" onclick="afSave()">✓ Save admission</button>`}</div>`}`;
 }
 function afCopy(id){
   const s=getS(id);if(!s)return;const f=s.form||{};
@@ -3169,7 +3208,8 @@ async function afSave(){
     cls:c,sec:gSec(D.cls),campus:gCamp(D.cls),residence:D.present||'',phone:D.fatherMobile||'',occupation:D.fatherOcc||'',caste:D.caste||'',fileNo:D.fileNo||'',remarks:D.remarks||'',form};
   let sid=AF.id;
   if(sid){const old=getS(sid);o.admClass=old.admClass||c;o.fee=fee;o.disc=disc;o.fees=newFeeHist(old,fee,disc,false);upd('students',sid,o);}
-  else{o.roll=nextRoll(c);o.fee=fee;o.disc=disc;o.fees=[{from:'0000-00',fee,disc}];o.active=true;o.opening=0;o.created=Date.now();o.addedBy=ME.name;add('students',o);sid=o.id;AF.id=sid;}
+  else{if(isPreCls(c)&&!AF.queue){o.pre=true;o.ppNo=ppTxt(nextPPNo());o.admNo='';}
+    o.roll=nextRoll(c);o.fee=fee;o.disc=disc;o.fees=[{from:'0000-00',fee,disc}];o.active=true;o.opening=0;o.created=Date.now();o.addedBy=ME.name;add('students',o);sid=o.id;AF.id=sid;}
   if(AF.photo&&!AF.photoSaved){
     const ph={id:'face-'+sid,title:'Student photo, '+D.name,date:todayStr(),studentId:sid,kind:'face',by:ME.name,img:AF.photo};
     try{if(ONLINE){await sb.from('records').upsert({id:ph.id,col:'photo',cls:null,data:clean(ph),updated_at:new Date().toISOString()});}
@@ -3182,6 +3222,7 @@ async function afSave(){
     else if(ex&&af>0&&Number(ex.amount)!==af)upd('charges',ex.id,{amount:af});
     else if(ex&&!af)del('charges',ex.id);
   }
+  if(AF.queue){afNextInQueue(true);return;}
   toast(AF.id&&getS(AF.id)?'Saved in the register':'Admission saved');
   go('admview');
 }
@@ -3378,6 +3419,105 @@ function pcSave(){
   const r=pcGeom(300,360);g.drawImage(PC.img,r.x,r.y,r.w,r.h);
   AF.photo=c.toDataURL('image/jpeg',0.85);AF.photoSrc=PC.src;AF.pz=PC.z;AF.px=PC.x;AF.py=PC.y;AF.photoSaved=false;AF.d.photoStyle=PC.style;
   closeSheet();afDraw(true);toast('Photo ready');
+}
+
+
+/* ================= Pre-primary record (Playgroup, Nursery, KG) ================= */
+/* Children here get a PP number, not an Adm No., and stay out of the admission register.
+   When they pass KG, "Promote to Class 1" gives them Adm Nos and opens their admission forms one by one. */
+function viewPre(){
+  const pcs=classes().filter(isPreCls);
+  const kids=S.students.filter(s=>s.pre&&inCamp(s));
+  const act=kids.filter(isActive);
+  const tab=UI.ppTab||'';
+  const done=S.students.filter(s=>s.ppNo&&!s.pre&&inCamp(s));
+  const list=(tab==='hist'?kids.filter(s=>!isActive(s)).concat(done):act.filter(s=>!tab||sameCls(s.cls,tab)))
+    .filter(s=>{const q=(UI.ppQ||'').trim().toLowerCase();return !q||[s.name,s.father,s.ppNo,s.phone].some(v=>String(v||'').toLowerCase().includes(q));})
+    .sort((a,b)=>tab==='hist'?String(b.promotedOn||b.wdDate||'').localeCompare(String(a.promotedOn||a.wdDate||'')):(String(a.ppNo).localeCompare(String(b.ppNo))));
+  const last=pcs[pcs.length-1], kgN=act.filter(s=>sameCls(s.cls,last)).length;
+  $('#main').innerHTML=`${pageHead('🧸 Pre-primary','Playgroup, Nursery, KG: not in the admission register','r','adm')}
+  ${campSelect()}
+  <div class="pptabs"><button class="${!tab?'on':''}" onclick="UI.ppTab='';render()">All <b>${act.length}</b></button>${pcs.map(c=>`<button class="${tab===c?'on':''}" onclick="UI.ppTab='${esc(c)}';render()">${esc(c)} <b>${act.filter(s=>sameCls(s.cls,c)).length}</b></button>`).join('')}<button class="${tab==='hist'?'on':''}" onclick="UI.ppTab='hist';render()">History <b>${kids.filter(s=>!isActive(s)).length+done.length}</b></button></div>
+  <div class="ppacts"><button class="ppadd" onclick="openPreAdd()">➕ Add child</button><button class="pppro" onclick="openPrePromo()" ${kgN?'':'disabled'}>🎓 Promote ${esc(last||'KG')} to Class 1 <small>${kgN} children</small></button></div>
+  <div class="filters"><input type="search" placeholder="Search name, father, PP No. or phone" value="${esc(UI.ppQ||'')}" oninput="UI.ppQ=this.value;clearTimeout(UI.ppT);UI.ppT=setTimeout(()=>{render();const e=document.querySelector('.filters input[type=search]');if(e){e.focus();e.setSelectionRange(e.value.length,e.value.length);}},300)"></div>
+  <div class="pplist">${list.map(s=>{const bal=ledger(s).bal;return `<button class="pprow" onclick="openStudent('${s.id}')">
+      <span class="ppn">${esc(s.ppNo||'PP')}</span>
+      <span class="ppt"><b>${esc(s.name)}</b><small>${s.father?(guessSex(s)==='F'?'d/o ':'s/o ')+esc(s.father):''}${s.admit?' · joined '+dmy(s.admit).slice(3):''}</small>
+      ${!s.pre&&s.promotedOn?`<small class="ppok">Promoted to ${esc(s.admClass||'Class 1')} on ${dmy(s.promotedOn)}, Adm No. ${esc(s.admNo)}</small>`:!isActive(s)?`<small class="ppleft">Left ${dmy(s.wdDate)}</small>`:''}</span>
+      ${isActive(s)&&s.pre?`<span class="ppc">${esc(s.cls)}</span>`:''}${bal>0&&s.pre?`<span class="ppd">Rs ${Math.round(bal).toLocaleString('en-PK')}</span>`:''}</button>`;}).join('')||`<div class="empty card">${tab==='hist'?'No history yet.':'No children here yet. Tap Add child.'}</div>`}</div>
+  <p class="note" style="margin-top:10px">These children take attendance, pay fee and get receipts like everyone else. They get an Adm No. only when promoted to Class 1.</p>`;
+}
+function openPreAdd(){
+  const pcs=classes().filter(isPreCls), c=UI.ppTab&&pcs.includes(UI.ppTab)?UI.ppTab:pcs[0];
+  sheet(`<h3>🧸 Add a child</h3><p class="muted">Pre-primary record. Number <b>${ppTxt(nextPPNo())}</b>.</p>
+  <label>Child's name<input id="pa_name" autocapitalize="characters"></label>
+  <label>Father's name<input id="pa_father" autocapitalize="characters"></label>
+  <div class="two"><label>Class<select id="pa_cls" onchange="const f=classFee(this.value);if(f)$('#pa_fee').value=f">${pcs.map(x=>`<option ${x===c?'selected':''}>${esc(x)}</option>`).join('')}</select></label>
+    <label>Father's mobile<input id="pa_phone" type="tel" inputmode="tel" placeholder="03xx-xxxxxxx" oninput="maskPhone(this)" maxlength="12"></label></div>
+  <div class="two"><label>Monthly fee (Rs)<input id="pa_fee" type="number" inputmode="numeric" value="${classFee(c)||''}"></label><label>Date joined${dateBox('pa_date',todayStr())}</label></div>
+  <label>Address<input id="pa_addr" placeholder="Village"></label>
+  <p id="pa_err" class="err"></p>
+  <div class="actions"><button class="btn ghost" onclick="closeSheet()">Cancel</button><button class="btn" onclick="savePreAdd(false)">Save</button><button class="btn green" onclick="savePreAdd(true)">Save & add another</button></div>`);
+  setTimeout(()=>{const e=$('#pa_name');if(e)e.focus();},120);
+}
+function savePreAdd(again){
+  const name=$('#pa_name').value.trim().toUpperCase(), father=$('#pa_father').value.trim().toUpperCase(), c=$('#pa_cls').value;
+  if(!name){$('#pa_err').textContent="Write the child's name.";return;}
+  let d;try{d=getDate('pa_date')||todayStr();}catch(e){$('#pa_err').textContent=e.message;return;}
+  const fee=Math.round(Number($('#pa_fee').value)||0);
+  const o={name,father,cls:c,sec:'',campus:UI.camp||'',phone:$('#pa_phone').value.trim(),residence:$('#pa_addr').value.trim(),admit:d,admClass:c,
+    pre:true,ppNo:ppTxt(nextPPNo()),admNo:'',roll:nextRoll(c),fee,disc:0,fees:[{from:'0000-00',fee,disc:0}],active:true,opening:0,created:Date.now(),addedBy:ME.name,
+    gender:guessSex({name})==='F'?'F':'M'};
+  add('students',o);toast(o.ppNo+' '+name+' added');
+  if(again){UI.ppTab=c;openPreAdd();}else{closeSheet();UI.ppTab=c;render();}
+}
+let PP=null;
+function openPrePromo(){
+  const pcs=classes().filter(isPreCls), from=pcs[pcs.length-1], to=classes().find(c=>!isPreCls(c))||'Class 1';
+  const kids=S.students.filter(s=>s.pre&&isActive(s)&&inCamp(s)&&sameCls(s.cls,from)).sort((a,b)=>String(a.name).localeCompare(String(b.name)));
+  PP={from,to,date:todayStr(),tick:new Set(kids.map(s=>s.id)),ids:kids.map(s=>s.id)};
+  go('prepromo');
+}
+function viewPrePromo(){
+  if(!PP){go('pre');return;}
+  const kids=PP.ids.map(getS).filter(Boolean), first=nextAdmNo();let n=first;
+  const ticked=kids.filter(s=>PP.tick.has(s.id));
+  $('#main').innerHTML=`${pageHead('🎓 Promote to '+esc(PP.to),'Each child gets an Adm No. and enters the register','A','pre')}
+  <div class="ppinfo">
+    <label>Admission date${dateBox('pp_date',PP.date,`oninput="maskDate(this);const x=parseDMY(this.value);if(x)PP.date=x"`)}</label>
+    <div><span>First Adm No.</span><b>${first}</b></div><div><span>${esc(PP.to)} fee</span><b>Rs ${(classFee(PP.to)||0).toLocaleString('en-PK')}</b></div>
+  </div>
+  <div class="toprow" style="margin:10px 2px 6px"><span class="muted" style="font-size:13px">Untick children repeating ${esc(PP.from)}.</span><button class="btn sm ghost" onclick="if(PP.tick.size===PP.ids.length)PP.tick.clear();else PP.ids.forEach(i=>PP.tick.add(i));render()">${PP.tick.size===PP.ids.length?'Untick all':'Tick all'}</button></div>
+  <div class="pplist">${kids.map(s=>{const on=PP.tick.has(s.id), no=on?n++:0;return `<button class="pprow pro ${on?'on':''}" onclick="PP.tick.has('${s.id}')?PP.tick.delete('${s.id}'):PP.tick.add('${s.id}');render()">
+      <span class="ppck">${on?'✓':''}</span><span class="ppt"><b>${esc(s.name)}</b><small>${esc(s.ppNo||'')} → ${on?'Adm No. '+no:'stays in '+esc(PP.from)}</small></span>
+      <span class="ppc ${on?'g':'y'}">${on?esc(PP.to):esc(PP.from)+' again'}</span></button>`;}).join('')||'<div class="empty card">No children in '+esc(PP.from)+'.</div>'}</div>
+  <div class="ppnote">✓ Fee history and attendance move with each child<br>✓ The pre-primary record keeps "Promoted to ${esc(PP.to)}, Adm No."<br>✓ Admission forms open one by one to add what is missing</div>
+  <div class="fabpad"></div>
+  <button class="fab" onclick="doPrePromo()" ${ticked.length?'':'disabled style="opacity:.5"'}><span class="fi">🎓</span><span class="ft"><b>Promote ${kidsTxt(ticked.length)}</b><small>Then fill their forms</small></span></button>`;
+}
+function doPrePromo(){
+  const kids=PP.ids.map(getS).filter(s=>s&&PP.tick.has(s.id));if(!kids.length)return;
+  let d=PP.date;try{d=getDate('pp_date')||PP.date;}catch(e){toast(e.message);return;}
+  if(!confirm(`Promote ${kidsTxt(kids.length)} to ${PP.to} on ${dmy(d)}?\n\nThey get Adm Nos ${nextAdmNo()} to ${nextAdmNo()+kids.length-1} and enter the admission register.`))return;
+  let n=nextAdmNo();const to=PP.to, nf=classFee(to), m=monthOf(d);
+  const ups=kids.map(s=>{const cur=feeEntry(s,thisMonth());
+    const fees=(s.fees&&s.fees.length?s.fees:[{from:'0000-00',fee:Number(s.fee)||0,disc:Number(s.disc)||0}]).filter(f=>f.from<m).concat([{from:m,fee:nf||Number(cur.fee)||0,disc:Number(cur.disc)||0}]);
+    return [s.id,{pre:false,admNo:String(n++),admit:d,admClass:to,cls:to,sec:'',roll:'',fee:nf||cur.fee,fees,promotedOn:d,preClass:s.cls,
+      form:{...(s.form||{}),prevClass:s.cls,category:'Regular',status:'Confirmed'}}];});
+  updMany('students',ups);
+  // roll numbers in Class 1
+  classStudents(to).filter(s=>!s.roll).forEach(s=>upd('students',s.id,{roll:nextRoll(to)}));
+  toast(`${kidsTxt(kids.length)} promoted to ${to}`);
+  const ids=kids.map(s=>s.id);PP=null;
+  AF={id:'',d:null,queue:ids,qi:-1};afNextInQueue(false,true);
+}
+function afNextInQueue(saved,start){
+  const q=AF.queue, i=start?0:AF.qi+1;
+  if(saved)toast('Form saved');
+  if(!q||i>=q.length){toast('All admission forms done');AF=null;UI.ppTab='hist';go('pre');return;}
+  const s=getS(q[i]);
+  AF={id:s.id,d:afFrom(s),photo:null,touchedGender:!!(s.form&&s.form.gender),sib:'',who:'old',pc:s.cls,queue:q,qi:i};AF.orig=afSig(AF.d);
+  afLoadPhoto(s.id);if(UI.tab==='admform'){render();window.scrollTo(0,0);}else go('admform');
 }
 
 /* ================= Check that data reaches the database ================= */
@@ -4275,15 +4415,16 @@ function savePassword(){
 function promote(){
   const cl=classes(), last=cl[cl.length-1];
   if(!confirm(`Move every current student up one class?\n\n${last} students will be marked as passed out. Do this only once, at the start of the new session.`))return;
-  const now=thisMonth(), ups=[];let pr=0,po=0;
+  const now=thisMonth(), ups=[];let pr=0,po=0,kgw=0;
   S.students.filter(isActive).forEach(s=>{
     const i=cl.indexOf(s.cls);if(i<0)return;
     if(i===cl.length-1){ups.push([s.id,{active:false,leftMonth:prevM(now)}]);po++;return;}
-    const nc=cl[i+1], o={cls:nc}, cur=feeEntry(s,now), of=classFee(s.cls), nf=classFee(nc);
+    const nc=cl[i+1];if(s.pre&&!isPreCls(nc)){kgw++;return;}
+    const o={cls:nc}, cur=feeEntry(s,now), of=classFee(s.cls), nf=classFee(nc);
     if(nf&&(!of||Number(cur.fee)===of)){o.fees=newFeeHist(s,nf,Number(cur.disc||0),false);o.fee=nf;}
     ups.push([s.id,o]);pr++;
   });
-  updMany('students',ups);closeSheet();toast(`${pr} promoted, ${po} passed out`);
+  updMany('students',ups);closeSheet();toast(`${pr} promoted, ${po} passed out`+(kgw?`. ${kgw} ${(classes().filter(isPreCls).slice(-1)[0])||'KG'} children: use Promote to Class 1 in Admission, Pre-primary`:''));
 }
 function download(name,text,type){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type}));a.download=name;document.body.appendChild(a);a.click();a.remove();}
 function csv(rows){const q=v=>'"'+String(v??'').replace(/"/g,'""')+'"';return '\ufeff'+rows.map(r=>r.map(q).join(',')).join('\n');}
@@ -4579,7 +4720,7 @@ async function exportRegister(){
   try{
     const X=await loadXLSX(), y=$('#r_y').value, split=$('#r_split').checked;
     const sorted=l=>l.slice().sort((a,b)=>(a.admit||'').localeCompare(b.admit||'')||(parseInt(a.admNo)||0)-(parseInt(b.admNo)||0));
-    let list=sorted(S.students.filter(s=>y==='all'||(s.admit||'').startsWith(y)));
+    let list=sorted(S.students.filter(s=>inReg(s)&&(y==='all'||(s.admit||'').startsWith(y))));
     if(!list.length){toast('No students for this choice');return;}
     const wb=X.utils.book_new();
     if(split){const ys=[...new Set(list.map(s=>(s.admit||'').slice(0,4)||'No date'))].sort();ys.forEach(yy=>X.utils.book_append_sheet(wb,regSheet(X,list.filter(s=>((s.admit||'').slice(0,4)||'No date')===yy)),yy));}
