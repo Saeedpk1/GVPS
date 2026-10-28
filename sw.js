@@ -1,5 +1,5 @@
 // GVPS School App: works without internet, always gets the newest version when online.
-const CACHE = 'gvps-v93';
+const CACHE = 'gvps-v94';
 const FILES = ['./', './index.html', './manifest.json', './logo.png', './icon-192.png', './icon-512.png', './apple-touch-icon.png'];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(FILES.map(f => new Request(f, {cache: 'reload'})))).then(() => self.skipWaiting()));
